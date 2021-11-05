@@ -12,7 +12,7 @@ Add Doctors / Users
                         <h4 class="mt-0 header-title">Fill Data</h4>
                         <hr>
                         <p class="text-muted m-b-20 font-14"></p>
-                    <form class="" action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
+                    <form class="" action="{{ url('question_save') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-12">

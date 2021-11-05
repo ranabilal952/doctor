@@ -69,11 +69,11 @@ Doctor Accordion Question
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($homeAccordin as $key=> $homeAccordin)
+                                                @foreach ($doctor_question as $key=> $doctor_question)
                                                 <tr>
                                                     <td>{{$key+1}}</td>
-                                                    <td>{{$homeAccordin->title}}</td>
-                                                    <td>{{$homeAccordin->description}}</td>
+                                                    <td>{{$doctor_question->title}}</td>
+                                                    <td>{{$doctor_question->description}}</td>
                                                 
                                                 </tr> 
                                                 @endforeach  

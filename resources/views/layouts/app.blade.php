@@ -157,8 +157,17 @@
             </ul>
           </li>
           <li class="has_sub ">
+            <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> How Book </span> </a>
+            <ul class="list-unstyled">
+              <li><a href="{{url('Session_book')}}" > <i class="mdi mdi-clock "> How Book Session</i>
+       
+            </a> 
+            </ul>
+          </li>         
+           <li class="has_sub ">
             <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> Add Doctors</span> </a>
             <ul class="list-unstyled">
+              <li><a href="{{url('doctor_question')}}" > <i class="mdi mdi-clock "> Doctor Question</i>
               <li><a href="" > <i class="mdi mdi-clock ">Create Doctor</i>
               <li><a href="" > <i class="mdi mdi-clock "> All Doctors</i>    
             </a> 

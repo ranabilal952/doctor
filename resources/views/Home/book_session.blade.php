@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Home Data
+How to Book Session
 @endsection
 @section('content')
 <div class="page-content-wrapper ">
@@ -9,15 +9,15 @@ Home Data
                     <div class="col-lg-12">
                         <div class="card m-b-200">
                             <div class="card-body">
-                                <h4 class="mt-0 header-title">Enter Home Information </h4>
+                                <h4 class="mt-0 header-title">Enter  Information </h4>
                                 <p class="text-muted m-b-30 font-14"></p>
-                                <form class="" action="" method="POST" enctype="multipart/form-data">
+                                <form class="" action="{{url('sesion_save')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label style="color: black"><strong>Doctor Full Name</strong> </label>
-                                           <input type="text" class="form-control" name="name"  placeholder="full name" required>
+                                                <label style="color: black"><strong>Mail Title</strong> </label>
+                                           <input type="text" class="form-control" name="title"  placeholder="full name" required>
                                             </div>
                                         </div>  
                                         <div class="col-lg-12">
@@ -31,9 +31,9 @@ Home Data
                                                                                                                  
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label><strong style="color: black">Image:</strong>(required)</label>
+                                                <label><strong style="color: black">Video Link:</strong>(required)</label>
                                                 <div>
-                                                    <input type="file"  name="image" class="form-control"
+                                                    <input type="text"  name="video_link" class="form-control"
                                                         required placeholder="" />
                                                 </div>
                                             </div>

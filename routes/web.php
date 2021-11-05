@@ -69,3 +69,12 @@ Route::post('footer_save', [App\Http\Controllers\FooterController::class, 'store
 // Social link
 Route::get('social_link', [App\Http\Controllers\SocialLinkController::class, 'index'])->name('social_link');
 Route::post('footer_social', [App\Http\Controllers\SocialLinkController::class, 'store'])->name('footer_social');
+
+
+// Doctor Accordion
+Route::get('doctor_question', [App\Http\Controllers\DoctoraccordionController::class, 'index'])->name('doctor_question');
+Route::post('question_save', [App\Http\Controllers\DoctoraccordionController::class, 'store'])->name('question_save');
+
+// How to book session
+Route::get('Session_book', [App\Http\Controllers\SessionbookController::class, 'index'])->name('Session_book');
+Route::post('sesion_save', [App\Http\Controllers\SessionbookController::class, 'store'])->name('sesion_save');
