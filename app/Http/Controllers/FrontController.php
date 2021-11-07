@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Counter;
 use App\Models\HomeAccordin;
 use App\Models\Sessionbook;
-use App\Models\title;
+use App\Models\Title;
 use App\Models\WebsiteLink;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class FrontController extends Controller
 {
     public function create()
     {
-        $title = title::first();
+        $title = Title::first();
         $counter = Counter::latest()->first();
         $accordians = HomeAccordin::latest()->get();
         $websiteVideoLink = WebsiteLink::latest()->first();
