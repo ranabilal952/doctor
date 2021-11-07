@@ -14,7 +14,7 @@ class CounterController extends Controller
      */
     public function index()
     {
-        $counter = Counter::all();
+        $counter = Counter::latest()->first();
         return view('home.counter',compact('counter'));
     }
 

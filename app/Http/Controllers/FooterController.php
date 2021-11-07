@@ -14,8 +14,8 @@ class FooterController extends Controller
      */
     public function index()
     {
-        $footer = Footer::all();
-        return view('home.footer',compact('footer'));
+        $footer = Footer::latest()->first();
+        return view('home.footer', compact('footer'));
     }
 
     /**
@@ -39,6 +39,8 @@ class FooterController extends Controller
         $footer = new footer();
         $footer->title = $request->title;
         $footer->description = $request->description;
+        $footer->arabic_title = $request->arabic_title;
+        $footer->arabic_description = $request->arabic_description;
         $footer->save();
         toastr()->success('Data Sucessfully Added');
         return redirect()->back();

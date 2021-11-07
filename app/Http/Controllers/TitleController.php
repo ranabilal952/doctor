@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Title;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,8 @@ class TitleController extends Controller
      */
     public function index()
     {
-        $home_title = Title::all();
-     return view('home.title',compact('home_title'));
+        $home_title = Title::latest()->first();
+        return view('home.title', compact('home_title'));
     }
 
     /**
@@ -38,6 +39,8 @@ class TitleController extends Controller
         $home_title = new title();
         $home_title->title = $request->title;
         $home_title->description = $request->description;
+        $home_title->title_arabic = $request->arabic_title;
+        $home_title->description_arabic = $request->arabic_description;
         $home_title->save();
         toastr()->success('Data Sucessfully Added');
         return redirect()->back();
@@ -85,7 +88,7 @@ class TitleController extends Controller
      */
     public function destroy(title $id)
     {
-        
+
         $id->delete();
         return redirect()->back();
         toastr()->error('Slot Deleted');

@@ -13,7 +13,7 @@ class SessionbookController extends Controller
      */
     public function index()
     {
-        $book_session = Sessionbook::all();
+        $book_session = Sessionbook::latest()->first();
         return view('home.book_session',compact('book_session'));
     }
 

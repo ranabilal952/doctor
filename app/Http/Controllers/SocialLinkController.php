@@ -14,7 +14,7 @@ class SocialLinkController extends Controller
      */
     public function index()
     {
-        $social_footer = SocialLink::all();
+        $social_footer = SocialLink::latest()->first();
         return view('home.social_link',compact('social_footer'));
     }
 

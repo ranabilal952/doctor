@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FrontController;
+use App\Http\Controllers\HomeAccordinController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,10 +30,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-Route::view('/', 'front.home');
+Route::get('/', [FrontController::class, 'create']);
 Route::view('details', 'front.details');
 Route::view('doctor', 'front.doctor');
-Route::view('how_book', 'front.how_book');
+Route::get('how_book', [FrontController::class, 'howBookSession']);
 
 
 
@@ -50,6 +52,7 @@ Route::post('title_delete', [App\Http\Controllers\titleController::class, 'destr
 // Accordion
 Route::get('accordion', [App\Http\Controllers\HomeAccordinController::class, 'index'])->name('accordion');
 Route::post('accordion_save', [App\Http\Controllers\HomeAccordinController::class, 'store'])->name('accordion_save');
+Route::get('accordion_destory/{id}', [HomeAccordinController::class, 'destroy']);
 
 
 // Counter
@@ -65,7 +68,7 @@ Route::post('video_save', [App\Http\Controllers\WebsiteLinkController::class, 's
 Route::get('footer', [App\Http\Controllers\FooterController::class, 'index'])->name('footer');
 Route::post('footer_save', [App\Http\Controllers\FooterController::class, 'store'])->name('footer_save');
 
- 
+
 // Social link
 Route::get('social_link', [App\Http\Controllers\SocialLinkController::class, 'index'])->name('social_link');
 Route::post('footer_social', [App\Http\Controllers\SocialLinkController::class, 'store'])->name('footer_social');

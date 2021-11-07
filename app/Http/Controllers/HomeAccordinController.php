@@ -15,8 +15,7 @@ class HomeAccordinController extends Controller
     public function index()
     {
         $homeAccordin = HomeAccordin::all();
-        return view('home.home_accordion',compact('homeAccordin'));
-        
+        return view('home.home_accordion', compact('homeAccordin'));
     }
 
     /**
@@ -40,6 +39,8 @@ class HomeAccordinController extends Controller
         $home_accordion = new HomeAccordin();
         $home_accordion->title = $request->title;
         $home_accordion->description = $request->description;
+        $home_accordion->arabic_title = $request->arabic_title;
+        $home_accordion->arabic_description = $request->arabic_description;
         $home_accordion->save();
         toastr()->success('Data Sucessfully Added');
         return redirect()->back();
@@ -87,6 +88,9 @@ class HomeAccordinController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $faq = HomeAccordin::find($id);
+        $faq->delete();
+        toastr()->success('Deleted Successfully');
+        return redirect()->back();
     }
 }
