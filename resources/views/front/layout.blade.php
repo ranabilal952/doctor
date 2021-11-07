@@ -149,18 +149,18 @@
                         تابعنا على مواقع التواصل االجتماعى للحصول على اخر الاخبار والتحديثات عن الأطباء والموقع
                     </p>
                     <div class="social-facbook facbook">
-                        <a href="{{ $socials->facebook }}" class="text-white">
+                        <a href="{{ $socials->facebook ?? ''}}" class="text-white">
                             <i class="lab la-facebook-f"></i>
                         </a>
                     </div>
                     <div class="social-facbook twitter">
-                        <a href="{{ $socials->twitter }}" class="text-white">
+                        <a href="{{ $socials->twitter ?? '' }}" class="text-white">
 
                             <i class="lab la-twitter"></i>
                         </a>
                     </div>
                     <div class="social-facbook insta">
-                        <a href="{{ $socials->instagram }}" class="text-white">
+                        <a href="{{ $socials->instagram  ?? ''}}" class="text-white">
 
                             <i class="lab la-instagram"></i>
                         </a>
