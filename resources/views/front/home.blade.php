@@ -364,7 +364,7 @@
     <section class="container">
         <div class="row">
             <div class="col-lg-6">
-                <iframe width="100%" height="480" src="{{$websiteVideoLink->video_link}}"
+                <iframe width="100%" height="480" src="{{$websiteVideoLink->video_link ?? ''}}"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
