@@ -15,7 +15,7 @@ class WebsiteLinkController extends Controller
     public function index()
     {
         $video_link = WebsiteLink::all();
-        return view('home.home_video',compact('video_link'));
+        return view('Home.home_video',compact('video_link'));
     }
 
     /**

@@ -15,7 +15,7 @@ class HomeAccordinController extends Controller
     public function index()
     {
         $homeAccordin = HomeAccordin::all();
-        return view('home.home_accordion', compact('homeAccordin'));
+        return view('Home.home_accordion', compact('homeAccordin'));
     }
 
     /**

@@ -15,7 +15,7 @@ class FooterController extends Controller
     public function index()
     {
         $footer = Footer::latest()->first();
-        return view('home.footer', compact('footer'));
+        return view('Home.footer', compact('footer'));
     }
 
     /**
