@@ -18,7 +18,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label style="color: black"><strong>Footer title</strong> </label>
-                                            <input type="text" value="{{ $footer->title }}" class="form-control"
+                                            <input type="text" value="{{ $footer->title ?? ''}}" class="form-control"
                                                 name="title" placeholder="full title" required>
                                         </div>
                                     </div>
@@ -27,14 +27,14 @@
                                             <label><strong style="color: black">Description:</strong></label>
                                             <div>
                                                 <textarea name="description" class="form-control" cols="110"
-                                                    rows="05">{{ $footer->description }}</textarea>
+                                                    rows="05">{{ $footer->description ?? ''}}</textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label style="color: black"><strong>Footer title (Arabic)</strong> </label>
-                                            <input type="text" value="{{ $footer->arabic_title }}" class="form-control"
+                                            <input type="text" value="{{ $footer->arabic_title ?? ''}}" class="form-control"
                                                 name="arabic_title" placeholder="" required>
                                         </div>
                                     </div>
@@ -43,7 +43,7 @@
                                             <label><strong style="color: black">Description (Arabic)</strong></label>
                                             <div>
                                                 <textarea name="arabic_description" class="form-control" cols="110"
-                                                    rows="05">{{ $footer->arabic_description }}</textarea>
+                                                    rows="05">{{ $footer->arabic_description ?? ''}}</textarea>
                                             </div>
                                         </div>
                                     </div>

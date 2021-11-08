@@ -18,7 +18,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label style="color: black"><strong>Title (English)</strong> </label>
-                                            <input type="text" class="form-control" value="{{ $home_title->title }}"
+                                            <input type="text" class="form-control" value="{{ $home_title->title ?? '' }}"
                                                 name="title" placeholder="Enter Title" required>
                                         </div>
                                     </div>
@@ -34,7 +34,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label style="color: black"><strong>Title (Arabic)</strong> </label>
-                                            <input type="text" class="form-control" value="{{ $home_title->title_arabic }}"
+                                            <input type="text" class="form-control" value="{{ $home_title->title_arabic  ?? ''}}"
                                                 name="arabic_title" placeholder="Enter Title" required>
                                         </div>
                                     </div>

@@ -46,8 +46,8 @@ Route::get('social_link', [App\Http\Controllers\SocialLinkController::class, 'in
 
 // title
 Route::get('title', [App\Http\Controllers\titleController::class, 'index'])->name('title');
-Route::post('save_title', [App\Http\Controllers\titleController::class, 'store'])->name('save_title');
-Route::post('title_delete', [App\Http\Controllers\titleController::class, 'destroy'])->name('title_delete');
+Route::post('save_title', [App\Http\Controllers\TitleController::class, 'store'])->name('save_title');
+Route::post('title_delete', [App\Http\Controllers\TitleController::class, 'destroy'])->name('title_delete');
 
 // Accordion
 Route::get('accordion', [App\Http\Controllers\HomeAccordinController::class, 'index'])->name('accordion');
@@ -75,9 +75,15 @@ Route::post('footer_social', [App\Http\Controllers\SocialLinkController::class, 
 
 
 // Doctor Accordion
+Route::get('create_doctor', [App\Http\Controllers\DoctoraccordionController::class, 'create'])->name('create_doctor');
 Route::get('doctor_question', [App\Http\Controllers\DoctoraccordionController::class, 'index'])->name('doctor_question');
 Route::post('question_save', [App\Http\Controllers\DoctoraccordionController::class, 'store'])->name('question_save');
 
 // How to book session
 Route::get('Session_book', [App\Http\Controllers\SessionbookController::class, 'index'])->name('Session_book');
 Route::post('sesion_save', [App\Http\Controllers\SessionbookController::class, 'store'])->name('sesion_save');
+
+
+//User Management
+Route::get('create', [App\Http\Controllers\UserController::class, 'create'])->name('create');
+Route::post('user_save', [App\Http\Controllers\UserController::class, 'store'])->name('user_save');

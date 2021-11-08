@@ -12,22 +12,56 @@ Add Doctors / Users
                         <h4 class="mt-0 header-title">Fill Data</h4>
                         <hr>
                         <p class="text-muted m-b-20 font-14"></p>
-                    <form class="" action="{{ url('question_save') }}" method="POST" enctype="multipart/form-data">
+                    <form class="" action="{{ url('doctor_save') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <div class="form-group">
                                         <label style="color: black"><strong>Doctor Full Name</strong> </label>
                                    <input type="text" class="form-control" name="name"  placeholder="full name" required>
                                     </div>
                                 </div>   
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <div class="form-group">
                                         <label style="color: black"><strong>Doctor Specility</strong> </label>
                                    <input type="text" class="form-control" name="name"  placeholder="full name" required>
                                     </div>
-                                </div>                    
-                                <div class="col-lg-12">
+                                </div>   
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>Orignal Price</strong> </label>
+                                   <input type="text" class="form-control" name="name"  placeholder="full name" required>
+                                    </div>
+                                </div> 
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>Discount Price</strong> </label>
+                                   <input type="text" class="form-control" name="name"  placeholder="full name" required>
+                                    </div>
+                                </div> 
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>Year Of Experience</strong> </label>
+                                   <input type="text" class="form-control" name="name"  placeholder="full name" required>
+                                    </div>
+                                </div> 
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>Number Of Rating total</strong> </label>
+                                   <input type="text" class="form-control" name="name"  placeholder="full name" required>
+                                    </div>
+                                </div> 
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                       <label style="color: black"><strong>Language Doctor Know</strong> </label>
+                                       <select class="form-control" name="role" id="" required>
+                                        <option selected disabled>--Selected--</option>
+                                        <option value="doctor">Doctor</option>
+                                        <option value="user">User</option>
+                                    </select>
+                                    </div>
+                                </div> 
+                                <div class="col-lg-6">
                                     <div class="form-group">
                                         <label style="color: black"><strong>Email</strong></label>
                                    <input type="email" class="form-control" name="email" id="" placeholder="user email" required>
@@ -38,7 +72,58 @@ Add Doctors / Users
                                         <label style="color: black"><strong>Phone Number</strong></label>
                                         <input type="text" class="form-control" name="phone" id="" placeholder="phone number" required>
                                     </div>
-                                </div>                                      
+                                </div> 
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>About therapist</strong></label>
+                                        <textarea name="description" class="form-control" cols="110"
+                                        rows="03"></textarea>
+                                    </div>
+                                </div>                                  
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>Certificates
+                                        </strong></label>
+                                        <textarea name="description" class="form-control" cols="110"
+                                        rows="03"></textarea>
+                                    </div>
+                                </div>                                   
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>Experiences Details
+                                        </strong></label>
+                                        <textarea name="description" class="form-control" cols="110"
+                                        rows="03"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>Video Link
+                                        </strong></label>
+                                        <input type="text" class="form-control" name="phone" id="" placeholder="" required>
+                                    </div>
+                                </div>   
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>Video Link
+                                        </strong></label>
+                                        <input type="text" class="form-control" name="phone" id="" placeholder="" required>
+                                    </div>
+                                </div> 
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>Video Link
+                                        </strong></label>
+                                        <input type="text" class="form-control" name="phone" id="" placeholder="" required>
+                                    </div>
+                                </div> 
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>Video Link
+                                        </strong></label>
+                                        <input type="text" class="form-control" name="phone" id="" placeholder="" required>
+                                    </div>
+                                </div>                                     
                                                           
                                 <div class="col-lg-6 mt-5">
                                     <div class="form-group">

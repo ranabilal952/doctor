@@ -22,14 +22,12 @@ All Doctors / Users
                                             <th>Email</th>
                                             <th> Role</th>
                                             <th>Phone</th>
-                                            
                                             <th>Created Date</th>
-                                           
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($user as $key=> $user) --}}
+                                        @foreach ($user as $key=> $user)
                                         <tr>
                                             <td>abcd</td>
                                             <td>abcd</td>
@@ -63,7 +61,7 @@ All Doctors / Users
 
                                             </td>
                                         </tr>
-                                        
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
