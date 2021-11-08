@@ -1,7 +1,17 @@
 <?php
 
+use App\Http\Controllers\CounterController;
+use App\Http\Controllers\DoctoraccordionController;
+use App\Http\Controllers\FooterController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeAccordinController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SessionbookController;
+use App\Http\Controllers\SocialLinkController;
+use App\Http\Controllers\TitleController;
+use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\WebsiteLinkController;
+use App\Models\HomeAccordin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,11 +32,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 
@@ -37,47 +47,47 @@ Route::get('how_book', [FrontController::class, 'howBookSession']);
 
 
 
-Route::get('user', [App\Http\Controllers\WebsiteController::class, 'index'])->name('user');
+Route::get('user', [WebsiteController::class, 'index'])->name('user');
 
 
 
-Route::get('social_link', [App\Http\Controllers\SocialLinkController::class, 'index'])->name('social_link');
+Route::get('social_link', [SocialLinkController::class, 'index'])->name('social_link');
 
 
 // title
-Route::get('title', [App\Http\Controllers\titleController::class, 'index'])->name('title');
-Route::post('save_title', [App\Http\Controllers\titleController::class, 'store'])->name('save_title');
-Route::post('title_delete', [App\Http\Controllers\titleController::class, 'destroy'])->name('title_delete');
+Route::get('title', [TitleController::class, 'index'])->name('title');
+Route::post('save_title', [TitleController::class, 'store'])->name('save_title');
+Route::post('title_delete', [TitleController::class, 'destroy'])->name('title_delete');
 
 // Accordion
-Route::get('accordion', [App\Http\Controllers\HomeAccordinController::class, 'index'])->name('accordion');
-Route::post('accordion_save', [App\Http\Controllers\HomeAccordinController::class, 'store'])->name('accordion_save');
+Route::get('accordion', [HomeAccordinController::class, 'index'])->name('accordion');
+Route::post('accordion_save', [HomeAccordinController::class, 'store'])->name('accordion_save');
 Route::get('accordion_destory/{id}', [HomeAccordinController::class, 'destroy']);
 
 
 // Counter
-Route::get('counter', [App\Http\Controllers\CounterController::class, 'index'])->name('counter');
-Route::post('counter_save', [App\Http\Controllers\CounterController::class, 'store'])->name('counter_save');
+Route::get('counter', [CounterController::class, 'index'])->name('counter');
+Route::post('counter_save', [CounterController::class, 'store'])->name('counter_save');
 
 // video link
-Route::get('home_video', [App\Http\Controllers\WebsiteLinkController::class, 'index'])->name('home_video');
-Route::post('video_save', [App\Http\Controllers\WebsiteLinkController::class, 'store'])->name('video_save');
+Route::get('home_video', [WebsiteLinkController::class, 'index'])->name('home_video');
+Route::post('video_save', [WebsiteLinkController::class, 'store'])->name('video_save');
 
 
 // footer info
-Route::get('footer', [App\Http\Controllers\FooterController::class, 'index'])->name('footer');
-Route::post('footer_save', [App\Http\Controllers\FooterController::class, 'store'])->name('footer_save');
+Route::get('footer', [FooterController::class, 'index'])->name('footer');
+Route::post('footer_save', [FooterController::class, 'store'])->name('footer_save');
 
 
 // Social link
-Route::get('social_link', [App\Http\Controllers\SocialLinkController::class, 'index'])->name('social_link');
-Route::post('footer_social', [App\Http\Controllers\SocialLinkController::class, 'store'])->name('footer_social');
+Route::get('social_link', [SocialLinkController::class, 'index'])->name('social_link');
+Route::post('footer_social', [SocialLinkController::class, 'store'])->name('footer_social');
 
 
 // Doctor Accordion
-Route::get('doctor_question', [App\Http\Controllers\DoctoraccordionController::class, 'index'])->name('doctor_question');
-Route::post('question_save', [App\Http\Controllers\DoctoraccordionController::class, 'store'])->name('question_save');
+Route::get('doctor_question', [DoctoraccordionController::class, 'index'])->name('doctor_question');
+Route::post('question_save', [DoctoraccordionController::class, 'store'])->name('question_save');
 
 // How to book session
-Route::get('Session_book', [App\Http\Controllers\SessionbookController::class, 'index'])->name('Session_book');
-Route::post('sesion_save', [App\Http\Controllers\SessionbookController::class, 'store'])->name('sesion_save');
+Route::get('Session_book', [SessionbookController::class, 'index'])->name('Session_book');
+Route::post('sesion_save', [SessionbookController::class, 'store'])->name('sesion_save');
