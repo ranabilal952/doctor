@@ -15,7 +15,7 @@ class TitleController extends Controller
     public function index()
     {
         $home_title = Title::latest()->first();
-        return view('home.title', compact('home_title'));
+        return view('Home.title', compact('home_title'));
     }
 
     /**
