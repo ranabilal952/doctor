@@ -14,7 +14,7 @@ class SessionbookController extends Controller
     public function index()
     {
         $book_session = Sessionbook::latest()->first();
-        return view('home.book_session',compact('book_session'));
+        return view('Home.book_session',compact('book_session'));
     }
 
     /**
