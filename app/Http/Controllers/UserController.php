@@ -43,6 +43,14 @@ class UserController extends Controller
         $user->phone = $request->phone;
         $user->role = $request->role;
         $user->type = $request->type;
+
+        $imageName = '';
+        if ($request->has('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(('images/userProfiles'), $imageName);
+        }
+        $user->image = 'images/userProfiles' . '/' . $imageName;
+
         $user->save();
         toastr()->success('Data Sucessfully Added');
         return redirect()->back();

@@ -51,12 +51,12 @@ Add Doctors / Users
                                     </div>
                                 </div>      
                                                           
-                                {{-- <div class="col-lg-6 mt-5">
+                                <div class="col-lg-6 mt-5">
                                     <div class="form-group">
                                         <label style="color: black"><strong> Profile Image</strong></label>
                                         <input type="file" name="image" id="" >
                                     </div>
-                                </div>                    --}}
+                                </div>                   
                                 
                             </div>
                             <div class="form-group">
