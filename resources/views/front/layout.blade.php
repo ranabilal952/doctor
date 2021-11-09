@@ -281,6 +281,7 @@
                                     <div class="input-group input-group-nacked mb-3">
                                         <span class="input-group-text" id="user-addon"><i
                                                 class="las la-user"></i></span>
+                                                <input class="form-control" type="hidden" name="role" value="user" required="">
                                         <input id="name" type="text"
                                             class="form-control @error('name') is-invalid @enderror"
                                             placeholder="اسم المستخدم" aria-label="اسم المستخدم"

@@ -57,7 +57,7 @@
 <div class="page-content-wrapper ">
 
     <div class="container-fluid">
-
+        @if(Auth::User()->role=='admin')
         <div class="row">
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="mini-stat clearfix bg-primary">
@@ -176,14 +176,12 @@
 
         </div>
         <!-- end row -->
-
-
         <div class="row">
 
             <div class="col-12">
                 <div class="card m-b-20">
                     <div class="card-body">
-                        <h4 class="mt-0 m-b-15 header-title">Recent Users</h4>
+                        <h4 class="mt-0 m-b-15 header-title"> Users</h4>
                         <div class="table-responsive">
                             <table class="table table-hover m-b-0">
                                 <thead>
@@ -256,6 +254,69 @@
             </div>
 
         </div>
+        @elseif(Auth::User()->role=='doctor')
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="mini-stat clearfix bg-primary">
+                    <span class="mini-stat-icon"><i class="mdi mdi-cart-outline"></i></span>
+                    <div class="mini-stat-info text-right text-white">
+                        <span class="counter">0000</span>
+                        Coming Soon
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="mini-stat clearfix bg-primary">
+                    <span class="mini-stat-icon"><i class="mdi mdi-currency-usd"></i></span>
+                    <div class="mini-stat-info text-right text-white">
+                        <span class="counter">0000</span>
+                        Coming Soon
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="mini-stat clearfix bg-primary">
+                    <span class="mini-stat-icon"><i class="mdi mdi-cube-outline"></i></span>
+                    <div class="mini-stat-info text-right text-white">
+                        <span class="counter">0000</span>
+                       coming soon
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="mini-stat clearfix bg-primary">
+                    <span class="mini-stat-icon"><i class="mdi mdi-currency-btc"></i></span>
+                    <div class="mini-stat-info text-right text-white">
+                        <span class="counter">0000</span>
+                        coming soon
+                    </div>
+                </div>
+            </div>
+        </div>
+        @else
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="mini-stat clearfix bg-primary">
+                    <span class="mini-stat-icon"><i class="mdi mdi-cart-outline"></i></span>
+                    <div class="mini-stat-info text-right text-white">
+                        <span class="counter">0000</span>
+                    Coming Soon
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="mini-stat clearfix bg-primary">
+                    <span class="mini-stat-icon"><i class="mdi mdi-currency-usd"></i></span>
+                    <div class="mini-stat-info text-right text-white">
+                        <span class="counter">0000</span>
+                        Coming Soon
+                    </div>
+                </div>
+            </div>
+           
+           
+        </div>
+        @endif
         <!-- end row -->
 
     </div><!-- container-fluid -->

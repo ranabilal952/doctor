@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SessionbookController;
 use App\Http\Controllers\SocialLinkController;
 use App\Http\Controllers\TitleController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\WebsiteLinkController;
 use App\Models\HomeAccordin;
@@ -85,9 +86,15 @@ Route::post('footer_social', [SocialLinkController::class, 'store'])->name('foot
 
 
 // Doctor Accordion
+Route::get('create_doctor', [DoctoraccordionController::class, 'create'])->name('create_doctor');
 Route::get('doctor_question', [DoctoraccordionController::class, 'index'])->name('doctor_question');
 Route::post('question_save', [DoctoraccordionController::class, 'store'])->name('question_save');
 
 // How to book session
 Route::get('Session_book', [SessionbookController::class, 'index'])->name('Session_book');
 Route::post('sesion_save', [SessionbookController::class, 'store'])->name('sesion_save');
+
+
+//User Management
+Route::get('create', [UserController::class, 'create'])->name('create');
+Route::post('user_save', [UserController::class, 'store'])->name('user_save');

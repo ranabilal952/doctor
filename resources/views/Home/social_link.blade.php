@@ -18,21 +18,21 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label style="color: black"><strong>Facebook Link</strong> </label>
-                                            <input type="text" value="{{ $social_footer->facebook }}"
+                                            <input type="text" value="{{ $social_footer->facebook ?? ''}}"
                                                 class="form-control" name="facebook" placeholder="full title" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label style="color: black"><strong> Twitter Link</strong> </label>
-                                            <input type="text" value="{{ $social_footer->twitter }}"
+                                            <input type="text" value="{{ $social_footer->twitter ?? ''}}"
                                                 class="form-control" name="twitter" placeholder="full title" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label style="color: black"><strong>Instagram Link</strong> </label>
-                                            <input type="text" value="{{ $social_footer->instagram }}"
+                                            <input type="text" value="{{ $social_footer->instagram ?? ''}}"
                                                 class="form-control" name="instagram" placeholder="full title" required>
                                         </div>
                                     </div>

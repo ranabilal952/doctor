@@ -17,8 +17,8 @@ class UserTabelSeeder extends Seeder
         User::create([
             'name' => 'Admin Test',
             'email' => 'admin@mail.com',
-            'password' => '123456'
-           
+            'password' => '$2y$10$Tk9hBu5dlvbAyYwEtzpQJetUXQ3CUOcowkQc7723hR.3FlrhxxIVW',
+             'role' => 'admin'
         ]);
     }
 }

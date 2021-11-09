@@ -85,21 +85,18 @@
                         <img src="{{ asset('images/g.png') }}" alt="" class="rounded-circle">
                     </div>
                     <div class="user-info">
-                        <h4 class="font-16 "> {{ Auth::user()->name }}</h4>
-                        {{-- <span class=" user-status"><i class="fa fa-dot-circle-o text-success"></i>
-          @if (Auth::user()->role == 'admin')
-          ADMIN PANEL
-          @elseif(Auth::user()->role=='doctor')
-          Doctor PANEL
-          @else
-          user PANEL
-          @endif
-
-        </span> --}}
+                        <h4 class="font-16 "> {{ Auth::User()->name }}</h4>
+                        <span class=" user-status"><i class="fa fa-dot-circle-o text-success"></i>
+                        @if(Auth::User()->role=='admin')
+                        ADMIN PANEL
+                        @elseif(Auth::User()->role=='doctor')
+                        Doctor PANEL
+                        @else
+                        user PANEL
+                        @endif
+                      </span>
                     </div>
                 </div>
-
-
                 <div id="sidebar-menu">
                     <ul>
                         <li>
@@ -108,9 +105,8 @@
                                 <span> Dashboard <span class="badge badge-primary pull-right"></span></span>
                             </a>
                         </li>
-                        {{-- @if (Auth::user()->role == 'admin') --}}
-
-                        {{-- <li class="has_sub ">
+                        @if(Auth::User()->role=='admin')
+        {{-- <li class="has_sub ">
             <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span >
                 Upcoming Meetings</span> </a>
             <ul class="list-unstyled">
@@ -132,7 +128,6 @@
               <!--<li><a href="{{url('calender')}}" class="text-white"> <i class="mdi mdi-book text-white"> Calender </i></a></li>-->
             </ul>
           </li>
-
           <li class="">
             <a href="{{url('member')}}" class="waves-effect  ">
               <i class="mdi mdi-view-dashboard "></i>
@@ -203,16 +198,9 @@
                                     </a>
                             </ul>
                         </li>
+                        
 
-                        {{-- <li class="has_sub ">
-                            <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> User
-                                    Management</span> </a>
-                            <ul class="list-unstyled">
-                                <li><a href="{{ url('create') }}"> <i class="mdi mdi-clock "> Create User</i>
-                                <li><a href="#"> <i class="mdi mdi-clock "> All Users</i>
-                                    </a>
-                            </ul>
-                        </li> --}}
+                        
                         {{-- <li class="has_sub ">
                             <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> Blog Data</span>
                             </a>
@@ -222,55 +210,51 @@
                                     </a>
                             </ul>
                         </li> --}}
-                        {{-- @elseif(Auth::user()->role=='doctor') --}}
-                  
+                        <li class="has_sub ">
+                            <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> User
+                                    Management</span> </a>
+                            <ul class="list-unstyled">
+                                <li><a href="{{ url('create') }}"> <i class="mdi mdi-clock "> Create Doctor / User</i>
+                                <li><a href="#"> <i class="mdi mdi-clock "> All Users</i>
+                                    </a>
+                            </ul>
+                        </li>
+                        @elseif(Auth::User()->role=='doctor')
                         <li class="">
                             <a href="" class="waves-effect">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span> COMING SOON <span class="badge badge-primary pull-right"></span></span>
                             </a>
                         </li>
-                        {{-- @else --}}
-                        {{-- <li class="has_sub ">
-          <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
-            COMING SOON  </span> </a>
-          <ul class="list-unstyled">
-            <li><a href="#" >COMING SOON</a></li>
-          </ul>
-        </li> --}}
-                        {{-- <li class="has_sub ">
-          <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
-            COMING SOON</span> </a>
-          <ul class="list-unstyled">
-            <li><a href="#" >COMING SOON</a></li>
-          </ul>
-        </li> --}}
-                        {{-- @endif --}}
-                        {{-- <li class="has_sub ">
-          <a href="" class="waves-effect "><i class="fa fa-list "></i> <span >
-              Corporate User</span> </a>
-          <ul class="list-unstyled">
-            
-            <li><a href="{{route('create-user-corporate')}}">Create User</a></li>
-          </ul>
-        </li> --}}
-                        {{-- <li class="">
-            <a href="{{ route('logout') }}" class="waves-effect">
-              <i class="fa fa-sign-out"></i>
-              <span> Logout <span class="badge badge-primary pull-right"></span></span>
-            </a>
-          </li> --}}
-
-
+                        @else
+                        <li class="has_sub ">
+                            <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
+                                COMING SOON  </span> </a>
+                            <ul class="list-unstyled">
+                                <li><a href="#" >COMING SOON</a></li>
+                           </ul>
+                       </li> 
+                      <li class="has_sub ">
+                            <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
+                                COMING SOON</span> </a>
+                            <ul class="list-unstyled">
+                                <li><a href="#" >COMING SOON</a></li>
+                            </ul>
+                       </li> 
+                    @endif
+              {{-- <li class="">
+                        <a href="{{ route('logout') }}" class="waves-effect">
+                        <i class="fa fa-sign-out"></i>
+                        <span> Logout <span class="badge badge-primary pull-right"></span></span>
+                        </a>
+                </li> --}}
                     </ul>
                 </div>
                 <div class="clearfix"></div>
             </div> <!-- end sidebarinner -->
         </div>
         <!-- Left Sidebar End -->
-
         <!-- Start right Content here -->
-
         <div class="content-page">
             <!-- Start content -->
             <div class="content">

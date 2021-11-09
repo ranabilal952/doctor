@@ -36,7 +36,7 @@ class TitleController extends Controller
      */
     public function store(Request $request)
     {
-        $home_title = new title();
+        $home_title = new Title();
         $home_title->title = $request->title;
         $home_title->description = $request->description;
         $home_title->title_arabic = $request->arabic_title;
