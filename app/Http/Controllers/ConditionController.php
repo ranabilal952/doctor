@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Doctoraccordion;
 use Illuminate\Http\Request;
-
-class DoctoraccordionController extends Controller
+use App\Models\Condition;
+class ConditionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,8 @@ class DoctoraccordionController extends Controller
      */
     public function index()
     {
-        $doctor_question = Doctoraccordion::all();
-        return view('doctor.question_doctor',compact('doctor_question'));
+        $terms_condition = Condition::all();
+        return view('footer.terms_condition',compact('terms_condition'));
     }
 
     /**
@@ -25,7 +24,7 @@ class DoctoraccordionController extends Controller
      */
     public function create()
     {
-        return view('doctor.create');
+        //
     }
 
     /**
@@ -36,13 +35,12 @@ class DoctoraccordionController extends Controller
      */
     public function store(Request $request)
     {
-        $doctor_question = new Doctoraccordion();
-        $doctor_question->title = $request->title;
-        $doctor_question->description = $request->description;
-        $doctor_question->save();
+        $terms_condition = new Condition();
+        $terms_condition->terms_condition_description_arabic = $request->terms_condition_description_arabic;
+        $terms_condition->terms_condition_description_english = $request->terms_condition_description_english;
+        $terms_condition->save();
         toastr()->success('Data Sucessfully Added');
         return redirect()->back();
-
     }
 
     /**

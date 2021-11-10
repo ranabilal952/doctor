@@ -15,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::all();
+        return view('user.index',compact('user'));
     }
 
     /**
@@ -50,7 +51,6 @@ class UserController extends Controller
             $request->image->move(('images/userProfiles'), $imageName);
         }
         $user->image = 'images/userProfiles' . '/' . $imageName;
-
         $user->save();
         toastr()->success('Data Sucessfully Added');
         return redirect()->back();

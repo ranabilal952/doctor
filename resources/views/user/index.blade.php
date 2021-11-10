@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 @section('title')
 All Doctors / Users
 @endsection
@@ -23,26 +23,26 @@ All Doctors / Users
                                             <th> Role</th>
                                             <th>Phone</th>
                                             <th>Created Date</th>
+                                            <th>image</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($user as $key=> $user)
                                         <tr>
-                                            <td>abcd</td>
-                                            <td>abcd</td>
-                                            <td>abcd</td>
-                                            <td>abcd</td>
-                                            <td>abcd</td>
-                                            <td>abcd</td>
-                                            <td>abcd</td>
-                                        
-                                            {{-- <td>{{$key+1}}</td>
-                                            <td>{{$user->name}}{{$user->lname}}</td>
+                                            <td>{{$key+1}}</td>
+                                            <td>{{$user->name}}</td>
                                             <td>{{$user->email}}</td>
                                             <td>{{$user->role}}</td>
                                             <td>{{$user->phone}}</td>
-                                            <td>{{($user->created_at)->toDateString()}}</td> --}}
+                                            <td>{{($user->created_at)->toDateString()}}</td>
+                                            <td><img src="{{asset($user->image)}}" width="50" height="50" />
+                                                <style>
+                                                    img {
+                                                        border: ;
+                                                    }
+                                                </style>
+                                            </td>
                                             {{-- <td>
                                                 @if($user->assment_status =='0') 
                                                 <a href="{{route('approve_test',$user->id)}}" class="btn btn-danger btn-xs">Approve</a>
@@ -55,7 +55,7 @@ All Doctors / Users
                                             <td>
 
                                                 {{-- <a href="{{route('user.show',$user->id)}}" class="btn btn-success "><i class="fa fa-eye"></i></a>  --}}
-                                                {{-- <a onclick="return confirm('Do you want to delete this record ?')" href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>  --}}
+                                                <a onclick="return confirm('Do you want to delete this record ?')" href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a> 
                                                
                    
 

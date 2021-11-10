@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Doctoraccordion;
+use App\Models\Cancelltion;
 use Illuminate\Http\Request;
 
-class DoctoraccordionController extends Controller
+class CancelltionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class DoctoraccordionController extends Controller
      */
     public function index()
     {
-        $doctor_question = Doctoraccordion::all();
-        return view('doctor.question_doctor',compact('doctor_question'));
+        $cancelltion_policy = Cancelltion::all();
+        return view('footer.cancelltion_policy',compact('cancelltion_policy'));
     }
 
     /**
@@ -25,7 +25,7 @@ class DoctoraccordionController extends Controller
      */
     public function create()
     {
-        return view('doctor.create');
+        
     }
 
     /**
@@ -36,13 +36,12 @@ class DoctoraccordionController extends Controller
      */
     public function store(Request $request)
     {
-        $doctor_question = new Doctoraccordion();
-        $doctor_question->title = $request->title;
-        $doctor_question->description = $request->description;
-        $doctor_question->save();
+        $cancelltion_policy = new Cancelltion();
+        $cancelltion_policy->cancelltion_policy_description_arabic = $request->cancelltion_policy_description_arabic;
+        $cancelltion_policy->cancelltion_policy_description_english = $request->cancelltion_policy_description_english;
+        $cancelltion_policy->save();
         toastr()->success('Data Sucessfully Added');
         return redirect()->back();
-
     }
 
     /**

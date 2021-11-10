@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Doctoraccordion;
+use App\Models\Diseases;
 use Illuminate\Http\Request;
 
-class DoctoraccordionController extends Controller
+class DiseasesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class DoctoraccordionController extends Controller
      */
     public function index()
     {
-        $doctor_question = Doctoraccordion::all();
-        return view('doctor.question_doctor',compact('doctor_question'));
+        $diseases = Diseases::all();
+        return view('diseases.index',compact('diseases'));
     }
 
     /**
@@ -25,7 +25,7 @@ class DoctoraccordionController extends Controller
      */
     public function create()
     {
-        return view('doctor.create');
+        //
     }
 
     /**
@@ -36,13 +36,12 @@ class DoctoraccordionController extends Controller
      */
     public function store(Request $request)
     {
-        $doctor_question = new Doctoraccordion();
-        $doctor_question->title = $request->title;
-        $doctor_question->description = $request->description;
-        $doctor_question->save();
+        $diseases = new Diseases();
+        $diseases->diseases_name_english = $request->diseases_name_english;
+        $diseases->diseases_name_arabic = $request->diseases_name_arabic;
+        $diseases->save();
         toastr()->success('Data Sucessfully Added');
         return redirect()->back();
-
     }
 
     /**

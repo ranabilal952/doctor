@@ -72,7 +72,59 @@ Add Doctors / Users
                                         <label style="color: black"><strong>Phone Number</strong></label>
                                         <input type="text" class="form-control" name="phone" id="" placeholder="phone number" required>
                                     </div>
+                                </div>   
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>Whatsapp </strong></label>
+                                        <input type="text" class="form-control" name="phone" id="" placeholder="phone number" required>
+                                    </div>
+                                </div>   <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>Message </strong></label>
+                                        <input type="text" class="form-control" name="phone" id="" placeholder="phone number" required>
+                                    </div>
+                                </div>   <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>Video </strong></label>
+                                        <input type="text" class="form-control" name="phone" id="" placeholder="phone number" required>
+                                    </div>
                                 </div> 
+                                <div class="col-lg-6 mt-5">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong> Profile Image</strong></label>
+                                        <input type="file" name="image" id="" >
+                                    </div>
+                                </div> 
+                                <h1 style="color: red">Doctor Rates</h1>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>User Rating (for rating)</strong></label>
+                                        <select class="form-control" name="role" id="" required>
+                                            <option selected disabled>--Selected--</option>
+                                            <option value="doctor" style="color: orange;font-size:30px">*</option>
+                                            <option value="doctor" style="color: orange;font-size:30px">**</option>
+                                            <option value="doctor" style="color: orange;font-size:30px">***</option>
+                                            <option value="doctor" style="color: orange;font-size:30px">****</option>
+                                            <option value="doctor" style="color: orange;font-size:30px">*****</option>
+                                            
+                                        </select>
+                                    </div>
+                                </div> 
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>User Name (for rating)</strong></label>
+                                        <input type="text" class="form-control" name="phone" id="" placeholder="phone number" required>
+                                    </div>
+                                </div>                                 
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>User Comment (for rating)</strong></label>
+                                        <textarea name="description" class="form-control" cols="150"
+                                        rows="03"></textarea>
+                                    </div>
+                                </div>  
+                                <h1 style="color: red">Profile Data</h1>
+                                <hr>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label style="color: black"><strong>About therapist</strong></label>
@@ -96,7 +148,8 @@ Add Doctors / Users
                                         rows="03"></textarea>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <h1 style="color: red">Doctor Video Links</h1>
+                                <div class="col-lg-12">
                                     <div class="form-group">
                                         <label style="color: black"><strong>Video Link
                                         </strong></label>
@@ -123,14 +176,15 @@ Add Doctors / Users
                                         </strong></label>
                                         <input type="text" class="form-control" name="phone" id="" placeholder="" required>
                                     </div>
+                                </div>                              <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>Video Link
+                                        </strong></label>
+                                        <input type="text" class="form-control" name="phone" id="" placeholder="" required>
+                                    </div>
                                 </div>                                     
                                                           
-                                <div class="col-lg-6 mt-5">
-                                    <div class="form-group">
-                                        <label style="color: black"><strong> Profile Image</strong></label>
-                                        <input type="file" name="image" id="" >
-                                    </div>
-                                </div>                   
+                                                 
                                 
                             </div>
                             <div class="form-group">

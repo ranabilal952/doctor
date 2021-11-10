@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Doctoraccordion;
+use App\Models\Speciality;
 use Illuminate\Http\Request;
 
-class DoctoraccordionController extends Controller
+class SpecialityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,8 @@ class DoctoraccordionController extends Controller
      */
     public function index()
     {
-        $doctor_question = Doctoraccordion::all();
-        return view('doctor.question_doctor',compact('doctor_question'));
+        $speciality = Speciality::all();
+        return view('speciality.add',compact('speciality')); 
     }
 
     /**
@@ -25,7 +24,7 @@ class DoctoraccordionController extends Controller
      */
     public function create()
     {
-        return view('doctor.create');
+        //
     }
 
     /**
@@ -36,13 +35,12 @@ class DoctoraccordionController extends Controller
      */
     public function store(Request $request)
     {
-        $doctor_question = new Doctoraccordion();
-        $doctor_question->title = $request->title;
-        $doctor_question->description = $request->description;
-        $doctor_question->save();
+        $speciality = new Speciality();
+        $speciality->speciality_name_english = $request->speciality_name_english;
+        $speciality->speciality_name_arabic = $request->speciality_name_arabic;
+        $speciality->save();
         toastr()->success('Data Sucessfully Added');
         return redirect()->back();
-
     }
 
     /**

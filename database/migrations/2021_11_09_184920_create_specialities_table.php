@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWebsiteLinksTable extends Migration
+class CreateSpecialitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateWebsiteLinksTable extends Migration
      */
     public function up()
     {
-        Schema::create('website_links', function (Blueprint $table) {
+        Schema::create('specialities', function (Blueprint $table) {
             $table->id();
-            $table->string('video_link')->nullable();
+            $table->string('speciality_name_english')->nullable();
+            $table->string('speciality_name_arabic')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateWebsiteLinksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('website_links');
+        Schema::dropIfExists('specialities');
     }
 }

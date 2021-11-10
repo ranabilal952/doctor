@@ -184,17 +184,31 @@
                             <ul class="list-unstyled">
                                 <li><a href="{{ url('footer') }}"> <i class="mdi mdi-clock ">Footer Website</i>
                                 <li><a href="{{ url('social_link') }}"> <i class="mdi mdi-clock ">Follow Us Data</i>
+                                <li><a href="{{ url('terms_detail') }}"> <i class="mdi mdi-clock ">Terms Condition</i>
+                                <li><a href="{{ url('privacy_policy') }}"> <i class="mdi mdi-clock ">Privacy Policy</i>
+                                <li><a href="{{ url('Cancelltion_policy') }}"> <i class="mdi mdi-clock ">Cancelltion Policy</i>
                                     </a>
                             </ul>
                         </li>
-
+                        <li>
+                            <a href="{{ url('add_speciality') }}" class="waves-effect ">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span> Add speciality <span class="badge badge-primary pull-right"></span></span>
+                            </a>
+                        </li>                        
+                        <li>
+                            <a href="{{ url('diseases_add') }}" class="waves-effect ">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span> Add Diseases <span class="badge badge-primary pull-right"></span></span>
+                            </a>
+                        </li>
                         <li class="has_sub">
                             <a href="#" class="waves-effect">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span> Doctors<span class="badge badge-primary pull-right"></span></span>
                             </a>
                             <ul class="list-unstyled">
-                                <li><a href="{{ url('#') }}"> <i class="mdi mdi-clock ">Add Doctor (Coming Soon)</i>
+                                <li><a href="{{ url('create_doctor') }}"> <i class="mdi mdi-clock ">Add Doctor (Coming Soon)</i>
                                     </a>
                             </ul>
                         </li>
@@ -215,7 +229,7 @@
                                     Management</span> </a>
                             <ul class="list-unstyled">
                                 <li><a href="{{ url('create') }}"> <i class="mdi mdi-clock "> Create Doctor / User</i>
-                                <li><a href="#"> <i class="mdi mdi-clock "> All Users</i>
+                                <li><a href="{{url('all_user')}}"> <i class="mdi mdi-clock "> All Users</i>
                                     </a>
                             </ul>
                         </li>
@@ -360,6 +374,7 @@
     <!-- App js -->
     <script src="{{ asset('assets/js/app.js') }}"></script>
     <script src="{{ asset('toastr/toastr.min.js') }}"></script>
+    <script src="https://cdn.tiny.cloud/1/rfv7rfhx5vafv76ygxza52h080627sqb542j7d7736y9x8c2/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     @toastr_render
     @yield('scripts')
 </body>

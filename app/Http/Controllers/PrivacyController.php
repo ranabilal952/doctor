@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Doctoraccordion;
+use App\Models\Privacy;
 use Illuminate\Http\Request;
 
-class DoctoraccordionController extends Controller
+class PrivacyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class DoctoraccordionController extends Controller
      */
     public function index()
     {
-        $doctor_question = Doctoraccordion::all();
-        return view('doctor.question_doctor',compact('doctor_question'));
+        $privacy_policy = Privacy::all();
+        return view('footer.privacy_policy',compact('privacy_policy'));
     }
 
     /**
@@ -25,7 +25,7 @@ class DoctoraccordionController extends Controller
      */
     public function create()
     {
-        return view('doctor.create');
+        //
     }
 
     /**
@@ -36,13 +36,12 @@ class DoctoraccordionController extends Controller
      */
     public function store(Request $request)
     {
-        $doctor_question = new Doctoraccordion();
-        $doctor_question->title = $request->title;
-        $doctor_question->description = $request->description;
-        $doctor_question->save();
+        $privacy_policy = new Privacy();
+        $privacy_policy->privacy_policy_description_arabic = $request->privacy_policy_description_arabic;
+        $privacy_policy->privacy_policy_description_english = $request->privacy_policy_description_english;
+        $privacy_policy->save();
         toastr()->success('Data Sucessfully Added');
         return redirect()->back();
-
     }
 
     /**
