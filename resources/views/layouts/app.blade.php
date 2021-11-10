@@ -202,7 +202,7 @@
                                 <span> Add Diseases <span class="badge badge-primary pull-right"></span></span>
                             </a>
                         </li>
-                        <li class="has_sub">
+                        {{-- <li class="has_sub">
                             <a href="#" class="waves-effect">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span> Doctors<span class="badge badge-primary pull-right"></span></span>
@@ -211,7 +211,7 @@
                                 <li><a href="{{ url('create_doctor') }}"> <i class="mdi mdi-clock ">Add Doctor (Coming Soon)</i>
                                     </a>
                             </ul>
-                        </li>
+                        </li> --}}
                         
 
                         
