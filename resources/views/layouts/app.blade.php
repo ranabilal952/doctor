@@ -56,11 +56,6 @@
             <button type="button" class="button-menu-mobile button-menu-mobile-topbar open-left waves-effect">
                 <i class="ion-close"></i>
             </button>
-
-
-
-
-
             <div class="topbar-left">
                 <div class="text-center">
                     <!--<a href="index.html" class="logo">Admiry</a>-->
@@ -76,10 +71,7 @@
     </div>
     <!-- <hr> -->
   </div> --}}
-
             <div class="sidebar-inner slimscrollleft">
-
-
                 <div class="user-details">
                     <div class="text-center">
                         <img src="{{ asset('images/g.png') }}" alt="" class="rounded-circle">
@@ -106,42 +98,42 @@
                             </a>
                         </li>
                         @if(Auth::User()->role=='admin')
-        {{-- <li class="has_sub ">
-            <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span >
-                Upcoming Meetings</span> </a>
-            <ul class="list-unstyled">
-              <li><a href="/create-meeting-room" >Create Meeting</a></li>
-              <li><a href="/view-meeting-room" >View Meeting</a></li>
-              <li><a href="/manage-recordings">Manage Recording</a></li>
-              <li><a href="/view-recordings" >My Recording</a></li>
-            </ul>
-          </li>
-          <li class="has_sub ">
-            <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span>Upcoming Bookings</span> </a>
-            <ul class="list-unstyled">
-              <li><a href="{{('appoint')}}" > <i class="mdi mdi-clock "> Create Booking</i>
-                </a></li>
-              <li><a href="{{route('slottime.index')}}" > <i class="mdi mdi-clock"> Slot
-                    Time</i> </a></li>
-              <li><a href="{{route('appointment.index')}}" class=""> <i class="mdi mdi-book "> All
-                    Appointment </i></a></li>
-              <!--<li><a href="{{url('calender')}}" class="text-white"> <i class="mdi mdi-book text-white"> Calender </i></a></li>-->
-            </ul>
-          </li>
-          <li class="">
-            <a href="{{url('member')}}" class="waves-effect  ">
-              <i class="mdi mdi-view-dashboard "></i>
-              <span> Friday Health Club <span class="badge badge-primary pull-right"></span></span>
-            </a>
-          </li>
-          <li class="has_sub ">
-            <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> Report</span> </a>
-            <ul class="list-unstyled">
-              <li><a href="{{route('assesment.index')}}" > <i class="mdi mdi-clock"> Disc</i>
-                </a></li>
-              
-            </ul>
-          </li> --}}
+                            {{-- <li class="has_sub ">
+                                <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span >
+                                    Upcoming Meetings</span> </a>
+                                <ul class="list-unstyled">
+                                <li><a href="/create-meeting-room" >Create Meeting</a></li>
+                                <li><a href="/view-meeting-room" >View Meeting</a></li>
+                                <li><a href="/manage-recordings">Manage Recording</a></li>
+                                <li><a href="/view-recordings" >My Recording</a></li>
+                                </ul>
+                            </li>
+                            <li class="has_sub ">
+                                <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span>Upcoming Bookings</span> </a>
+                                <ul class="list-unstyled">
+                                <li><a href="{{('appoint')}}" > <i class="mdi mdi-clock "> Create Booking</i>
+                                    </a></li>
+                                <li><a href="{{route('slottime.index')}}" > <i class="mdi mdi-clock"> Slot
+                                        Time</i> </a></li>
+                                <li><a href="{{route('appointment.index')}}" class=""> <i class="mdi mdi-book "> All
+                                        Appointment </i></a></li>
+                                <!--<li><a href="{{url('calender')}}" class="text-white"> <i class="mdi mdi-book text-white"> Calender </i></a></li>-->
+                                </ul>
+                            </li>
+                            <li class="">
+                                <a href="{{url('member')}}" class="waves-effect  ">
+                                <i class="mdi mdi-view-dashboard "></i>
+                                <span> Friday Health Club <span class="badge badge-primary pull-right"></span></span>
+                                </a>
+                            </li>
+                            <li class="has_sub ">
+                                <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> Report</span> </a>
+                                <ul class="list-unstyled">
+                                <li><a href="{{route('assesment.index')}}" > <i class="mdi mdi-clock"> Disc</i>
+                                    </a></li>
+                                
+                                </ul>
+                            </li> --}}
 
                         <li class="has_sub ">
                             <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span>Homepage Data</span>
@@ -202,7 +194,7 @@
                                 <span> Add Diseases <span class="badge badge-primary pull-right"></span></span>
                             </a>
                         </li>
-                        {{-- <li class="has_sub">
+                        <li class="has_sub">
                             <a href="#" class="waves-effect">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span> Doctors<span class="badge badge-primary pull-right"></span></span>
@@ -211,19 +203,16 @@
                                 <li><a href="{{ url('create_doctor') }}"> <i class="mdi mdi-clock ">Add Doctor (Coming Soon)</i>
                                     </a>
                             </ul>
-                        </li> --}}
-                        
-
-                        
-                        {{-- <li class="has_sub ">
+                        </li>
+                        <li class="has_sub ">
                             <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> Blog Data</span>
                             </a>
                             <ul class="list-unstyled">
-                                <li><a href=""> <i class="mdi mdi-clock "> Create User</i>
-                                <li><a href=""> <i class="mdi mdi-clock "> All Users</i>
+                                <li><a href="{{url('blog_create')}}"> <i class="mdi mdi-clock "> Add Blog</i>
+                                <li><a href="{{url('all_blogs')}}"> <i class="mdi mdi-clock "> All Blog</i>
                                     </a>
                             </ul>
-                        </li> --}}
+                        </li>
                         <li class="has_sub ">
                             <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> User
                                     Management</span> </a>

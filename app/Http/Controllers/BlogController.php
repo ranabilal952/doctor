@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -13,7 +14,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $blog = Blog::all();
+        return view('blog.index',compact('blog'));
     }
 
     /**
@@ -23,7 +25,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view('blog.create');
     }
 
     /**
@@ -34,7 +36,22 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $blog = new Blog();
+        $blog->blog_title_english = $request->blog_title_english;
+        $blog->blog_description_english = $request->blog_description_english;
+        $blog->blog_title_arabic = $request->blog_title_arabic;
+        $blog->blog_description_arabic = $request->blog_description_arabic;
+
+
+        $imageName = '';
+        if ($request->has('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(('images/blog'), $imageName);
+        }
+        $blog->image = 'images/blog' . '/' . $imageName;
+        $blog->save();
+        toastr()->success('Data Sucessfully Added');
+        return redirect()->back();
     }
 
     /**

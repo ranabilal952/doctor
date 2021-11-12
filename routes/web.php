@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CancelltionController;
 use App\Http\Controllers\Condition;
 use App\Http\Controllers\ConditionController;
@@ -129,3 +130,9 @@ Route::post('privacy_policy_save',[PrivacyController::class, 'store'])->name('pr
 // Cancelltion Policy
 Route::get('Cancelltion_policy',[CancelltionController::class, 'index'])->name('Cancelltion_policy');
 Route::post('Cancelltion_policy_save',[CancelltionController::class, 'store'])->name('Cancelltion_policy_save');
+
+
+// Blog Information
+Route::get('blog_create',[BlogController::class, 'create'])->name('blog_create');
+Route::get('all_blogs',[BlogController::class, 'index'])->name('all_blogs');
+Route::post('blog_save',[BlogController::class, 'store'])->name('blog_save');
