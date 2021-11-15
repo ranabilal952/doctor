@@ -375,23 +375,25 @@
         </div>
     </section>
     <!-- blog -->
-    <section class="blog-home mt-5 container">
+    <section class="blog-home mt-5 ">
         <h3 class="text-center" style="padding: 45px; font-size: 40px">
             مقالات المعالجين النفسيين
         </h3>
         <div class="">
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="card">
-                        <img class="card-img-top" src="{{ url('web/assets/images/blog1.webp') }}"
+                <div class="col-lg-4 ml-5 mr-5">
+                    <a href="{{url('blog_detail')}}" style="text-decoration: none">
+                    <div class="card mb-4">
+                        <img class="card-img-top" src="{{ url($blog->image ?? '') }}"
                             alt="Card image cap" />
                         <div class="card-body">
-                            <p>Jun 14, 2021</p>
-                            <p class="card-text">فوبيا الأماكن المزدحمة: الأسباب والعلاج</p>
+                            <p class="mr-2">{{($blog->created_at)->toDateString()}}</p>
+                            <p class="card-text">{{$blog->blog_title_arabic }}</p>
                         </div>
                     </div>
+                </a>
                 </div>
-                <div class="col-lg-4">
+                {{-- <div class="col-lg-4">
                     <div class="card">
                         <img class="card-img-top" src="{{ url('web/assets/images/blog2.webp') }}"
                             alt="Card image cap" />
@@ -410,7 +412,7 @@
                             <p class="card-text">فوبيا الأماكن المزدحمة: الأسباب والعلاج</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>

@@ -915,7 +915,39 @@ doctor-offers-box.country .top-doctor-services {
     line-height: 1.5rem;
     margin-bottom: 0.8rem;
 }
-
+.doctor-breadcrumb {
+    background: #F8FAFF;
+    padding: 90px 0;
+    text-align: center;
+}
+.doctor-breadcrumb h1 {
+    font-size: 44px;
+    color: #333;
+}
+.doctor-breadcrumb-list {
+    overflow: hidden;
+}
+.doctor-breadcrumb-list a {
+    text-decoration: none;
+    position: relative;
+    margin-left: 5px;
+    color: #555;
+    transition: all .5s;
+}
+.doctor-breadcrumb-list a:after {
+    content: "\F177";
+    font-family: "Font Awesome 5 Pro";
+    margin-right: 8px;
+    margin-left: 8px;
+    position: relative;
+    top: 3px;
+    right: 0;
+    transition: all .5s;
+}
+.doctor-main {
+    overflow: hidden;
+    margin: 50px 0;
+}
 @media (min-width: 931px) {
     .header_nav {
         display: flex;

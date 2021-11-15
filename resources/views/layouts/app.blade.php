@@ -200,7 +200,7 @@
                                 <span> Doctors<span class="badge badge-primary pull-right"></span></span>
                             </a>
                             <ul class="list-unstyled">
-                                <li><a href="{{ url('create_doctor') }}"> <i class="mdi mdi-clock ">Add Doctor (Coming Soon)</i>
+                                <li><a href="{{ url('create_doctor') }}"> <i class="mdi mdi-clock ">Add Doctor</i>
                                     </a>
                             </ul>
                         </li>
@@ -223,27 +223,34 @@
                             </ul>
                         </li>
                         @elseif(Auth::User()->role=='doctor')
-                        <li class="">
-                            <a href="" class="waves-effect">
+                        <li>
+                            <a href="{{url('add_availability')}}" class="waves-effect ">
                                 <i class="mdi mdi-view-dashboard"></i>
-                                <span> COMING SOON <span class="badge badge-primary pull-right"></span></span>
+                                <span> Add Time Availability<span class="badge badge-primary pull-right"></span></span>
+                            </a>
+                        </li>                       
+                        <li>
+                            <a href="" class="waves-effect ">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span> Profile <span class="badge badge-primary pull-right"></span></span>
                             </a>
                         </li>
                         @else
                         <li class="has_sub ">
                             <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
-                                COMING SOON  </span> </a>
+                                My Reservations  </span> </a>
                             <ul class="list-unstyled">
-                                <li><a href="#" >COMING SOON</a></li>
+                                <li><a href="#" >Next Sessions</a></li>
+                                <li><a href="#" >Previous Sessions</a></li>
+                                <li><a href="#" >Cancelled Sessions</a></li>
                            </ul>
                        </li> 
-                      <li class="has_sub ">
-                            <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
-                                COMING SOON</span> </a>
-                            <ul class="list-unstyled">
-                                <li><a href="#" >COMING SOON</a></li>
-                            </ul>
-                       </li> 
+                       <li>
+                        <a href="" class="waves-effect ">
+                            <i class="mdi mdi-view-dashboard"></i>
+                            <span> Profile <span class="badge badge-primary pull-right"></span></span>
+                        </a>
+                    </li> 
                     @endif
               {{-- <li class="">
                         <a href="{{ route('logout') }}" class="waves-effect">
@@ -254,19 +261,12 @@
                     </ul>
                 </div>
                 <div class="clearfix"></div>
-            </div> <!-- end sidebarinner -->
+            </div> 
         </div>
-        <!-- Left Sidebar End -->
-        <!-- Start right Content here -->
         <div class="content-page">
-            <!-- Start content -->
             <div class="content">
-
-                <!-- Top Bar Start -->
                 <div class="topbar">
-
                     <nav class="navbar-custom">
-
                         <ul class="list-inline float-right mb-0">
                             <li class="list-inline-item dropdown notification-list">
                                 <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user"
@@ -279,16 +279,13 @@
                                  document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         class="d-none">
                                         @csrf
                                     </form>
                                 </div>
                             </li>
-
                         </ul>
-
                         <ul class="list-inline menu-left mb-0">
                             <li class="list-inline-item">
                                 <button type="button" class="button-menu-mobile open-left waves-effect">
@@ -299,21 +296,13 @@
                                 <h3 class="page-title">@yield('title')</h3>
                             </li>
                         </ul>
-
                         <div class="clearfix"></div>
-
                     </nav>
-
                 </div>
                 <!-- Top Bar End -->
-
-
-
                 @yield('content')
                 <!-- Page content Wrapper -->
-
             </div> <!-- content -->
-
             <footer class="footer">
                 <span class="text-red">Copyright © 2020 <a style="color:#D23830"
                         href="https://doctoorc.com/"><strong>Doctoorc.com</strong></a> </span> <br>

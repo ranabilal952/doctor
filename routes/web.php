@@ -7,6 +7,7 @@ use App\Http\Controllers\ConditionController;
 use App\Http\Controllers\CounterController;
 use App\Http\Controllers\DiseasesController;
 use App\Http\Controllers\DoctoraccordionController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeAccordinController;
@@ -51,7 +52,12 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/', [FrontController::class, 'create']);
 Route::view('details', 'front.details');
 Route::view('doctor', 'front.doctor');
+Route::view('cancelation_policy', 'front.cancelation_policy');
 Route::get('how_book', [FrontController::class, 'howBookSession']);
+Route::get('cancelltion_policy', [FrontController::class, 'cancel']);
+Route::get('privacy', [FrontController::class, 'privacy']);
+Route::get('terms', [FrontController::class, 'condition']);
+
 
 
 
@@ -93,7 +99,7 @@ Route::post('footer_social', [SocialLinkController::class, 'store'])->name('foot
 
 
 // Doctor Accordion
-Route::get('create_doctor', [DoctoraccordionController::class, 'create'])->name('create_doctor');
+Route::get('bbb', [DoctoraccordionController::class, 'create'])->name('bbb');
 Route::get('doctor_question', [DoctoraccordionController::class, 'index'])->name('doctor_question');
 Route::post('question_save', [DoctoraccordionController::class, 'store'])->name('question_save');
 
@@ -129,10 +135,15 @@ Route::post('privacy_policy_save',[PrivacyController::class, 'store'])->name('pr
 
 // Cancelltion Policy
 Route::get('Cancelltion_policy',[CancelltionController::class, 'index'])->name('Cancelltion_policy');
-Route::post('Cancelltion_policy_save',[CancelltionController::class, 'store'])->name('Cancelltion_policy_save');
+Route::post('cancelltion_policy_save',[CancelltionController::class, 'store'])->name('cancelltion_policy_save');
 
 
 // Blog Information
 Route::get('blog_create',[BlogController::class, 'create'])->name('blog_create');
 Route::get('all_blogs',[BlogController::class, 'index'])->name('all_blogs');
+Route::get('blog_detail',[BlogController::class, 'show'])->name('blog_detail');
 Route::post('blog_save',[BlogController::class, 'store'])->name('blog_save');
+
+// Doctor Detail
+Route::get('create_doctor',[DoctorController::class, 'create'])->name('create_doctor');
+Route::post('doctor_detail_save',[DoctorController::class, 'store'])->name('doctor_detail_save');

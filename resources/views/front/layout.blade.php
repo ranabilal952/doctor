@@ -174,9 +174,9 @@
                 <p>جميع الحقوق محفوظة لدكتورك © 2021</p>
             </div>
             <div class="col-lg-6">
-                <a class="m-3 text-white" href="">سياسة الخصوصية</a>
-                <a class="m-3 text-white" href="">الشروط والأحكام</a>
-                <a class="text-white" href="">سياسة الالغاء</a>
+                <a class="m-3 text-white" href="{{url('privacy')}}">سياسة الخصوصية</a>
+                <a class="m-3 text-white" href="{{url('terms')}}">الشروط والأحكام</a>
+                <a class="text-white" href="{{url('cancelltion_policy')}}">سياسة الالغاء</a>
             </div>
         </div>
     </footer>
