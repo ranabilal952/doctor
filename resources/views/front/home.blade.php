@@ -30,7 +30,49 @@
     <div class="doctor-home">
         <div class="container">
             <div class="row">
+              
+                @foreach ($doctor as $doctor)
                 <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
+                    <div class="card doc_doctor">
+                        <div class="top-bi">
+                            <div class="whatsapp-service"><i class="lab la-whatsapp" style="margin-right: 3px;"></i></div>
+                            <div class="chat-service" style="background: #138DE7;">
+                                <i class="las la-comment-alt" style="margin-right: 4px;"></i>
+                            </div>
+                            <div class="video-service" style="background: #138DE7;">
+                                <i class="las la-video" style="margin-right: 4px; font-size: 15px;"></i>
+                            </div>
+                        </div>
+                        <div class="top-doctor-item-available-alert mt-1 online" style="float: right;"><span>{{$doctor->availablity}} </span></div>
+                        <div class="top-doctor-item-img">
+                            <img alt="ربيع الحوراني" src="{{ url($doctor->image ?? '') }}">
+                            <i class="doctor-item-availablity online"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="text-center">{{$doctor->doctor_name}}</h5>
+                            <p class="text-center"> {{$doctor->doctor_specility}}</p>
+                            <div class="text-center">
+                              ( {{$doctor->total_rating}} )
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                            </div>
+                            <div class="d-flex">
+                                <a href="#" class="btn" style="margin: 5px; width: 50%;font-size: 18px;">{{$doctor->discount_price}} USD</a>
+                                <a href="#" class="btn" style="margin: 5px;width: 50%;font-size: 18px;"><del>{{$doctor->orignal_price}} USD</del> </a>
+                            </div>
+                            <div class="d-flex">
+                                <a href="{{url('doctor_detail',$doctor->id)}}" class="btn btn-primary"style="margin: 5px;width: 50%;color: black;background-color: #D6E0F5; border:none;">عرض</a>
+                                <a href="{{url('doctor_detail',$doctor->id)}}" class="btn btn-primary" style="margin: 5px;width: 50%;color: #fff;background-color: #0d6efd;border-color: #0d6efd;">احجز الأن</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                @endforeach
+               
+                {{-- <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
 
                     <div class="card doc_doctor">
                         <div class="top-bi">
@@ -131,109 +173,7 @@
 
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
-
-                    <div class="card doc_doctor">
-                        <div class="top-bi">
-                            <div class="whatsapp-service"><i class="lab la-whatsapp" style="margin-right: 3px;"></i></div>
-                            <div class="chat-service" style="    background: #138DE7;   "><i class="las la-comment-alt"
-                                    style="margin-right: 4px;"></i></div>
-                            <div class="video-service" style="    background: #138DE7;
-                                                                "><i class="las la-video"
-                                    style="margin-right: 4px; font-size: 15px;"></i>
-                            </div>
-                        </div>
-                        <div class="top-doctor-item-available-alert mt-1 online" style="float: right;"><span> </span></div>
-                        <div class="top-doctor-item-img">
-                            <img ng-src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp"
-                                alt="ربيع الحوراني"
-                                src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp">
-                            <i class="doctor-item-availablity online"
-                                ng-class="$ctrl.doctor.online ? 'online' : 'offline'"></i>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="text-center">د. ميراي فرنسيس</h5>
-                            <p class="text-center">اخصائي نفسي</p>
-                            <div class="text-center">
-                                (13)
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                            </div>
-                            <div class="d-flex">
-                                <a href="#" class="btn"
-                                    style="margin: 5px; width: 50%;font-size: 18px;">1576PKR</a>
-                                <a href="#" class="btn"
-                                    style="margin: 5px;width: 50%;font-size: 18px;"><del>1576PKR</del> </a>
-                            </div>
-
-                            <div class="d-flex">
-                                <a href="details.html" class="btn btn-primary"
-                                    style="margin: 5px;width: 50%;color: black;background-color: #D6E0F5; border:none;">عرض</a>
-                                <a href="details.html" class="btn btn-primary" style="margin: 5px;
-                                                width: 50%;
-                                                color: #fff;
-                                                background-color: #0d6efd;
-                                                border-color: #0d6efd;">احجز الأن</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
-
-                    <div class="card doc_doctor">
-                        <div class="top-bi">
-                            <div class="whatsapp-service"><i class="lab la-whatsapp" style="margin-right: 3px;"></i></div>
-                            <div class="chat-service" style="    background: #138DE7;   "><i class="las la-comment-alt"
-                                    style="margin-right: 4px;"></i></div>
-                            <div class="video-service" style="    background: #138DE7;
-                                                                "><i class="las la-video"
-                                    style="margin-right: 4px; font-size: 15px;"></i>
-                            </div>
-                        </div>
-                        <div class="top-doctor-item-available-alert mt-1 online" style="float: right;"><span> </span></div>
-                        <div class="top-doctor-item-img">
-                            <img ng-src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp"
-                                alt="ربيع الحوراني"
-                                src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp">
-                            <i class="doctor-item-availablity online"
-                                ng-class="$ctrl.doctor.online ? 'online' : 'offline'"></i>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="text-center">د. ميراي فرنسيس</h5>
-                            <p class="text-center">اخصائي نفسي</p>
-                            <div class="text-center">
-                                (13)
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                            </div>
-                            <div class="d-flex">
-                                <a href="#" class="btn"
-                                    style="margin: 5px; width: 50%;font-size: 18px;">1576PKR</a>
-                                <a href="#" class="btn"
-                                    style="margin: 5px;width: 50%;font-size: 18px;"><del>1576PKR</del> </a>
-                            </div>
-
-                            <div class="d-flex">
-                                <a href="details.html" class="btn btn-primary"
-                                    style="margin: 5px;width: 50%;color: black;background-color: #D6E0F5; border:none;">عرض</a>
-                                <a href="details.html" class="btn btn-primary" style="margin: 5px;
-                                                width: 50%;
-                                                color: #fff;
-                                                background-color: #0d6efd;
-                                                border-color: #0d6efd;">احجز الأن</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+                </div> --}}
             </div>
             <!-- <button class="btn btn-primary text-center">Show all doctors</button> -->
         </div>
@@ -382,7 +322,7 @@
         <div class="">
             <div class="row">
                 <div class="col-lg-4 ml-5 mr-5">
-                    <a href="{{url('blog_detail')}}" style="text-decoration: none">
+                    <a href="{{url('blog_detail',$blog->id)}}" style="text-decoration: none">
                     <div class="card mb-4">
                         <img class="card-img-top" src="{{ url($blog->image ?? '') }}"
                             alt="Card image cap" />

@@ -16,7 +16,7 @@
     <div class="doctor-main mr-5 ml-5">
         <div class="">
             <div class="doctor-main-co ">
-                {!! $terms_condition->terms_condition_description_arabic !!}
+                {!! $terms_condition->terms_condition_description !!}
                 </div>
         </div>
     </div>

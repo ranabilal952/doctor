@@ -13,10 +13,10 @@
             </div>
         </div>
     </div>
-    <div class="doctor-main mr-5 ml-5">
+    <div class="doctor-main mr-5 ml-5 container">
         <div class="">
             <div class="doctor-main-co ">
-                {{$blog->blog_description_english}}
+                {!! $blog->blog_description_arabic !!}
                 </div>
         </div>
     </div>

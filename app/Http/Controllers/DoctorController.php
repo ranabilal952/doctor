@@ -40,6 +40,8 @@ class DoctorController extends Controller
         $doctor->doctor_specility = $request->doctor_specility;
         $doctor->orignal_price = $request->orignal_price;
         $doctor->discount_price = $request->discount_price;
+        $doctor->thirty_minute_price = $request->thirty_minute_price;
+        $doctor->sixty_minute_price = $request->sixty_minute_price;
         $doctor->year_experience = $request->year_experience;
         $doctor->rating_number = $request->rating_number;
         $doctor->language = $request->language;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Cancelltion;
 use App\Models\Counter;
+use App\Models\Doctor;
 use App\Models\HomeAccordin;
 use App\Models\Sessionbook;
 use App\Models\Title;
@@ -20,7 +21,9 @@ class FrontController extends Controller
         $accordians = HomeAccordin::latest()->get();
         $websiteVideoLink = WebsiteLink::latest()->first();
         $blog = Blog::latest()->first();
-        return view('front.home')->with(compact('title', 'counter', 'accordians', 'websiteVideoLink','blog'));
+        $doctor = Doctor::all();
+        
+        return view('front.home')->with(compact('title', 'counter', 'accordians', 'websiteVideoLink','blog','doctor'));
     }
 
     public function howBookSession()
@@ -43,9 +46,20 @@ class FrontController extends Controller
         $terms_condition = Cancelltion::latest()->first();
         return view('front.terms_condition')->with(compact('terms_condition'));
     }
-    public function show(Blog $id)
+    public function show($id)
     {
-        return view('front.blog_detail')->with('blog',$id);
+        $blog = Blog::find($id);
+        return view('front.blog_detail')->with('blog',$blog);
+    } 
+    public function doctor()
+    {
+        $doctor = Doctor::all();
+        return view('front.home')->with(compact('doctor'));
+    }
+    public function doctor_detail($id)
+    {
+        $doctor = Doctor::find($id);
+        return view('front.details')->with('doctor',$doctor);
     } 
     
 }

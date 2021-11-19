@@ -16,11 +16,13 @@ use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\SessionbookController;
 use App\Http\Controllers\SocialLinkController;
 use App\Http\Controllers\SpecialityController;
+use App\Http\Controllers\TimezoneController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\WebsiteLinkController;
 use App\Models\HomeAccordin;
+use App\Models\Timezone;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -57,6 +59,8 @@ Route::get('how_book', [FrontController::class, 'howBookSession']);
 Route::get('cancelltion_policy', [FrontController::class, 'cancel']);
 Route::get('privacy', [FrontController::class, 'privacy']);
 Route::get('terms', [FrontController::class, 'condition']);
+Route::get('blog_detail/{id}', [FrontController::class, 'show']);
+Route::get('doctor_detail/{id}', [FrontController::class, 'doctor_detail']);
 
 
 
@@ -141,9 +145,10 @@ Route::post('cancelltion_policy_save',[CancelltionController::class, 'store'])->
 // Blog Information
 Route::get('blog_create',[BlogController::class, 'create'])->name('blog_create');
 Route::get('all_blogs',[BlogController::class, 'index'])->name('all_blogs');
-Route::get('blog_detail',[BlogController::class, 'show'])->name('blog_detail');
+// Route::get('blog_detail',[BlogController::class, 'show'])->name('blog_detail');
 Route::post('blog_save',[BlogController::class, 'store'])->name('blog_save');
 
 // Doctor Detail
 Route::get('create_doctor',[DoctorController::class, 'create'])->name('create_doctor');
 Route::post('doctor_detail_save',[DoctorController::class, 'store'])->name('doctor_detail_save');
+

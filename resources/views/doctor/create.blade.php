@@ -52,8 +52,20 @@ Add Doctors / اضافة اطباء
                                 </div> 
                                 <div class="col-lg-6">
                                     <div class="form-group">
+                                        <label style="color: black"><strong>30 Minutes Rate /  معدل 30 دقيقة</strong></label>
+                                   <input type="text" class="form-control" name="thirty_minute_price" id="" placeholder="" >
+                                    </div>
+                                </div> 
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label style="color: black"><strong>60 Minutes Rate /  معدل 60 دقيقة</strong></label>
+                                   <input type="text" class="form-control" name="sixty_minute_price" id="" placeholder="" >
+                                    </div>
+                                </div> 
+                                <div class="col-lg-6">
+                                    <div class="form-group">
                                         <label style="color: black"><strong>Number Of Rating total / عدد إجمالي التصنيف</strong> </label>
-                                        <select class="form-control" name="number_rating" id="" required>
+                                        <select class="form-control" name="rating_number" id="" required>
                                             <option selected disabled>--Selected--</option>
                                             <option value="1" style="color: orange;font-size:30px">*</option>
                                             <option value="2" style="color: orange;font-size:30px">**</option>
@@ -71,6 +83,7 @@ Add Doctors / اضافة اطباء
                                         <select class="form-control" name="language" id="" required>
                                             <option selected disabled>--Selected--</option>
                                             <option value="english" >english</option>
+                                            <option value="arabic" >Arabic</option>
                                         
                                             
                                             
