@@ -9,8 +9,10 @@ use App\Models\Doctor;
 use App\Models\HomeAccordin;
 use App\Models\Sessionbook;
 use App\Models\Title;
+use App\Models\User;
 use App\Models\WebsiteLink;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
 {
@@ -60,6 +62,11 @@ class FrontController extends Controller
     {
         $doctor = Doctor::find($id);
         return view('front.details')->with('doctor',$doctor);
+    }   
+     public function profile()
+    {
+        $user = Auth::user();
+        return view('profile.view')->with('user',$user);
     } 
     
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    How to Book Session
+    Profile
 @endsection
 @section('content')
     <div class="page-content-wrapper ">
@@ -15,16 +15,34 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label style="color: black"><strong> Name</strong> </label>
                                             <input type="text" value="{{ $user->name ?? '' }}"
                                                 class="form-control" name="email" placeholder="" >
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label><strong style="color: black">Email:</strong></label>
+                                            <div>
+                                                <input type="email" value="{{ $user->email ?? '' }}"
+                                                class="form-control" name="email" placeholder="" >
+                                            </div>
+                                        </div>
+                                    </div>                                    
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label><strong style="color: black">phone:</strong></label>
+                                            <div>
+                                                <input type="email" value="{{ $user->email ?? '' }}"
+                                                class="form-control" name="email" placeholder="" >
+                                            </div>
+                                        </div>
+                                    </div>                                    
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label><strong style="color: black">Password:</strong></label>
                                             <div>
                                                 <input type="email" value="{{ $user->email ?? '' }}"
                                                 class="form-control" name="email" placeholder="" >

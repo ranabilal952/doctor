@@ -224,7 +224,7 @@
                         </li>
                         @elseif(Auth::User()->role=='doctor')
                         <li>
-                            <a href="{{url('add_availability')}}" class="waves-effect ">
+                            <a href="{{url('aviable_time')}}" class="waves-effect ">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span> Add Time Availability<span class="badge badge-primary pull-right"></span></span>
                             </a>
@@ -234,18 +234,25 @@
                                 Appointment  </span> </a>
                             <ul class="list-unstyled">
                                 <li><a href="#" >All Appointment</a></li>
-                                <li><a href="#" >Done Appointment</a></li>
-                                <li><a href="#" >Cancelled Appointment</a></li>
+                                <li><a href="{{url('done_appointment')}}" >Done Appointment</a></li>
+                                <li><a href="{{url('cancel_appointment')}}" >Cancelled Appointment</a></li>
                            </ul>
                        </li>  
                                        
                         <li>
-                            <a href="" class="waves-effect ">
+                            <a href="{{url('profile_view')}}" class="waves-effect ">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span> Profile <span class="badge badge-primary pull-right"></span></span>
                             </a>
                         </li>
                         @else
+                               
+                        <li>
+                            <a href="{{url('available_appointment')}}" class="waves-effect ">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span> Make Appointment <span class="badge badge-primary pull-right"></span></span>
+                            </a>
+                        </li>
                         <li class="has_sub ">
                             <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
                                 My Reservations  </span> </a>

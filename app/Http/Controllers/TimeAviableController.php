@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\TimeAviable;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class TimeAviableController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
-        return view('user.index',compact('user'));
+        $timezone = TimeAviable::all();
+        return view('TimeAdd.index', compact('timezone'));
     }
 
     /**
@@ -27,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        return view('TimeAdd.index');
     }
 
     /**
@@ -38,21 +36,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request['password']);
-        $user->phone = $request->phone;
-        $user->role = $request->role;
-        $user->type = $request->type;
-
-        $imageName = '';
-        if ($request->has('image')) {
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(('images/userProfiles'), $imageName);
-        }
-        $user->image = 'images/userProfiles' . '/' . $imageName;
-        $user->save();
+        $timezone = new TimeAviable();
+        $timezone->doctor_time = $request->doctor_time;
+        $timezone->doctor_date = $request->doctor_date;
+       
+        $timezone->save();
         toastr()->success('Data Sucessfully Added');
         return redirect()->back();
     }
@@ -65,7 +53,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+       
     }
 
     /**
@@ -100,15 +88,5 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function checkLogin()
-    {
-        if(Auth::check())
-        {
-            return redirect('appointment.create');
-        }
-        else{
-            return redirect()->back();
-        }
     }
 }

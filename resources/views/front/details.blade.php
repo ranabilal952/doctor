@@ -229,7 +229,7 @@
             <div ng-controller="DoctorBookController" class="doctor-reservation-tool ng-scope">
                 <div class="">
                     <button class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 "  style="border: 2px solid black;color: black;">احجز فورا</button>
-                    <a class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 ng-scope" style="border: 2px solid black;color: black;">احجز من الجدول</a>
+                    {{-- <a class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 ng-scope" style="border: 2px solid black;color: black;">احجز من الجدول</a> --}}
                     <a class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 ng-scope" style="border: 2px solid black;color: black;">عروض الجلسات</a>
                 </div>
                 <h1 class="ng-binding">المواعيد المتاحة</h1>
@@ -254,8 +254,7 @@
                     <span  class="ng-scope">60 minutes</span>: 
                     <span>{{$doctor->sixty_minute_price}} USD</span></div>
                 </div>
-                <div carousel="" items="calandar_dates"   id="schedule-date-picker" 
-                class="app-carousel ng-isolate-scope" style="">
+                <div carousel="" items="calandar_dates"   id="schedule-date-picker" class="app-carousel ng-isolate-scope" style="">
                     <div id="schedule-date-picker-inner" class="app-carousel-inner" style="width: 300px; margin-right: 0px; margin-left: 0px;">
                         <div ng-repeat="(index, time) in calandar_dates" class="schedule-picker-item item ng-scope" style="width: 100px;">
                             <div class="schedule-picker-card card">
@@ -263,34 +262,17 @@
                                    <span ng-if="time.title" translate="Today" class="ng-scope">Today</span>
                                 </div>
                                 <div class="card-body" style="padding: 0rem;">
-                                    
                                     <div class="schedule-picker-time-expand expanded" >
                                         <div ng-repeat="schedule in time.items" class="schedule-picker-time ng-scope">
-                                            <a style="padding: 8px" class="schedule-picker-time-available ng-binding ng-scope" href="schedule/book/9215">02:00 PM</a>
+                                            @if (Auth::check())
+                                            <a style="padding: 8px" class="schedule-picker-time-available ng-binding ng-scope" href="{{url('available_appointment')}}">02:00 PM</a> 
+                                            @else
+                                            <a style="padding: 8px" class="schedule-picker-time-available ng-binding left1 left2_a" data-toggle="modal" data-target="#exampleModal" href="{{url('available_appointment')}}">02:00 PM</a> 
+                                            @endif
                                             <div class="schedule-picker-time-duration">
-                                                (<span class="ng-scope">30 minutes</span>)</div>
+                                                (<span class="ng-scope">30 minutes</span>)
+                                            </div>
                                         </div>                                     
-                                        <div ng-repeat="schedule in time.items" class="schedule-picker-time ng-scope">
-                                            <a style="padding: 8px" class="schedule-picker-time-available ng-binding ng-scope" href="schedule/book/9215">02:00 PM</a>
-                                            <div class="schedule-picker-time-duration">
-                                                (<span class="ng-scope">30 minutes</span>)</div>
-                                        </div>                                     
-                                        <div ng-repeat="schedule in time.items" class="schedule-picker-time ng-scope">
-                                            <a style="padding: 8px" class="schedule-picker-time-available ng-binding ng-scope" href="schedule/book/9215">02:00 PM</a>
-                                            <div class="schedule-picker-time-duration">
-                                                (<span class="ng-scope">30 minutes</span>)</div>
-                                        </div>                                     
-                                        <div ng-repeat="schedule in time.items" class="schedule-picker-time ng-scope">
-                                            <a style="padding: 8px" class="schedule-picker-time-available ng-binding ng-scope" href="schedule/book/9215">02:00 PM</a>
-                                            <div class="schedule-picker-time-duration">
-                                                (<span class="ng-scope">30 minutes</span>)</div>
-                                        </div>                                    
-                                         <div ng-repeat="schedule in time.items" class="schedule-picker-time ng-scope">
-                                            <a style="padding: 8px" class="schedule-picker-time-available ng-binding ng-scope" href="schedule/book/9215">02:00 PM</a>
-                                            <div class="schedule-picker-time-duration">
-                                                (<span class="ng-scope">30 minutes</span>)</div>
-                                        </div>
-                                   
                                     </div>
                                 </div>
                                 <div class="card-footer"><span  translate="More" class="ng-scope">More</span></div>

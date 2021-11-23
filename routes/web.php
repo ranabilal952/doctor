@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CancelltionController;
 use App\Http\Controllers\Condition;
@@ -16,6 +17,7 @@ use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\SessionbookController;
 use App\Http\Controllers\SocialLinkController;
 use App\Http\Controllers\SpecialityController;
+use App\Http\Controllers\TimeAviableController;
 use App\Http\Controllers\TimezoneController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\UserController;
@@ -61,6 +63,7 @@ Route::get('privacy', [FrontController::class, 'privacy']);
 Route::get('terms', [FrontController::class, 'condition']);
 Route::get('blog_detail/{id}', [FrontController::class, 'show']);
 Route::get('doctor_detail/{id}', [FrontController::class, 'doctor_detail']);
+Route::get('profile_view', [FrontController::class, 'profile']);
 
 
 
@@ -152,3 +155,13 @@ Route::post('blog_save',[BlogController::class, 'store'])->name('blog_save');
 Route::get('create_doctor',[DoctorController::class, 'create'])->name('create_doctor');
 Route::post('doctor_detail_save',[DoctorController::class, 'store'])->name('doctor_detail_save');
 
+//Apointment
+Route::get('available_appointment',[AppointmentController::class, 'create'])->name('available_appointment');
+
+Route::view('cancel_appointment', 'appointment.cancell_appointment')->name('cancel_appointment');
+Route::view('done_appointment', 'appointment.cancell_appointment')->name('done_appointment');
+
+//Aviable Time
+
+Route::get('aviable_time',[TimeAviableController::class, 'index'])->name('aviable_time');
+Route::get('checkLogin',[UserController::class, 'checkLogin'])->name('checkLogin');

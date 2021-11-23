@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Timezone;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 
-class TimezoneController extends Controller
+class AppointmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +24,7 @@ class TimezoneController extends Controller
      */
     public function create()
     {
-        //
+        return view('appointment.create');
     }
 
     /**
@@ -35,18 +35,20 @@ class TimezoneController extends Controller
      */
     public function store(Request $request)
     {
-        Timezone::create($request->all());
-        toastr()->success('Time is selected');
-        return redirect('http://127.0.0.1:8000/date-tab');
+        $blog = new Appointment();
+        
+        $blog->save();
+        toastr()->success('Data Sucessfully Added');
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Timezone  $timezone
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Timezone $timezone)
+    public function show($id)
     {
         //
     }
@@ -54,10 +56,10 @@ class TimezoneController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Timezone  $timezone
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Timezone $timezone)
+    public function edit($id)
     {
         //
     }
@@ -66,10 +68,10 @@ class TimezoneController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Timezone  $timezone
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Timezone $timezone)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -77,10 +79,10 @@ class TimezoneController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Timezone  $timezone
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Timezone $timezone)
+    public function destroy($id)
     {
         //
     }
