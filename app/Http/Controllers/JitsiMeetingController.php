@@ -91,8 +91,7 @@ class JitsiMeetingController extends Controller
 
     public function getIntoMeeting(Request $request)
     {
-        $appointment = Appointment::findorfail($request->appointment_id);
-        $appointment = $appointment::with(['user', 'doctor'])->first();
+        $appointment = Appointment::where('id', $request->appointment_id)->with(['user', 'doctor'])->first();
         $serverURL = env('Video_Server_URL');
         $currentUser = Auth::user();
         $alreadyLinkPresent =   JitsiMeeting::where('appointment_id', $request->appointment_id)->first();
