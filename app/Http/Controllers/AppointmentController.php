@@ -60,9 +60,9 @@ class AppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Appointment $appointment)
+    public function show($id)
     {
-        $appointment = $appointment::with(['user', 'doctor', 'meetingLink'])->latest()->first();
+        $appointment = Appointment::where('id', $id)->with(['user', 'doctor', 'meetingLink'])->latest()->first();
         return view('appointment.view')->with('appointment', $appointment);
     }
 
