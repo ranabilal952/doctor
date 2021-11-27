@@ -62,7 +62,7 @@ class AppointmentController extends Controller
      */
     public function show(Appointment $appointment)
     {
-        $appointment = $appointment::with(['user', 'doctor', 'meetingLink'])->first();
+        $appointment = $appointment::with(['user', 'doctor', 'meetingLink'])->latest()->first();
         return view('appointment.view')->with('appointment', $appointment);
     }
 

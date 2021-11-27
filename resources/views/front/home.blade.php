@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <section class="image_text">
-        
+
         <div class="text_img">
             <img src="{{ url('web/assets/home.png') }}" alt="" />
         </div>
@@ -22,8 +22,8 @@
             <p>{{ $title
                 ? $title->description
                 : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Error impedit iusto dolores repudiandae numquam
-                                                                                                                                        minus explicabo, placeat non possimus, temporibus fugiat tenetur dolorem velit ratione assumenda quidem quia
-                                                                                                                                        commodi asperiores!' }}
+                                                                                                                                                    minus explicabo, placeat non possimus, temporibus fugiat tenetur dolorem velit ratione assumenda quidem quia
+                                                                                                                                                    commodi asperiores!' }}
             </p>
         </div>
     </div>
@@ -31,48 +31,57 @@
     <div class="doctor-home">
         <div class="container">
             <div class="row">
-              
+
                 @foreach ($doctor as $doctor)
-                <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
-                    <div class="card doc_doctor">
-                        <div class="top-bi">
-                            <div class="whatsapp-service"><i class="lab la-whatsapp" style="margin-right: 3px;"></i></div>
-                            <div class="chat-service" style="background: #138DE7;">
-                                <i class="las la-comment-alt" style="margin-right: 4px;"></i>
+                    <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
+                        <div class="card doc_doctor">
+                            <div class="top-bi">
+                                <div class="whatsapp-service"><i class="lab la-whatsapp" style="margin-right: 3px;"></i>
+                                </div>
+                                <div class="chat-service" style="background: #138DE7;">
+                                    <i class="las la-comment-alt" style="margin-right: 4px;"></i>
+                                </div>
+                                <div class="video-service" style="background: #138DE7;">
+                                    <i class="las la-video" style="margin-right: 4px; font-size: 15px;"></i>
+                                </div>
                             </div>
-                            <div class="video-service" style="background: #138DE7;">
-                                <i class="las la-video" style="margin-right: 4px; font-size: 15px;"></i>
+                            <div class="top-doctor-item-available-alert mt-1 online" style="float: right;">
+                                <span>{{ $doctor->availablity }} </span></div>
+                            <div class="top-doctor-item-img">
+                                <img alt="ربيع الحوراني" src="{{ url($doctor->image ?? '') }}">
+                                <i class="doctor-item-availablity online"></i>
                             </div>
-                        </div>
-                        <div class="top-doctor-item-available-alert mt-1 online" style="float: right;"><span>{{$doctor->availablity}} </span></div>
-                        <div class="top-doctor-item-img">
-                            <img alt="ربيع الحوراني" src="{{ url($doctor->image ?? '') }}">
-                            <i class="doctor-item-availablity online"></i>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="text-center">{{$doctor->doctor_name}}</h5>
-                            <p class="text-center"> {{$doctor->doctor_specility}}</p>
-                            <div class="text-center">
-                              ( {{$doctor->total_rating}} )
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                            </div>
-                            <div class="d-flex">
-                                <a href="#" class="btn" style="margin: 5px; width: 50%;font-size: 18px;">{{$doctor->discount_price}} USD</a>
-                                <a href="#" class="btn" style="margin: 5px;width: 50%;font-size: 18px;"><del>{{$doctor->orignal_price}} USD</del> </a>
-                            </div>
-                            <div class="d-flex">
-                                <a href="{{url('doctor_detail',$doctor->id)}}" class="btn btn-primary"style="margin: 5px;width: 50%;color: black;background-color: #D6E0F5; border:none;">عرض</a>
-                                <a href="{{url('doctor_detail',$doctor->id)}}" class="btn btn-primary" style="margin: 5px;width: 50%;color: #fff;background-color: #0d6efd;border-color: #0d6efd;">احجز الأن</a>
+                            <div class="card-body">
+                                <h5 class="text-center">{{ $doctor->doctor_name }}</h5>
+                                <p class="text-center"> {{ $doctor->doctor_specility }}</p>
+                                <div class="text-center">
+                                    ( {{ $doctor->total_rating }} )
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                                <div class="d-flex">
+                                    <a href="#" class="btn"
+                                        style="margin: 5px; width: 50%;font-size: 18px;">{{ $doctor->discount_price }}
+                                        USD</a>
+                                    <a href="#" class="btn"
+                                        style="margin: 5px;width: 50%;font-size: 18px;"><del>{{ $doctor->orignal_price }}
+                                            USD</del> </a>
+                                </div>
+                                <div class="d-flex">
+                                    <a href="{{ url('doctor_detail', $doctor->id) }}" class="btn btn-primary"
+                                        style="margin: 5px;width: 50%;color: black;background-color: #D6E0F5; border:none;">عرض</a>
+                                    <a href="{{ url('doctor_detail', $doctor->id) }}" class="btn btn-primary"
+                                        style="margin: 5px;width: 50%;color: #fff;background-color: #0d6efd;border-color: #0d6efd;">احجز
+                                        الأن</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div> 
                 @endforeach
-               
+
                 {{-- <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
 
                     <div class="card doc_doctor">
@@ -225,11 +234,11 @@
           animated
         "
                     data-wow-duration="600ms" style="
-                                                      visibility: visible;
-                                                      animation-duration: 600ms;
-                                                      margin-bottom: 30px;
-                                                      animation-name: fadeInUp;
-                                                    ">
+                                                          visibility: visible;
+                                                          animation-duration: 600ms;
+                                                          margin-bottom: 30px;
+                                                          animation-name: fadeInUp;
+                                                        ">
                     <span class="timer counter alt-font appear"
                         style="font-size: 50px; color: #3362cc; font-weight: 700">{{ $counter->number_patient ?? '0' }}</span>
                     <span class="counter-title">عدد المتعالجين</span>
@@ -246,11 +255,11 @@
           animated
         "
                     data-wow-duration="600ms" style="
-                                                      visibility: visible;
-                                                      animation-duration: 600ms;
-                                                      margin-bottom: 30px;
-                                                      animation-name: fadeInUp;
-                                                    ">
+                                                          visibility: visible;
+                                                          animation-duration: 600ms;
+                                                          margin-bottom: 30px;
+                                                          animation-name: fadeInUp;
+                                                        ">
                     <span class="timer counter alt-font appear"
                         style="font-size: 50px; color: #3362cc; font-weight: 700">{{ $counter->number_session ?? '0' }}</span>
                     <span class="counter-title">عدد الجلسات المنتهية</span>
@@ -268,11 +277,11 @@
           animated
         "
                     data-wow-duration="900ms" style="
-                                                      visibility: visible;
-                                                      animation-duration: 900ms;
-                                                      margin-bottom: 30px;
-                                                      animation-name: fadeInUp;
-                                                    ">
+                                                          visibility: visible;
+                                                          animation-duration: 900ms;
+                                                          margin-bottom: 30px;
+                                                          animation-name: fadeInUp;
+                                                        ">
                     <span class="timer counter alt-font appear"
                         style="font-size: 50px; color: #3362cc; font-weight: 700">{{ $counter->treated_case ?? '0' }}</span>
                     <span class="counter-title">الحالات التي تم علاجها</span>
@@ -288,11 +297,11 @@
           animated
         "
                     data-wow-duration="1200ms" style="
-                                                      visibility: visible;
-                                                      animation-duration: 1200ms;
-                                                      margin-bottom: 30px;
-                                                      animation-name: fadeInUp;
-                                                    ">
+                                                          visibility: visible;
+                                                          animation-duration: 1200ms;
+                                                          margin-bottom: 30px;
+                                                          animation-name: fadeInUp;
+                                                        ">
                     <span class="timer counter alt-font appear"
                         style="font-size: 50px; color: #3362cc; font-weight: 700">{{ $counter->under_treatment ?? '0' }}</span>
                     <span class="counter-title">حالات تحت العلاج</span>
@@ -305,7 +314,7 @@
     <section class="container">
         <div class="row">
             <div class="col-lg-6">
-                <iframe width="100%" height="480" src="{{$websiteVideoLink->video_link ?? ''}}"
+                <iframe width="100%" height="480" src="{{ $websiteVideoLink->video_link ?? '' }}"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
@@ -323,16 +332,15 @@
         <div class="">
             <div class="row">
                 <div class="col-lg-4 ml-5 mr-5">
-                    <a href="{{url('blog_detail',$blog->id)}}" style="text-decoration: none">
-                    <div class="card mb-4">
-                        <img class="card-img-top" src="{{ url($blog->image ?? '') }}"
-                            alt="Card image cap" />
-                        <div class="card-body">
-                            <p class="mr-2">{{($blog->created_at)->toDateString()}}</p>
-                            <p class="card-text">{{$blog->blog_title_arabic }}</p>
+                    <a href="{{ url('blog_detail', $blog->id) }}" style="text-decoration: none">
+                        <div class="card mb-4">
+                            <img class="card-img-top" src="{{ url($blog->image ?? '') }}" alt="Card image cap" />
+                            <div class="card-body">
+                                <p class="mr-2">{{ $blog->created_at->toDateString() }}</p>
+                                <p class="card-text">{{ $blog->blog_title_arabic }}</p>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
                 </div>
                 {{-- <div class="col-lg-4">
                     <div class="card">
