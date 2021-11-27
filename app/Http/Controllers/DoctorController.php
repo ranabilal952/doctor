@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctor;
+use App\Models\Time;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorController extends Controller
 {
@@ -61,7 +63,7 @@ class DoctorController extends Controller
         $doctor->video_link3 = $request->video_link3;
         $doctor->video_link4 = $request->video_link4;
         $doctor->video_link5 = $request->video_link5;
-   
+
 
 
         $imageName = '';
@@ -118,5 +120,24 @@ class DoctorController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addDoctorTime()
+    {
+        $doctorTime = Time::where('user_id', Auth::id())->first()->toArray();
+        $newTimeArray = $doctorTime['time'];
+        $newTimeArray = array_map(function($v) { return (int)$v; }, $newTimeArray);
+
+     $newTimeArray=  array_values($newTimeArray);
+     $newTimeArray=implode(",",$newTimeArray);
+
+        // $doctorTime = $doctorTime[0];
+        // dd(($doctorTime[0]));
+        // $doctorTime=$doctorTime->time;
+
+        // data: {
+        //     1: [1, 2, 3, 4]
+        //   },
+        return view('doctor.calander.create')->with(compact('newTimeArray'));
     }
 }

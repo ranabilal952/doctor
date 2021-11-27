@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CancelltionController;
 use App\Http\Controllers\Condition;
@@ -13,17 +14,23 @@ use App\Http\Controllers\FooterController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeAccordinController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JitsiMeetingController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\SessionbookController;
+use App\Http\Controllers\SlotTimeController;
 use App\Http\Controllers\SocialLinkController;
 use App\Http\Controllers\SpecialityController;
 use App\Http\Controllers\TimeAviableController;
+use App\Http\Controllers\TimeController;
 use App\Http\Controllers\TimezoneController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\WebsiteLinkController;
+use App\Http\Controllers\WeekdayController;
 use App\Models\HomeAccordin;
+use App\Models\SlotController;
+use App\Models\Time;
 use App\Models\Timezone;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -127,41 +134,64 @@ Route::post('speciality_save', [SpecialityController::class, 'store'])->name('sp
 
 
 // Add Diseases
-Route::get('diseases_add',[DiseasesController::class, 'index'])->name('diseases_add');
-Route::post('diseases_save',[DiseasesController::class, 'store'])->name('diseases_save');
+Route::get('diseases_add', [DiseasesController::class, 'index'])->name('diseases_add');
+Route::post('diseases_save', [DiseasesController::class, 'store'])->name('diseases_save');
 
 
 //Term Condition 
-Route::get('terms_detail',[ConditionController::class, 'index'])->name('terms_detail');
-Route::post('terms_detail_save',[ConditionController::class, 'store'])->name('terms_detail_save');
+Route::get('terms_detail', [ConditionController::class, 'index'])->name('terms_detail');
+Route::post('terms_detail_save', [ConditionController::class, 'store'])->name('terms_detail_save');
 
 
 // Privacy Policy
-Route::get('privacy_policy',[PrivacyController::class, 'index'])->name('privacy_policy');
-Route::post('privacy_policy_save',[PrivacyController::class, 'store'])->name('privacy_policy_save');
+Route::get('privacy_policy', [PrivacyController::class, 'index'])->name('privacy_policy');
+Route::post('privacy_policy_save', [PrivacyController::class, 'store'])->name('privacy_policy_save');
 
 // Cancelltion Policy
-Route::get('Cancelltion_policy',[CancelltionController::class, 'index'])->name('Cancelltion_policy');
-Route::post('cancelltion_policy_save',[CancelltionController::class, 'store'])->name('cancelltion_policy_save');
+Route::get('Cancelltion_policy', [CancelltionController::class, 'index'])->name('Cancelltion_policy');
+Route::post('cancelltion_policy_save', [CancelltionController::class, 'store'])->name('cancelltion_policy_save');
 
 
 // Blog Information
-Route::get('blog_create',[BlogController::class, 'create'])->name('blog_create');
-Route::get('all_blogs',[BlogController::class, 'index'])->name('all_blogs');
+Route::get('blog_create', [BlogController::class, 'create'])->name('blog_create');
+Route::get('all_blogs', [BlogController::class, 'index'])->name('all_blogs');
 // Route::get('blog_detail',[BlogController::class, 'show'])->name('blog_detail');
-Route::post('blog_save',[BlogController::class, 'store'])->name('blog_save');
+Route::post('blog_save', [BlogController::class, 'store'])->name('blog_save');
 
 // Doctor Detail
-Route::get('create_doctor',[DoctorController::class, 'create'])->name('create_doctor');
-Route::post('doctor_detail_save',[DoctorController::class, 'store'])->name('doctor_detail_save');
+Route::get('create_doctor', [DoctorController::class, 'create'])->name('create_doctor');
+Route::post('doctor_detail_save', [DoctorController::class, 'store'])->name('doctor_detail_save');
 
 //Apointment
-Route::get('available_appointment',[AppointmentController::class, 'create'])->name('available_appointment');
+Route::get('available_appointment', [AppointmentController::class, 'create'])->name('available_appointment');
 
-Route::view('cancel_appointment', 'appointment.cancell_appointment')->name('cancel_appointment');
-Route::view('done_appointment', 'appointment.cancell_appointment')->name('done_appointment');
+
 
 //Aviable Time
 
-Route::get('aviable_time',[TimeAviableController::class, 'index'])->name('aviable_time');
-Route::get('checkLogin',[UserController::class, 'checkLogin'])->name('checkLogin');
+Route::get('aviable_time', [TimeAviableController::class, 'index'])->name('aviable_time');
+Route::post('store_time', [TimeAviableController::class, 'store'])->name('store_time');
+Route::get('checkLogin', [UserController::class, 'checkLogin'])->name('checkLogin');
+
+
+Route::get('appoint', [AppointmentController::class, 'home']);
+Route::resource('weekday', WeekdayController::class);
+Route::resource('slottime', SlotTimeController::class);
+Route::resource('slot', SlotController::class);
+Route::resource('timezone', TimezoneController::class);
+Route::resource('appointment', AppointmentController::class); //getavailability
+Route::post('getavailability', [AppointmentController::class, 'getavailability']);
+Route::post('loginThroughAjax', [AppointmentController::class, 'loginThroughAjax']);
+
+
+
+///DOCTOR APPOINTMENTs
+
+Route::get('getCurrentAppointments', [AppointmentController::class, 'getCurrentAppointments']);
+Route::get('changeAppointmentStatus/{appointment_id}/{status}', [AppointmentController::class, 'changeAppointmentStatus']);
+
+
+//JITSI
+Route::get('generateMeeting/{appointment_id}', [JitsiMeetingController::class, 'store']);
+Route::get('meeting/{appointment_id}',  [JitsiMeetingController::class, 'getIntoMeeting']);
+Route::post('changeMeetingStatus', [JitsiMeetingController::class, 'changeMeetingStatus']);

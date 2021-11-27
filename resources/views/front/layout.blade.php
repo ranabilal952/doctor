@@ -5,6 +5,10 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+    <link href="{{ asset('assets/plugins/fullcalendar/css/fullcalendar.min.css') }}" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -15,12 +19,15 @@
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="{{ url('web/assets/style.css') }}">
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+
     <title>Doctoorc.com</title>
 </head>
 
 <body style="overflow-x: hidden" id="main_cntnt">
 
     <header id="myHeader">
+        {{-- for mobileNAV --}}
         <nav class="mobile_nav">
             <div class="hamburger">
                 <div id="mySidepanel" class="sidepanel">
@@ -50,6 +57,7 @@
                     <button type="button" class="left1 left2_a" data-toggle="modal" data-target="">
                         {{ Auth::user()->name }}
                     </button>
+
 
                 </div>
             @endif
@@ -87,12 +95,14 @@
                     </button>
                 </div>
             @else
-                    <a class="left2_a" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
+                <a class="left2_a" href="{{ route('logout') }}" onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();">
-                     {{ __('Logout') }}
-                 </a>
-                
+                    {{ __('Logout') }}
+                </a>
+                <a class="left2_a" href="{{ url('/home') }}" >
+                   Dashboard
+                </a>
+
             @endif
         </nav>
     </header>
@@ -149,7 +159,7 @@
                         تابعنا على مواقع التواصل االجتماعى للحصول على اخر الاخبار والتحديثات عن الأطباء والموقع
                     </p>
                     <div class="social-facbook facbook">
-                        <a href="{{ $socials->facebook ?? ''}}" class="text-white">
+                        <a href="{{ $socials->facebook ?? '' }}" class="text-white">
                             <i class="lab la-facebook-f"></i>
                         </a>
                     </div>
@@ -160,7 +170,7 @@
                         </a>
                     </div>
                     <div class="social-facbook insta">
-                        <a href="{{ $socials->instagram  ?? ''}}" class="text-white">
+                        <a href="{{ $socials->instagram ?? '' }}" class="text-white">
 
                             <i class="lab la-instagram"></i>
                         </a>
@@ -174,9 +184,9 @@
                 <p>جميع الحقوق محفوظة لدكتورك © 2021</p>
             </div>
             <div class="col-lg-6">
-                <a class="m-3 text-white" href="{{url('privacy')}}">سياسة الخصوصية</a>
-                <a class="m-3 text-white" href="{{url('terms')}}">الشروط والأحكام</a>
-                <a class="text-white" href="{{url('cancelltion_policy')}}">سياسة الالغاء</a>
+                <a class="m-3 text-white" href="{{ url('privacy') }}">سياسة الخصوصية</a>
+                <a class="m-3 text-white" href="{{ url('terms') }}">الشروط والأحكام</a>
+                <a class="text-white" href="{{ url('cancelltion_policy') }}">سياسة الالغاء</a>
             </div>
         </div>
     </footer>
@@ -281,7 +291,8 @@
                                     <div class="input-group input-group-nacked mb-3">
                                         <span class="input-group-text" id="user-addon"><i
                                                 class="las la-user"></i></span>
-                                                <input class="form-control" type="hidden" name="role" value="user" required="">
+                                        <input class="form-control" type="hidden" name="role" value="user"
+                                            required="">
                                         <input id="name" type="text"
                                             class="form-control @error('name') is-invalid @enderror"
                                             placeholder="اسم المستخدم" aria-label="اسم المستخدم"
@@ -367,8 +378,8 @@
 
     <!-- 
     hgfjfkjgfffsa -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
@@ -378,8 +389,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/rfv7rfhx5vafv76ygxza52h080627sqb542j7d7736y9x8c2/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
+
     <script>
         window.onscroll = function() {
             myFunction();

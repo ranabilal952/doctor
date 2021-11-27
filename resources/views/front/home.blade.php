@@ -4,6 +4,7 @@
 @endsection
 @section('content')
     <section class="image_text">
+        
         <div class="text_img">
             <img src="{{ url('web/assets/home.png') }}" alt="" />
         </div>

@@ -8,6 +8,8 @@ use App\Models\Counter;
 use App\Models\Doctor;
 use App\Models\HomeAccordin;
 use App\Models\Sessionbook;
+use App\Models\SlotTime;
+use App\Models\Timezone;
 use App\Models\Title;
 use App\Models\User;
 use App\Models\WebsiteLink;
@@ -61,7 +63,9 @@ class FrontController extends Controller
     public function doctor_detail($id)
     {
         $doctor = Doctor::find($id);
-        return view('front.details')->with('doctor',$doctor);
+        $slots = SlotTime::all();
+        $timezones = Timezone::Orderby('offset')->get();
+        return view('front.details')->with(compact('doctor','slots','timezones'));
     }   
      public function profile()
     {

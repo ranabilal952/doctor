@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\SlotTime;
+use App\Models\Timezone;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AppointmentController extends Controller
 {
@@ -35,11 +40,18 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        $blog = new Appointment();
-        
-        $blog->save();
-        toastr()->success('Data Sucessfully Added');
-        return redirect()->back();
+        $request->merge([
+            'user_id' => Auth::id()
+        ]);
+        $appointment =  Appointment::create($request->all());
+
+        // $blog->save();
+        // toastr()->success('Data Sucessfully Added');
+        return response()->json([
+            'success' => true,
+            'data' => $appointment,
+            'message' => 'Appointment Saved Successfully',
+        ]);
     }
 
     /**
@@ -48,9 +60,10 @@ class AppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Appointment $appointment)
     {
-        //
+        $appointment = $appointment::with(['user', 'doctor', 'meetingLink'])->first();
+        return view('appointment.view')->with('appointment', $appointment);
     }
 
     /**
@@ -85,5 +98,90 @@ class AppointmentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function home()
+    {
+        $slots = SlotTime::all();
+        $timezones = Timezone::Orderby('offset')->get();
+        return view('front.demo_booking', compact('slots', 'timezones'));
+    }
+
+    public function getavailability(Request $request)
+    {
+        //  
+        $aTmp1 = [];
+        $aTmp2 = [];
+        $date =  $request['date'];
+        $time = Appointment::where('date', $date)->get('time')->toArray(); //booked time   10 11 12 
+        $allTime = DB::table('slot_times')->select('st')->where('user_id', $request->doctor_id)->get(); // all time 10 11 12 13 14 15 16
+        $allTime = (array)json_decode($allTime, true);
+        $time = (array)$time;
+        foreach ($allTime as $aV) {
+            $aTmp1[] = $aV['st'];
+        }
+        foreach ($time as $aV) {
+            $aTmp2[] = $aV['time'];
+        }
+        $result = array_diff($aTmp1, $aTmp2);
+        return $result;
+        // echo json_encode($result);
+    }
+    public function serialize_array_values($arr)
+    {
+        foreach ($arr as $key => $val) {
+            sort($val);
+            $arr[$key] = serialize($val);
+        }
+        return $arr;
+    }
+
+
+    public function loginThroughAjax(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return response()->json([
+                'success' => true,
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+            ]);
+        }
+    }
+
+
+    public function getCurrentAppointments()
+    {
+        $doctorID = Auth::id();
+        $today = Carbon::today();
+        if (Auth::user()->role == 'doctor')
+            $appointments = Appointment::where('doctor_id', $doctorID)->whereDate('date', '>=', $today)->with('user')->latest()->get();
+        else
+            $appointments = Appointment::where('user_id', $doctorID)->whereDate('date', '>=', $today)->with('user')->latest()->get();
+
+        return view('appointment.current', compact('appointments'));
+    }
+
+    public function changeAppointmentStatus(Request $request)
+    {
+        $appointment_id = $request->appointment_id;
+        $appointment = Appointment::findorFail($appointment_id);
+        if ($appointment) {
+            $appointment->status = $request->status;
+            $appointment->save();
+            toastr()->success('Status changed successfully');
+        } else {
+            toastr()->error('Appointment is not available');
+        }
+
+        return redirect()->back();
     }
 }
