@@ -163,9 +163,9 @@ class AppointmentController extends Controller
         $doctorID = Auth::id();
         $today = Carbon::today();
         if (Auth::user()->role == 'doctor')
-            $appointments = Appointment::where('doctor_id', $doctorID)->whereDate('date', '>=', $today)->with('user')->latest()->get();
+            $appointments = Appointment::where([['doctor_id', $doctorID],['status','!=','completed']])->whereDate('date', '>=', $today)->with('user')->latest()->get();
         else
-            $appointments = Appointment::where('user_id', $doctorID)->whereDate('date', '>=', $today)->with('user')->latest()->get();
+            $appointments = Appointment::where([['user_id', $doctorID],['status','!=','completed']])->whereDate('date', '>=', $today)->with('user')->latest()->get();
 
         $past = false;
 
