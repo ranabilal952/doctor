@@ -15,7 +15,8 @@ class SlotTimeController extends Controller
      */
     public function index()
     {
-        return view('slottime.index');
+        $slotTimes=SlotTime::all();
+        return view('slottime.index')->with(compact('slotTimes'));
     }
 
     /**
