@@ -52,7 +52,7 @@
                                 <i class="doctor-item-availablity online"></i>
                             </div>
                             <div class="card-body">
-                                <h5 class="text-center">{{ $doctor->doctor_name }}</h5>
+                                <h5 class="text-center">{{ $doctor->user->name }}</h5>
                                 <p class="text-center"> {{ $doctor->doctor_specility }}</p>
                                 <div class="text-center">
                                     ( {{ $doctor->total_rating }} )

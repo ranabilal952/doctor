@@ -25,26 +25,27 @@ class FrontController extends Controller
         $accordians = HomeAccordin::latest()->get();
         $websiteVideoLink = WebsiteLink::latest()->first();
         $blog = Blog::latest()->first();
-        $doctor = Doctor::all();
-        
-        return view('front.home')->with(compact('title', 'counter', 'accordians', 'websiteVideoLink','blog','doctor'));
+        $doctor = Doctor::with('user')->get();
+        // dd($doctor);
+
+        return view('front.home')->with(compact('title', 'counter', 'accordians', 'websiteVideoLink', 'blog', 'doctor'));
     }
 
     public function howBookSession()
     {
         $data = Sessionbook::latest()->first();
         return view('front.how_book')->with(compact('data'));
-    }  
+    }
     public function cancel()
     {
         $cancelltion_policy = Cancelltion::latest()->first();
         return view('front.cancelation_policy')->with(compact('cancelltion_policy'));
-    } 
+    }
     public function privacy()
     {
         $privacy_policy = Cancelltion::latest()->first();
         return view('front.privacy_policy')->with(compact('privacy_policy'));
-    } 
+    }
     public function condition()
     {
         $terms_condition = Cancelltion::latest()->first();
@@ -53,8 +54,8 @@ class FrontController extends Controller
     public function show($id)
     {
         $blog = Blog::find($id);
-        return view('front.blog_detail')->with('blog',$blog);
-    } 
+        return view('front.blog_detail')->with('blog', $blog);
+    }
     public function doctor()
     {
         $doctor = Doctor::all();
@@ -62,15 +63,15 @@ class FrontController extends Controller
     }
     public function doctor_detail($id)
     {
-        $doctor = Doctor::find($id);
+        $doctor =Doctor::where('id',$id)->with('user')->first();
         $slots = SlotTime::all();
         $timezones = Timezone::Orderby('offset')->get();
-        return view('front.details')->with(compact('doctor','slots','timezones'));
-    }   
-     public function profile()
+        // dd($doctor);
+        return view('front.details')->with(compact('doctor', 'slots', 'timezones'));
+    }
+    public function profile()
     {
         $user = Auth::user();
-        return view('profile.view')->with('user',$user);
-    } 
-    
+        return view('profile.view')->with('user', $user);
+    }
 }

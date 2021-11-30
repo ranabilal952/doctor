@@ -88,7 +88,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach (App\Models\Slottime::all() as $key => $slottime)
+                                            @foreach (\App\Models\Slottime::all() as $key => $slottime)
                                                 <tr>
                                                     <td>{{ $key + 1 }}</td>
                                                     <td>{{ $slottime->st }}</td>

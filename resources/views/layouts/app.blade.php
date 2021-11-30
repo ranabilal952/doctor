@@ -248,19 +248,19 @@
                                         Appointment </span> </a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ url('/getCurrentAppointments') }}">Your Appointments</a></li>
-                                    <li><a href="#">Past Appointments</a></li>
+                                    <li><a href="{{ url('/getPastAppointments') }}">Past Appointments</a></li>
 
                                     {{-- <li><a href="{{url('done_appointment')}}" >Done Appointment</a></li> --}}
                                     {{-- <li><a href="{{url('cancel_appointment')}}" >Cancelled Appointment</a></li> --}}
                                 </ul>
                             </li>
 
-                            <li>
+                            {{-- <li>
                                 <a href="{{ url('profile_view') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Profile <span class="badge badge-primary pull-right"></span></span>
                                 </a>
-                            </li>
+                            </li> --}}
                         @else
 
                             <li>

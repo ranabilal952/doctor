@@ -388,7 +388,7 @@
                 method: "post",
                 data: {
                     "date": curr_date,
-                    "doctor_id": doctor.id,
+                    "doctor_id": doctor.user.id,
                 },
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -420,7 +420,7 @@
         $(document).ready(function() {
             $("#makeAppointmentBtn").click(function() {
                 var data = {
-                    'doctor_id': doctor.id,
+                    'doctor_id': doctor.user.id,
                     'timezone': $('#timezone').val(),
                     'user_time': $('#user_time').val(),
                     'time': $('#m').val(),
