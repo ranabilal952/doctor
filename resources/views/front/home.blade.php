@@ -52,8 +52,8 @@
                                 <i class="doctor-item-availablity online"></i>
                             </div>
                             <div class="card-body">
-                                <h5 class="text-center">{{ $doctor->user->name }}</h5>
-                                <p class="text-center"> {{ $doctor->doctor_specility }}</p>
+                                <h5 class="text-center">{{ $doctor->user->name ?? 'Not Available' }}</h5>
+                                <p class="text-center"> {{ $doctor->doctor_specility ?? 'Not Available' }}</p>
                                 <div class="text-center">
                                     ( {{ $doctor->total_rating }} )
                                     <span class="fa fa-star checked"></span>
