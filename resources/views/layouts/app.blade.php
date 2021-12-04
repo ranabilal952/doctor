@@ -197,6 +197,12 @@
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Add speciality <span class="badge badge-primary pull-right"></span></span>
                                 </a>
+                            </li>                            
+                            <li>
+                                <a href="{{ url('add_speciality') }}" class="waves-effect ">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Add psychometer <span class="badge badge-primary pull-right"></span></span>
+                                </a>
                             </li>
                             <li>
                                 <a href="{{ url('diseases_add') }}" class="waves-effect ">
