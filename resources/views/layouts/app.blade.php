@@ -260,8 +260,28 @@
                                     {{-- <li><a href="{{url('cancel_appointment')}}" >Cancelled Appointment</a></li> --}}
                                 </ul>
                             </li>
+                            <li class="has_sub ">
+                                <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
+                                        Schedules </span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ url('/getCurrentAppointments') }}">Active Schedules</a></li>
+                                    <li><a href="#">Booked Schedules</a></li>
+                                </ul>
+                            </li>
 
                             <li>
+                                <a href="{{ url('profile_view') }}" class="waves-effect ">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Online Setting <span class="badge badge-primary pull-right"></span></span>
+                                </a>
+                            </li>                            
+                            <li>
+                                <a href="{{ url('profile_view') }}" class="waves-effect ">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Offer <span class="badge badge-primary pull-right"></span></span>
+                                </a>
+                            </li>                           
+                             <li>
                                 <a href="{{ url('profile_view') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Profile <span class="badge badge-primary pull-right"></span></span>
