@@ -255,43 +255,198 @@
 
         </div>
         @elseif(Auth::User()->role=='doctor')
+        <div class="page-content-wrapper ">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card m-b-200">
+                            <div class="card-body">
+                                <h4 class="mt-0 header-title" style="font-size: 20px">Pending Balance</h4>
+                                <hr>
+                                <h1 class="text-center">48 <span style="color: #0d6efd!important">USD</span> </h1>
+                             
+                            </div>
+                        </div>
+                    </div>                   
+                     <div class="col-lg-6">
+                        <div class="card m-b-200">
+                            <div class="card-body">
+                                <h4 class="mt-0 header-title" style="font-size: 20px">Available balance</h4>
+                                <hr>
+                                <h1 class="text-center">48 <span style="color: #0d6efd!important">USD</span> </h1>
+                             
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card m-b-200">
+                            <div class="card-body">
+                                <h4 class="mt-0 header-title" style="font-size: 20px">Withdraw balance
+                                </h4>
+                                <hr>
+                                <p class="text-muted m-b-20 font-14"></p>
+                                <form class="" action="#" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <h3 style=" " class="text-center"><strong style="color: #198754!important"> Available balance : 4086.00 <span style="color: #0d6efd!important">USD</span> </strong> </h3>
+                                                <input style="    color: #664d03;
+                                                background-color: #fff3cd;
+                                                border-color: #ffecb5;" type="text" readonly  class="form-control" name="offer_arabic" placeholder="Pending withdrawal request 3428.00USD" value="Pending withdrawal request 3428.00USD" required>
+                                            </div>
+                                        </div>                                                                       
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <div>
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                Withdraw
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>    
+                    <div class="col-lg-6">
+                        <div class="card m-b-200">
+                            <div class="card-body">
+                                <h4 class="mt-0 header-title" style="font-size: 20px">Donate to support team
+
+                                </h4>
+                                <hr>
+                                <p class="text-muted m-b-20 font-14"></p>
+                                <form class="" action="#" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label style="color:black" ><strong> Amount </strong> </label>
+                                                <input  type="number"   class="form-control" name="offer_arabic" placeholder=""  >
+                                            </div>
+                                        </div>                                                                       
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <div>
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                Donate
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
         <div class="row">
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="mini-stat clearfix bg-primary">
-                    <span class="mini-stat-icon"><i class="mdi mdi-cart-outline"></i></span>
-                    <div class="mini-stat-info text-right text-white">
-                        <span class="counter">0000</span>
-                        Coming Soon
+
+            <div class="col-6">
+                <div class="card m-b-20">
+                    <div class="card-body">
+                        <h4 class="mt-0 m-b-15 header-title" style="font-size: 20px"> Withdraw archive</h4>
+                        <div class="table-responsive">
+                            <table class="table table-hover m-b-0">
+                                <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    
+                                    {{-- <th>Start date</th>
+                                    <th>Salary</th> --}}
+                                </tr>
+
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Discount for donation</td>
+                                    <td>21/11/2017</td>
+                                    <td><span class="badge badge-primary">-100.00USD</span></td>
+                                   
+                                   
+                                </tr>
+                                <tr>
+                                    <td>Discount for donation</td>
+                                    <td>22/01/2021</td>
+                                    <td><span class="badge badge-primary">-100.00USD</span></td>
+                                
+                                 
+                                </tr>
+                                <tr>
+                                    <td>Discount for donation</td>
+                                    <td>12/01/2020</td>
+                                    <td><span class="badge badge-primary">-100.00USD</span></td>
+                                    
+                                   
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="col-6">
+                <div class="card m-b-20">
+                    <div class="card-body">
+                        <h4 class="mt-0 m-b-15 header-title" style="font-size: 20px"> Balance log</h4>
+                        <div class="table-responsive">
+                            <table class="table table-hover m-b-0">
+                                <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    
+                                    {{-- <th>Start date</th>
+                                    <th>Salary</th> --}}
+                                </tr>
+
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Discount for donation</td>
+                                    <td>21/11/2017</td>
+                                    <td><span class="badge badge-primary" style="background: #198754!important">100.00USD</span></td>
+                                   
+                                   
+                                </tr>
+                                <tr>
+                                    <td>Discount for donation</td>
+                                    <td>22/01/2021</td>
+                                    <td><span class="badge badge-primary" style="background: #198754!important">100.00USD</span></td>
+                                
+                                 
+                                </tr>
+                                <tr>
+                                    <td>Discount for donation</td>
+                                    <td>12/01/2020</td>
+                                    <td><span class="badge badge-primary" style="background: #198754!important">100.00USD</span></td>
+                                    
+                                   
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="mini-stat clearfix bg-primary">
-                    <span class="mini-stat-icon"><i class="mdi mdi-currency-usd"></i></span>
-                    <div class="mini-stat-info text-right text-white">
-                        <span class="counter">0000</span>
-                        Coming Soon
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="mini-stat clearfix bg-primary">
-                    <span class="mini-stat-icon"><i class="mdi mdi-cube-outline"></i></span>
-                    <div class="mini-stat-info text-right text-white">
-                        <span class="counter">0000</span>
-                       coming soon
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="mini-stat clearfix bg-primary">
-                    <span class="mini-stat-icon"><i class="mdi mdi-currency-btc"></i></span>
-                    <div class="mini-stat-info text-right text-white">
-                        <span class="counter">0000</span>
-                        coming soon
-                    </div>
-                </div>
-            </div>
+
         </div>
         @else
         <div class="row">

@@ -59,7 +59,8 @@
     font-size: 16px;
 }
 .btn-primary{
-    background:#F15B29;
+    background:#2d56b3;
+    border: #2d56b3 !important;
 }
 .list_data ul li{
     text-shadow: 2px 2px 8px black;

@@ -1106,8 +1106,8 @@ b {
 .btn-outline-primary:not([disabled]):not(.disabled).active,
 .btn-outline-primary:not([disabled]):not(.disabled):active,
 .show > .btn-primary.dropdown-toggle {
-    background-color: #e85e5f;
-    border: 1px solid #e85e5f;
+    background-color: #2d56b3;
+    border: 1px solid #2d56b3;
 }
 .btn-primary.focus,
 .btn-primary:focus,
