@@ -251,10 +251,10 @@
                             </li>
                             <li class="has_sub ">
                                 <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
-                                        Appointment </span> </a>
+                                        Sessions </span> </a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ url('/getCurrentAppointments') }}">Your Appointments</a></li>
-                                    <li><a href="{{ url('/getPastAppointments') }}">Past Appointments</a></li>
+                                    <li><a href="{{ url('/getPastAppointments') }}">Past Sessions</a></li>
 
                                     {{-- <li><a href="{{url('done_appointment')}}" >Done Appointment</a></li> --}}
                                     {{-- <li><a href="{{url('cancel_appointment')}}" >Cancelled Appointment</a></li> --}}
@@ -264,19 +264,24 @@
                                 <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
                                         Schedules </span> </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ url('/getCurrentAppointments') }}">Active Schedules</a></li>
-                                    <li><a href="#">Booked Schedules</a></li>
+                                    <li><a href="{{ url('activesession') }}">Active Schedules</a></li>
+                                    <li><a href="{{url('bookedsession')}}">Booked Schedules</a></li>
                                 </ul>
                             </li>
-
-                            {{-- <li>
-                                <a href="{{ url('profile_view') }}" class="waves-effect ">
+                            <li>
+                                <a href="{{ url('doctorvideo') }}" class="waves-effect ">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Videos <span class="badge badge-primary pull-right"></span></span>
+                                </a>
+                            </li> 
+                             <li>
+                                <a href="{{ url('onlinesetting') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Online Setting <span class="badge badge-primary pull-right"></span></span>
                                 </a>
                             </li>                            
                             <li>
-                                <a href="{{ url('profile_view') }}" class="waves-effect ">
+                                <a href="{{ url('offer') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Offer <span class="badge badge-primary pull-right"></span></span>
                                 </a>
@@ -286,7 +291,7 @@
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Profile <span class="badge badge-primary pull-right"></span></span>
                                 </a>
-                            </li> --}}
+                            </li> 
                         @else
 
                             {{-- <li>

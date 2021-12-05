@@ -10,11 +10,13 @@ use App\Http\Controllers\CounterController;
 use App\Http\Controllers\DiseasesController;
 use App\Http\Controllers\DoctoraccordionController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\DoctorvideoController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeAccordinController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JitsiMeetingController;
+use App\Http\Controllers\OfferController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\SessionbookController;
 use App\Http\Controllers\SlotTimeController;
@@ -28,6 +30,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\WebsiteLinkController;
 use App\Http\Controllers\WeekdayController;
+use App\Models\Doctorvideo;
 use App\Models\HomeAccordin;
 use App\Models\SlotController;
 use App\Models\Time;
@@ -196,3 +199,18 @@ Route::get('changeAppointmentStatus/{appointment_id}/{status}', [AppointmentCont
 Route::get('generateMeeting/{appointment_id}', [JitsiMeetingController::class, 'store']);
 Route::get('meeting/{appointment_id}',  [JitsiMeetingController::class, 'getIntoMeeting']);
 Route::post('changeMeetingStatus', [JitsiMeetingController::class, 'changeMeetingStatus']);
+
+
+// Doctor Video
+Route::get('doctorvideo',  [DoctorvideoController::class, 'index'])->name('doctorvideo');
+Route::post('videosave', [DoctorvideoController::class, 'store'])->name('videosave');
+
+
+// Offer
+Route::get('offer',  [OfferController::class, 'index'])->name('offer');
+Route::post('offersave', [OfferController::class, 'store'])->name('offersave');
+
+
+Route::view('onlinesetting', 'status.index')->name('onlinesetting');
+Route::view('bookedsession', 'Schedules.booked')->name('bookedsession');
+Route::view('activesession', 'Schedules.index')->name('activesession');
