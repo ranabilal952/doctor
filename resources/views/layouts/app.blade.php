@@ -254,7 +254,7 @@
                                         Appointment </span> </a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ url('/getCurrentAppointments') }}">Your Appointments</a></li>
-                                    <li><a href="#">Past Appointments</a></li>
+                                    <li><a href="{{ url('/getPastAppointments') }}">Past Appointments</a></li>
 
                                     {{-- <li><a href="{{url('done_appointment')}}" >Done Appointment</a></li> --}}
                                     {{-- <li><a href="{{url('cancel_appointment')}}" >Cancelled Appointment</a></li> --}}
@@ -269,7 +269,7 @@
                                 </ul>
                             </li>
 
-                            <li>
+                            {{-- <li>
                                 <a href="{{ url('profile_view') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Online Setting <span class="badge badge-primary pull-right"></span></span>
@@ -286,22 +286,21 @@
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Profile <span class="badge badge-primary pull-right"></span></span>
                                 </a>
-                            </li>
+                            </li> --}}
                         @else
 
-                            <li>
+                            {{-- <li>
                                 <a href="{{ url('available_appointment') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Make Appointment <span class="badge badge-primary pull-right"></span></span>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="has_sub ">
                                 <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
                                         My Reservations </span> </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="#">Next Sessions</a></li>
-                                    <li><a href="#">Previous Sessions</a></li>
-                                    <li><a href="#">Cancelled Sessions</a></li>
+                                    <li><a href="{{ url('/getCurrentAppointments') }}">Your Appointments</a></li>
+                                    <li><a href="{{ url('/getPastAppointments') }}">Past Appointments</a></li>
                                 </ul>
                             </li>
                             <li>

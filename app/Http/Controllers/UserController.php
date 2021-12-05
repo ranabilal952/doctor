@@ -17,7 +17,7 @@ class UserController extends Controller
     public function index()
     {
         $user = User::all();
-        return view('user.index',compact('user'));
+        return view('user.index', compact('user'));
     }
 
     /**
@@ -86,9 +86,24 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        // dd($request->all());
+        // $this->validate(request(), [
+        //     'id' => 'required',
+
+        // ]);
+        // $user = User::find($request->id);
+        // if ($request->has('name'))
+        //     $user->name = request('name');
+
+        // if ($request->has('password'))
+        //     $user->password = bcrypt(request('password'));
+
+        // $user->save();
+        // toastr()->success('Profile updated successfully');
+
+        // return back();
     }
 
     /**
@@ -103,11 +118,9 @@ class UserController extends Controller
     }
     public function checkLogin()
     {
-        if(Auth::check())
-        {
+        if (Auth::check()) {
             return redirect('appointment.create');
-        }
-        else{
+        } else {
             return redirect()->back();
         }
     }

@@ -15,6 +15,7 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
+                                    <input type="hidden" name="id" value="{{Auth::id()}}">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label style="color: black"><strong> Name</strong> </label>
@@ -26,17 +27,17 @@
                                         <div class="form-group">
                                             <label><strong style="color: black">Email:</strong></label>
                                             <div>
-                                                <input type="email" value="{{ $user->email ?? '' }}"
+                                                <input readonly type="email" value="{{ $user->email ?? '' }}"
                                                 class="form-control" name="email" placeholder="" >
                                             </div>
                                         </div>
                                     </div>                                    
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label><strong style="color: black">phone:</strong></label>
+                                            <label><strong style="color: black">Phone:</strong></label>
                                             <div>
-                                                <input type="email" value="{{ $user->email ?? '' }}"
-                                                class="form-control" name="email" placeholder="" >
+                                                <input type="text" value="{{ $user->phone ?? '' }}"
+                                                class="form-control" name="phone" placeholder="" >
                                             </div>
                                         </div>
                                     </div>                                    
@@ -44,8 +45,9 @@
                                         <div class="form-group">
                                             <label><strong style="color: black">Password:</strong></label>
                                             <div>
-                                                <input type="email" value="{{ $user->email ?? '' }}"
-                                                class="form-control" name="email" placeholder="" >
+                                                <input type="password" value=""
+                                                class="form-control" name="password" placeholder="" >
+                                                <small>If you same password then ignore this field</small>
                                             </div>
                                         </div>
                                     </div>

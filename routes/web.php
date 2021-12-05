@@ -125,7 +125,7 @@ Route::post('sesion_save', [SessionbookController::class, 'store'])->name('sesio
 //User Management
 Route::get('create', [UserController::class, 'create'])->name('create');
 Route::get('all_user', [UserController::class, 'index'])->name('all_user');
-Route::post('user_save', [UserController::class, 'store'])->name('user_save');
+Route::post('user_save', [UserController::class, 'update'])->name('user_save');
 
 
 // Add Speciality
@@ -188,6 +188,7 @@ Route::post('loginThroughAjax', [AppointmentController::class, 'loginThroughAjax
 ///DOCTOR APPOINTMENTs
 
 Route::get('getCurrentAppointments', [AppointmentController::class, 'getCurrentAppointments']);
+Route::get('getPastAppointments', [AppointmentController::class, 'getPastAppointments']);
 Route::get('changeAppointmentStatus/{appointment_id}/{status}', [AppointmentController::class, 'changeAppointmentStatus']);
 
 

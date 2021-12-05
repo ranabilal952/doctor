@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use App\Models\Time;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class DoctorController extends Controller
 {
@@ -37,6 +39,14 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
+
+        User::create([
+            'name' => $request->doctor_name,
+            'email' => $request->email,
+            'password' => $request->password ?? Hash::make('12345678'),
+            'role' => 'doctor',
+        ]);
+
         $doctor = new Doctor();
         $doctor->doctor_name = $request->doctor_name;
         $doctor->doctor_specility = $request->doctor_specility;
@@ -126,10 +136,12 @@ class DoctorController extends Controller
     {
         $doctorTime = Time::where('user_id', Auth::id())->first()->toArray();
         $newTimeArray = $doctorTime['time'];
-        $newTimeArray = array_map(function($v) { return (int)$v; }, $newTimeArray);
+        $newTimeArray = array_map(function ($v) {
+            return (int)$v;
+        }, $newTimeArray);
 
-     $newTimeArray=  array_values($newTimeArray);
-     $newTimeArray=implode(",",$newTimeArray);
+        $newTimeArray =  array_values($newTimeArray);
+        $newTimeArray = implode(",", $newTimeArray);
 
         // $doctorTime = $doctorTime[0];
         // dd(($doctorTime[0]));
