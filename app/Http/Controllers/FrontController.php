@@ -63,7 +63,7 @@ class FrontController extends Controller
     }
     public function doctor_detail($id)
     {
-        $doctor =Doctor::where('id',$id)->with('user')->first();
+        $doctor = Doctor::where('id', $id)->with('user')->first();
         $slots = SlotTime::all();
         $timezones = Timezone::Orderby('offset')->get();
         // dd($doctor);
@@ -71,7 +71,11 @@ class FrontController extends Controller
     }
     public function profile()
     {
-        $user = Auth::user();
-        return view('profile.view')->with('user', $user);
+        $user = User::with('doctorData')->find(Auth::id());
+        dd($user);
+        if ($user->role == 'doctor')
+            return view('profile.doctor')->with('user', $user);
+        else
+            return view('profile.view')->with('user', $user);
     }
 }

@@ -53,4 +53,8 @@ class User extends Authenticatable
     {
     return (new static)::where('role','user')->get();
     }   
+
+    public function doctorData(){
+        return $this->hasOne(Doctor::class,'user_id');
+    }
 }
