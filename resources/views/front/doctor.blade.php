@@ -44,180 +44,180 @@
 </div>
 </div>
 <div class="" style="margin-top: -12%;">
-<div class="container">
-    <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
 
-            <div class="card doc_doctor" style="background: #EAEDF2;">
-                <div class="top-bi">
-                    <div class="whatsapp-service"><i class="lab la-whatsapp" style="margin-right: 3px;"></i></div>
-                    <div class="chat-service" style="    background: #138DE7;   "><i class="las la-comment-alt" style="margin-right: 4px;"></i></div>
-                    <div class="video-service" style="    background: #138DE7;
-                    "><i class="las la-video" style="margin-right: 4px; font-size: 15px;"></i></div>
-                </div>
-                <div class="top-doctor-item-available-alert mt-1 online" style="float: right;"><span>متوفر الأن</span></div>
-                <div class="top-doctor-item-img">
-                    <img ng-src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp" alt="ربيع الحوراني" src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp">
-                    <i class="doctor-item-availablity online" ng-class="$ctrl.doctor.online ? 'online' : 'offline'"></i>
-                </div>
-                <div class="card-body">
-                    <h5 class="text-center">د. ميراي فرنسيس</h5>
-                    <p class="text-center">اخصائي نفسي</p>
-                    <div class="text-center">
-                        (13)
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
+                <div class="card doc_doctor" style="background: #EAEDF2;">
+                    <div class="top-bi">
+                        <div class="whatsapp-service"><i class="lab la-whatsapp" style="margin-right: 3px;"></i></div>
+                        <div class="chat-service" style="    background: #138DE7;   "><i class="las la-comment-alt" style="margin-right: 4px;"></i></div>
+                        <div class="video-service" style="    background: #138DE7;
+                        "><i class="las la-video" style="margin-right: 4px; font-size: 15px;"></i></div>
                     </div>
-                    <div class="d-flex">
-                        <a href="#" class="btn" style="margin: 5px; width: 50%;font-size: 18px;">1576PKR</a>
-                        <a href="#" class="btn" style="margin: 5px;width: 50%;font-size: 18px;"><del>1576PKR</del> </a>
+                    <div class="top-doctor-item-available-alert mt-1 online" style="float: right;"><span>متوفر الأن</span></div>
+                    <div class="top-doctor-item-img">
+                        <img ng-src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp" alt="ربيع الحوراني" src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp">
+                        <i class="doctor-item-availablity online" ng-class="$ctrl.doctor.online ? 'online' : 'offline'"></i>
                     </div>
+                    <div class="card-body">
+                        <h5 class="text-center">د. ميراي فرنسيس</h5>
+                        <p class="text-center">اخصائي نفسي</p>
+                        <div class="text-center">
+                            (13)
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                        </div>
+                        <div class="d-flex">
+                            <a href="#" class="btn" style="margin: 5px; width: 50%;font-size: 18px;">1576PKR</a>
+                            <a href="#" class="btn" style="margin: 5px;width: 50%;font-size: 18px;"><del>1576PKR</del> </a>
+                        </div>
 
-                    <div class="d-flex">
-                        <a href="{{url('details')}}" class="btn btn-primary" style="margin: 5px;width: 50%;color: black;background-color: #D6E0F5; border:none;">عرض</a>
-                        <a href="{{url('details')}}" class="btn btn-primary" style="margin: 5px;
-    width: 50%;
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;">احجز الأن</a>
-                    </div>
+                        <div class="d-flex">
+                            <a href="{{url('details')}}" class="btn btn-primary" style="margin: 5px;width: 50%;color: black;background-color: #D6E0F5; border:none;">عرض</a>
+                            <a href="{{url('details')}}" class="btn btn-primary" style="margin: 5px;
+        width: 50%;
+        color: #fff;
+        background-color: #0d6efd;
+        border-color: #0d6efd;">احجز الأن</a>
+                        </div>
 
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
-
-            <div class="card doc_doctor" style="background: #EAEDF2;">
-                <div class="top-bi">
-                    <div class="whatsapp-service"><i class="lab la-whatsapp" style="margin-right: 3px;"></i></div>
-                    <div class="chat-service" style="background: #138DE7;"><i class="las la-comment-alt" style="margin-right: 4px;"></i></div>
-                    <div class="video-service" style="background: #138DE7;
-                    "><i class="las la-video" style="margin-right: 4px; font-size: 15px;"></i></div>
-                </div>
-                <div class="top-doctor-item-available-alert mt-1 online" style="float: right;"><span>متوفر الأن</span></div>
-                <div class="top-doctor-item-img">
-                    <img ng-src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp" alt="ربيع الحوراني" src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp">
-                    <i class="doctor-item-availablity online" ng-class="$ctrl.doctor.online ? 'online' : 'offline'"></i>
-                </div>
-                <div class="card-body">
-                    <h5 class="text-center">د. ميراي فرنسيس</h5>
-                    <p class="text-center">اخصائي نفسي</p>
-                    <div class="text-center">
-                        (13)
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
                     </div>
-                    <div class="d-flex">
-                        <a href="{{url('details')}}" class="btn" style="margin: 5px; width: 50%;font-size: 18px;">1576PKR</a>
-                        <a href="{{url('details')}}" class="btn" style="margin: 5px;width: 50%;font-size: 18px;"><del>1576PKR</del> </a>
-                    </div>
-
-                    <div class="d-flex">
-                        <a href="details.html" class="btn btn-primary" style="margin: 5px;width: 50%;color: black;background-color: #D6E0F5; border:none;">عرض</a>
-                        <a href="details.html" class="btn btn-primary" style="margin: 5px;
-    width: 50%;
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;">احجز الأن</a>
-                    </div>
-
                 </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
+            <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
 
-            <div class="card doc_doctor" style="background: #EAEDF2;">
-                <div class="top-bi">
-                    <div class="whatsapp-service"><i class="lab la-whatsapp" style="margin-right: 3px;"></i></div>
-                    <div class="chat-service" style="    background: #138DE7;   "><i class="las la-comment-alt" style="margin-right: 4px;"></i></div>
-                    <div class="video-service" style="    background: #138DE7;
-                    "><i class="las la-video" style="margin-right: 4px; font-size: 15px;"></i></div>
-                </div>
-                <div class="top-doctor-item-available-alert mt-1 online" style="float: right;"><span>متوفر الأن</span></div>
-                <div class="top-doctor-item-img">
-                    <img ng-src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp" alt="ربيع الحوراني" src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp">
-                    <i class="doctor-item-availablity online" ng-class="$ctrl.doctor.online ? 'online' : 'offline'"></i>
-                </div>
-                <div class="card-body">
-                    <h5 class="text-center">د. ميراي فرنسيس</h5>
-                    <p class="text-center">اخصائي نفسي</p>
-                    <div class="text-center">
-                        (13)
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
+                <div class="card doc_doctor" style="background: #EAEDF2;">
+                    <div class="top-bi">
+                        <div class="whatsapp-service"><i class="lab la-whatsapp" style="margin-right: 3px;"></i></div>
+                        <div class="chat-service" style="background: #138DE7;"><i class="las la-comment-alt" style="margin-right: 4px;"></i></div>
+                        <div class="video-service" style="background: #138DE7;
+                        "><i class="las la-video" style="margin-right: 4px; font-size: 15px;"></i></div>
                     </div>
-                    <div class="d-flex">
-                        <a href="#" class="btn" style="margin: 5px; width: 50%;font-size: 18px;">1576PKR</a>
-                        <a href="#" class="btn" style="margin: 5px;width: 50%;font-size: 18px;"><del>1576PKR</del> </a>
+                    <div class="top-doctor-item-available-alert mt-1 online" style="float: right;"><span>متوفر الأن</span></div>
+                    <div class="top-doctor-item-img">
+                        <img ng-src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp" alt="ربيع الحوراني" src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp">
+                        <i class="doctor-item-availablity online" ng-class="$ctrl.doctor.online ? 'online' : 'offline'"></i>
                     </div>
+                    <div class="card-body">
+                        <h5 class="text-center">د. ميراي فرنسيس</h5>
+                        <p class="text-center">اخصائي نفسي</p>
+                        <div class="text-center">
+                            (13)
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                        </div>
+                        <div class="d-flex">
+                            <a href="{{url('details')}}" class="btn" style="margin: 5px; width: 50%;font-size: 18px;">1576PKR</a>
+                            <a href="{{url('details')}}" class="btn" style="margin: 5px;width: 50%;font-size: 18px;"><del>1576PKR</del> </a>
+                        </div>
 
-                    <div class="d-flex">
-                        <a href="{{url('details')}}" class="btn btn-primary" style="margin: 5px;width: 50%;color: black;background-color: #D6E0F5; border:none;">عرض</a>
-                        <a href="{{url('details')}}" class="btn btn-primary" style="margin: 5px;
-    width: 50%;
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;">احجز الأن</a>
-                    </div>
+                        <div class="d-flex">
+                            <a href="details.html" class="btn btn-primary" style="margin: 5px;width: 50%;color: black;background-color: #D6E0F5; border:none;">عرض</a>
+                            <a href="details.html" class="btn btn-primary" style="margin: 5px;
+        width: 50%;
+        color: #fff;
+        background-color: #0d6efd;
+        border-color: #0d6efd;">احجز الأن</a>
+                        </div>
 
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
-
-            <div class="card doc_doctor" style="background: #EAEDF2;">
-                <div class="top-bi">
-                    <div class="whatsapp-service"><i class="lab la-whatsapp" style="margin-right: 3px;"></i></div>
-                    <div class="chat-service" style="    background: #138DE7;   "><i class="las la-comment-alt" style="margin-right: 4px;"></i></div>
-                    <div class="video-service" style="    background: #138DE7;"><i class="las la-video" style="margin-right: 4px; font-size: 15px;"></i></div>
-                </div>
-                <div class="top-doctor-item-available-alert mt-1 online" style="float: right;"><span>متوفر الأن</span></div>
-                <div class="top-doctor-item-img">
-                    <img ng-src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp" alt="ربيع الحوراني" src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp">
-                    <i class="doctor-item-availablity online" ng-class="$ctrl.doctor.online ? 'online' : 'offline'"></i>
-                </div>
-                <div class="card-body">
-                    <h5 class="text-center">د. ميراي فرنسيس</h5>
-                    <p class="text-center">اخصائي نفسي</p>
-                    <div class="text-center">
-                        (13)
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
                     </div>
-                    <div class="d-flex">
-                        <a href="#" class="btn" style="margin: 5px; width: 50%;font-size: 18px;">1576PKR</a>
-                        <a href="#" class="btn" style="margin: 5px;width: 50%;font-size: 18px;"><del>1576PKR</del> </a>
-                    </div>
-
-                    <div class="d-flex">
-                        <a href="{{url('details')}}" class="btn btn-primary" style="margin: 5px;width: 50%;color: black;background-color: #D6E0F5; border:none;">عرض</a>
-                        <a href="{{url('details')}}" class="btn btn-primary" style="margin: 5px;
-    width: 50%;
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;">احجز الأن</a>
-                    </div>
-
                 </div>
             </div>
+            <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
+
+                <div class="card doc_doctor" style="background: #EAEDF2;">
+                    <div class="top-bi">
+                        <div class="whatsapp-service"><i class="lab la-whatsapp" style="margin-right: 3px;"></i></div>
+                        <div class="chat-service" style="    background: #138DE7;   "><i class="las la-comment-alt" style="margin-right: 4px;"></i></div>
+                        <div class="video-service" style="    background: #138DE7;
+                        "><i class="las la-video" style="margin-right: 4px; font-size: 15px;"></i></div>
+                    </div>
+                    <div class="top-doctor-item-available-alert mt-1 online" style="float: right;"><span>متوفر الأن</span></div>
+                    <div class="top-doctor-item-img">
+                        <img ng-src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp" alt="ربيع الحوراني" src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp">
+                        <i class="doctor-item-availablity online" ng-class="$ctrl.doctor.online ? 'online' : 'offline'"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="text-center">د. ميراي فرنسيس</h5>
+                        <p class="text-center">اخصائي نفسي</p>
+                        <div class="text-center">
+                            (13)
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                        </div>
+                        <div class="d-flex">
+                            <a href="#" class="btn" style="margin: 5px; width: 50%;font-size: 18px;">1576PKR</a>
+                            <a href="#" class="btn" style="margin: 5px;width: 50%;font-size: 18px;"><del>1576PKR</del> </a>
+                        </div>
+
+                        <div class="d-flex">
+                            <a href="{{url('details')}}" class="btn btn-primary" style="margin: 5px;width: 50%;color: black;background-color: #D6E0F5; border:none;">عرض</a>
+                            <a href="{{url('details')}}" class="btn btn-primary" style="margin: 5px;
+        width: 50%;
+        color: #fff;
+        background-color: #0d6efd;
+        border-color: #0d6efd;">احجز الأن</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
+
+                <div class="card doc_doctor" style="background: #EAEDF2;">
+                    <div class="top-bi">
+                        <div class="whatsapp-service"><i class="lab la-whatsapp" style="margin-right: 3px;"></i></div>
+                        <div class="chat-service" style="    background: #138DE7;   "><i class="las la-comment-alt" style="margin-right: 4px;"></i></div>
+                        <div class="video-service" style="    background: #138DE7;"><i class="las la-video" style="margin-right: 4px; font-size: 15px;"></i></div>
+                    </div>
+                    <div class="top-doctor-item-available-alert mt-1 online" style="float: right;"><span>متوفر الأن</span></div>
+                    <div class="top-doctor-item-img">
+                        <img ng-src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp" alt="ربيع الحوراني" src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp">
+                        <i class="doctor-item-availablity online" ng-class="$ctrl.doctor.online ? 'online' : 'offline'"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="text-center">د. ميراي فرنسيس</h5>
+                        <p class="text-center">اخصائي نفسي</p>
+                        <div class="text-center">
+                            (13)
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                        </div>
+                        <div class="d-flex">
+                            <a href="#" class="btn" style="margin: 5px; width: 50%;font-size: 18px;">1576PKR</a>
+                            <a href="#" class="btn" style="margin: 5px;width: 50%;font-size: 18px;"><del>1576PKR</del> </a>
+                        </div>
+
+                        <div class="d-flex">
+                            <a href="{{url('details')}}" class="btn btn-primary" style="margin: 5px;width: 50%;color: black;background-color: #D6E0F5; border:none;">عرض</a>
+                            <a href="{{url('details')}}" class="btn btn-primary" style="margin: 5px;
+        width: 50%;
+        color: #fff;
+        background-color: #0d6efd;
+        border-color: #0d6efd;">احجز الأن</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
         </div>
-
-
+        <!-- <button class="btn btn-primary text-center">Show all doctors</button> -->
     </div>
-    <!-- <button class="btn btn-primary text-center">Show all doctors</button> -->
-</div>
 </div>
 <div class="mt-5">
 <p class="title-primary-boxed2 title-boxed ng-binding text-center" style="font-family: 'hnn';font-weight: bold;font-size: 1.5rem;">اختر المعالج واحجز من الجدول</p>

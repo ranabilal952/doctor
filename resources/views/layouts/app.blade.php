@@ -199,7 +199,7 @@
                                 </a>
                             </li>                            
                             <li>
-                                <a href="{{ url('add_speciality') }}" class="waves-effect ">
+                                <a href="{{ url('test') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Add psychometer <span class="badge badge-primary pull-right"></span></span>
                                 </a>
@@ -307,6 +307,12 @@
                                     <li><a href="{{ url('/getCurrentAppointments') }}">Your Appointments</a></li>
                                     <li><a href="{{ url('/getPastAppointments') }}">Past Appointments</a></li>
                                 </ul>
+                            </li>
+                            <li>
+                                <a href="{{url('mytest')}}" class="waves-effect ">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> My test <span class="badge badge-primary pull-right"></span></span>
+                                </a>
                             </li>
                             <li>
                                 <a href="" class="waves-effect ">

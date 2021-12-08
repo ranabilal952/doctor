@@ -1032,6 +1032,69 @@ doctor-offers-box.country .top-doctor-services {
     bottom: 0;
     margin: auto;
 }
+.doctor-single-tab-plan {
+    width: 100%;
+    border: 1px solid #6387D8;
+    border-radius: 5px;
+    position: relative;
+    height: 100%;
+    top: 0;
+    transition: all .5s;
+    padding: 1rem;
+    box-shadow: 0 1px 2px 2px #c7c7c7;
+}
+.doctor-single-tab-plan h4 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-bottom: 2px solid #6387D8;
+    display: table;
+    padding-bottom: 0.6rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.doctor-single-tab-plan-price {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: .8rem;
+}
+.doctor-single-tab-plan-price strong {
+    color: red;
+    text-decoration: line-through;
+}
+
+.doctor-single-tab-plan-price span {
+    background: #45BD62;
+    color: #fff;
+    padding: 0px 15px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+.doctor-single-tab-plan h3 {
+    text-align: center;
+    color: #111;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+.doctor-single-tab-plan-items li {
+    list-style: none;
+}
+.doctor-single-tab-plan a {
+    display: block;
+    text-decoration: none;
+    background: #3362CC;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 20px auto 0.6rem;
+    font-family: 'hnn';
+    font-weight: bold;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    transition: all .5s;
+}
 @media (min-width: 931px) {
     .header_nav {
         display: flex;
