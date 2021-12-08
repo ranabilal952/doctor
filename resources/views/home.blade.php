@@ -263,7 +263,7 @@
                             <div class="card-body">
                                 <h4 class="mt-0 header-title" style="font-size: 20px">Pending Balance</h4>
                                 <hr>
-                                <h1 class="text-center">48 <span style="color: #0d6efd!important">USD</span> </h1>
+                                <h1 class="text-center">48.00 <span style="color: #0d6efd!important">USD</span> </h1>
                              
                             </div>
                         </div>
@@ -273,7 +273,7 @@
                             <div class="card-body">
                                 <h4 class="mt-0 header-title" style="font-size: 20px">Available balance</h4>
                                 <hr>
-                                <h1 class="text-center">48 <span style="color: #0d6efd!important">USD</span> </h1>
+                                <h1 class="text-center">48.00 <span style="color: #0d6efd!important">USD</span> </h1>
                              
                             </div>
                         </div>

@@ -11,6 +11,7 @@ use App\Http\Controllers\DiseasesController;
 use App\Http\Controllers\DoctoraccordionController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\DoctorvideoController;
+use App\Http\Controllers\DynamicFieldController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeAccordinController;
@@ -22,6 +23,7 @@ use App\Http\Controllers\SessionbookController;
 use App\Http\Controllers\SlotTimeController;
 use App\Http\Controllers\SocialLinkController;
 use App\Http\Controllers\SpecialityController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\TimeAviableController;
 use App\Http\Controllers\TimeController;
 use App\Http\Controllers\TimezoneController;
@@ -214,3 +216,13 @@ Route::post('offersave', [OfferController::class, 'store'])->name('offersave');
 Route::view('onlinesetting', 'status.index')->name('onlinesetting');
 Route::view('bookedsession', 'Schedules.booked')->name('bookedsession');
 Route::view('activesession', 'Schedules.index')->name('activesession');
+Route::view('therapist ', 'psychometer.create')->name('therapist');
+Route::view('mytest ', 'psychometer.testcreate')->name('mytest');
+
+
+Route::get('dynamic-field',[DynamicFieldController::class, 'index' ])->name('dynamic-field');
+Route::post('dynamic-field/insert', [DynamicFieldController::class, 'insert'])->name('dynamic-field/insert');
+
+
+Route::get('test',  [TestController::class, 'index'])->name('test');
+Route::post('testsave', [TestController::class, 'store'])->name('testsave');

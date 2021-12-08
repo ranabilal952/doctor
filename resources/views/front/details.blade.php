@@ -18,6 +18,24 @@
 
 </style>
 @section('content')
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css"
+  rel="stylesheet"
+/>
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"
+></script>
     <div class="container">
 
         <div class="row">
@@ -150,7 +168,11 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="ex3-tab-3" data-mdb-toggle="tab" href="#ex3-tabs-3" role="tab"
                             aria-controls="ex3-tabs-3" aria-selected="false">الفيديوهات</a>
-                    </li>
+                    </li>  
+                    {{-- <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="ex3-tab-4" data-mdb-toggle="tab" href="#ex3-tabs-4" role="tab"
+                            aria-controls="ex3-tabs-4" aria-selected="false" style="border: 2px solid black;color: black;">عروض الجلسات </a>
+                    </li>   --}}
                 </ul>
                 <!-- Tabs navs -->
 
@@ -204,19 +226,19 @@
                     </div>
                     <div class="tab-pane fade" id="ex3-tabs-3" role="tabpanel" aria-labelledby="ex3-tab-3">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4 mb-4">
                                 <iframe width="100%" height="480" src="{{ $doctor->video_link1 ?? '' }}"
                                     title="YouTube video player" frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 mb-4">
                                 <iframe width="100%" height="480" src="{{ $doctor->video_link2 ?? '' }}"
                                     title="YouTube video player" frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 mb-4">
                                 <iframe width="100%" height="480" src="{{ $doctor->video_link3 ?? '' }}"
                                     title="YouTube video player" frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -236,6 +258,36 @@
                             </div>
                         </div>
                     </div>
+                    <div class="tab-pane fade" id="ex3-tabs-4" role="tabpanel" aria-labelledby="ex3-tab-4">
+                        <div class="doctor-single-tab-plans-list">
+                            <div class="row">
+                               
+                                <div ng-repeat="(key, offer) in offers" class="col-md-4 col-sm-12 col-12 py-3  order-md-1 order-2 ">
+                                    <div class="doctor-single-tab-plan" ng-class="key > 1 ? 'normal-offer' : ''">
+                                       
+                                        <h4 class="ng-binding">4 جلسات + 1 مجانية</h4>
+                                        <div class="doctor-single-tab-plan-price">
+                                            <div class="row">
+                                                <div class="col mb-3"><strong class="ng-binding">384USD</strong></div>
+                                                <div class="col mb-3"><span class="ng-binding">وفر 16.67%</span></div>
+                                            </div>
+                                        </div>
+                                      
+                                        <h3 class="ng-binding">320USD</h3>
+                                        <div class="doctor-single-tab-plan-items">
+                                            <ul>
+                                                <li class="ng-binding">&rlm;قم بحجز 4 جلسات واحصل على جلسة مجانية.
+                                                    هذا يجعلك توفر أكثر من 20% من كل جلسة
+                                                    الحرية في اختيار الاوقات التي تناسبك
+                                                    الحرية في اختيار طريقة الجلسة</li>
+                                             </ul>
+                                        </div>
+                                        <a class="btn btn-primary ng-scope" href="offer/3" translate="">اطلب الأن</a>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -245,8 +297,16 @@
                         <button class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 "
                             style="border: 2px solid black;color: black;">احجز فورا</button>
                         {{-- <a class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 ng-scope" style="border: 2px solid black;color: black;">احجز من الجدول</a> --}}
-                        <a class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 ng-scope"
-                            style="border: 2px solid black;color: black;">عروض الجلسات</a>
+                        {{-- <a class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 ng-scope"
+                            style="border: 2px solid black;color: black;">عروض الجلسات</a> --}}
+                          
+                            <ul class="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist" style="background: #E7F3F5; ">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="ex3-tab-4" data-mdb-toggle="tab" href="#ex3-tabs-4" role="tab"
+                                        aria-controls="ex3-tabs-4" aria-selected="false" style="border: 2px solid black;color: black;">عروض الجلسات </a>
+                                </li>  
+                               
+                            </ul>
                     </div>
                     <h1 class="ng-binding">المواعيد المتاحة</h1>
 
