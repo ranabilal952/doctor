@@ -217,7 +217,7 @@ Route::view('onlinesetting', 'status.index')->name('onlinesetting');
 Route::view('bookedsession', 'Schedules.booked')->name('bookedsession');
 Route::view('activesession', 'Schedules.index')->name('activesession');
 Route::view('therapist ', 'psychometer.create')->name('therapist');
-Route::view('mytest ', 'psychometer.testcreate')->name('mytest');
+
 
 
 Route::get('dynamic-field',[DynamicFieldController::class, 'index' ])->name('dynamic-field');
@@ -226,3 +226,5 @@ Route::post('dynamic-field/insert', [DynamicFieldController::class, 'insert'])->
 
 Route::get('test',  [TestController::class, 'index'])->name('test');
 Route::post('testsave', [TestController::class, 'store'])->name('testsave');
+
+Route::view('testcreate', 'psychometer.testcreate')->name('testcreate');

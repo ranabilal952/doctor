@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Add Doctors / اضافة اطباء
+    Add Test /  
 @endsection
 @section('content')
 <title>Laravel 5.8 - DataTables Server Side Processing using Ajax</title>

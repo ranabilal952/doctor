@@ -77,6 +77,9 @@
                     </li>
                     <li class="center_li">
                         <a class="li_a" href="{{ url('how_book') }}">حجز جلسة علاج نفسي اونلاين</a>
+                    </li> 
+                    <li class="center_li">
+                        <a class="li_a" href="{{ url('testcreate') }}">psychometer </a>
                     </li>
                     <li class="center_li"><a class="li_a" href="#">English</a></li>
                 </ul>

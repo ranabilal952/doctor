@@ -309,7 +309,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="{{url('mytest')}}" class="waves-effect ">
+                                <a href="{{url('testcreate')}}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> My test <span class="badge badge-primary pull-right"></span></span>
                                 </a>
