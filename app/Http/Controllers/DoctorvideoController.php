@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctorvideo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorvideoController extends Controller
 {
@@ -14,7 +15,8 @@ class DoctorvideoController extends Controller
      */
     public function index()
     {
-        $doctorvideo = Doctorvideo::all();
+        $doctorvideo = Doctorvideo::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->get();
+
         return view('doctor.video', compact('doctorvideo'));
     }
 
@@ -36,10 +38,14 @@ class DoctorvideoController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'video_url' => 'required|url'
+        ]);
         $doctorvideo = new Doctorvideo();
         $doctorvideo->title_english = $request->title_english;
         $doctorvideo->title_arabic = $request->title_arabic;
         $doctorvideo->video_url = $request->video_url;
+        $doctorvideo->user_id = Auth::id();
         $doctorvideo->save();
         toastr()->success('Data Sucessfully Added');
         return redirect()->back();

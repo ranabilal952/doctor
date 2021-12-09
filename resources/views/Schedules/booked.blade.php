@@ -3,13 +3,13 @@
     Booked Schedules
 @endsection
 @section('content')
-<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.1.0/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.1.0/css/buttons.dataTables.min.css">
 
 
     <div class="page-content-wrapper ">
         <div class="container-fluid">
-         
+
             <div class="page-content-wrapper ">
                 <div class="container-fluid">
                     <div class="row">
@@ -18,8 +18,8 @@
                                 <div class="card-body">
                                     <h4 class="mt-0 header-title">All Booked Schedules</h4>
                                     <p class="text-muted m-b-30 font-14"></p>
-                                    <table id="example"  style="width:100%" class="table table-bordered dt-responsive nowrap" cellspacing="0"
-                                        width="100%">
+                                    <table id="example" style="width:100%" class="table table-bordered dt-responsive nowrap"
+                                        cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>Id</th>
@@ -28,28 +28,26 @@
                                                 <th>Schedules Duration</th>
                                                 <th> Schedules Amount</th>
                                                 <th> Schedules Status</th>
-                                                <th> Action</th>
+                                                {{-- <th> Action</th> --}}
                                             </tr>
                                         </thead>
                                         <tbody>
-                                       
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>05/12/2021</td>
-                                                    <td>09:00 PM</td>
-                                                    <td>60 minutes</td>
-                                                    <td>48.00 USD</td>
-                                                    <td><span class="badge " style="background-color: #0dcaf0!important; color:white">Booked</span></td>
-                                                    <td><span class="badge badge-default">Deactive</span></td>
-                                                    {{-- <td>
-                                                <center> <button type="button" class="edit-btn btn btn-danger"
-                                                        id="{{$slottime->id}}" time="{{$slottime->time}}"
-                                                        data-toggle="modal" data-target="#edit-modal"><i
-                                                            class="fa fa-pencil"></i></button></center>
+                                            @foreach ($slotTime as $key => $slotTime)
 
-                                            </td> --}}
+                                                <tr>
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <td>{{ $slotTime['date_from'] }}</td>
+                                                    <td>{{ $slotTime['time'] }}</td>
+                                                    <td>{{ $slotTime['duration'] }} Minutes</td>
+                                                    <td>{{ floatval($slotTime['amount']) }} USD</td>
+                                                    <td><span class="badge "
+                                                            style="background-color: #0dcaf0!important; color:white">Booked</span>
+                                                    </td>
                                                 </tr>
-                                        
+                                            @endforeach
+
+
+
 
                                         </tbody>
                                     </table>
@@ -72,13 +70,13 @@
 @endsection
 @section('scripts')
     <script>
-       $(document).ready(function() {
-    $('#example').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-             'csv',  'pdf', 'print'
-        ]
-    } );
-} );
+        $(document).ready(function() {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'csv', 'pdf', 'print'
+                ]
+            });
+        });
     </script>
 @endsection

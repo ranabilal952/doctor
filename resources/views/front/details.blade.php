@@ -18,24 +18,12 @@
 
 </style>
 @section('content')
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-  rel="stylesheet"
-/>
-<!-- Google Fonts -->
-<link
-  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-  rel="stylesheet"
-/>
-<!-- MDB -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css"
-  rel="stylesheet"
-/>
-<script
-  type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"
-></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
     <div class="container">
 
         <div class="row">
@@ -168,11 +156,11 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="ex3-tab-3" data-mdb-toggle="tab" href="#ex3-tabs-3" role="tab"
                             aria-controls="ex3-tabs-3" aria-selected="false">الفيديوهات</a>
-                    </li>  
+                    </li>
                     {{-- <li class="nav-item" role="presentation">
                         <a class="nav-link" id="ex3-tab-4" data-mdb-toggle="tab" href="#ex3-tabs-4" role="tab"
                             aria-controls="ex3-tabs-4" aria-selected="false" style="border: 2px solid black;color: black;">عروض الجلسات </a>
-                    </li>   --}}
+                    </li> --}}
                 </ul>
                 <!-- Tabs navs -->
 
@@ -226,65 +214,49 @@
                     </div>
                     <div class="tab-pane fade" id="ex3-tabs-3" role="tabpanel" aria-labelledby="ex3-tab-3">
                         <div class="row">
-                            <div class="col-md-4 mb-4">
-                                <iframe width="100%" height="480" src="{{ $doctor->video_link1 ?? '' }}"
-                                    title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                            </div>
-                            <div class="col-md-4 mb-4">
-                                <iframe width="100%" height="480" src="{{ $doctor->video_link2 ?? '' }}"
-                                    title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                            </div>
-                            <div class="col-md-4 mb-4">
-                                <iframe width="100%" height="480" src="{{ $doctor->video_link3 ?? '' }}"
-                                    title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                            </div>
-                            <div class="col-md-4">
-                                <iframe width="100%" height="480" src="{{ $doctor->video_link4 ?? '' }}"
-                                    title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                            </div>
-                            <div class="col-md-4">
-                                <iframe width="100%" height="480" src="{{ $doctor->video_link5 ?? '' }}"
-                                    title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                            </div>
+                            @if ($doctor->user->doctorVideos && count($doctor->user->doctorVideos) > 0)
+                                @foreach ($doctor->user->doctorVideos as $video)
+                                    <div class="col-md-4 mb-4">
+                                        <iframe width="100%" height="480" src="{{ $video->video_url }}"
+                                            title="YouTube video player" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                @endforeach
+                            @else
+                                <h6 class="text-primary text-center">No Videos Available</h6>
+                            @endif
                         </div>
                     </div>
                     <div class="tab-pane fade" id="ex3-tabs-4" role="tabpanel" aria-labelledby="ex3-tab-4">
                         <div class="doctor-single-tab-plans-list">
                             <div class="row">
-                               
-                                <div ng-repeat="(key, offer) in offers" class="col-md-4 col-sm-12 col-12 py-3  order-md-1 order-2 ">
-                                    <div class="doctor-single-tab-plan" ng-class="key > 1 ? 'normal-offer' : ''">
-                                       
-                                        <h4 class="ng-binding">4 جلسات + 1 مجانية</h4>
-                                        <div class="doctor-single-tab-plan-price">
-                                            <div class="row">
-                                                <div class="col mb-3"><strong class="ng-binding">384USD</strong></div>
-                                                <div class="col mb-3"><span class="ng-binding">وفر 16.67%</span></div>
+                                @foreach ($doctor->user->offers as $offer)
+
+
+                                    <div ng-repeat="(key, offer) in offers"
+                                        class="col-md-4 col-sm-12 col-12 py-3  order-md-1 order-2 ">
+                                        <div class="doctor-single-tab-plan" ng-class="key > 1 ? 'normal-offer' : ''">
+
+                                            <h4 class="ng-binding">{{ $offer->offer_english }}</h4>
+                                            <div class="doctor-single-tab-plan-price">
+                                                <div class="row">
+                                                    {{-- <div class="col mb-3"><strong class="ng-binding">{{$offer->offer_amount}} USD</strong></div> --}}
+                                                    {{-- <div class="col mb-3"><span class="ng-binding">وفر 16.67%</span></div> --}}
+                                                </div>
                                             </div>
+
+                                            <h3 class="ng-binding">{{ $offer->offer_amount }} USD</h3>
+                                            <div class="doctor-single-tab-plan-items">
+                                                <ul>
+                                                    <li class="ng-binding">&rlm;{{ $offer->description_english }}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a class="btn btn-primary ng-scope" href="offer/3" translate="">Order Now</a>
                                         </div>
-                                      
-                                        <h3 class="ng-binding">320USD</h3>
-                                        <div class="doctor-single-tab-plan-items">
-                                            <ul>
-                                                <li class="ng-binding">&rlm;قم بحجز 4 جلسات واحصل على جلسة مجانية.
-                                                    هذا يجعلك توفر أكثر من 20% من كل جلسة
-                                                    الحرية في اختيار الاوقات التي تناسبك
-                                                    الحرية في اختيار طريقة الجلسة</li>
-                                             </ul>
-                                        </div>
-                                        <a class="btn btn-primary ng-scope" href="offer/3" translate="">اطلب الأن</a>
-                                    </div> 
-                                </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -296,32 +268,40 @@
                     <div class="">
                         <button class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 "
                             style="border: 2px solid black;color: black;">احجز فورا</button>
+                        @if ($doctor->user->onlineStatus && $doctor->user->onlineStatus->is_active)
+                            @php
+                                $date1 = DateTime::createFromFormat('h:i a', now());
+                                $date2 = DateTime::createFromFormat('h:i a', $doctor->user->onlineStatus->online_from);
+                                $date3 = DateTime::createFromFormat('h:i a', $doctor->user->onlineStatus->online_to);
+                                
+                            @endphp
+                            @if ($date1 > $date2 && $date1 < $date3)
+                                <button class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 "
+                                    style="border: 2px solid black;color: black;">Book Instantly</button>
+                            @endif
+
+                        @endif
                         {{-- <a class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 ng-scope" style="border: 2px solid black;color: black;">احجز من الجدول</a> --}}
                         {{-- <a class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 ng-scope"
                             style="border: 2px solid black;color: black;">عروض الجلسات</a> --}}
-                          
-                            <ul class="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist" style="background: #E7F3F5; ">
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="ex3-tab-4" data-mdb-toggle="tab" href="#ex3-tabs-4" role="tab"
-                                        aria-controls="ex3-tabs-4" aria-selected="false" style="border: 2px solid black;color: black;">عروض الجلسات </a>
-                                </li>  
-                               
-                            </ul>
+
+                        <ul class="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist" style="background: #E7F3F5; ">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="ex3-tab-4" data-mdb-toggle="tab" href="#ex3-tabs-4"
+                                    role="tab" aria-controls="ex3-tabs-4" aria-selected="false"
+                                    style="border: 2px solid black;color: black;">عروض الجلسات </a>
+                            </li>
+
+                        </ul>
                     </div>
                     <h1 class="ng-binding">المواعيد المتاحة</h1>
 
-                    <div id="schedule-date-picker-plugin" class="app-carousel-wrap"
-                        ng-class="schedule_loading ? 'schedule-loading' : '' ">
-                        {{-- <div id="app-schedule-loading">
-                    <div class="text-center">
-                        <div class="spinner-border" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                    </div>
-                </div> --}}
+                    <div id="schedule-date-picker-plugin" class=""
+                        style="background-color: white;;border:1px solid grey">
+
                         <div id="schedule-date-picker-header" class="text-center">
                             <div class="d-inline-block ng-scope">
-                                <span class="ng-scope">30 minutes
+                                <span class=""> 30 minutes
                                 </span>:
                                 <span class="ng-binding">{{ $doctor->thirty_minute_price }} USD</span>
                             </div>
@@ -331,7 +311,32 @@
                                 <span>{{ $doctor->sixty_minute_price }} USD</span>
                             </div>
                         </div>
-                        <form action="{{ url('appointment.store') }}" method="POST">
+                        <div class="row">
+                            @foreach ($slotTimes as $ss => $time)
+
+                                <div class="col-md-4 text-center mt-3"
+                                    style="margin-right:2px;border:1px solid rgba(0,0,0,.125);">
+                                    <div class="heading bg-primary " style="width: 100%;color:white;text-align:center">
+                                        <small> {{ \Carbon\Carbon::parse($ss)->format('l') }}</small>
+                                        <br>
+                                        <small style="">{{ \Carbon\Carbon::parse($ss)->format('d/m') }}</small>
+                                    </div>
+                                    @foreach ($time as $key => $value)
+                                        <a href="{{ url('payment-schedule', $value->id) }}">
+                                            <div class="d-block">
+                                                <div class="scheduleTime text-primary">
+                                                    <small>{{ $value->time }}</small>
+                                                </div>
+                                                <small class="text-muted"> ({{ $value->duration }} minutes)</small>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                </div>
+
+                            @endforeach
+                        </div>
+                    </div>
+                    {{-- <form action="{{ url('appointment.store') }}" method="POST">
                             @csrf
                             <div class="row justify-content-center">
                                 <div class="form-group col-lg-12"><br><br>
@@ -371,9 +376,9 @@
                     </div>
 
                 </div>
-                </form>
+                </form> --}}
 
-                <div class="form-group col-md-6  ">
+                    {{-- <div class="form-group col-md-6  ">
                     <div id="datepicker"></div>
                     <input name="date" type="hidden" id="my_hidden_input">
                     <input type="hidden" name="slotsall" id="sall" value="{{ json_encode($slots) }}" />
@@ -388,18 +393,18 @@
                                 {{ $slottime->st }}</option>
                         @endforeach
                     </select>
-                    <input type="hidden" name="user_time" value="" id="user_time">
+                    <input type="hidden" name="ususer_time" value="" id="user_time">
 
                 </div>
                 @if (Auth::check())
                     <button id="makeAppointmentBtn" class=" btn btn-primary mt-3"> Make Appointment</button>
-                @endif
+                @endif --}}
 
-            </div>
-            {{-- <a href="#" data-carousel-dir="left" id="schedule-date-picker-left"><i class="fal fa-caret-left" aria-hidden="true"></i></a>
+                </div>
+                {{-- <a href="#" data-carousel-dir="left" id="schedule-date-picker-left"><i class="fal fa-caret-left" aria-hidden="true"></i></a>
                     <a href="#" data-carousel-dir="right" id="schedule-date-picker-right"><i class="fal fa-caret-right" aria-hidden="true"></i></a> --}}
+            </div>
         </div>
-    </div>
 
 
     </div>
@@ -496,7 +501,7 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function(data) {
-                        alert('Your appointment has been sent to approval') ;
+                        alert('Your appointment has been sent to approval');
                     },
                     error: function(err) {
                         console.log(err);

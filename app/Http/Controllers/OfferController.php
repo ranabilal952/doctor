@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Offer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OfferController extends Controller
 {
@@ -14,7 +15,7 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $offer = Offer::all();
+        $offer = Offer::where('user_id',Auth::id())->with('user')->orderBy('created_at','DESC')->get();
         return view('offer.index', compact('offer'));
     }
 
@@ -25,7 +26,8 @@ class OfferController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('offer.create');
     }
 
     /**
@@ -43,9 +45,10 @@ class OfferController extends Controller
         $offer->description_english = $request->description_english;
         $offer->number_session = $request->number_session;
         $offer->offer_amount = $request->offer_amount;
+        $offer->user_id=Auth::id();
         $offer->save();
         toastr()->success('Data Sucessfully Added');
-        return redirect()->back();
+        return redirect('/offer');
     }
 
     /**
@@ -91,5 +94,14 @@ class OfferController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function toggleOffer($id){
+        $offer = Offer::findorFail($id);
+        if($offer){
+            $offer->is_active= !$offer->is_active;
+            $offer->save();
+            return redirect()->back();
+        }
     }
 }

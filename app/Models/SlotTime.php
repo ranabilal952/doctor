@@ -9,9 +9,7 @@ class SlotTime extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'st','user_id'
-    ];
+    protected $guarded = [];
     public function slot()
     {
         return $this->hasMany('App\slot');
