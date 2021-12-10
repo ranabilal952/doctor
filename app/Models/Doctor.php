@@ -11,6 +11,6 @@ class Doctor extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->with(['offers', 'doctorVideos', 'onlineStatus', 'doctorActiveSchedules']);
     }
 }

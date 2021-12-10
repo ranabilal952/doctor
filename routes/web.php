@@ -1,10 +1,9 @@
 <?php
 
 use App\Http\Controllers\AppointmentController;
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\AppointmentScheduleController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CancelltionController;
-use App\Http\Controllers\Condition;
 use App\Http\Controllers\ConditionController;
 use App\Http\Controllers\CounterController;
 use App\Http\Controllers\DiseasesController;
@@ -18,25 +17,23 @@ use App\Http\Controllers\HomeAccordinController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JitsiMeetingController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\OnlineStatusController;
 use App\Http\Controllers\PrivacyController;
+use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\SessionbookController;
 use App\Http\Controllers\SlotTimeController;
 use App\Http\Controllers\SocialLinkController;
 use App\Http\Controllers\SpecialityController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TimeAviableController;
-use App\Http\Controllers\TimeController;
 use App\Http\Controllers\TimezoneController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\WebsiteLinkController;
 use App\Http\Controllers\WeekdayController;
-use App\Models\Doctorvideo;
-use App\Models\HomeAccordin;
+use App\Models\AppointmentSchedule;
 use App\Models\SlotController;
-use App\Models\Time;
-use App\Models\Timezone;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -61,7 +58,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 
@@ -210,21 +206,41 @@ Route::post('videosave', [DoctorvideoController::class, 'store'])->name('videosa
 
 // Offer
 Route::get('offer',  [OfferController::class, 'index'])->name('offer');
+Route::get('create-offer', [OfferController::class, 'create']);
 Route::post('offersave', [OfferController::class, 'store'])->name('offersave');
+Route::get('toggle-offer/{id}', [OfferController::class, 'toggleOffer']);
 
 
-Route::view('onlinesetting', 'status.index')->name('onlinesetting');
-Route::view('bookedsession', 'Schedules.booked')->name('bookedsession');
+Route::get('onlinesetting', [OnlineStatusController::class, 'create'])->name('onlinesetting');
+Route::post('postOnlineStatus', [OnlineStatusController::class, 'store']);
 Route::view('activesession', 'Schedules.index')->name('activesession');
 Route::view('therapist ', 'psychometer.create')->name('therapist');
 
 
 
-Route::get('dynamic-field',[DynamicFieldController::class, 'index' ])->name('dynamic-field');
+Route::get('dynamic-field', [DynamicFieldController::class, 'index'])->name('dynamic-field');
 Route::post('dynamic-field/insert', [DynamicFieldController::class, 'insert'])->name('dynamic-field/insert');
 
 
 Route::get('test',  [TestController::class, 'index'])->name('test');
 Route::post('testsave', [TestController::class, 'store'])->name('testsave');
+
+Route::resource('schedule', SchedulesController::class);
+Route::get('create-schedule', [SchedulesController::class, 'create']);
+Route::get('active-schedule', [SchedulesController::class, 'getActiveSchedule']);
+Route::post('store-schedule', [SchedulesController::class, 'store']);
+Route::get('all-schedules', [SchedulesController::class, 'index']);
+Route::get('booked-schedule', [SchedulesController::class, 'getBookedSchedule']);
+
+
+Route::get('payment-schedule/{id}', [SchedulesController::class, 'paymentSchedule']);
+Route::get('book-schedule/{id}', [SchedulesController::class, 'bookSchedule']);
+
+Route::get('get-next-session', [AppointmentScheduleController::class, 'getNextSession']);
+Route::get('get-previous-session', [AppointmentScheduleController::class, 'getPreviousSession']);
+Route::get('view-appointment/{id}', [AppointmentScheduleController::class, 'viewAppointment']);
+
+Route::view('video-test', 'jitsi.video-test');
+
 
 Route::view('testcreate', 'psychometer.testcreate')->name('testcreate');

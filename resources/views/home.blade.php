@@ -4,7 +4,7 @@
     Dashboard
 @endsection
 @section('content')
-{{-- <div class="page-content-wrapper mt-4">
+    {{-- <div class="page-content-wrapper mt-4">
     <div class="container-fluid">
         <div class="row ">
             
@@ -53,53 +53,53 @@
         </div>
 
     </div>
-</div>  --}}
-<div class="page-content-wrapper ">
+</div> --}}
+    <div class="page-content-wrapper ">
 
-    <div class="container-fluid">
-        @if(Auth::User()->role=='admin')
-        <div class="row">
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="mini-stat clearfix bg-primary">
-                    <span class="mini-stat-icon"><i class="mdi mdi-cart-outline"></i></span>
-                    <div class="mini-stat-info text-right text-white">
-                        <span class="counter">15852</span>
-                   Total User
+        <div class="container-fluid">
+            @if (Auth::User()->role == 'admin')
+                <div class="row">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="mini-stat clearfix bg-primary">
+                            <span class="mini-stat-icon"><i class="mdi mdi-cart-outline"></i></span>
+                            <div class="mini-stat-info text-right text-white">
+                                <span class="counter">{{ $usersCount }}</span>
+                                Total User
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="mini-stat clearfix bg-primary">
+                            <span class="mini-stat-icon"><i class="mdi mdi-currency-usd"></i></span>
+                            <div class="mini-stat-info text-right text-white">
+                                <span class="counter">{{ $doctorsCount }}</span>
+                                Total Doctors
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="mini-stat clearfix bg-primary">
+                            <span class="mini-stat-icon"><i class="mdi mdi-cube-outline"></i></span>
+                            <div class="mini-stat-info text-right text-white">
+                                <span class="counter">0</span>
+                                Total Revenue
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="mini-stat clearfix bg-primary">
+                            <span class="mini-stat-icon"><i class="mdi mdi-currency-btc"></i></span>
+                            <div class="mini-stat-info text-right text-white">
+                                <span class="counter">0</span>
+                               Issues
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="mini-stat clearfix bg-primary">
-                    <span class="mini-stat-icon"><i class="mdi mdi-currency-usd"></i></span>
-                    <div class="mini-stat-info text-right text-white">
-                        <span class="counter">956</span>
-                        Total Doctors
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="mini-stat clearfix bg-primary">
-                    <span class="mini-stat-icon"><i class="mdi mdi-cube-outline"></i></span>
-                    <div class="mini-stat-info text-right text-white">
-                        <span class="counter">5210</span>
-                       Total Revenue
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="mini-stat clearfix bg-primary">
-                    <span class="mini-stat-icon"><i class="mdi mdi-currency-btc"></i></span>
-                    <div class="mini-stat-info text-right text-white">
-                        <span class="counter">20544</span>
-                        Unique Visitors
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
+                <div class="row">
 
-            {{-- <div class="col-xl-4">
+                    {{-- <div class="col-xl-4">
                 <div class="card m-b-20">
                     <div class="card-body">
                         <h4 class="mt-0 header-title">Email Sent</h4>
@@ -174,309 +174,277 @@
                 </div>
             </div> --}}
 
-        </div>
-        <!-- end row -->
-        <div class="row">
-
-            <div class="col-12">
-                <div class="card m-b-20">
-                    <div class="card-body">
-                        <h4 class="mt-0 m-b-15 header-title"> Users</h4>
-                        <div class="table-responsive">
-                            <table class="table table-hover m-b-0">
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Status</th>
-                                    <th>Age</th>
-                                    {{-- <th>Start date</th>
-                                    <th>Salary</th> --}}
-                                </tr>
-
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td><span class="badge badge-primary">Active</span></td>
-                                    <td>61</td>
-                                   
-                                </tr>
-                                <tr>
-                                    <td>Garrett Winters</td>
-                                    <td>Accountant</td>
-                                    <td><span class="badge badge-primary">Active</span></td>
-                                    <td>63</td>
-                                 
-                                </tr>
-                                <tr>
-                                    <td>Ashton Cox</td>
-                                    <td>Junior Technical Author</td>
-                                    <td><span class="badge badge-primary">Active</span></td>
-                                    <td>66</td>
-                                   
-                                </tr>
-                                <tr>
-                                    <td>Cedric Kelly</td>
-                                    <td>Senior Javascript Developer</td>
-                                    <td><span class="badge badge-default">Deactive</span></td>
-                                    <td>22</td>
-                                  
-                                </tr>
-                                <tr>
-                                    <td>Airi Satou</td>
-                                    <td>Accountant</td>
-                                    <td><span class="badge badge-primary">Active</span></td>
-                                    <td>33</td>
-                              
-                                </tr>
-                                <tr>
-                                    <td>Brielle Williamson</td>
-                                    <td>Integration Specialist</td>
-                                    <td><span class="badge badge-primary">Active</span></td>
-                                    <td>61</td>
-                                  
-                                </tr>
-                                <tr>
-                                    <td>Herrod Chandler</td>
-                                    <td>Sales Assistant</td>
-                                    <td><span class="badge badge-default">Deactive</span></td>
-                                    <td>59</td>
-                                  
-                                </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
                 </div>
-            </div>
-
-        </div>
-        @elseif(Auth::User()->role=='doctor')
-        <div class="page-content-wrapper ">
-            <div class="container-fluid">
+                <!-- end row -->
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card m-b-200">
+
+                    <div class="col-12">
+                        <div class="card m-b-20">
                             <div class="card-body">
-                                <h4 class="mt-0 header-title" style="font-size: 20px">Pending Balance</h4>
-                                <hr>
-                                <h1 class="text-center">48.00 <span style="color: #0d6efd!important">USD</span> </h1>
-                             
-                            </div>
-                        </div>
-                    </div>                   
-                     <div class="col-lg-6">
-                        <div class="card m-b-200">
-                            <div class="card-body">
-                                <h4 class="mt-0 header-title" style="font-size: 20px">Available balance</h4>
-                                <hr>
-                                <h1 class="text-center">48.00 <span style="color: #0d6efd!important">USD</span> </h1>
-                             
+                                <h4 class="mt-0 m-b-15 header-title"> Latest Users</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-hover m-b-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Phone No</th>
+                                                <th>Role</th>
+                                            </tr>
+
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($users as $user)
+                                                <tr>
+                                                    <td>{{ $user->name }}</td>
+                                                    <td>{{ $user->email }}</td>
+                                                    <td>{{ $user->phone }}</td>
+                                                    <td><span class="badge badge-primary">{{ $user->role }} </span> </td>
+
+                                                </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
+            @elseif(Auth::User()->role=='doctor')
+                <div class="page-content-wrapper ">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card m-b-200">
+                                    <div class="card-body">
+                                        <h4 class="mt-0 header-title" style="font-size: 20px">Pending Balance</h4>
+                                        <hr>
+                                        <h1 class="text-center">48.00 <span style="color: #0d6efd!important">USD</span>
+                                        </h1>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card m-b-200">
+                                    <div class="card-body">
+                                        <h4 class="mt-0 header-title" style="font-size: 20px">Available balance</h4>
+                                        <hr>
+                                        <h1 class="text-center">48.00 <span style="color: #0d6efd!important">USD</span>
+                                        </h1>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card m-b-200">
+                                    <div class="card-body">
+                                        <h4 class="mt-0 header-title" style="font-size: 20px">Withdraw balance
+                                        </h4>
+                                        <hr>
+                                        <p class="text-muted m-b-20 font-14"></p>
+                                        <form class="" action="#" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <h3 style=" " class="text-center"><strong
+                                                                style="color: #198754!important"> Available balance :
+                                                                4086.00 <span style="color: #0d6efd!important">USD</span>
+                                                            </strong> </h3>
+                                                        <input style="    color: #664d03;
+                                                                                                background-color: #fff3cd;
+                                                                                                border-color: #ffecb5;"
+                                                            type="text" readonly class="form-control" name="offer_arabic"
+                                                            placeholder="Pending withdrawal request 3428.00USD"
+                                                            value="Pending withdrawal request 3428.00USD" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="form-group">
+                                                <div>
+                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                        Withdraw
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card m-b-200">
+                                    <div class="card-body">
+                                        <h4 class="mt-0 header-title" style="font-size: 20px">Donate to support team
+
+                                        </h4>
+                                        <hr>
+                                        <p class="text-muted m-b-20 font-14"></p>
+                                        <form class="" action="#" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <label style="color:black"><strong> Amount </strong> </label>
+                                                        <input type="number" class="form-control" name="offer_arabic"
+                                                            placeholder="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="form-group">
+                                                <div>
+                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                        Donate
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <br>
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card m-b-200">
-                            <div class="card-body">
-                                <h4 class="mt-0 header-title" style="font-size: 20px">Withdraw balance
-                                </h4>
-                                <hr>
-                                <p class="text-muted m-b-20 font-14"></p>
-                                <form class="" action="#" method="POST"
-                                    enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <h3 style=" " class="text-center"><strong style="color: #198754!important"> Available balance : 4086.00 <span style="color: #0d6efd!important">USD</span> </strong> </h3>
-                                                <input style="    color: #664d03;
-                                                background-color: #fff3cd;
-                                                border-color: #ffecb5;" type="text" readonly  class="form-control" name="offer_arabic" placeholder="Pending withdrawal request 3428.00USD" value="Pending withdrawal request 3428.00USD" required>
-                                            </div>
-                                        </div>                                                                       
-                                    </div>
-                                    <hr>
-                                    <div class="form-group">
-                                        <div>
-                                            <button type="submit" class="btn btn-primary waves-effect waves-light">
-                                                Withdraw
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>    
-                    <div class="col-lg-6">
-                        <div class="card m-b-200">
-                            <div class="card-body">
-                                <h4 class="mt-0 header-title" style="font-size: 20px">Donate to support team
 
-                                </h4>
-                                <hr>
-                                <p class="text-muted m-b-20 font-14"></p>
-                                <form class="" action="#" method="POST"
-                                    enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label style="color:black" ><strong> Amount </strong> </label>
-                                                <input  type="number"   class="form-control" name="offer_arabic" placeholder=""  >
-                                            </div>
-                                        </div>                                                                       
-                                    </div>
-                                    <hr>
-                                    <div class="form-group">
-                                        <div>
-                                            <button type="submit" class="btn btn-primary waves-effect waves-light">
-                                                Donate
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
+                    <div class="col-6">
+                        <div class="card m-b-20">
+                            <div class="card-body">
+                                <h4 class="mt-0 m-b-15 header-title" style="font-size: 20px"> Withdraw archive</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-hover m-b-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Description</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+
+                                                {{-- <th>Start date</th>
+                                    <th>Salary</th> --}}
+                                            </tr>
+
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Discount for donation</td>
+                                                <td>21/11/2017</td>
+                                                <td><span class="badge badge-primary">-100.00USD</span></td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <td>Discount for donation</td>
+                                                <td>22/01/2021</td>
+                                                <td><span class="badge badge-primary">-100.00USD</span></td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <td>Discount for donation</td>
+                                                <td>12/01/2020</td>
+                                                <td><span class="badge badge-primary">-100.00USD</span></td>
+
+
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                    <div class="col-6">
+                        <div class="card m-b-20">
+                            <div class="card-body">
+                                <h4 class="mt-0 m-b-15 header-title" style="font-size: 20px"> Balance log</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-hover m-b-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Description</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
 
-        <br>
-        <div class="row">
-
-            <div class="col-6">
-                <div class="card m-b-20">
-                    <div class="card-body">
-                        <h4 class="mt-0 m-b-15 header-title" style="font-size: 20px"> Withdraw archive</h4>
-                        <div class="table-responsive">
-                            <table class="table table-hover m-b-0">
-                                <thead>
-                                <tr>
-                                    <th>Description</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
-                                    
-                                    {{-- <th>Start date</th>
+                                                {{-- <th>Start date</th>
                                     <th>Salary</th> --}}
-                                </tr>
+                                            </tr>
 
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Discount for donation</td>
-                                    <td>21/11/2017</td>
-                                    <td><span class="badge badge-primary">-100.00USD</span></td>
-                                   
-                                   
-                                </tr>
-                                <tr>
-                                    <td>Discount for donation</td>
-                                    <td>22/01/2021</td>
-                                    <td><span class="badge badge-primary">-100.00USD</span></td>
-                                
-                                 
-                                </tr>
-                                <tr>
-                                    <td>Discount for donation</td>
-                                    <td>12/01/2020</td>
-                                    <td><span class="badge badge-primary">-100.00USD</span></td>
-                                    
-                                   
-                                </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Discount for donation</td>
+                                                <td>21/11/2017</td>
+                                                <td><span class="badge badge-primary"
+                                                        style="background: #198754!important">100.00USD</span></td>
 
 
-                                </tbody>
-                            </table>
+                                            </tr>
+                                            <tr>
+                                                <td>Discount for donation</td>
+                                                <td>22/01/2021</td>
+                                                <td><span class="badge badge-primary"
+                                                        style="background: #198754!important">100.00USD</span></td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <td>Discount for donation</td>
+                                                <td>12/01/2020</td>
+                                                <td><span class="badge badge-primary"
+                                                        style="background: #198754!important">100.00USD</span></td>
+
+
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
-            </div> 
-            <div class="col-6">
-                <div class="card m-b-20">
-                    <div class="card-body">
-                        <h4 class="mt-0 m-b-15 header-title" style="font-size: 20px"> Balance log</h4>
-                        <div class="table-responsive">
-                            <table class="table table-hover m-b-0">
-                                <thead>
-                                <tr>
-                                    <th>Description</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
-                                    
-                                    {{-- <th>Start date</th>
-                                    <th>Salary</th> --}}
-                                </tr>
-
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Discount for donation</td>
-                                    <td>21/11/2017</td>
-                                    <td><span class="badge badge-primary" style="background: #198754!important">100.00USD</span></td>
-                                   
-                                   
-                                </tr>
-                                <tr>
-                                    <td>Discount for donation</td>
-                                    <td>22/01/2021</td>
-                                    <td><span class="badge badge-primary" style="background: #198754!important">100.00USD</span></td>
-                                
-                                 
-                                </tr>
-                                <tr>
-                                    <td>Discount for donation</td>
-                                    <td>12/01/2020</td>
-                                    <td><span class="badge badge-primary" style="background: #198754!important">100.00USD</span></td>
-                                    
-                                   
-                                </tr>
-
-
-                                </tbody>
-                            </table>
+            @else
+                <div class="row">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="mini-stat clearfix bg-primary">
+                            <span class="mini-stat-icon"><i class="mdi mdi-cart-outline"></i></span>
+                            <div class="mini-stat-info text-right text-white">
+                                <span class="counter">0000</span>
+                                Coming Soon
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-
-        </div>
-        @else
-        <div class="row">
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="mini-stat clearfix bg-primary">
-                    <span class="mini-stat-icon"><i class="mdi mdi-cart-outline"></i></span>
-                    <div class="mini-stat-info text-right text-white">
-                        <span class="counter">0000</span>
-                    Coming Soon
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="mini-stat clearfix bg-primary">
+                            <span class="mini-stat-icon"><i class="mdi mdi-currency-usd"></i></span>
+                            <div class="mini-stat-info text-right text-white">
+                                <span class="counter">0000</span>
+                                Coming Soon
+                            </div>
+                        </div>
                     </div>
+
+
                 </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="mini-stat clearfix bg-primary">
-                    <span class="mini-stat-icon"><i class="mdi mdi-currency-usd"></i></span>
-                    <div class="mini-stat-info text-right text-white">
-                        <span class="counter">0000</span>
-                        Coming Soon
-                    </div>
-                </div>
-            </div>
-           
-           
-        </div>
-        @endif
-        <!-- end row -->
+            @endif
+            <!-- end row -->
 
-    </div><!-- container-fluid -->
+        </div><!-- container-fluid -->
 
 
-</div> 
+    </div>
 @endsection
 {{-- <td><span class="badge badge-primary">Active</span></td> --}}

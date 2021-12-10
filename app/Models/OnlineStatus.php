@@ -5,14 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Offer extends Model
+class OnlineStatus extends Model
 {
     use HasFactory;
-    protected $guarded = [
-    ];
 
-
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
+    protected $guarded = [];
 }

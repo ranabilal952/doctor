@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
+<html lang="ar" >
+    {{-- dir="rtl" --}}
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />

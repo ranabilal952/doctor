@@ -197,11 +197,11 @@
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Add speciality <span class="badge badge-primary pull-right"></span></span>
                                 </a>
-                            </li>                            
+                            </li>
                             <li>
                                 <a href="{{ url('test') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Add psychometer <span class="badge badge-primary pull-right"></span></span>
+                                    <span> Add Psychological Test <span class="badge badge-primary pull-right"></span></span>
                                 </a>
                             </li>
                             <li>
@@ -242,19 +242,19 @@
                                 </ul>
                             </li>
                         @elseif(Auth::User()->role=='doctor')
-                            <li>
+                            {{-- <li>
                                 <a href="{{ url('slottime') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Add Time Availability<span
                                             class="badge badge-primary pull-right"></span></span>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="has_sub ">
                                 <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
                                         Sessions </span> </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ url('/getCurrentAppointments') }}">Your Appointments</a></li>
-                                    <li><a href="{{ url('/getPastAppointments') }}">Past Sessions</a></li>
+                                    <li><a href="{{ url('/get-next-session') }}">Next Sessions</a></li>
+                                    <li><a href="{{ url('/get-previous-session') }}">Previous Sessions</a></li>
 
                                     {{-- <li><a href="{{url('done_appointment')}}" >Done Appointment</a></li> --}}
                                     {{-- <li><a href="{{url('cancel_appointment')}}" >Cancelled Appointment</a></li> --}}
@@ -264,8 +264,10 @@
                                 <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
                                         Schedules </span> </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ url('activesession') }}">Active Schedules</a></li>
-                                    <li><a href="{{url('bookedsession')}}">Booked Schedules</a></li>
+                                    <li><a href="{{ url('create-schedule') }}">Add Schedule</a></li>
+                                    <li><a href="{{ url('active-schedule') }}">Active Schedules</a></li>
+                                    <li><a href="{{ url('booked-schedule') }}">Booked Schedules</a></li>
+                                    <li><a href="{{ url('all-schedules') }}">All Schedules</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -273,25 +275,31 @@
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Videos <span class="badge badge-primary pull-right"></span></span>
                                 </a>
-                            </li> 
-                             <li>
+                            </li>
+                            <li>
                                 <a href="{{ url('onlinesetting') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Online Setting <span class="badge badge-primary pull-right"></span></span>
                                 </a>
-                            </li>                            
+                            </li>
+                            <li class="has_sub ">
+                                <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span>Offers</span>
+                                </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ url('create-offer') }}"> <i class="mdi mdi-clock "> Create Offer
+                                            </i>
+                                    <li><a href="{{ url('offer') }}"> <i class="mdi mdi-clock "> Your Offers</i>
+                                        </a>
+                                </ul>
+                            </li>
+
                             <li>
-                                <a href="{{ url('offer') }}" class="waves-effect ">
-                                    <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Offer <span class="badge badge-primary pull-right"></span></span>
+                                <a href="{{ url('video-test') }}" class="waves-effect ">
+                                    <i class="mdi mdi-camera"></i>
+                                    <span> Video Test <span class="badge badge-primary pull-right"></span></span>
                                 </a>
-                            </li>                           
-                             <li>
-                                <a href="{{ url('profile_view') }}" class="waves-effect ">
-                                    <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Profile <span class="badge badge-primary pull-right"></span></span>
-                                </a>
-                            </li> 
+                            </li>
+
                         @else
 
                             {{-- <li>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\AppointmentSchedule;
 use App\Models\JitsiMeeting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -91,7 +92,7 @@ class JitsiMeetingController extends Controller
 
     public function getIntoMeeting(Request $request)
     {
-        $appointment = Appointment::where('id', $request->appointment_id)->with(['user', 'doctor'])->first();
+        $appointment = AppointmentSchedule::where('id', $request->appointment_id)->with(['user', 'doctor'])->first();
         $serverURL = env('Video_Server_URL');
         $currentUser = Auth::user();
         $alreadyLinkPresent =   JitsiMeeting::where('appointment_id', $request->appointment_id)->first();
@@ -107,13 +108,13 @@ class JitsiMeetingController extends Controller
     public function changeMeetingStatus(Request $request)
     {
         $meeting =  JitsiMeeting::where('appointment_id', $request->appointment_id)->first();
-        $appointment = Appointment::findorFail($request->appointment_id);
+        $appointment = AppointmentSchedule::findorFail($request->appointment_id);
         if ($appointment) {
-            $appointment->status = 'completed';
+            $appointment->appointment_status = 'completed';
             $appointment->save();
         }
         if ($meeting) {
-            $meeting->status = $request->status;
+            $meeting->appointment_status  = $request->status;
             $meeting->save();
         }
         return response()->json([

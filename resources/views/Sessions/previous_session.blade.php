@@ -1,62 +1,52 @@
 @extends('layouts.app')
 @section('title')
-    Your Offers
+    Previous Session
 @endsection
 @section('content')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.1.0/css/buttons.dataTables.min.css">
-
-
     <div class="page-content-wrapper ">
         <div class="container-fluid">
-
             <div class="page-content-wrapper ">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
                             <div class="card m-b-20">
                                 <div class="card-body">
-                                    <h4 class="mt-0 header-title">All Offers </h4>
+                                    <h4 class="mt-0 header-title">Previous Sessions</h4>
                                     <p class="text-muted m-b-30 font-14"></p>
                                     <table id="example" style="width:100%" class="table table-bordered dt-responsive nowrap"
                                         cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>Id</th>
-                                                <th>Number Offer Session</th>
-                                                <th> Offer Amount</th>
-                                                <th> Offer Status</th>
-                                                <th> Created at</th>
-                                                <th> Action</th>
-                                                {{-- <th>Edit</th> --}}
-
+                                                <th>Sr.no</th>
+                                                <th>Schedule date</th>
+                                                <th>Schedule time</th>
+                                                <th>Patient</th>
+                                                <th>Schedule duration</th>
+                                                <th>Schedule amount</th>
+                                                {{-- <th>Schedule Type</th> --}}
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($offer as $key => $offer)
+                                            @foreach ($previousSessions as $key => $sessions)
                                                 <tr>
                                                     <td>{{ $key + 1 }}</td>
-                                                    <td>{{ $offer->number_session }}</td>
-                                                    <td>{{ $offer->offer_amount }}</td>
-
-                                                    <td><span
-                                                            class="badge badge-primary">{{ $offer->is_active ? 'Active' : 'Deactive' }}
-                                                        </span></td>
-                                                    <td>{{ $offer->created_at->format('Y-M-d') }}</td>
-                                                    <td><a href="{{ url('toggle-offer', $offer->id) }}"> <span
-                                                                class="badge badge-default">{{ $offer->is_active ? 'Active' : 'Deactive' }}
-                                                            </span></a></td>
+                                                    <td>{{ $sessions->slot->date_from }}</td>
+                                                    <td>{{ $sessions->slot->time }}</td>
+                                                    <td>{{ $sessions->user->name }}</td>
+                                                    <td>{{ $sessions->slot->duration }} Minutes</td>
+                                                    <td>{{ $sessions->slot->amount }} USD</td>
 
                                                     {{-- <td>
-                                                <center> <button type="button" class="edit-btn btn btn-danger"
-                                                        id="{{$slottime->id}}" time="{{$slottime->time}}"
-                                                        data-toggle="modal" data-target="#edit-modal"><i
-                                                            class="fa fa-pencil"></i></button></center>
 
-                                            </td> --}}
+                                                        <a onclick="return confirm('Do you want to delete this record ?')"
+                                                            href="#" class="btn btn-danger btn-xs"><i
+                                                                class="fa fa-trash-o "></i></a>
+
+
+
+                                                    </td> --}}
                                                 </tr>
                                             @endforeach
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -75,8 +65,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
 @endsection
+
 @section('scripts')
+
     <script>
         $(document).ready(function() {
             $('#example').DataTable({

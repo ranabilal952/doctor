@@ -15,24 +15,30 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    
+
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label style="color: black"><strong> Title Enlish</strong> </label>
-                                            <input type="text"  class="form-control" name="title_english" placeholder="" required>
+                                            <label style="color: black"><strong> Title English</strong> </label>
+                                            <input type="text" class="form-control" name="title_english" placeholder=""
+                                                required>
                                         </div>
-                                    </div>                                    
+                                    </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label style="color: black"><strong> Title Arabic</strong> </label>
-                                            <input type="text"  class="form-control" name="title_arabic" placeholder=""  required>
+                                            <input type="text" class="form-control" name="title_arabic" placeholder=""
+                                                required>
                                         </div>
-                                    </div>                                    
+                                    </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label style="color: black"><strong> Video URL</strong> </label>
-                                            <input type="text"  class="form-control" name="video_url" placeholder="" required>
+                                            <input type="text" class="form-control" name="video_url" placeholder=""
+                                                required>
                                         </div>
+                                        @if ($errors->has('video_url'))
+                                            <span class="text-primary">{{ $errors->first('video_url') }}</span>
+                                        @endif
                                     </div>
 
                                 </div>
@@ -67,7 +73,7 @@
                                                 <th>Id</th>
                                                 <th>Title English </th>
                                                 <th>Title Arabic </th>
-                                              
+
                                                 <th>Video URL </th>
                                                 {{-- <th>Edit</th> --}}
 
