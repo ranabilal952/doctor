@@ -308,12 +308,12 @@
                                     <li><a href="{{ url('/getPastAppointments') }}">Past Appointments</a></li>
                                 </ul>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{url('testcreate')}}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> My test <span class="badge badge-primary pull-right"></span></span>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href="" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>

@@ -31,8 +31,7 @@
     <div class="doctor-home">
         <div class="container">
             <div class="row">
-
-                @foreach ($doctor as $doctor)
+                @foreach ($doctor->take(4) as $doctor)
                     <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
                         <div class="card doc_doctor">
                             <div class="top-bi">
@@ -48,7 +47,7 @@
                             <div class="top-doctor-item-available-alert mt-1 online" style="float: right;">
                                 <span>{{ $doctor->availablity }} </span></div>
                             <div class="top-doctor-item-img">
-                                <img alt="ربيع الحوراني" src="{{ url($doctor->image ?? '') }}">
+                                <img alt="ربيع الحوراني" src="{{ asset($doctor->image ?? '') }}">
                                 <i class="doctor-item-availablity online"></i>
                             </div>
                             <div class="card-body">
