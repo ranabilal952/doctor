@@ -77,7 +77,7 @@ class FrontController extends Controller
     public function profile()
     {
         $user = User::with('doctorData')->find(Auth::id());
-        dd($user);
+        // dd($user);
         if ($user->role == 'doctor')
             return view('profile.doctor')->with('user', $user);
         else

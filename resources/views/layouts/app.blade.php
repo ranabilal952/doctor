@@ -329,13 +329,14 @@
                                     <span> My test <span class="badge badge-primary pull-right"></span></span>
                                 </a>
                             </li> --}}
-                            <li>
-                                <a href="" class="waves-effect ">
-                                    <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Profile <span class="badge badge-primary pull-right"></span></span>
-                                </a>
-                            </li>
+                         
                         @endif
+                        <li>
+                            <a href="{{url('profile_view')}}" class="waves-effect ">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span> Profile <span class="badge badge-primary pull-right"></span></span>
+                            </a>
+                        </li>
                         {{-- <li class="">
                         <a href="{{ route('logout') }}" class="waves-effect">
                         <i class="fa fa-sign-out"></i>

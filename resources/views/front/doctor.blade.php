@@ -13,7 +13,7 @@
         </div>
 
     </div>
-
+{{-- 
     <div class="doctor-offers-box country" style="    width: 50%; margin-right: 25%; height: 127px;">
         <p class="ng-binding"><i class="fa fa-times fa-color-yellow"></i> تحدث اونلاين مع المعالج النفسي وانت جالس في
             بيتك: جلسات فورية أو في الوقت الذي يناسبك</p>
@@ -31,7 +31,7 @@
             <div class="offer-badge ">عروض</div>
         </div>
 
-    </div>
+    </div> --}}
 
 
     <!-- wizerd -->
@@ -62,12 +62,12 @@
                             <div class="video-service" style="    background: #138DE7;
                             "><i class="las la-video" style="margin-right: 4px; font-size: 15px;"></i></div>
                         </div>
-                        <div class="top-doctor-item-available-alert mt-1 online" style="float: right;"><span>متوفر
+                        <div class="top-doctor-item-available-alert mt-1 online" ><span style="    float: right;
+                            margin-top: -8px;">متوفر
                                 الأن</span></div>
                         <div class="top-doctor-item-img">
-                            <img ng-src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp"
-                                alt="ربيع الحوراني"
-                                src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp">
+                            <img 
+                                alt="ربيع الحوراني" src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp">
                             <i class="doctor-item-availablity online"
                                 ng-class="$ctrl.doctor.online ? 'online' : 'offline'"></i>
                         </div>

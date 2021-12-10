@@ -881,6 +881,7 @@ doctor-offers-box.country .top-doctor-services {
     margin: 0 0.5rem;
     overflow: hidden;
     background-size: 100%;
+    float: right;
 }
 
 .top-doctor-item-img {

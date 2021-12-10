@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Doctor extends Model
 {
     use HasFactory;
-
+    protected $guarded = [
+    ];
     public function user()
     {
         return $this->belongsTo(User::class)->with(['offers', 'doctorVideos', 'onlineStatus', 'doctorActiveSchedules']);
