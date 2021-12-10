@@ -11,8 +11,9 @@
     <meta content="ThemeDesign" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('assets/plugins/fullcalendar/css/fullcalendar.min.css') }}" rel="stylesheet" />
 
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
@@ -22,19 +23,21 @@
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet"
         type="text/css" />
     <!--Morris Chart CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/morris/morris.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/plugins/morris/morris.css') }}"> --}}
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/assesment.css') }}" rel="stylesheet" type="text/css">
 
     <link href="{{ asset('toastr/toastr.min.css') }}" rel="stylesheet" type="text/css">
-    <script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
-    <script src='https://https://zkpredictics.com/external_api.js'></script>
+    {{-- <script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script> --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script> --}}
+    <script src='https://zkpredictics.com/external_api.js'></script>
 
     @yield('style')
 </head>
+
+
 
 
 <body class="fixed-left">
@@ -201,7 +204,8 @@
                             <li>
                                 <a href="{{ url('test') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Add Psychological Test <span class="badge badge-primary pull-right"></span></span>
+                                    <span> Add Psychological Test <span
+                                            class="badge badge-primary pull-right"></span></span>
                                 </a>
                             </li>
                             <li>
@@ -310,14 +314,17 @@
                             </li> --}}
                             <li class="has_sub ">
                                 <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
-                                        My Reservations </span> </a>
+                                        Sessions </span> </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ url('/getCurrentAppointments') }}">Your Appointments</a></li>
-                                    <li><a href="{{ url('/getPastAppointments') }}">Past Appointments</a></li>
+                                    <li><a href="{{ url('/get-next-session') }}">Next Sessions</a></li>
+                                    <li><a href="{{ url('/get-previous-session') }}">Previous Sessions</a></li>
+
+                                    {{-- <li><a href="{{url('done_appointment')}}" >Done Appointment</a></li> --}}
+                                    {{-- <li><a href="{{url('cancel_appointment')}}" >Cancelled Appointment</a></li> --}}
                                 </ul>
                             </li>
-                            {{-- <li>
-                                <a href="{{url('testcreate')}}" class="waves-effect ">
+                            <li>
+                                <a href="{{ url('testcreate') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> My test <span class="badge badge-primary pull-right"></span></span>
                                 </a>
@@ -431,6 +438,7 @@
     <script src="{{ asset('toastr/toastr.min.js') }}"></script>
     <script src="https://cdn.tiny.cloud/1/rfv7rfhx5vafv76ygxza52h080627sqb542j7d7736y9x8c2/tinymce/5/tinymce.min.js"
         referrerpolicy="origin"></script>
+
     @toastr_render
     @yield('scripts')
 </body>

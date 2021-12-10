@@ -322,14 +322,27 @@
                                         <small style="">{{ \Carbon\Carbon::parse($ss)->format('d/m') }}</small>
                                     </div>
                                     @foreach ($time as $key => $value)
-                                        <a href="{{ url('payment-schedule', $value->id) }}">
-                                            <div class="d-block">
-                                                <div class="scheduleTime text-primary">
-                                                    <small>{{ $value->time }}</small>
+                                        @if (Auth::check())
+                                            <a href="{{ url('payment-schedule', $value->id) }}">
+                                                <div class="d-block">
+                                                    <div class="scheduleTime text-primary">
+                                                        <small>{{ $value->time }}</small>
+                                                    </div>
+                                                    <small class="text-muted"> ({{ $value->duration }}
+                                                        minutes)</small>
                                                 </div>
-                                                <small class="text-muted"> ({{ $value->duration }} minutes)</small>
-                                            </div>
-                                        </a>
+                                            </a>
+                                        @else
+                                            <a href="#" data-toggle="modal" data-target="#exampleModal">
+                                                <div class="d-block">
+                                                    <div class="scheduleTime text-primary">
+                                                        <small>{{ $value->time }}</small>
+                                                    </div>
+                                                    <small class="text-muted"> ({{ $value->duration }}
+                                                        minutes)</small>
+                                                </div>
+                                            </a>
+                                        @endif
                                     @endforeach
                                 </div>
 

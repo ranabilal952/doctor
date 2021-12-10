@@ -543,7 +543,8 @@ ul {
 
 .header_nav .center {
     flex: 1;
-    text-align: left;
+    text-align: right;
+    margin-right: 5%;
 }
 
 /* info */

@@ -18,6 +18,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JitsiMeetingController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\OnlineStatusController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\SessionbookController;
@@ -243,4 +244,7 @@ Route::get('view-appointment/{id}', [AppointmentScheduleController::class, 'view
 Route::view('video-test', 'jitsi.video-test');
 
 
-Route::view('testcreate', 'psychometer.testcreate')->name('testcreate');
+Route::get('testcreate', [TestController::class, 'create'])->name('testcreate');
+
+
+Route::post('stripe', [PaymentController::class, 'stripePost'])->name('stripe.post');
