@@ -28,7 +28,7 @@
                                                 <th>Schedules Duration</th>
                                                 <th> Schedules Amount</th>
                                                 <th> Schedules Status</th>
-                                                {{-- <th> Action</th> --}}
+                                                <th> Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -42,6 +42,13 @@
                                                     <td>{{ floatval($slotTime['amount']) }} USD</td>
                                                     <td><span class="badge "
                                                             style="background-color: #0dcaf0!important; color:white">Booked</span>
+                                                    </td>
+                                                    <td>
+                                                        @php
+                                                            $data = \App\Models\AppointmentSchedule::where('slot_id', $slotTime->id)->first();
+                                                        @endphp
+                                                        <a href="{{ url('view-appointment', $data->id) }}"><span
+                                                                class="fa fa-eye"></span></a>
                                                     </td>
                                                 </tr>
                                             @endforeach

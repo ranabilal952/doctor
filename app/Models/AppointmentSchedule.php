@@ -25,4 +25,9 @@ class AppointmentSchedule extends Model
     {
         return $this->belongsTo(User::class, 'doctor_id');
     }
+
+    public function meetingLink()
+    {
+        return $this->hasOne(JitsiMeeting::class, 'appointment_id');
+    }
 }

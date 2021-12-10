@@ -26,13 +26,38 @@
                                         </p>
                                     </div>
                                 </div>
-                        </div>
-                            <h6 class="text-center">Schedule Status:
-                            </h6>
-                            <div class="w-100 text-center">
-                                <span class=""
-                                    style="color: #D23830;font-weight:bold">{{ ucfirst($appointmentSchedule->appointment_status) }}</span>
                             </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h6 class="text-center">Schedule Status:
+                                    </h6>
+                                    <div class="w-100 text-center">
+                                        <span class=""
+                                            style="color: #D23830;font-weight:bold">{{ ucfirst($appointmentSchedule->appointment_status) }}</span>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6 class="text-center">TXT Id:
+                                    </h6>
+                                    <div class="w-100 text-center">
+                                        <span class=""
+                                            style="color: #D23830;font-weight:bold">{{ ucfirst($payment->transaction_id) }}</span>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <h6 class="text-center">Schedule#
+                                    </h6>
+                                    <div class="w-100 text-center">
+                                        <span class=""
+                                            style="color: #D23830;font-weight:bold">000{{ ucfirst($appointmentSchedule->id) }}</span>
+
+                                    </div>
+                                </div>
+                            </div>
+
                             <hr>
                             <div class="row">
                                 <div class=" col-md-12">
@@ -85,8 +110,8 @@
                                         <a href="{{ url('meeting', $appointmentSchedule->id) }}" class="btn btn-primary">
                                             Start Meeting
                                         </a>
-                                    @elseif($appointment->meetingLink!=null &&
-                                        $appointment->meetingLink->status=='started')
+                                    @elseif($appointmentSchedule->meetingLink!=null &&
+                                        $appointmentSchedule->meetingLink->status=='started')
                                         <a href="{{ url('meeting', $appointmentSchedule->id) }}" class="btn btn-primary">
                                             Join Meeting
                                         </a>

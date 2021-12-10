@@ -297,12 +297,7 @@
                                 </ul>
                             </li>
 
-                            <li>
-                                <a href="{{ url('video-test') }}" class="waves-effect ">
-                                    <i class="mdi mdi-camera"></i>
-                                    <span> Video Test <span class="badge badge-primary pull-right"></span></span>
-                                </a>
-                            </li>
+                            
 
                         @else
 
@@ -323,12 +318,12 @@
                                     {{-- <li><a href="{{url('cancel_appointment')}}" >Cancelled Appointment</a></li> --}}
                                 </ul>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ url('testcreate') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> My test <span class="badge badge-primary pull-right"></span></span>
                                 </a>
-                            </li> --}}
+                            </li>  --}}
                             <li>
                                 <a href="" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
@@ -336,6 +331,13 @@
                                 </a>
                             </li>
                         @endif
+
+                        <li>
+                            <a href="{{ url('video-test') }}" class="waves-effect ">
+                                <i class="mdi mdi-camera"></i>
+                                <span> Video Test <span class="badge badge-primary pull-right"></span></span>
+                            </a>
+                        </li>
                         {{-- <li class="">
                         <a href="{{ route('logout') }}" class="waves-effect">
                         <i class="fa fa-sign-out"></i>

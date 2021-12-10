@@ -114,26 +114,30 @@ class PaymentController extends Controller
             ]);
 
             if ($paymentObject->status == 'succeeded') {
+                $appointmentData =      AppointmentSchedule::create([
+                    'user_id' => Auth::id(),
+                    'doctor_id' => $slotData->user_id,
+                    'slot_id' => $slotData->id,
+                ]);
+
                 Payment::create([
                     'user_id' => Auth::id(),
                     'status' => $paymentObject->status,
                     'slot_id' => $slot_id,
                     'transaction_id' => $paymentObject->id,
+                    'appointment_schedule_id' => $appointmentData->id,
                 ]);
+
+
                 $slotData->booking_status = 0;
                 $slotData->save();
                 toastr()->success('Your appointment has been scheduled');
+                return redirect('get-next-session');
                 // yaha pr user ko redirect krwana hai user dashboard me
-            } {
+            } else {
                 toastr()->error('Card is not verified');
                 return redirect()->back();
             }
-
-            AppointmentSchedule::create([
-                'user_id' => Auth::id(),
-                'doctor_id' => $slotData->user_id,
-                'slot_id' => $slotData->id,
-            ]);
         } else {
             toastr()->error('Appointment is not available right now');
         }
