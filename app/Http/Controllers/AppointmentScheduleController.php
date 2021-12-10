@@ -87,7 +87,8 @@ class AppointmentScheduleController extends Controller
 
     public function getNextSession()
     {
-        $nextSessions = AppointmentSchedule::where('doctor_id', Auth::id())->where('appointment_status', 'booked')->with(['slot', 'user', 'doctor'])->get();
+        $userRole = Auth::user()->role;
+        $nextSessions = AppointmentSchedule::where($userRole == 'doctor' ? 'doctor_id' : 'user_id', Auth::id())->where('appointment_status', 'booked')->with(['slot', 'user', 'doctor'])->get();
         $upcomingSessions = array();
         foreach ($nextSessions as $key => $session) {
             $appointmentDate =  Carbon::parse($session->slot->date_from . $session->slot->time);
@@ -102,7 +103,8 @@ class AppointmentScheduleController extends Controller
 
     public function getPreviousSession()
     {
-        $appointmentSchedule = AppointmentSchedule::where('doctor_id', Auth::id())->where('appointment_status', 'booked')->with('slot')->get();
+        $userRole = Auth::user()->role;
+        $appointmentSchedule = AppointmentSchedule::where($userRole == 'doctor' ? 'doctor_id' : 'user_id', Auth::id())->where('appointment_status', 'booked')->with('slot')->get();
         $previousSessions = array();
         foreach ($appointmentSchedule as $key => $session) {
             $appointmentDate =  Carbon::parse($session->slot->date_from . $session->slot->time);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DynamicField;
 use App\Models\Test;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class TestController extends Controller
      */
     public function create()
     {
-        //
+        $test = DynamicField::where('test_id', 1)->get();
+        return view('psychometer.testcreate')->with('test', $test);
     }
 
     /**
@@ -36,15 +38,15 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-    
+
         $test = Test::create([
             'test_name' => $request->test_name,
             'test_description' => $request->test_description,
         ]);
-     
-    //    dd($test);
+
+        //    dd($test);
         toastr()->success('Data Sucessfully Added');
-        return view('psychometer.create')->with('id',$test->id);
+        return view('psychometer.create')->with('id', $test->id);
     }
 
     /**

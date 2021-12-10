@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="ar" >
-    {{-- dir="rtl" --}}
+<html lang="ar">
+{{-- dir="rtl" --}}
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -77,7 +78,7 @@
                     </li>
                     <li class="center_li">
                         <a class="li_a" href="{{ url('how_book') }}">حجز جلسة علاج نفسي اونلاين</a>
-                    </li> 
+                    </li>
                     <li class="center_li">
                         <a class="li_a" href="{{ url('testcreate') }}">psychometer </a>
                     </li>
@@ -102,8 +103,8 @@
                                   document.getElementById('logout-form').submit();">
                     {{ __('Logout') }}
                 </a>
-                <a class="left2_a" href="{{ url('/home') }}" >
-                   Dashboard
+                <a class="left2_a" href="{{ url('/home') }}">
+                    Dashboard
                 </a>
 
             @endif
