@@ -201,7 +201,7 @@
                             <li>
                                 <a href="{{ url('test') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Add psychometer <span class="badge badge-primary pull-right"></span></span>
+                                    <span> Add Psychological Test <span class="badge badge-primary pull-right"></span></span>
                                 </a>
                             </li>
                             <li>
@@ -317,7 +317,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="{{ url('mytest') }}" class="waves-effect ">
+                                <a href="{{url('testcreate')}}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> My test <span class="badge badge-primary pull-right"></span></span>
                                 </a>

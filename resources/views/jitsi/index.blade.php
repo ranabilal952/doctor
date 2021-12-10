@@ -69,9 +69,9 @@
                         success: function(data) {}
                     });
                 }
-                var url = "{{ url('appointment') }}" + "/" + appointmentID;
+                var url = "{{ url('view-appointment') }}" + "/" + appointmentID;
 
-              
+
                 document.location.href = url;
             });
 

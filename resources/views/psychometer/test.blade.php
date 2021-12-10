@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Add Doctors / اضافة اطباء
+    Add Test /  
 @endsection
 @section('content')
     <div class="page-content-wrapper ">

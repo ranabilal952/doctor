@@ -32,6 +32,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\WebsiteLinkController;
 use App\Http\Controllers\WeekdayController;
+use App\Models\AppointmentSchedule;
 use App\Models\SlotController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -214,7 +215,7 @@ Route::get('onlinesetting', [OnlineStatusController::class, 'create'])->name('on
 Route::post('postOnlineStatus', [OnlineStatusController::class, 'store']);
 Route::view('activesession', 'Schedules.index')->name('activesession');
 Route::view('therapist ', 'psychometer.create')->name('therapist');
-Route::view('mytest ', 'psychometer.testcreate')->name('mytest');
+
 
 
 Route::get('dynamic-field', [DynamicFieldController::class, 'index'])->name('dynamic-field');
@@ -237,5 +238,9 @@ Route::get('book-schedule/{id}', [SchedulesController::class, 'bookSchedule']);
 
 Route::get('get-next-session', [AppointmentScheduleController::class, 'getNextSession']);
 Route::get('get-previous-session', [AppointmentScheduleController::class, 'getPreviousSession']);
+Route::get('view-appointment/{id}', [AppointmentScheduleController::class, 'viewAppointment']);
 
 Route::view('video-test', 'jitsi.video-test');
+
+
+Route::view('testcreate', 'psychometer.testcreate')->name('testcreate');

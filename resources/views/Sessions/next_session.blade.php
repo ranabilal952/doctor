@@ -23,6 +23,7 @@
                                                 <th>Patient</th>
                                                 <th>Schedule duration</th>
                                                 <th>Schedule amount</th>
+                                                <th>Action</th>
                                                 {{-- <th>Schedule Type</th> --}}
                                             </tr>
                                         </thead>
@@ -35,6 +36,8 @@
                                                     <td>{{ $sessions->user->name }}</td>
                                                     <td>{{ $sessions->slot->duration }} Minutes</td>
                                                     <td>{{ $sessions->slot->amount }} USD</td>
+                                                    <td><a href="{{ url('view-appointment', $sessions->id) }}"><span
+                                                                class="fa fa-eye"></span></a> </td>
 
                                                     {{-- <td>
 

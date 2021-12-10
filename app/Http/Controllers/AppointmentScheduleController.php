@@ -114,4 +114,12 @@ class AppointmentScheduleController extends Controller
 
         return view('Sessions.previous_session')->with('previousSessions', $previousSessions);
     }
+
+    public function viewAppointment($id)
+    {
+        $appointmentSchedule = AppointmentSchedule::with(['slot', 'user', 'doctor'])->findorFail($id);
+        if ($appointmentSchedule) {
+            return view('Appointment_Schedule.view')->with('appointmentSchedule', $appointmentSchedule);
+        }
+    }
 }

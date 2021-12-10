@@ -17,7 +17,6 @@ class CreateJitsiMeetingsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('appointment_id')->default(0);
             $table->string('meeting_link')->nullable();
-            $table->foreign('appointment_id')->references('id')->on('appointments');
             $table->timestamps();
         });
     }
