@@ -18,6 +18,8 @@
 
 </style>
 @section('content')
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
@@ -236,7 +238,7 @@
 
                                     <div ng-repeat="(key, offer) in offers"
                                         class="col-md-4 col-sm-12 col-12 py-3  order-md-1 order-2 ">
-                                        <div class="doctor-single-tab-plan" ng-class="key > 1 ? 'normal-offer' : ''">
+                                        <div class="doctor-single-tab-plan" >
 
                                             <h4 class="ng-binding">{{ $offer->offer_english }}</h4>
                                             <div class="doctor-single-tab-plan-price">
@@ -311,12 +313,15 @@
                                 <span>{{ $doctor->sixty_minute_price }} USD</span>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row autoplay">
                             @foreach ($slotTimes as $ss => $time)
 
-                                <div class="col-md-4 text-center mt-3"
-                                    style="margin-right:2px;border:1px solid rgba(0,0,0,.125);">
-                                    <div class="heading bg-primary " style="width: 100%;color:white;text-align:center">
+                                <div class="col-lg-3 text-center mt-3 mb-5"
+                                    style="margin-right:15px;border:1px solid rgba(0,0,0,.125);">
+                                    <div class="heading bg-primary " style="    width: 145%;
+                                    color: white;
+                                    text-align: center;
+                                    margin-left: -12px;">
                                         <small> {{ \Carbon\Carbon::parse($ss)->format('l') }}</small>
                                         <br>
                                         <small style="">{{ \Carbon\Carbon::parse($ss)->format('d/m') }}</small>
@@ -349,6 +354,16 @@
                             @endforeach
                         </div>
                     </div>
+                    <script>
+                       $(document).ready(function(){
+                        $('.autoplay').slick({
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2000,
+});
+                            });
+                    </script>
                     {{-- <form action="{{ url('appointment.store') }}" method="POST">
                             @csrf
                             <div class="row justify-content-center">

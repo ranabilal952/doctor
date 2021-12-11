@@ -17,11 +17,12 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
+         
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label style="color: black"><strong>Doctor Full Name / اسم الطبيب
                                                     الكامل</strong> </label>
-                                            <input type="text" class="form-control" name="doctor_name" placeholder="">
+                                            <input type="text" class="form-control" name="doctor_name" value="{{ $user->doctorData->doctor_name ?? '' }}" placeholder="">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -29,7 +30,7 @@
                                             <label style="color: black"><strong>Doctor Specility / تخصص الطبيب</strong>
                                             </label>
                                             <input type="text" class="form-control" name="doctor_specility"
-                                                placeholder="">
+                                                placeholder="" value="{{ $user->doctorData->doctor_specility ?? '' }}">
                                         </div>
                                     </div>
 
@@ -38,7 +39,7 @@
                                         <div class="form-group">
                                             <label style="color: black"><strong>Year Of Experience / سنة خبرة</strong>
                                             </label>
-                                            <input type="text" class="form-control" name="year_experience" placeholder="">
+                                            <input type="text" class="form-control" name="year_experience" value="{{ $user->doctorData->year_experience ?? '' }}" placeholder="">
                                         </div>
                                     </div>
     
@@ -46,9 +47,9 @@
                                         <label style="color: black"><strong>Language Doctor Know / دكتور لغة تعلم</strong>
                                         </label>
                                         <div class="form-group">
-
+                                            <option value="{{ $user->doctorData->language ?? '' }}"></option>
                                             <select class="form-control" name="language" id="" required>
-                                                <option selected disabled>--Selected--</option>
+                                                <option value="{{ $user->doctorData->language ?? '' }}">{{ $user->doctorData->language ?? '' }}</option>
                                                 <option value="english">english</option>
                                                 <option value="arabic">Arabic</option>
 
@@ -62,7 +63,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label style="color: black"><strong>Email / بريد الالكتروني</strong></label>
-                                            <input type="email" class="form-control" name="email" id="" placeholder="">
+                                            <input type="email" class="form-control" name="email" value="{{ $user->doctorData->email ?? '' }}" id="" placeholder="">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -76,7 +77,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label style="color: black"><strong>Phone Number / رقم الهاتف</strong></label>
-                                            <input type="text" class="form-control" name="phone" id="" placeholder="">
+                                            <input type="text" class="form-control" name="phone" value="{{ $user->doctorData->phone ?? '' }}" id="" placeholder="">
                                         </div>
                                     </div>
  
@@ -96,23 +97,23 @@
                                         <div class="form-group">
                                             <label style="color: black"><strong>About therapist / تعليق المستخدم
                                                     (للتقييم)</strong></label>
-                                            <textarea name="about_therapist" class="form-control" cols="110"
-                                                rows="03"></textarea>
+                                            <textarea name="about_therapist" placeholder="{{ $user->doctorData->about_therapist ?? '' }}" value="{{ $user->doctorData->about_therapist ?? '' }}" class="form-control" cols="110"
+                                                rows="05"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label style="color: black"><strong>Certificates_detail / الشهادات
                                                 </strong></label>
-                                            <textarea name="certification_detail" class="form-control" cols="110"
-                                                rows="03"></textarea>
+                                            <textarea name="certification_detail" placeholder="{{ $user->doctorData->certification_detail ?? '' }}" value="{{ $user->doctorData->about_therapist ?? '' }}" class="form-control" cols="110"
+                                                rows="06"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label style="color: black"><strong>Experiences Details / تفاصيل الخبرات
                                                 </strong></label>
-                                            <textarea name="experience_detail" class="form-control" cols="110"
+                                            <textarea name="experience_detail" placeholder="{{ $user->doctorData->about_therapist ?? '' }}" value="{{ $user->doctorData->experience_detail ?? '' }}" class="form-control" cols="110"
                                                 rows="03"></textarea>
                                         </div>
                                     </div>
@@ -121,11 +122,11 @@
                                 <div class="form-group">
                                     <div>
                                         <button type="submit" class="btn btn-primary waves-effect waves-light">
-                                            Submit
+                                            Update
                                         </button>
-                                        <button type="reset" class="btn btn-secondary waves-effect m-l-5">
-                                            Reset
-                                        </button>
+                                        {{-- <button type="reset" class="btn btn-secondary waves-effect m-l-5">
+                                            
+                                        </button> --}}
                                     </div>
                                 </div>
                             </form>

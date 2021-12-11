@@ -339,15 +339,23 @@
                                     <span> My test <span class="badge badge-primary pull-right"></span></span>
                                 </a>
                             </li> --}}
+<<<<<<< HEAD
 
                         @endif
 
                         <li>
                             <a href="{{ url('profile_view') }}" class="waves-effect ">
+=======
+                         
+                        @endif
+                        <li>
+                            <a href="{{url('profile_view')}}" class="waves-effect ">
+>>>>>>> 46bf02734c267096cec34f71cdda3f6e14b729b7
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span> Profile <span class="badge badge-primary pull-right"></span></span>
                             </a>
                         </li>
+<<<<<<< HEAD
 
                         <li>
                             <a href="{{ url('video-test') }}" class="waves-effect ">
@@ -355,6 +363,8 @@
                                 <span> Video Test <span class="badge badge-primary pull-right"></span></span>
                             </a>
                         </li>
+=======
+>>>>>>> 46bf02734c267096cec34f71cdda3f6e14b729b7
                         {{-- <li class="">
                         <a href="{{ route('logout') }}" class="waves-effect">
                         <i class="fa fa-sign-out"></i>

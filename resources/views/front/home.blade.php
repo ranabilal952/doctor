@@ -45,7 +45,8 @@
                                 </div>
                             </div>
                             <div class="top-doctor-item-available-alert mt-1 online" style="float: right;">
-                                <span>{{ $doctor->availablity }} </span></div>
+                                <span style="    float: right;
+                                margin-top: -8px;">{{ $doctor->availablity }} </span></div>
                             <div class="top-doctor-item-img">
                                 <img alt="ربيع الحوراني" src="{{ asset($doctor->image ?? '') }}">
                                 <i class="doctor-item-availablity online"></i>
