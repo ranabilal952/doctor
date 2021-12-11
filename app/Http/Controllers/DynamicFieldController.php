@@ -10,7 +10,8 @@ class DynamicFieldController extends Controller
 {
     function index()
     {
-     return view('dynamic_field');
+      $dynamic = DynamicField::all();
+      return view('psychometer.testcreate', compact('dynamic'));
     }
 
     function insert(Request $request)
