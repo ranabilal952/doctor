@@ -16,7 +16,7 @@ class TestController extends Controller
     public function index()
     {
         $test = Test::all();
-        return view('psychometer.test', compact('test'));
+        return view('psychometer.testcreate', compact('test'));
     }
 
     /**
@@ -26,8 +26,7 @@ class TestController extends Controller
      */
     public function create()
     {
-        $test = DynamicField::where('test_id', 1)->get();
-        return view('psychometer.testcreate')->with('test', $test);
+        
     }
 
     /**
@@ -57,7 +56,8 @@ class TestController extends Controller
      */
     public function show($id)
     {
-        //
+        $test = Test::find($id);
+        return view('psychometer.details_psychometer')->with('test', $test);
     }
 
     /**

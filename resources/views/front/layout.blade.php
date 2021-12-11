@@ -36,7 +36,7 @@
                         <img src="{{ url('web/assets/logo.png') }}" alt="" />
                     </a>
                     <a class="li_a" href="{{ url('/') }}">الرئيسية</a>
-                    <a class="li_a" href="{{ url('doctor') }}">الأطباء</a>
+                    <a class="li_a" href="{{ url('all_doctor') }}">الأطباء</a>
                     <a class="li_a" href="{{ url('how_book') }}">حجز جلسة علاج نفسي اونلاين</a>
                     <a class="li_a" href="#">English</a>
                 </div>
@@ -73,14 +73,14 @@
                         <a class="li_a" href="{{ url('/') }}">الرئيسية</a>
                     </li>
                     <li class="center_li">
-                        <a class="li_a" href="{{ url('doctor') }}">الأطباء</a>
+                        <a class="li_a" href="{{ url('all_doctor') }}">الأطباء</a>
                     </li>
                     <li class="center_li">
                         <a class="li_a" href="{{ url('how_book') }}">حجز جلسة علاج نفسي اونلاين</a>
                     </li> 
-                    {{-- <li class="center_li">
-                        <a class="li_a" href="{{ url('testcreate') }}">psychometer </a>
-                    </li> --}}
+                    <li class="center_li">
+                        <a class="li_a" href="{{ url('test') }}">psychometer </a>
+                    </li>
                     <li class="center_li"><a class="li_a" href="#">English</a></li>
                 </ul>
             </div>

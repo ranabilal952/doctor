@@ -163,6 +163,7 @@ Route::get('all_blogs', [BlogController::class, 'index'])->name('all_blogs');
 Route::post('blog_save', [BlogController::class, 'store'])->name('blog_save');
 
 // Doctor Detail
+Route::get('all_doctor', [DoctorController::class, 'index'])->name('all_doctor');
 Route::get('create_doctor', [DoctorController::class, 'create'])->name('create_doctor');
 Route::post('doctor_detail_save', [DoctorController::class, 'store'])->name('doctor_detail_save');
 
@@ -247,7 +248,6 @@ Route::view('video-test', 'jitsi.video-test');
 
 
 Route::get('testcreate', [TestController::class, 'create'])->name('testcreate');
-
 
 Route::post('stripe', [PaymentController::class, 'stripePost'])->name('stripe.post');
 
