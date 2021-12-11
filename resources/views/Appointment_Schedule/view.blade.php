@@ -104,6 +104,14 @@
                                     </p>
                                 </div>
 
+                                <div class="col-md-4">
+                                    <h4 class="mt-0 header-title">Total Paid</h4>
+                                    <p class="text-muted m-b-30 font-16">
+                                        {{ $payment->total_paid }} USD
+
+                                    </p>
+                                </div>
+
                                 {{-- 3rdRow --}}
                                 <div class="col-md-4">
                                     @if (Auth::user()->role == 'doctor')

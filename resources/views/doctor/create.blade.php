@@ -32,8 +32,14 @@
                                         <div class="form-group">
                                             <label style="color: black"><strong>Doctor Specility / تخصص الطبيب</strong>
                                             </label>
-                                            <input type="text" class="form-control" name="doctor_specility"
-                                                placeholder="">
+                                            <select class="form-control" name="doctor_specility" id="">
+                                                @foreach ($specialities as $speciality)
+                                                    <option value="{{ $speciality->speciality_name_english }}">
+                                                        {{ $speciality->speciality_name_english }}</option>
+                                                @endforeach
+
+                                            </select>
+
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -125,7 +131,7 @@
                                             <label style="color: black"><strong>Password / رقم الهاتف</strong></label>
                                             <input type="password" class="form-control" name="password" id=""
                                                 placeholder="">
-                                                <small>Default password is 12345678</small>
+                                            <small>Default password is 12345678</small>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">

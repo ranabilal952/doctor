@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Diseases;
 use App\Models\Doctor;
+use App\Models\Speciality;
 use App\Models\Time;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -28,7 +30,9 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('doctor.create');
+        $specialities = Speciality::all();
+        $diseases = Diseases::all();
+        return view('doctor.create', compact(['specialities', 'diseases']));
     }
 
     /**
@@ -151,5 +155,11 @@ class DoctorController extends Controller
         //     1: [1, 2, 3, 4]
         //   },
         return view('doctor.calander.create')->with(compact('newTimeArray'));
+    }
+
+    public function getAllDoctors()
+    {
+        $doctors = User::where('role', 'doctor')->with(['doctorData', 'wallet', 'sessions'])->get();
+        return view('admin.doctor.index', compact('doctors'));
     }
 }

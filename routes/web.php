@@ -19,6 +19,7 @@ use App\Http\Controllers\JitsiMeetingController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\OnlineStatusController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PaymentSettingController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\SessionbookController;
@@ -34,6 +35,7 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\WebsiteLinkController;
 use App\Http\Controllers\WeekdayController;
 use App\Models\AppointmentSchedule;
+use App\Models\PaymentSetting;
 use App\Models\SlotController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -248,3 +250,8 @@ Route::get('testcreate', [TestController::class, 'create'])->name('testcreate');
 
 
 Route::post('stripe', [PaymentController::class, 'stripePost'])->name('stripe.post');
+
+Route::get('payment-setting', [PaymentSettingController::class, 'create']);
+Route::post('payment-setting', [PaymentSettingController::class, 'store']);
+
+Route::get('get-all-doctors', [DoctorController::class, 'getAllDoctors']);

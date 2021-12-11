@@ -86,4 +86,24 @@ class User extends Authenticatable
     {
         return $this->hasMany(SlotTime::class);
     }
+
+    public function wallet()
+    {
+        return $this->hasOne(wallet::class, 'user_id');
+    }
+
+    public function payment_transaction_debited()
+    {
+        return $this->hasMany(PaymentTransaction::class, 'from_user_id');
+    }
+
+    public function  payment_transaction_credited()
+    {
+        return $this->hasMany(PaymentTransaction::class, 'to_user_id');
+    }
+
+    public function sessions()
+    {
+        return $this->hasMany(AppointmentSchedule::class, 'doctor_id');
+    }
 }

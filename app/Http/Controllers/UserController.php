@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -53,6 +54,12 @@ class UserController extends Controller
         }
         $user->image = 'images/userProfiles' . '/' . $imageName;
         $user->save();
+
+        //creating wallet for every user
+        wallet::create([
+            'user_id' => Auth::id(),
+        ]);
+
         toastr()->success('Data Sucessfully Added');
         return redirect()->back();
     }

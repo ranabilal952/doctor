@@ -65,7 +65,7 @@ class FrontController extends Controller
     public function doctor_detail($id)
     {
         $doctor = Doctor::where('id', $id)->with(['user'])->first();
-        $slotTimes = SlotTime::where('user_id', $doctor->user->id)->where('booking_status', 1)->where('date_from','>=',Carbon::today())->get()->groupBy('date_from');
+        $slotTimes = SlotTime::where('user_id', $doctor->user->id)->where('booking_status', 1)->where('date_from', '>=', Carbon::today())->get()->groupBy('date_from');
         // dd($slotTimes);
         // $currentDoctorSchedule = User::doctorSchedules();
         // dd($currentDoctorSchedule);
@@ -77,7 +77,6 @@ class FrontController extends Controller
     public function profile()
     {
         $user = User::with('doctorData')->find(Auth::id());
-        dd($user);
         if ($user->role == 'doctor')
             return view('profile.doctor')->with('user', $user);
         else

@@ -30,7 +30,7 @@
 @section('content')
     <div class="page-content-wrapper ">
         <div class="container-fluid">
-            <div class="row d-none">
+            <div class="row " id="detailSchedule">
                 <div class="col-lg-12">
                     <div class="card m-b-200">
                         <div class="card-body">
@@ -63,32 +63,27 @@
                                     </p>
                                 </div>
 
-                            </div>
-
-                        </div>
-                    </div>
-
-                    {{-- PaymentGateway --}}
-                    <h5 class="text-center">Book this session</h5>
-                    <div class="card m-b-200">
-                        <div class="card-body">
-                            <div class="row mt-5">
-                                <div class="col-md-12 text-center">
-                                    <h6 class="\">Here we will place stripe payment</h6>
-
-
-
-                                    <a href="{{ url('book-schedule', $slotTime->id) }}" class="">Book your
-                                        session</a>
+                                <div class="col-md-6">
+                                    <h4 class="mt-0 header-title">System Fee</h4>
+                                    <p class="text-muted m-b-30 font-16">
+                                        {{ $doctorPercent }} USD
+                                    </p>
                                 </div>
 
                             </div>
+                            <div class="w-100 text-center">
+                                <button id="goToPayment" class="btn btn-primary">Go to Payment</button>
+                            </div>
 
                         </div>
+
                     </div>
+
                 </div>
+
+
             </div>
-            <div class="row">
+            <div class="row d-none" id="paymentForm">
                 <div class="col-md-6 col-md-offset-3">
                     <div class="panel panel-default credit-card-box">
                         <div class="panel-heading display-table text-center ">
@@ -155,7 +150,7 @@
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now
-                                            (${{ $slotTime->amount }})</button>
+                                            (${{ doubleVal($slotTime->amount) + $doctorPercent }})</button>
                                     </div>
                                 </div>
 
@@ -177,6 +172,12 @@
 
     <script type="text/javascript">
         $(function() {
+
+            $('#goToPayment').click(function(e) {
+                e.preventDefault();
+                $('#detailSchedule').addClass('d-none');
+                $('#paymentForm').removeClass('d-none');
+            })
             var $form = $(".require-validation");
             $('form.require-validation').bind('submit', function(e) {
                 var $form = $(".require-validation"),

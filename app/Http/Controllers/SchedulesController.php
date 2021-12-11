@@ -194,8 +194,9 @@ class SchedulesController extends Controller
     {
 
         $slotTime = SlotTime::findorFail($id);
+        $doctorPercent = (doubleval($slotTime->amount) - (doubleval($slotTime->amount) * 0.40));
         if ($slotTime) {
-            return view('payments.payment-schedule')->with('slotTime', $slotTime);
+            return view('payments.payment-schedule', compact('slotTime', $slotTime, 'doctorPercent', $doctorPercent));
         }
     }
 

@@ -201,6 +201,15 @@
                                     <span> Add speciality <span class="badge badge-primary pull-right"></span></span>
                                 </a>
                             </li>
+
+                            <li>
+                                <a href="{{ url('payment-setting') }}" class="waves-effect ">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Payment Setting <span class="badge badge-primary pull-right"></span></span>
+                                </a>
+                            </li>
+
+
                             <li>
                                 <a href="{{ url('test') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
@@ -223,6 +232,11 @@
                                     <li><a href="{{ url('create_doctor') }}"> <i class="mdi mdi-clock ">Add
                                                 Doctor</i>
                                         </a>
+                                    </li>
+                                    <li><a href="{{ url('get-all-doctors') }}"> <i class="mdi mdi-clock ">All
+                                                Doctors</i>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="has_sub ">
@@ -297,7 +311,8 @@
                                 </ul>
                             </li>
 
-                            
+
+
 
                         @else
 
@@ -323,14 +338,16 @@
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> My test <span class="badge badge-primary pull-right"></span></span>
                                 </a>
-                            </li>  --}}
-                            <li>
-                                <a href="" class="waves-effect ">
-                                    <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Profile <span class="badge badge-primary pull-right"></span></span>
-                                </a>
-                            </li>
+                            </li> --}}
+
                         @endif
+
+                        <li>
+                            <a href="{{ url('profile_view') }}" class="waves-effect ">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span> Profile <span class="badge badge-primary pull-right"></span></span>
+                            </a>
+                        </li>
 
                         <li>
                             <a href="{{ url('video-test') }}" class="waves-effect ">
