@@ -123,34 +123,54 @@
                                         </h4>
                                         <hr>
                                         <p class="text-muted m-b-20 font-14"></p>
-                                        <form class="" action="#" method="POST" enctype="multipart/form-data">
+                                        <form class="" action="{{ url('withdraw-request') }}" method="POST"
+                                            enctype="multipart/form-data">
                                             @csrf
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
                                                         <h3 style=" " class="text-center"><strong
                                                                 style="color: #198754!important"> Available balance :
-                                                               {{$user->wallet->available_balance}}.00 $
-                                                               <span style="color: #0d6efd!important">USD</span>
+                                                                {{ $user->wallet->available_balance }}.00
+                                                                <span style="color: #0d6efd!important"> USD</span>
                                                             </strong> </h3>
-                                                        {{-- <input
-                                                            style="    color: #664d03;
-                                                                                                                                                                    background-color: #fff3cd;
-                                                                                                                                                                    border-color: #ffecb5;"
-                                                            type="text" readonly class="form-control" name="offer_arabic"
-                                                            placeholder="Pending withdrawal request 3428.00USD"
-                                                            value="Pending withdrawal request 3428.00USD" required> --}}
+                                                        @if ($withDraw)
+                                                            <input
+                                                                style="    color: #664d03;
+                                                                                                                                                                                                                    background-color: #fff3cd;
+                                                                                                                                                                                                               border-color: #ffecb5;"
+                                                                type="text" readonly class="form-control"
+                                                                name="offer_arabic" readonly
+                                                                placeholder="Pending withdrawal request 3428.00USD"
+                                                                value="Pending withdrawal request {{ $withDraw->withdraw_amount }}.00USD">
+
+
+                                                        @elseif ($user->wallet->available_balance >= 50)
+                                                            <input class="form-control" type="number"
+                                                                name="withdraw_amount" id="">
+                                                        @else
+                                                            <p class="text-center text-primary">Minimum 50$ available
+                                                                balance is
+                                                                required for withdraw</p>
+
+
+                                                        @endif
+
                                                     </div>
                                                 </div>
                                             </div>
                                             <hr>
-                                            <div class="form-group">
-                                                <div>
-                                                    <button disabled type="submit" class="btn btn-primary waves-effect waves-light">
-                                                        Withdraw
-                                                    </button>
+                                            @if (!$withDraw && $user->wallet->available_balance >= 50)
+
+                                                <div class="form-group">
+                                                    <div>
+                                                        <button type="submit"
+                                                            class="btn btn-primary waves-effect waves-light">
+                                                            Withdraw
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @endif
                                         </form>
                                     </div>
                                 </div>
@@ -159,6 +179,7 @@
                                 <div class="card m-b-200">
                                     <div class="card-body">
                                         <h4 class="mt-0 header-title" style="font-size: 20px">Donate to support team
+                                            <span style="color: red">(Coming Soon)</span>
 
                                         </h4>
                                         <hr>
@@ -220,6 +241,18 @@
                                                     <td>Debited</td>
                                                 </tr>
                                             @endforeach
+                                            @foreach ($user->withdraw as $withdraw)
+                                                <tr>
+                                                <tr>
+                                                    <td><span
+                                                            class="badge badge-primary">-{{ $withdraw->withdraw_amount }}.00
+                                                            USD</span>
+                                                    </td>
+                                                    <td>{{ $withdraw->created_at->toDateString() }}</td>
+                                                    <td>{{ $withdraw->status }}</td>
+                                                </tr>
+                                            @endforeach
+                                            <tr></tr>
 
 
 

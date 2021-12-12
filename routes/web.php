@@ -228,6 +228,7 @@ Route::post('dynamic-field/insert', [DynamicFieldController::class, 'insert'])->
 
 Route::get('test',  [TestController::class, 'index'])->name('test');
 Route::post('testsave', [TestController::class, 'store'])->name('testsave');
+Route::get('test_details/{id}', [TestController::class, 'getTestDetails']);
 
 Route::resource('schedule', SchedulesController::class);
 Route::get('create-schedule', [SchedulesController::class, 'create']);
@@ -255,3 +256,12 @@ Route::get('payment-setting', [PaymentSettingController::class, 'create']);
 Route::post('payment-setting', [PaymentSettingController::class, 'store']);
 
 Route::get('get-all-doctors', [DoctorController::class, 'getAllDoctors']);
+
+
+// adminPaymentsRoutes
+
+Route::get('get-pending-balances', [PaymentController::class, 'getDoctorsPendingAmount']);
+Route::get('approve-pending-balance/{id}', [PaymentController::class, 'approvePendingBalance']);
+Route::post('withdraw-request', [PaymentController::class, 'saveWithDrawRequest']);
+Route::get('getWithdrawRequest', [PaymentController::class, 'getWithdrawRequest']);
+Route::get('approve-withdraw-request/{id}',[PaymentController::class,'approveWithDrawRequest']);

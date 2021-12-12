@@ -24,7 +24,7 @@
             <div  class="row">
                 @foreach ($test as $test)
                 <div  class="col-md-8 col-8 order-0">
-                    <a href="" style="text-decoration: none"><div  class="" style="color:#3da8c0;margin-top:20px;">{{$test->test_name}} </div></a>
+                    <a href="{{url('test_details',$test->id)}}" style="text-decoration: none"><div  class="" style="color:#3da8c0;margin-top:20px;">{{$test->test_name}} </div></a>
                     <div class="">{{$test->test_description}}
                         <br>
                         {{-- <span  class="" id="seeMore2" style="color: brown">See More</span> --}}

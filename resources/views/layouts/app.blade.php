@@ -202,6 +202,17 @@
                                 </a>
                             </li>
 
+                            {{-- PAYMENTS --}}
+                            <li class="has_sub ">
+                                <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
+                                        Payments </span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ url('get-pending-balances') }}">Pending Balances</a></li>
+                                    <li><a href="{{ url('getWithdrawRequest') }}">Withdraw Requests</a></li>
+                                    {{-- <li><a href="{{ url('booked-schedule') }}">Donations</a></li> --}}
+                                </ul>
+                            </li>
+
                             <li>
                                 <a href="{{ url('payment-setting') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
@@ -223,6 +234,7 @@
                                     <span> Add Diseases <span class="badge badge-primary pull-right"></span></span>
                                 </a>
                             </li>
+
                             <li class="has_sub">
                                 <a href="#" class="waves-effect">
                                     <i class="mdi mdi-view-dashboard"></i>
@@ -249,6 +261,7 @@
                                         </a>
                                 </ul>
                             </li>
+
                             <li class="has_sub ">
                                 <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> User
                                         Management</span> </a>
@@ -288,6 +301,7 @@
                                     <li><a href="{{ url('all-schedules') }}">All Schedules</a></li>
                                 </ul>
                             </li>
+
                             <li>
                                 <a href="{{ url('doctorvideo') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>

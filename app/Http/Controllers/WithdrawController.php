@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DynamicField;
-use App\Models\Test;
+use App\Models\Withdraw;
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class WithdrawController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class TestController extends Controller
      */
     public function index()
     {
-        $test = Test::all();
-        return view('psychometer.testcreate', compact('test'));
+        //
     }
 
     /**
@@ -26,6 +24,7 @@ class TestController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**
@@ -36,36 +35,27 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-
-        $test = Test::create([
-            'test_name' => $request->test_name,
-            'test_description' => $request->test_description,
-        ]);
-
-        //    dd($test);
-        toastr()->success('Data Sucessfully Added');
-        return view('psychometer.create')->with('id', $test->id);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Withdraw  $withdraw
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Withdraw $withdraw)
     {
-        $test = Test::find($id);
-        return view('psychometer.details_psychometer')->with('test', $test);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Withdraw  $withdraw
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Withdraw $withdraw)
     {
         //
     }
@@ -74,10 +64,10 @@ class TestController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Withdraw  $withdraw
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Withdraw $withdraw)
     {
         //
     }
@@ -85,18 +75,11 @@ class TestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Withdraw  $withdraw
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Withdraw $withdraw)
     {
         //
-    }
-
-    public function getTestDetails($id)
-    {
-      
-        $data = DynamicField::where('test_id', 1)->get();
-        return view('psychometer.details_psychometer', compact('data'));
     }
 }

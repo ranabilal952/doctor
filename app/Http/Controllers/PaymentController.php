@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\AppointmentSchedule;
 use App\Models\Payment;
+use App\Models\PaymentSetting;
 use App\Models\PaymentTransaction;
 use App\Models\SlotTime;
 use App\Models\wallet;
+use App\Models\Withdraw;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -92,9 +94,10 @@ class PaymentController extends Controller
 
     public function stripePost(Request $request)
     {
+        $adminCommision = PaymentSetting::first()->pluck('admin_commision');
         $slot_id = $request->slot_id;
         $slotData = SlotTime::find($slot_id);
-        $doctorCommission = intval($slotData->amount) - (intval($slotData->amount) * 0.40);
+        $doctorCommission = intval($slotData->amount) - (intval($slotData->amount) * $adminCommision ?? 0.40);
         $totalAmount = intval($slotData->amount) + $doctorCommission;
         if ($slot_id) {
             Stripe::setApiKey(env('STRIPE_SECRET'));
@@ -189,5 +192,79 @@ class PaymentController extends Controller
         }
 
         return back();
+    }
+
+    public function getDoctorsPendingAmount()
+    {
+        $transactions = PaymentTransaction::where('to_user_id', '!=', 1)->where('status', 'pending')->with('doctorData')->get();
+        return view('payments.pending', compact('transactions'));
+    }
+
+    public function approvePendingBalance($id)
+    {
+        $transaction = PaymentTransaction::with('doctorData')->findOrFail($id);
+        if ($transaction) {
+
+            $wallet = wallet::where('user_id', $transaction->to_user_id)->first();
+            $wallet->available_balance += doubleval($transaction->amount);
+            $wallet->pending_balance -= doubleval($transaction->amount);
+            $transaction->status = 'approved';
+            $wallet->save();
+            $transaction->save();
+            toastr()->success('Request has been approved');
+        } else {
+            toastr()->error('Some Error Occured');
+        }
+
+        return redirect()->back();
+    }
+
+    public function saveWithDrawRequest(Request $request)
+    {
+        // WithdrawAmount
+
+        $withdrawAmount = doubleval($request->withdraw_amount);
+
+        if (($withdrawAmount) > 50) {
+            $wallet = wallet::where('user_id', Auth::id())->first();
+            if ($wallet->available_balance >= $withdrawAmount) {
+                Withdraw::create([
+                    'user_id' => Auth::id(),
+                    'withdraw_amount' => $withdrawAmount,
+                ]);
+
+                $wallet->available_balance -= $withdrawAmount;
+                $wallet->save();
+
+
+                toastr()->success('Your withdraw request has been received');
+            } else {
+                toastr()->error('You have insufficient available balance');
+            }
+        } else {
+            toastr()->error('Your withdraw amount is less then the limit');
+        }
+
+        return redirect()->back();
+    }
+
+    public function getWithdrawRequest()
+    {
+        $withdrawRequest = Withdraw::where('status', 'pending')->with('user')->get();
+        return view('admin.doctor.withdraw.index')->with('withdrawRequest', $withdrawRequest);
+    }
+
+    public function approveWithDrawRequest($id)
+    {
+        $withDraw = Withdraw::findorfail($id);
+
+        $withDraw->status = 'withdrawn';
+        $withDraw->save();
+
+
+        toastr()->success('Amount has been transferred successfully');
+        return redirect()->back();
+
+        //we have to transfer the amount to other account
     }
 }
