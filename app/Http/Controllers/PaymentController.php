@@ -94,10 +94,11 @@ class PaymentController extends Controller
 
     public function stripePost(Request $request)
     {
-        $adminCommision = PaymentSetting::first()->pluck('admin_commision');
+        $adminCommision = PaymentSetting::first();
+        // dd($adminCommision);
         $slot_id = $request->slot_id;
         $slotData = SlotTime::find($slot_id);
-        $doctorCommission = intval($slotData->amount) - (intval($slotData->amount) * $adminCommision ?? 0.40);
+        $doctorCommission = intval($slotData->amount) - (intval($slotData->amount) *  0.40);
         $totalAmount = intval($slotData->amount) + $doctorCommission;
         if ($slot_id) {
             Stripe::setApiKey(env('STRIPE_SECRET'));
