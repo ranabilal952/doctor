@@ -22,6 +22,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentLinksController;
 use App\Http\Controllers\PaymentSettingController;
 use App\Http\Controllers\PrivacyController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\SessionbookController;
 use App\Http\Controllers\SlotTimeController;
@@ -274,3 +275,12 @@ Route::post('save_payment_link', [PaymentLinksController::class, 'store']);
 Route::get('payment-link/{id}', [PaymentLinksController::class, 'showPaymentAccordingToLink']);
 
 Route::post('pay-link-payment', [PaymentLinksController::class, 'storeLinkPayment']);
+Route::get('approve-withdraw-request/{id}',[PaymentController::class,'approveWithDrawRequest']);
+
+//Rating 
+Route::get('rating', [RatingController::class, 'create'])->name('rating');
+Route::get('all_rating', [RatingController::class, 'index'])->name('all_rating');
+Route::post('rating_save', [RatingController::class, 'store'])->name('rating_save');
+Route::put('update/{id}', [RatingController::class, 'update'])->name('update');
+Route::get('block/{id}', [RatingController::class, 'block'])->name('block');
+Route::get('unblock/{id}', [RatingController::class, 'unblock'])->name('unblock');
