@@ -261,7 +261,15 @@
                                         </a>
                                 </ul>
                             </li>
-
+                            <li class="has_sub ">
+                                <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
+                                        Rating </span> </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ url('rating') }}">Add Rating</a></li>
+                                    <li><a href="{{ url('all_rating') }}">All Rating</a></li>
+                                    {{-- <li><a href="{{ url('booked-schedule') }}">Donations</a></li> --}}
+                                </ul>
+                            </li>
                             <li class="has_sub ">
                                 <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> User
                                         Management</span> </a>

@@ -69,7 +69,7 @@
                         success: function(data) {}
                     });
                 }
-                var url = "{{ url('view-appointment') }}" + "/" + appointmentID;
+                var url = "{{ url('rating') }}" + "/" + appointmentID;
 
 
                 document.location.href = url;

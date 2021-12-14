@@ -21,6 +21,7 @@ use App\Http\Controllers\OnlineStatusController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentSettingController;
 use App\Http\Controllers\PrivacyController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\SessionbookController;
 use App\Http\Controllers\SlotTimeController;
@@ -265,3 +266,11 @@ Route::get('approve-pending-balance/{id}', [PaymentController::class, 'approvePe
 Route::post('withdraw-request', [PaymentController::class, 'saveWithDrawRequest']);
 Route::get('getWithdrawRequest', [PaymentController::class, 'getWithdrawRequest']);
 Route::get('approve-withdraw-request/{id}',[PaymentController::class,'approveWithDrawRequest']);
+
+//Rating 
+Route::get('rating', [RatingController::class, 'create'])->name('rating');
+Route::get('all_rating', [RatingController::class, 'index'])->name('all_rating');
+Route::post('rating_save', [RatingController::class, 'store'])->name('rating_save');
+Route::put('update/{id}', [RatingController::class, 'update'])->name('update');
+Route::get('block/{id}', [RatingController::class, 'block'])->name('block');
+Route::get('unblock/{id}', [RatingController::class, 'unblock'])->name('unblock');
