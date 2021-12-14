@@ -214,6 +214,13 @@
                             </li>
 
                             <li>
+                                <a href="{{ url('payment-links') }}" class="waves-effect ">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Payment Links <span class="badge badge-primary pull-right"></span></span>
+                                </a>
+                            </li>
+
+                            <li>
                                 <a href="{{ url('payment-setting') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Payment Setting <span class="badge badge-primary pull-right"></span></span>

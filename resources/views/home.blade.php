@@ -137,8 +137,8 @@
                                                         @if ($withDraw)
                                                             <input
                                                                 style="    color: #664d03;
-                                                                                                                                                                                                                    background-color: #fff3cd;
-                                                                                                                                                                                                               border-color: #ffecb5;"
+                                                                                                                                                                                                                        background-color: #fff3cd;
+                                                                                                                                                                                                                   border-color: #ffecb5;"
                                                                 type="text" readonly class="form-control"
                                                                 name="offer_arabic" readonly
                                                                 placeholder="Pending withdrawal request 3428.00USD"
@@ -273,6 +273,7 @@
                                                 <th>Amount</th>
                                                 <th>Date</th>
                                                 <th>Status</th>
+                                                <th>Source</th>
 
                                                 {{-- <th>Start date</th>
                                     <th>Salary</th> --}}
@@ -289,6 +290,7 @@
 
                                                     <td>{{ $transaction->created_at->toDateString() }}</td>
                                                     <td>{{ $transaction->status }}</td>
+                                                    <td>{{ $transaction->payment_type ?? 'appointment' }}</td>
                                                 </tr>
                                             @endforeach
 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="ar" >
-    {{-- dir="rtl" --}}
+<html lang="ar">
+{{-- dir="rtl" --}}
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -14,6 +15,7 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="{{ asset('toastr/toastr.min.css') }}" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
     <link rel="stylesheet"
@@ -77,7 +79,7 @@
                     </li>
                     <li class="center_li">
                         <a class="li_a" href="{{ url('how_book') }}">حجز جلسة علاج نفسي اونلاين</a>
-                    </li> 
+                    </li>
                     <li class="center_li">
                         <a class="li_a" href="{{ url('test') }}">psychometer </a>
                     </li>
@@ -102,8 +104,8 @@
                                   document.getElementById('logout-form').submit();">
                     {{ __('Logout') }}
                 </a>
-                <a class="left2_a" href="{{ url('/home') }}" >
-                   Dashboard
+                <a class="left2_a" href="{{ url('/home') }}">
+                    Dashboard
                 </a>
 
             @endif
@@ -394,6 +396,9 @@
     </script>
     <script src="https://cdn.tiny.cloud/1/rfv7rfhx5vafv76ygxza52h080627sqb542j7d7736y9x8c2/tinymce/5/tinymce.min.js"
         referrerpolicy="origin"></script>
+    <script src="{{ asset('toastr/toastr.min.js') }}"></script>
+    @toastr_render
+
 
     <script>
         window.onscroll = function() {

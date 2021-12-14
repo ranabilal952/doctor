@@ -122,21 +122,22 @@ class PaymentController extends Controller
                 "description" => "Schedule Payment"
             ]);
 
-
-
             // Storing Transactions
 
             //this is user to doctor Transaction
             $userToDoc =     PaymentTransaction::create([
                 'from_user_id' => Auth::id(),
                 'to_user_id' => $slotData->user_id,
-                'amount' => $slotData->amount
+                'amount' => $slotData->amount,
+                'payment_type' => 'appointment',
             ]);
             //this is doctor to admin transaction
             $docToAdmin =    PaymentTransaction::create([
                 'from_user_id' => Auth::id(),
                 'to_user_id' => 1,
-                'amount' => $slotData->amount
+                'amount' => $slotData->amount,
+                'payment_type' => 'appointment',
+
             ]);
 
             if ($paymentObject->status == 'succeeded') {

@@ -37,7 +37,7 @@ class HomeController extends Controller
         } else {
             $user = User::with(['wallet', 'payment_transaction_debited', 'payment_transaction_credited', 'withdraw'])->findOrFail(Auth::id());
             $withDraw  = Withdraw::where('user_id', Auth::id())->where('status', 'pending')->first();
-          
+
             return view('home', compact('user', 'withDraw'));
         }
     }

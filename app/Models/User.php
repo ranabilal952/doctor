@@ -94,12 +94,12 @@ class User extends Authenticatable
 
     public function payment_transaction_debited()
     {
-        return $this->hasMany(PaymentTransaction::class, 'from_user_id');
+        return $this->hasMany(PaymentTransaction::class, 'from_user_id')->orderBy('id', 'DESC');
     }
 
     public function  payment_transaction_credited()
     {
-        return $this->hasMany(PaymentTransaction::class, 'to_user_id');
+        return $this->hasMany(PaymentTransaction::class, 'to_user_id')->orderBy('id', 'DESC');
     }
 
     public function sessions()

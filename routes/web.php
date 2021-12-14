@@ -19,6 +19,7 @@ use App\Http\Controllers\JitsiMeetingController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\OnlineStatusController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PaymentLinksController;
 use App\Http\Controllers\PaymentSettingController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\SchedulesController;
@@ -35,6 +36,7 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\WebsiteLinkController;
 use App\Http\Controllers\WeekdayController;
 use App\Models\AppointmentSchedule;
+use App\Models\Payment;
 use App\Models\PaymentSetting;
 use App\Models\SlotController;
 use Illuminate\Support\Facades\Auth;
@@ -264,4 +266,11 @@ Route::get('get-pending-balances', [PaymentController::class, 'getDoctorsPending
 Route::get('approve-pending-balance/{id}', [PaymentController::class, 'approvePendingBalance']);
 Route::post('withdraw-request', [PaymentController::class, 'saveWithDrawRequest']);
 Route::get('getWithdrawRequest', [PaymentController::class, 'getWithdrawRequest']);
-Route::get('approve-withdraw-request/{id}',[PaymentController::class,'approveWithDrawRequest']);
+Route::get('approve-withdraw-request/{id}', [PaymentController::class, 'approveWithDrawRequest']);
+
+// paymentLInks
+Route::get('payment-links', [PaymentLinksController::class, 'index']);
+Route::post('save_payment_link', [PaymentLinksController::class, 'store']);
+Route::get('payment-link/{id}', [PaymentLinksController::class, 'showPaymentAccordingToLink']);
+
+Route::post('pay-link-payment', [PaymentLinksController::class, 'storeLinkPayment']);
