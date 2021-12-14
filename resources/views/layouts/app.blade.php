@@ -227,6 +227,13 @@
                                 </a>
                             </li>
 
+                            <li>
+                                <a href="{{ url('coupons') }}" class="waves-effect ">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Coupons <span class="badge badge-primary pull-right"></span></span>
+                                </a>
+                            </li>
+
 
                             <li>
                                 <a href="{{ url('test') }}" class="waves-effect ">
