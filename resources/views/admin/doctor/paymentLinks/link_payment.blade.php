@@ -30,12 +30,12 @@
 
     <div class="container">
 
-        <div class="row text-center justify-content-between">
-            <div class="col-md-6">
+        <div class="row text-center ">
+            <div class="">
                 <h5>Payment Amount</h5>
                 <p>{{ $paymentLink->amount }}.00 USD</p>
             </div>
-            <div class="col-md-6">
+            <div class="">
                 <h5>FEE Amount</h5>
                 <p>{{ $paymentLink->amount - intval($paymentLink->amount) * 0.4 }}.00 USD</p>
             </div>
@@ -49,7 +49,7 @@
                             <img src="{{ asset('visa.jpeg') }}">
                         </div>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body" style="padding: 28px">
                         @if (Session::has('success'))
                             <div class="alert alert-success text-center">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
