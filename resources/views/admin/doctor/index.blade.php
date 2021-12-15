@@ -30,6 +30,7 @@
                                                 <th> Total Sessions</th>
                                                 <th> Booked Sessions</th>
                                                 <th> Completed Sessions</th>
+                                                <th>Actions</th>
 
                                                 {{-- <th> Action</th> --}}
                                             </tr>
@@ -47,6 +48,9 @@
                                                     </td>
                                                     <td>{{ $doctor->bookedSessions->count() }}</td>
                                                     <td>{{ $doctor->completedSessions->count() }}</td>
+                                                    <td><a href="{{ url('/hide-doctor', $doctor->id) }}">
+                                                            {{ $doctor->doctorData->is_hide ? 'Unhide' : 'Hide' }}
+                                                        </a></td>
 
                                                     {{-- <td>
                                                         @php

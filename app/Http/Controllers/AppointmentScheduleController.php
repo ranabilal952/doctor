@@ -6,6 +6,7 @@ use App\Models\AppointmentSchedule;
 use App\Models\Coupons;
 use App\Models\CouponUsage;
 use App\Models\Payment;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -122,12 +123,41 @@ class AppointmentScheduleController extends Controller
 
     public function viewAppointment($id)
     {
-        $appointmentSchedule = AppointmentSchedule::with(['slot', 'user', 'doctor', 'meetingLink','coupon'])->findorFail($id);
+        $appointmentSchedule = AppointmentSchedule::with(['slot', 'user', 'doctor', 'meetingLink', 'coupon'])->findorFail($id);
         // $coupon = CouponUsage::where('appoi')
         // dd($appointmentSchedule);
         $payment = Payment::where('appointment_schedule_id', $id)->first();
         if ($appointmentSchedule) {
             return view('Appointment_Schedule.view')->with(compact(['appointmentSchedule', 'payment']));
         }
+    }
+
+    public function getAdminDoctorsSession()
+    {
+        $doctors = User::where('role', 'doctor')->get();
+        return view('admin.doctorsSession.index', compact('doctors'));
+    }
+
+    public function getDataAdminDoctorsSession(Request $request)
+    {
+        $doctors = User::where('role', 'doctor')->get();
+
+        $nextSessions = AppointmentSchedule::where('doctor_id', $request->doctor_id)->where('appointment_status', 'booked')->with(['slot', 'user', 'doctor'])->get();
+        $upcomingSessions = array();
+        foreach ($nextSessions as $key => $session) {
+            $appointmentDate =  Carbon::parse($session->slot->date_from . $session->slot->time);
+            if ($request->session_time == 'upcoming') {
+                if ($appointmentDate >= Carbon::today()) {
+                    $upcomingSessions[] = $session;
+                }
+            } else if ($request->session_time == 'previous') {
+                if ($appointmentDate < Carbon::today()) {
+                    $upcomingSessions[] = $session;
+                }
+            } else {
+            }
+        }
+        // dd($upcomingSessions);
+        return view('admin.doctorsSession.index', compact('doctors', 'upcomingSessions'));
     }
 }

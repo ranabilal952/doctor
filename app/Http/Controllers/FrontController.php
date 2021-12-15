@@ -26,7 +26,7 @@ class FrontController extends Controller
         $accordians = HomeAccordin::latest()->get();
         $websiteVideoLink = WebsiteLink::latest()->first();
         $blog = Blog::latest()->first();
-        $doctor = Doctor::with('user')->get();
+        $doctor = Doctor::where('is_hide',false)->with('user')->get();
         // dd($doctor);
 
         return view('front.home')->with(compact('title', 'counter', 'accordians', 'websiteVideoLink', 'blog', 'doctor'));
