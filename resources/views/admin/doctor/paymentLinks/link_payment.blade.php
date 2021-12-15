@@ -37,7 +37,7 @@
             </div>
             <div class="col-md-6">
                 <h5>FEE Amount</h5>
-                <p>{{ $paymentLink->amount - intval($paymentLink->amount) * 0.4 }}.00 USD</p>
+                <p>{{ $paymentLink->amount-( $paymentLink->amount - intval($paymentLink->amount) * 0.4 )}}.00 USD</p>
             </div>
         </div>
 
@@ -69,6 +69,7 @@
                                 </div>
                             </div>
 
+                            
                             <div class='form-row row'>
                                 <div class='col-xs-12 form-group required'>
                                     <label style="color: black" class='control-label'>Card Number</label> <input
