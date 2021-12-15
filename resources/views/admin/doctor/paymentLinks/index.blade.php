@@ -82,7 +82,7 @@
                                                     <td>{{ $key + 1 }}</td>
                                                     <td>{{ $paymentLink->amount }}.00 USD</td>
                                                     <td>{{ ucfirst($paymentLink->user->name) }}</td>
-                                                    <td>{{ url('/payment-link', $paymentLink->user->id) }}</td>
+                                                    <td>{{ url('/payment-link', $paymentLink->id) }}</td>
 
 
                                                 </tr>
