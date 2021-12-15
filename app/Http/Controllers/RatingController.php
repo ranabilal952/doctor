@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Payment;
 use App\Models\Rating;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RatingController extends Controller
 {
@@ -14,8 +16,9 @@ class RatingController extends Controller
      */
     public function index()
     {
-        $rating = Rating::all();
-        return view('rating.index',compact('rating'));
+        $rating = Rating::with('doctor')->get();
+       
+        return view('rating.index', compact('rating'));
     }
 
     /**
@@ -38,11 +41,13 @@ class RatingController extends Controller
     {
         $rating = new Rating();
         $rating->user_name = $request->user_name;
+        $rating->user_id = strval(Auth::id());
         $rating->total_rating = $request->total_rating;
         $rating->description = $request->description;
+        $rating->doctor_id = $request->doctor_id ?? '0';
         $rating->save();
         toastr()->success('Data Sucessfully Added');
-        return redirect()->back();
+        return redirect('/home');
     }
 
     /**
@@ -77,14 +82,13 @@ class RatingController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $rating = Rating::find($request->id);
-       $rating->user_name = $request->user_name;
-       $rating->total_rating = $request->total_rating;
-       $rating->description = $request->description;
-       $rating->save();
-       toastr()->info('Data Sucessfully Updated');
-       return redirect()->back();
-
+        $rating = Rating::find($request->id);
+        $rating->user_name = $request->user_name;
+        $rating->total_rating = $request->total_rating;
+        $rating->description = $request->description;
+        $rating->save();
+        toastr()->info('Data Sucessfully Updated');
+        return redirect()->back();
     }
 
     /**
@@ -99,7 +103,7 @@ class RatingController extends Controller
     }
     public function block($id)
     {
-        
+
         $rating = Rating::find($id);
         $rating->update([
             'status' => 1,
@@ -115,5 +119,10 @@ class RatingController extends Controller
         ]);
         toastr()->error('Rating Unapproved', 'Done');
         return redirect()->back();
+    }
+
+    public function saveRatingAgainstDoctorId($id)
+    {
+        return view('rating.create')->with('doctor_id', $id);
     }
 }

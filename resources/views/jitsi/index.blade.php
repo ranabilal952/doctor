@@ -69,7 +69,10 @@
                         success: function(data) {}
                     });
                 }
-                var url = "{{ url('rating') }}" + "/" + appointmentID;
+                if (currentUser.role == 'doctor')
+                    var url = "{{ url('view-appointment') }}" + "/" + appointmentID;
+                else
+                    var url = "{{ url('rating') }}" + "/" + appointment.doctor_id;
 
 
                 document.location.href = url;

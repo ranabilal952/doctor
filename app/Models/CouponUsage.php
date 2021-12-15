@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rating extends Model
+class CouponUsage extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
 
-    public function  doctor()
+    public function coupon()
     {
-        return $this->belongsTo(User::class, 'doctor_id');
+        return $this->belongsTo(Coupons::class);
     }
 }

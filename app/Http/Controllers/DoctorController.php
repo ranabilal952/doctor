@@ -160,7 +160,11 @@ class DoctorController extends Controller
 
     public function getAllDoctors()
     {
-        $doctors = User::where('role', 'doctor')->with(['doctorData', 'wallet', 'sessions'])->get();
+        $doctors = User::where('role', 'doctor')->with(['doctorData', 'wallet', 'sessions', 'bookedSessions' => function ($q) {
+            $q->where('appointment_status', 'booked');
+        }, 'completedSessions' => function ($query) {
+            $query->where('appointment_status', 'completed');
+        }])->get();
         return view('admin.doctor.index', compact('doctors'));
     }
 }

@@ -42,7 +42,7 @@
                                     </h6>
                                     <div class="w-100 text-center">
                                         <span class=""
-                                            style="color: #D23830;font-weight:bold">{{ ucfirst($payment->transaction_id) }}</span>
+                                            style="color: #D23830;font-weight:bold">{{ ucfirst($payment->transaction_id ?? 'Not-Available') }}</span>
 
                                     </div>
                                 </div>
@@ -60,9 +60,16 @@
 
                             <hr>
                             <div class="row">
-                                <div class=" col-md-12">
+                                <div class=" col-md-8">
                                     <h5>Schedule Details</h5>
                                 </div>
+                                @if ($appointmentSchedule->coupon && $appointmentSchedule->coupon != null)
+                                    <div class="col-md-4">
+                                        <span class="badge badge-success">Coupon Applied</span>
+                                        {{ $appointmentSchedule->coupon->coupon->coupon_code }}
+                                    </div>
+                                @endif
+
                             </div>
                             <div class="row mt-5">
                                 <div class="col-md-4">
@@ -107,7 +114,7 @@
                                 <div class="col-md-4">
                                     <h4 class="mt-0 header-title">Total Paid</h4>
                                     <p class="text-muted m-b-30 font-16">
-                                        {{ $payment->total_paid }} USD
+                                        {{ $payment->total_paid ?? '0' }}.00 USD
 
                                     </p>
                                 </div>

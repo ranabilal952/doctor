@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\AppointmentSchedule;
+use App\Models\Coupons;
+use App\Models\CouponUsage;
 use App\Models\Payment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -120,7 +122,9 @@ class AppointmentScheduleController extends Controller
 
     public function viewAppointment($id)
     {
-        $appointmentSchedule = AppointmentSchedule::with(['slot', 'user', 'doctor', 'meetingLink'])->findorFail($id);
+        $appointmentSchedule = AppointmentSchedule::with(['slot', 'user', 'doctor', 'meetingLink','coupon'])->findorFail($id);
+        // $coupon = CouponUsage::where('appoi')
+        // dd($appointmentSchedule);
         $payment = Payment::where('appointment_schedule_id', $id)->first();
         if ($appointmentSchedule) {
             return view('Appointment_Schedule.view')->with(compact(['appointmentSchedule', 'payment']));

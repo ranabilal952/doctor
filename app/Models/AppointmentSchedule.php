@@ -30,4 +30,9 @@ class AppointmentSchedule extends Model
     {
         return $this->hasOne(JitsiMeeting::class, 'appointment_id');
     }
+
+    public function coupon()
+    {
+        return $this->hasOne(CouponUsage::class, 'appointment_schedule_id')->with('coupon');
+    }
 }

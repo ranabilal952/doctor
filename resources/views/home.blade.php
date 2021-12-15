@@ -137,8 +137,8 @@
                                                         @if ($withDraw)
                                                             <input
                                                                 style="    color: #664d03;
-                                                                                                                                                                                                                        background-color: #fff3cd;
-                                                                                                                                                                                                                   border-color: #ffecb5;"
+                                                                                                                                                                                                                            background-color: #fff3cd;
+                                                                                                                                                                                                                       border-color: #ffecb5;"
                                                                 type="text" readonly class="form-control"
                                                                 name="offer_arabic" readonly
                                                                 placeholder="Pending withdrawal request 3428.00USD"
@@ -263,7 +263,7 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="card m-b-20">
+                        <div class="card m-b-20" style="max-height: 400px;overflow-y:auto;">
                             <div class="card-body">
                                 <h4 class="mt-0 m-b-15 header-title" style="font-size: 20px"> Balance log</h4>
                                 <div class="table-responsive">

@@ -6,6 +6,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CancelltionController;
 use App\Http\Controllers\ConditionController;
 use App\Http\Controllers\CounterController;
+use App\Http\Controllers\CouponsController;
 use App\Http\Controllers\DiseasesController;
 use App\Http\Controllers\DoctoraccordionController;
 use App\Http\Controllers\DoctorController;
@@ -23,6 +24,7 @@ use App\Http\Controllers\PaymentLinksController;
 use App\Http\Controllers\PaymentSettingController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\RewardDoctorController;
 use App\Http\Controllers\SchedulesController;
 use App\Http\Controllers\SessionbookController;
 use App\Http\Controllers\SlotTimeController;
@@ -275,12 +277,26 @@ Route::post('save_payment_link', [PaymentLinksController::class, 'store']);
 Route::get('payment-link/{id}', [PaymentLinksController::class, 'showPaymentAccordingToLink']);
 
 Route::post('pay-link-payment', [PaymentLinksController::class, 'storeLinkPayment']);
-Route::get('approve-withdraw-request/{id}',[PaymentController::class,'approveWithDrawRequest']);
+Route::get('approve-withdraw-request/{id}', [PaymentController::class, 'approveWithDrawRequest']);
+
+//coupons
+
+Route::get('coupons', [CouponsController::class, 'index']);
+Route::post('coupons', [CouponsController::class, 'store']);
+Route::get('coupon_toggle/{id}', [CouponsController::class, 'couponToggle']);
+Route::post('checkCouponValid', [CouponsController::class, 'checkCouponValid']);
+
 
 //Rating 
-Route::get('rating', [RatingController::class, 'create'])->name('rating');
+Route::get('give-rating/{id}', [RatingController::class, 'create'])->name('rating');
+Route::get('rating/{id}', [RatingController::class, 'saveRatingAgainstDoctorId']); //after call terminated
 Route::get('all_rating', [RatingController::class, 'index'])->name('all_rating');
 Route::post('rating_save', [RatingController::class, 'store'])->name('rating_save');
 Route::put('update/{id}', [RatingController::class, 'update'])->name('update');
 Route::get('block/{id}', [RatingController::class, 'block'])->name('block');
 Route::get('unblock/{id}', [RatingController::class, 'unblock'])->name('unblock');
+
+
+//Reward doctor
+Route::get('reward-doctor', [RewardDoctorController::class, 'index']);
+Route::post('reward-doctor', [RewardDoctorController::class, 'store']);

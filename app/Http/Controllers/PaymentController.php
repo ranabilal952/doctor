@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\AppointmentSchedule;
+use App\Models\Coupons;
+use App\Models\CouponUsage;
 use App\Models\Payment;
 use App\Models\PaymentSetting;
 use App\Models\PaymentTransaction;
@@ -94,12 +96,37 @@ class PaymentController extends Controller
 
     public function stripePost(Request $request)
     {
-        $adminCommision = PaymentSetting::first();
-        // dd($adminCommision);
+
+        $totalAmount = null;
         $slot_id = $request->slot_id;
         $slotData = SlotTime::find($slot_id);
-        $doctorCommission = intval($slotData->amount) - (intval($slotData->amount) *  0.40);
-        $totalAmount = intval($slotData->amount) + $doctorCommission;
+
+        $couponUsage = new CouponUsage();
+        $isCouponApplied = false;
+        $appliedCouponId = intval($request->couponId);
+
+        $scheduleAmount = intval($slotData->amount);
+        $adminCommission = (intval($slotData->amount) *  0.40);
+        $totalAmount = $scheduleAmount;
+
+
+        if ($request->isCouponApplied == 'true') {
+            $coupon = Coupons::findorFail($appliedCouponId);
+            //first we have to subtract coupon discount
+            if ($coupon->method == 'percent') {
+                $totalAmount = $totalAmount - ($totalAmount * (intval($coupon->coupon_value) / 100));
+               
+            } else {
+                $totalAmount = $totalAmount - (intval($coupon->coupon_value));
+            }
+            // dd($totalAmount);
+            $adminCommission = ($totalAmount *  0.40);
+            $totalAmount += $adminCommission;
+
+            $couponUsage->coupon_id = $appliedCouponId;
+            $isCouponApplied = true;
+        }
+
         if ($slot_id) {
             Stripe::setApiKey(env('STRIPE_SECRET'));
             $stripe = new \Stripe\StripeClient(
@@ -128,14 +155,14 @@ class PaymentController extends Controller
             $userToDoc =     PaymentTransaction::create([
                 'from_user_id' => Auth::id(),
                 'to_user_id' => $slotData->user_id,
-                'amount' => $slotData->amount,
+                'amount' => doubleval($totalAmount - $adminCommission),
                 'payment_type' => 'appointment',
             ]);
             //this is doctor to admin transaction
             $docToAdmin =    PaymentTransaction::create([
                 'from_user_id' => Auth::id(),
                 'to_user_id' => 1,
-                'amount' => $slotData->amount,
+                'amount' => doubleval($totalAmount),
                 'payment_type' => 'appointment',
 
             ]);
@@ -149,13 +176,13 @@ class PaymentController extends Controller
 
                 // storing data in doctor wallet
                 $doctorWallet = wallet::where('user_id', $slotData->user_id)->first();
-                $doctorWallet->total_balance += doubleval($slotData->amount);
-                $doctorWallet->pending_balance += doubleval($slotData->amount);
+                $doctorWallet->total_balance += doubleval($totalAmount - $adminCommission);
+                $doctorWallet->pending_balance += doubleval($totalAmount - $adminCommission);
                 $doctorWallet->save();;
                 // storing data in admin wallet
 
                 $adminWallet = wallet::where('user_id', 1)->first();
-                $adminWallet->total_balance += $doctorCommission;
+                $adminWallet->total_balance += $adminCommission;
                 $adminWallet->save();
                 // $doctorWallet->pending_balance += doubleval($slotData->amount);
 
@@ -164,6 +191,12 @@ class PaymentController extends Controller
                     'doctor_id' => $slotData->user_id,
                     'slot_id' => $slotData->id,
                 ]);
+
+                if ($isCouponApplied) {
+                    $couponUsage->appointment_schedule_id = $appointmentData->id;
+                    $couponUsage->used_by = Auth::id();
+                    $couponUsage->save();
+                }
 
                 $userToDoc->appointment_schedule_id = $appointmentData->id;
                 $userToDoc->save();

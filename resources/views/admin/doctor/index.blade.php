@@ -28,6 +28,9 @@
                                                 <th>Available Balance</th>
                                                 <th> Pending Balance</th>
                                                 <th> Total Sessions</th>
+                                                <th> Booked Sessions</th>
+                                                <th> Completed Sessions</th>
+
                                                 {{-- <th> Action</th> --}}
                                             </tr>
                                         </thead>
@@ -42,6 +45,9 @@
                                                     <td>{{ $doctor->wallet->total_balance }}.00 USD</td>
                                                     <td> {{ $doctor->sessions->count() }}
                                                     </td>
+                                                    <td>{{ $doctor->bookedSessions->count() }}</td>
+                                                    <td>{{ $doctor->completedSessions->count() }}</td>
+
                                                     {{-- <td>
                                                         @php
                                                             $data = \App\Models\AppointmentSchedule::where('slot_id', $slotTime->id)->first();

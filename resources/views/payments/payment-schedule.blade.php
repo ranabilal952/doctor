@@ -107,6 +107,9 @@
                                 date-payment="{{ $slotTime->duration }}" id="payment-form">
                                 @csrf
                                 <input type="hidden" name="slot_id" value="{{ $slotTime->id }}" id="">
+                                <input type="hidden" name="isCouponApplied" id="isCouponApplied" value="false">
+                                <input type="hidden" name="couponValue" id="couponValue" value="0">
+                                <input type="hidden" name="couponId" id="couponId" value="0">
                                 <div class='form-row row'>
                                     <div class='col-xs-12 form-group required'>
                                         <label style="color: black" class='control-label'>Name on Card</label> <input
@@ -141,15 +144,30 @@
                                 </div>
 
                                 <div class='form-row row'>
-                                    <div class='col-md-12 error form-group hide'>
-                                        <div class='alert-danger alert'>Please correct the errors and try
-                                            again.</div>
+                                    <div class='col-xs-12 col-md-6 form-group card required'>
+                                        <small class='control-label' style="color: black">Coupon Code (If any)</small>
+                                        <input id="couponCode" autocomplete='off' name="coupon_code"
+                                            class='form-control card-number' size='20' type='text'>
+                                    </div>
+                                    <div class='col-xs-12 col-md-6 form-group ' id="clickthis">
+                                        <label class='control-label' style="color: black">Click this button after enter
+                                            coupon code</label>
+
+                                        <button onclick="checkCouponValid()" type="button" class="btn btn-primary">Check
+                                            Now</button>
+                                    </div>
+                                    <div class='col-xs-12 col-md-6 form-group mt-3 d-none ' id="afterCouponApproved">
+                                        <span class="text-center text-success mt-">Coupon Applied Successfully</span>
                                     </div>
                                 </div>
 
+
+
+
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now
+                                        <button id="payNowBtn" class="btn btn-primary btn-lg btn-block" type="submit">Pay
+                                            Now
                                             (${{ doubleVal($slotTime->amount) + $doctorPercent }})</button>
                                     </div>
                                 </div>
@@ -170,7 +188,58 @@
 @endsection
 @section('scripts')
 
+
     <script type="text/javascript">
+        var slotTime = @json($slotTime);
+        var systemFee = @json($doctorPercent);
+
+        function checkCouponValid() {
+            var couponCode = $('#couponCode').val();
+            if (couponCode.length == 0) {
+                alert('Coupone code can\'t be empty');
+            }
+
+            $.ajax({
+                url: '/checkCouponValid',
+                type: 'POST',
+                /* send the csrf-token and the input to the controller */
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    doctor_id: slotTime.user_id,
+                    coupon_code: couponCode,
+                },
+                dataType: 'JSON',
+                /* remind that 'data' is the response of the AjaxController */
+                success: function(data) {
+                    if (data.success) {
+                        let discount;
+                        var amount = parseInt(systemFee) + parseInt(slotTime.amount);
+                        if (data.data.method === 'percent') {
+                            discount = (parseInt(data.data.coupon_value) / 100);
+                            amount = amount - ((amount * discount));
+                        } else {
+                            //amount
+                            discount = parseInt(data.data.coupon_value);
+                            amount = amount - discount;
+                        }
+                        $('#isCouponApplied').val('true');
+                        $('#couponValue').val(amount);
+                        $('#couponId').val(data.data.id);
+
+
+                        // alert(amount);
+                        $('#payNowBtn').html('Pay Now ($' + amount + ')');
+                        $("#couponCode").prop('disabled', true);
+                        $('#clickthis').addClass('d-none');
+                        $('#afterCouponApproved').removeClass('d-none');
+
+                    } else {
+                        alert(data.message);
+                    }
+                }
+            });
+
+        }
         $(function() {
 
             $('#goToPayment').click(function(e) {

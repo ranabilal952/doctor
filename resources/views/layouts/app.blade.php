@@ -176,6 +176,7 @@
                                 <li><a href=""> <i class="mdi mdi-clock "> All Doctors</i>
                                     </a>
                             </ul>
+                            </ul>
                         </li> --}}
 
                             <li class="has_sub ">
@@ -238,7 +239,7 @@
                             <li>
                                 <a href="{{ url('test') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Add Psychological Test <span
+                                    <span> Psychological Test <span
                                             class="badge badge-primary pull-right"></span></span>
                                 </a>
                             </li>
@@ -263,6 +264,10 @@
                                                 Doctors</i>
                                         </a>
                                     </li>
+                                    <li><a href="{{ url('reward-doctor') }}"> <i class="mdi mdi-clock ">Reward
+                                                Doctors</i>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="has_sub ">
@@ -279,7 +284,7 @@
                                 <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
                                         Rating </span> </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ url('rating') }}">Add Rating</a></li>
+                                    {{-- <li><a href="{{ url('rating') }}">Add Rating</a></li> --}}
                                     <li><a href="{{ url('all_rating') }}">All Rating</a></li>
                                     {{-- <li><a href="{{ url('booked-schedule') }}">Donations</a></li> --}}
                                 </ul>

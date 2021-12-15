@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Doctor Rates / أسعار الطبيب
+    Doctor Rates / أسعار الطبيب
 @endsection
 @section('content')
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -21,7 +21,7 @@ Doctor Rates / أسعار الطبيب
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    
+                                    <input type="hidden" name="doctor_id" id="" value="{{ $doctor_id ?? '0' }}">
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label style="color: black"><strong>User Rating (for rating) / تصنيف المستخدم
@@ -41,8 +41,7 @@ Doctor Rates / أسعار الطبيب
                                         <div class="form-group">
                                             <label style="color: black"><strong>User Name (for rating) / اسم المستخدم
                                                     (للتقييم)</strong></label>
-                                            <input type="text" class="form-control" name="user_name" id=""
-                                                placeholder="">
+                                            <input type="text" class="form-control" name="user_name" id="" placeholder="">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -75,4 +74,3 @@ Doctor Rates / أسعار الطبيب
 
     </div>
 @endsection
-
