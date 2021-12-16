@@ -35,10 +35,10 @@
                 <h5>Payment Amount</h5>
                 <p>{{ $paymentLink->amount }}.00 USD</p>
             </div>
-            <div class="">
+            {{-- <div class="">
                 <h5>FEE Amount</h5>
                 <p>{{ $paymentLink->amount - intval($paymentLink->amount) * 0.4 }}.00 USD</p>
-            </div>
+            </div> --}}
         </div>
 
         <div class="row mt-3 justify-content-center" id="paymentForm">
