@@ -6,6 +6,7 @@ use App\Models\AppointmentSchedule;
 use App\Models\SlotTime;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -137,7 +138,14 @@ class SchedulesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $slotTime = Schedule::find($request->id);
+        $slotTime->time = $request->time;
+        $slotTime->date_from = $request->date_from;
+        $slotTime->duration = $request->duration;
+        $slotTime->amount = $request->amount;
+        $slotTime->save();
+        toastr()->info('Data Sucessfully Updated');
+        return redirect()->back();
     }
 
     /**
@@ -183,6 +191,32 @@ class SchedulesController extends Controller
         // dd(($filterTimes));
         return view('Schedules.active')->with('slotTime', $slotTime);
     }
+    public function approved($id)
+    {
+
+        $slotTime = SlotTime::find($id);
+        $slotTime->update([
+            'booking_status' => 1,
+        ]);
+        toastr()->success('Approved', 'Done');
+        return redirect()->back();
+    }
+    public function unapproved($id)
+    {
+        $slotTime = SlotTime::find($id);
+        $slotTime->update([
+            'booking_status' => 3,
+        ]);
+        toastr()->error('Unapproved', 'Done');
+        return redirect()->back();
+    }
+
+
+
+
+
+
+
 
     public function getBookedSchedule()
     {

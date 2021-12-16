@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Diseases;
 use App\Models\Doctor;
+use App\Models\Payment;
 use App\Models\Speciality;
 use App\Models\Time;
 use App\Models\User;
@@ -166,5 +167,19 @@ class DoctorController extends Controller
             $query->where('appointment_status', 'completed');
         }])->get();
         return view('admin.doctor.index', compact('doctors'));
+    }
+
+    public function getDoctorDetails($id)
+    {
+        $doctorData = User::with('doctorData')->findOrFail($id);
+    }
+
+    public function hideDoctor($id)
+    {
+        $user = Doctor::where('user_id', $id)->first();
+        $user->is_hide = !$user->is_hide;
+        $user->save();
+        toastr()->success('Doctor Status Changed Successfully');
+        return redirect()->back();
     }
 }

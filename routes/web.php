@@ -44,6 +44,7 @@ use App\Models\PaymentSetting;
 use App\Models\SlotController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use PhpParser\Comment\Doc;
 
 /*
 |--------------------------------------------------------------------------
@@ -241,6 +242,9 @@ Route::get('active-schedule', [SchedulesController::class, 'getActiveSchedule'])
 Route::post('store-schedule', [SchedulesController::class, 'store']);
 Route::get('all-schedules', [SchedulesController::class, 'index']);
 Route::get('booked-schedule', [SchedulesController::class, 'getBookedSchedule']);
+Route::get('approved/{id}', [SchedulesController::class, 'approved'])->name('approved');
+Route::get('unapproved/{id}', [SchedulesController::class, 'unapproved'])->name('unapproved ');
+Route::put('update_schedule/{id}', [SchedulesController::class, 'update'])->name('update_schedule');
 
 
 Route::get('payment-schedule/{id}', [SchedulesController::class, 'paymentSchedule']);
@@ -300,3 +304,9 @@ Route::get('unblock/{id}', [RatingController::class, 'unblock'])->name('unblock'
 //Reward doctor
 Route::get('reward-doctor', [RewardDoctorController::class, 'index']);
 Route::post('reward-doctor', [RewardDoctorController::class, 'store']);
+
+Route::get('admin-doctor-sessions', [AppointmentScheduleController::class, 'getAdminDoctorsSession']);
+Route::post('admin-doctor-sessions', [AppointmentScheduleController::class, 'getDataAdminDoctorsSession']);
+
+// Route::get('admin-doctor-details/{id}', [DoctorController::class, 'getDoctorDetails']);
+Route::get('hide-doctor/{id}', [DoctorController::class, 'hideDoctor']);

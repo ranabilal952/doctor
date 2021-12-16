@@ -116,7 +116,7 @@
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="card m-b-200">
                                     <div class="card-body">
                                         <h4 class="mt-0 header-title" style="font-size: 20px">Withdraw balance
@@ -175,7 +175,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            {{-- <div class="col-lg-6">
                                 <div class="card m-b-200">
                                     <div class="card-body">
                                         <h4 class="mt-0 header-title" style="font-size: 20px">Donate to support team
@@ -206,7 +206,7 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

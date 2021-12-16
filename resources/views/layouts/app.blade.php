@@ -271,6 +271,18 @@
                                 </ul>
                             </li>
                             <li class="has_sub ">
+                                <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> Doctors
+                                        Sessions</span>
+                                </a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ url('admin-doctor-sessions') }}"> <i class="mdi mdi-clock ">
+                                                Doctors Sessions</i>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <li class="has_sub ">
                                 <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> Blog
                                         Data</span>
                                 </a>

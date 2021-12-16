@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Create Payment Link
+    Doctors Sessions
 @endsection
 @section('content')
     <div class="page-content-wrapper ">
@@ -11,36 +11,37 @@
                         <div class="card-body">
                             <h4 class="mt-0 header-title">Enter Information </h4>
                             <p class="text-muted m-b-30 font-14"></p>
-                            <form class="" action="{{ url('save_payment_link') }}" method="POST">
+                            <form class="" action="{{ url('admin-doctor-sessions') }}" method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label><strong style="color: black">Amount:
-                                                </strong>(required)</label>
+                                            <label><strong style="color: black">Doctors:</strong>(required)</label>
                                             <div>
-                                                <input type="number" name="amount" class="form-control" required
-                                                    placeholder="Enter amount" />
+                                                <select name="doctor_id" class="form-control" id="">
+                                                    <option value="doct" disabled>Select</option>
+                                                    @foreach ($doctors as $doctor)
+                                                        <option value="{{ $doctor->id }}">{{ ucfirst($doctor->name) }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label><strong>Doctors:</strong>(required)</label>
+                                            <label><strong style="color: black">Sessions </strong>(required)</label>
                                             <div>
-                                                <select name="doctor_id" class="form-control" id="">
-                                                    <option value="doct" disabled>Select</option>
-                                                    @foreach ($doctors as $doctor)
-                                                        <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
+                                                <select name="session_time" class="form-control" id="">
+                                                    <option value="" disabled>Select</option>
+                                                    <option value="upcoming">Upcoming</option>
+                                                    <option value="previous">Previous</option>
+                                                    <option value="cancel">Cancel</option>
 
-                                                    @endforeach
                                                 </select>
-
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
                                 <div class="form-group">
                                     <div>
@@ -53,12 +54,67 @@
                                     </div>
                                 </div>
                             </form>
+
+                            @isset($upcomingSessions)
+                                <div class="doctorsSessions row">
+                                    @foreach ($upcomingSessions as $sessions)
+                                        @php
+                                            $appointmentId = \App\Models\PaymentTransaction::where('appointment_schedule_id', $sessions->id)
+                                                ->where('to_user_id', 1)
+                                                ->first();
+                                            $date = \Carbon\Carbon::parse($sessions->slot->date_from . $sessions->slot->time);
+                                            $timeLeft = \Carbon\Carbon::now()->diff($date);
+                                            
+                                        @endphp
+                                        <div class="col-md-4">
+                                            <div class="card border-primary mb-3" style="max-width: 18rem;">
+                                                <div class="card-header">Duration: {{ $timeLeft->format('%a')  }} Days left</div>
+                                                <div class="card-body text-primary">
+                                                    <h5 class="card-title">{{ Ucfirst($sessions->doctor->name) }}</h5>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Date:
+                                                        {{ $sessions->slot->date_from }}</h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Time:
+                                                        {{ $sessions->slot->time }}</h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted">
+                                                        {{ $sessions->slot->duration }} Minutes</h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted">
+                                                        {{ $appointmentId->amount }}.00 USD</h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Doctor Amount
+                                                        {{ $appointmentId->amount - $appointmentId->amount * 0.4 }}.00 USD
+                                                    </h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Admin Fee
+                                                        {{ $appointmentId->amount * 0.4 }}.00 USD</h6>
+                                                </div>
+                                                <div class="card-footer">Patient:
+                                                    {{ ucfirst($sessions->user->name) }}</div>
+
+                                            </div>
+                                            {{-- <div class="card" style="width: 18rem;">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{{ Ucfirst($sessions->doctor->name) }}</h5>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Date:
+                                                        {{ $sessions->slot->date_from }}</h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Time:
+                                                        {{ $sessions->slot->time }}</h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted">
+                                                        {{ $sessions->slot->duration }} Minutes</h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted">
+                                                        {{ $appointmentId->amount }}.00 USD</h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Patient:
+                                                        {{ ucfirst($sessions->user->name) }}</h6>
+                                                </div>
+                                            </div> --}}
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endisset
                         </div>
                     </div>
                 </div>
             </div>
-            <br>
-            <div class="page-content-wrapper ">
+        </div>
+        <br>
+        {{-- <div class="page-content-wrapper ">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
@@ -77,17 +133,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($paymentLinks as $key => $paymentLink)
-                                                <tr>
-                                                    <td>{{ $key + 1 }}</td>
-                                                    <td>{{ $paymentLink->amount }}.00 USD</td>
-                                                    <td>{{ ucfirst($paymentLink->user->name) }}</td>
-                                                    <td>{{ url('/payment-link', $paymentLink->id) }}</td>
-
-
-                                                </tr>
-                                            @endforeach
-
+                                     
                                         </tbody>
                                     </table>
                                 </div>
@@ -95,10 +141,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div> --}}
+    </div>
 
-        {{-- <div id="edit-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    {{-- <div id="edit-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">

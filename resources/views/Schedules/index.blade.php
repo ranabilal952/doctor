@@ -29,7 +29,7 @@
                                                 <th>Schedules Time</th>
                                                 <th>Schedules Duration</th>
                                                 <th> Schedules Amount</th>
-                                                {{-- <th> Schedules Status</th> --}}
+                                                <th> Schedules Status</th>
                                                 {{-- <th> Action</th> --}}
                                                 {{-- <th>Edit</th> --}}
 
@@ -47,6 +47,15 @@
                                                         <td>{{ $slotTime['time'] }}</td>
                                                         <td>{{ $slotTime['duration'] }} Minutes</td>
                                                         <td>{{ floatval($slotTime['amount']) }} USD</td>
+                                                        <td>
+                                                            @if ($slotTime->booking_status == '3')
+                                                            <span class="badge badge-primary"> Deactive </span>
+                                                            @else
+                                                            <span class="badge "
+                                                                style="background-color: green!important; color:white">Active</span>
+                                                           
+                                                            @endif
+                                                        </td>
                                                         {{-- <td><span class="badge "
                                                                 style="background-color: green!important; color:white">Active</span>
                                                         </td> --}}
