@@ -63,12 +63,12 @@
                                     </p>
                                 </div>
 
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <h4 class="mt-0 header-title">System Fee</h4>
                                     <p class="text-muted m-b-30 font-16">
                                         {{ $doctorPercent }} USD
                                     </p>
-                                </div>
+                                </div> --}}
 
                             </div>
                             <div class="w-100 text-center">
@@ -126,6 +126,22 @@
                                 </div>
 
                                 <div class='form-row row'>
+                                    <div class='col-xs-12 form-group card required'>
+                                        <label class='control-label' style="color: black">Email</label> <input
+                                            autocomplete='off' name="email" class='form-control card-number' size='20'
+                                            type='email'>
+                                    </div>
+                                </div>
+
+                                <div class='form-row row'>
+                                    <div class='col-xs-12 form-group card required'>
+                                        <label class='control-label' style="color: black">Phone No</label> <input
+                                            autocomplete='off' name="phone_no" class='form-control card-number' size='20'
+                                            type='text'>
+                                    </div>
+                                </div>
+
+                                <div class='form-row row'>
                                     <div class='col-xs-12 col-md-4 form-group cvc required'>
                                         <label class='control-label'>CVC</label> <input autocomplete='off'
                                             class='form-control card-cvc' name="cvc" placeholder='ex. 311' size='4'
@@ -168,7 +184,7 @@
                                     <div class="col-xs-12">
                                         <button id="payNowBtn" class="btn btn-primary btn-lg btn-block" type="submit">Pay
                                             Now
-                                            (${{ doubleVal($slotTime->amount) + $doctorPercent }})</button>
+                                            (${{ doubleVal($slotTime->amount) }})</button>
                                     </div>
                                 </div>
 

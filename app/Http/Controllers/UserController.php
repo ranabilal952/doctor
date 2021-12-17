@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AppointmentSchedule;
 use App\Models\User;
 use App\Models\wallet;
 use Illuminate\Http\Request;
@@ -130,5 +131,16 @@ class UserController extends Controller
         } else {
             return redirect()->back();
         }
+    }
+
+    public function showPatients()
+    {
+        $patients = User::where('role', 'user')->get()->pluck('id');
+
+        $patientsData = array();
+        $patientsData =    AppointmentSchedule::whereIn('user_id', $patients)->with(['doctor', 'slot', 'user'])->get();
+
+
+        return view('admin.patients.index', compact('patientsData'));
     }
 }

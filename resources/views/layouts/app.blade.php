@@ -250,6 +250,13 @@
                                 </a>
                             </li>
 
+                            <li>
+                                <a href="{{ url('patients') }}" class="waves-effect ">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Patients <span class="badge badge-primary pull-right"></span></span>
+                                </a>
+                            </li>
+
                             <li class="has_sub">
                                 <a href="#" class="waves-effect">
                                     <i class="mdi mdi-view-dashboard"></i>

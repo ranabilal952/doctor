@@ -20,7 +20,7 @@
                                 <div class="card-body">
                                     <h4 class="mt-0 header-title">All Schedules</h4>
                                     <p class="text-muted m-b-30 font-14"></p>
-                                    <table id=""  class="example table table-bordered">
+                                    <table id="" class="example table table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>Id</th>
@@ -30,7 +30,7 @@
                                                 <th> Schedules Amount</th>
                                                 <th> Schedules Status</th>
                                                 <th> Schedules Action</th>
-                                                <th> Schedules Edit</th>
+                                                {{-- <th> Schedules Edit</th> --}}
                                                 {{-- <th> Action</th> --}}
                                                 {{-- <th>Edit</th> --}}
                                             </tr>
@@ -44,33 +44,36 @@
                                                         <td>{{ $slotTime['time'] }}</td>
                                                         <td>{{ $slotTime['duration'] }} Minutes</td>
                                                         <td>{{ floatval($slotTime['amount']) }} USD</td>
-                                                       <td>
+                                                        <td>
                                                             @if ($slotTime->booking_status == '3')
-                                                            <span class="badge badge-primary"> Deactive </span>
+                                                                <span class="badge badge-primary"> Deactive </span>
                                                             @else
-                                                            <span class="badge "
-                                                                style="background-color: green!important; color:white">Active</span>
-                                                           
+                                                                <span class="badge "
+                                                                    style="background-color: green!important; color:white">Active</span>
+
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            @if($slotTime->booking_status =='3') 
-                                                            <a href="{{url('approved',$slotTime->id)}}" class="btn btn-danger ">Approve</a>
+                                                            @if ($slotTime->booking_status == '3')
+                                                                <a href="{{ url('approved', $slotTime->id) }}"
+                                                                    class="btn btn-danger ">Approve</a>
                                                             @else
-                                                            <a href="{{url('unapproved',$slotTime->id)}}"  style="background: #e96262;
-                                                                color: white;
-                                                                padding: 6px;
-                                                                border-radius: 8px;">DeActive</a>
+                                                                <a href="{{ url('unapproved', $slotTime->id) }}"
+                                                                    class="badge ">unactive</a>/
+                                                                <button type="button" class="edit-btn"
+                                                                    style="background: #62abe9; color: white; padding: 6px; border-radius: 8px;   width: 45%;   border: none;cursor: pointer;"
+                                                                    id="{{ $slotTime->id }}"
+                                                                    date_from="{{ $slotTime->date_from }}"
+                                                                    time="{{ $slotTime->time }}"
+                                                                    duration="{{ $slotTime->duration }}"
+                                                                    amount="{{ $slotTime->amount }}" data-toggle="modal"
+                                                                    data-target="#edit-modal">
+                                                                    <i class="fa fa-pencil"></i>
+                                                                </button>
                                                             @endif
-                                                            
-                                                        </td>                                                        
-                                                        <td>
-                                                            <button type="button" style="background: #62abe9; color: white; padding: 6px; border-radius: 8px;   width: 45%;   border: none;cursor: pointer;"  id="{{ $slotTime->id }}"  
-                                                                date_from="{{ $slotTime->date_from }}"   time="{{ $slotTime->time }}"  duration="{{ $slotTime->duration }}" amount="{{ $slotTime->amount }}" data-toggle="modal" data-target="#edit-modal">
-                                                              <i  class="fa fa-pencil"></i>
-                                                            </button>
-    
+
                                                         </td>
+
                                                     </tr>
                                                 @endforeach
                                             @endisset
@@ -96,26 +99,30 @@
                         @method('PUT')
                         <div class="modal-body">
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-12 col-form-label" style="color: black">Schedules Date</label>
+                                <label for="example-text-input" class="col-sm-12 col-form-label"
+                                    style="color: black">Schedules Date</label>
                                 <div class="col-sm-12 ">
                                     <input class="form-control" type="date" name="days" id="date_from">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-12 col-form-label" style="color: black">Schedules Time</label>
+                                <label for="example-text-input" class="col-sm-12 col-form-label"
+                                    style="color: black">Schedules Time</label>
                                 <div class="col-sm-12 ">
                                     <input class="form-control" type="time" name="time" id="time">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-12 col-form-label" style="color: black">Schedules Duration
+                                <label for="example-text-input" class="col-sm-12 col-form-label"
+                                    style="color: black">Schedules Duration
                                 </label>
                                 <div class="col-sm-12 ">
                                     <input class="form-control" type="text" name="duration" id="duration">
                                 </div>
-                            </div>                            
+                            </div>
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-12 col-form-label" style="color: black">Schedules Amount
+                                <label for="example-text-input" class="col-sm-12 col-form-label"
+                                    style="color: black">Schedules Amount
                                 </label>
                                 <div class="col-sm-12 ">
                                     <input class="form-control" type="text" name="amount" id="amount">
@@ -153,12 +160,13 @@
         });
         $(document).ready(function() {
             $('body').on('click', '.edit-btn', function() {
+
                 var id = $(this).attr('id');
                 var date_from = $(this).attr('date_from');
                 var amount = $(this).attr('amount');
                 var time = $(this).attr('time');
                 var duration = $(this).attr('duration');
-                // console.log(id);
+
                 $('#date_from').val(date_from);
                 $('#amount').val(amount);
                 $('#time').val(time);

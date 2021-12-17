@@ -106,8 +106,9 @@ class PaymentController extends Controller
         $appliedCouponId = intval($request->couponId);
 
         $scheduleAmount = intval($slotData->amount);
-        $adminCommission = (intval($slotData->amount) *  0.40);
         $totalAmount = $scheduleAmount;
+        $adminCommission = 0.0;
+        $adminCommission = ($totalAmount *  0.40);
 
 
         if ($request->isCouponApplied == 'true') {
@@ -115,13 +116,12 @@ class PaymentController extends Controller
             //first we have to subtract coupon discount
             if ($coupon->method == 'percent') {
                 $totalAmount = $totalAmount - ($totalAmount * (intval($coupon->coupon_value) / 100));
-               
             } else {
                 $totalAmount = $totalAmount - (intval($coupon->coupon_value));
             }
             // dd($totalAmount);
             $adminCommission = ($totalAmount *  0.40);
-            $totalAmount += $adminCommission;
+            // $totalAmount += $adminCommission;
 
             $couponUsage->coupon_id = $appliedCouponId;
             $isCouponApplied = true;
@@ -155,6 +155,8 @@ class PaymentController extends Controller
             $userToDoc =     PaymentTransaction::create([
                 'from_user_id' => Auth::id(),
                 'to_user_id' => $slotData->user_id,
+                'email' => $request->email,
+                'phone_no' => $request->phone_no,
                 'amount' => doubleval($totalAmount - $adminCommission),
                 'payment_type' => 'appointment',
             ]);
@@ -162,6 +164,8 @@ class PaymentController extends Controller
             $docToAdmin =    PaymentTransaction::create([
                 'from_user_id' => Auth::id(),
                 'to_user_id' => 1,
+                'email' => $request->email,
+                'phone_no' => $request->phone_no,
                 'amount' => doubleval($totalAmount),
                 'payment_type' => 'appointment',
 
@@ -210,7 +214,7 @@ class PaymentController extends Controller
                     'slot_id' => $slot_id,
                     'transaction_id' => $paymentObject->id,
                     'appointment_schedule_id' => $appointmentData->id,
-                    'total_paid' => $totalAmount,
+                    'total_paid' => $totalAmount - $adminCommission,
                 ]);
 
                 $slotData->booking_status = 0;

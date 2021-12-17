@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AppointmentSchedule;
+use App\Models\Doctor;
 use App\Models\SlotTime;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
@@ -55,7 +56,8 @@ class SchedulesController extends Controller
      */
     public function create()
     {
-        return view('Schedules.create');
+        $doctor = Doctor::where('user_id', Auth::id())->first();
+        return view('Schedules.create')->with('doctor', $doctor);
     }
 
     /**

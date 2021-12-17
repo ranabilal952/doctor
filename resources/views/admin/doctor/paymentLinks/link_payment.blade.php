@@ -69,11 +69,25 @@
                                 </div>
                             </div>
 
-                            
+
                             <div class='form-row row'>
                                 <div class='col-xs-12 form-group required'>
                                     <label style="color: black" class='control-label'>Card Number</label> <input
                                         class='form-control' autocomplete='off' name="card_number" size='4' type='text'>
+                                </div>
+                            </div>
+
+                            <div class='form-row row'>
+                                <div class='col-xs-12 form-group required'>
+                                    <label style="color: black" class='control-label'>Email</label> <input
+                                        class='form-control' autocomplete='off' name="email" type='email'>
+                                </div>
+                            </div>
+
+                            <div class='form-row row'>
+                                <div class='col-xs-12 form-group required'>
+                                    <label style="color: black" class='control-label'>Phone no</label> <input
+                                        class='form-control' autocomplete='off' name="phone_no" type='text'>
                                 </div>
                             </div>
 
@@ -101,7 +115,7 @@
                             <div class="mb-5">
                                 <div class="col-xs-12">
                                     <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now
-                                        ($){{ $paymentLink->amount + intval($paymentLink->amount) * 0.4 }}.00 </button>
+                                        ($){{ $paymentLink->amount }}.00 </button>
                                 </div>
                             </div>
 

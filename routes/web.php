@@ -310,3 +310,5 @@ Route::post('admin-doctor-sessions', [AppointmentScheduleController::class, 'get
 
 // Route::get('admin-doctor-details/{id}', [DoctorController::class, 'getDoctorDetails']);
 Route::get('hide-doctor/{id}', [DoctorController::class, 'hideDoctor']);
+
+Route::get('patients', [UserController::class, 'showPatients']);

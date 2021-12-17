@@ -115,12 +115,12 @@ class PaymentLinksController extends Controller
 
         $paymentLink = PaymentLinks::findorFail($request->payment_link_id);
         $amount = intval($paymentLink->amount);
-        $doctorCommission = $amount - ($amount - ($amount * 0.40));
-        if ($paymentLink) {
-            $totalAmount  = $amount + $doctorCommission;
-            // dd($totalAmount);
-            Stripe::setApiKey(env('STRIPE_SECRET'));
 
+        $totalAmount  = $amount;
+        $doctorCommission = $totalAmount * 0.40;
+        if ($paymentLink) {
+
+            Stripe::setApiKey(env('STRIPE_SECRET'));
             $stripe = new \Stripe\StripeClient(
                 env('STRIPE_SECRET'),
             );
@@ -150,8 +150,10 @@ class PaymentLinksController extends Controller
             $userToDoc = PaymentTransaction::create([
                 'from_user_id' => -2,
                 'to_user_id' => $paymentLink->doctor_id,
-                'amount' => $totalAmount,
+                'amount' => $totalAmount - $doctorCommission,
                 'payment_type' => 'link payment',
+                'email' => $request->email,
+                'phone_no' => $request->phone_no
             ]);
 
 
@@ -160,6 +162,8 @@ class PaymentLinksController extends Controller
                 'to_user_id' => 1,
                 'amount' => $totalAmount,
                 'payment_type' => 'link payment',
+                'email' => $request->email,
+                'phone_no' => $request->phone_no
             ]);
 
 

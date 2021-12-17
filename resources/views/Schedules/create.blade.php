@@ -87,7 +87,7 @@
                                                 <div class="form-group">
                                                     <label style="color: black"><strong>Duration</strong>
                                                     </label>
-                                                    <select name="duration" class="form-control" id="">
+                                                    <select name="duration" class="form-control" id="duration">
                                                         <option value="" selected disabled>--select--</option>
                                                         <option value="30">30 minutes</option>
                                                         <option value="60">60 minutes</option>
@@ -101,8 +101,8 @@
                                             <div class="col-lg-6">
                                                 <div class="form-group">
                                                     <label style="color: black"><strong> Amount</strong> </label>
-                                                    <input type="text" class="form-control" name="amount" placeholder=""
-                                                        required>
+                                                    <input id="amount" readonly type="text" class="form-control"
+                                                        name="amount" placeholder="">
                                                 </div>
                                                 @if ($errors->has('amount'))
                                                     <span
@@ -143,6 +143,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
     <script>
+        var doctor = @json($doctor);
         $(document).ready(function() {
             $("#singleAppointment").change(function() {
                 if (this.checked) {
@@ -152,9 +153,7 @@
                     $(".daysSchedule").show(); // unchecked
             });
 
-
-
-            $('select').selectpicker();
+            $('#scheduleDays').selectpicker();
 
             $('#example').DataTable({
                 dom: 'Bfrtip',
@@ -162,6 +161,17 @@
                     'csv', 'pdf', 'print'
                 ]
             });
+
+            $('#duration').on('change', function() {
+                if (this.value == '60') {
+                    $('#amount').val(doctor.sixty_minute_price);
+                } else {
+                    $('#amount').val(doctor.thirty_minute_price);
+
+                }
+            });
+
+
         });
     </script>
 @endsection
