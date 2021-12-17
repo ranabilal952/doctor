@@ -63,6 +63,13 @@
                                     </p>
                                 </div>
 
+                                <div class="col-md-6">
+                                    <h4 class="mt-0 header-title">Site Fee</h4>
+                                    <p class="text-muted m-b-30 font-16">
+                                        {{ $totalTax }}.00 USD
+                                    </p>
+                                </div>
+
                                 {{-- <div class="col-md-6">
                                     <h4 class="mt-0 header-title">System Fee</h4>
                                     <p class="text-muted m-b-30 font-16">
@@ -184,7 +191,7 @@
                                     <div class="col-xs-12">
                                         <button id="payNowBtn" class="btn btn-primary btn-lg btn-block" type="submit">Pay
                                             Now
-                                            (${{ doubleVal($slotTime->amount) }})</button>
+                                            (${{ doubleVal($totalAmount) }})</button>
                                     </div>
                                 </div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AppointmentSchedule;
 use App\Models\Doctor;
+use App\Models\PaymentSetting;
 use App\Models\SlotTime;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
@@ -230,9 +231,21 @@ class SchedulesController extends Controller
     {
 
         $slotTime = SlotTime::findorFail($id);
-        $doctorPercent = (doubleval($slotTime->amount) * 0.40);
+        $slotAmount = doubleval($slotTime->amount);
+        $doctorPercent = ($slotAmount * 0.40);
+        $siteTax = 0;
+        $totalTax = 0;
+        $totalAmount = 0;
+        if ($slotAmount <= 200.0) {
+            // tax applied  
+            $siteTax = PaymentSetting::first()->value('site_fee');
+            $totalTax = ($slotAmount * ($siteTax / 100));
+        }
+
+        $totalAmount = $slotAmount + $totalTax;
+
         if ($slotTime) {
-            return view('payments.payment-schedule', compact('slotTime', $slotTime, 'doctorPercent', $doctorPercent));
+            return view('payments.payment-schedule', compact('slotTime', 'doctorPercent', 'totalAmount', 'totalTax'));
         }
     }
 

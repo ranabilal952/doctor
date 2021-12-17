@@ -30,15 +30,16 @@
 
     <div class="container">
 
-        <div class="row text-center ">
+        <div class="d-flex text-center justify-content-evenly">
+
             <div class="">
                 <h5>Payment Amount</h5>
                 <p>{{ $paymentLink->amount }}.00 USD</p>
             </div>
-            {{-- <div class="">
-                <h5>FEE Amount</h5>
-                <p>{{ $paymentLink->amount - intval($paymentLink->amount) * 0.4 }}.00 USD</p>
-            </div> --}}
+            <div class="">
+                <h5>Site Tax</h5>
+                <p>{{ $siteTax }}.00 USD</p>
+            </div>
         </div>
 
         <div class="row mt-3 justify-content-center" id="paymentForm">
@@ -115,7 +116,7 @@
                             <div class="mb-5">
                                 <div class="col-xs-12">
                                     <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now
-                                        ($){{ $paymentLink->amount }}.00 </button>
+                                        ($){{ $paymentLink->amount + $siteTax }}.00 </button>
                                 </div>
                             </div>
 

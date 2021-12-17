@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Payment;
 use App\Models\PaymentLinks;
+use App\Models\PaymentSetting;
 use App\Models\PaymentTransaction;
 use App\Models\User;
 use App\Models\wallet;
@@ -105,19 +106,24 @@ class PaymentLinksController extends Controller
     {
 
         $paymentLink = PaymentLinks::findorFail($id);
-        return view('admin.doctor.paymentLinks.link_payment')->with('paymentLink', $paymentLink);
+        $siteTax = 0;
+        if (doubleval($paymentLink->amount) <= 200)
+            $siteTax = PaymentSetting::first()->value('site_fee');
+        return view('admin.doctor.paymentLinks.link_payment', compact('paymentLink', 'siteTax'));
     }
 
     public function storeLinkPayment(Request $request)
     {
 
-
-
+        $siteTax = 0;
         $paymentLink = PaymentLinks::findorFail($request->payment_link_id);
+        $siteTax = PaymentSetting::first()->value('site_fee');
         $amount = intval($paymentLink->amount);
-
         $totalAmount  = $amount;
         $doctorCommission = $totalAmount * 0.40;
+        if ($amount <= 200) {
+            $totalAmount += $siteTax;
+        }
         if ($paymentLink) {
 
             Stripe::setApiKey(env('STRIPE_SECRET'));
@@ -150,7 +156,7 @@ class PaymentLinksController extends Controller
             $userToDoc = PaymentTransaction::create([
                 'from_user_id' => -2,
                 'to_user_id' => $paymentLink->doctor_id,
-                'amount' => $totalAmount - $doctorCommission,
+                'amount' => ($totalAmount - $doctorCommission) - $siteTax,
                 'payment_type' => 'link payment',
                 'email' => $request->email,
                 'phone_no' => $request->phone_no
@@ -174,8 +180,8 @@ class PaymentLinksController extends Controller
                 $userToAdmin->save();
 
                 $doctorWallet = wallet::where('user_id', $paymentLink->doctor_id)->first();
-                $doctorWallet->total_balance += doubleval($amount);
-                $doctorWallet->pending_balance += doubleval($amount);
+                $doctorWallet->total_balance +=( doubleval($amount)) - $doctorCommission -$siteTax;
+                $doctorWallet->pending_balance += (doubleval($amount)) - $doctorCommission - $siteTax;
                 $doctorWallet->save();;
                 // storing data in admin wallet
 

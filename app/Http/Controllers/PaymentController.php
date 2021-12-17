@@ -104,11 +104,17 @@ class PaymentController extends Controller
         $couponUsage = new CouponUsage();
         $isCouponApplied = false;
         $appliedCouponId = intval($request->couponId);
-
+        $siteTax = PaymentSetting::first()->value('site_fee');
         $scheduleAmount = intval($slotData->amount);
         $totalAmount = $scheduleAmount;
+
+
         $adminCommission = 0.0;
         $adminCommission = ($totalAmount *  0.40);
+
+        if ($scheduleAmount <= 200) {
+            $totalAmount += $siteTax;
+        }
 
 
         if ($request->isCouponApplied == 'true') {
@@ -119,10 +125,7 @@ class PaymentController extends Controller
             } else {
                 $totalAmount = $totalAmount - (intval($coupon->coupon_value));
             }
-            // dd($totalAmount);
             $adminCommission = ($totalAmount *  0.40);
-            // $totalAmount += $adminCommission;
-
             $couponUsage->coupon_id = $appliedCouponId;
             $isCouponApplied = true;
         }
@@ -157,7 +160,7 @@ class PaymentController extends Controller
                 'to_user_id' => $slotData->user_id,
                 'email' => $request->email,
                 'phone_no' => $request->phone_no,
-                'amount' => doubleval($totalAmount - $adminCommission),
+                'amount' => doubleval($totalAmount - $adminCommission) - $siteTax,
                 'payment_type' => 'appointment',
             ]);
             //this is doctor to admin transaction
@@ -180,8 +183,8 @@ class PaymentController extends Controller
 
                 // storing data in doctor wallet
                 $doctorWallet = wallet::where('user_id', $slotData->user_id)->first();
-                $doctorWallet->total_balance += doubleval($totalAmount - $adminCommission);
-                $doctorWallet->pending_balance += doubleval($totalAmount - $adminCommission);
+                $doctorWallet->total_balance += doubleval($totalAmount - $adminCommission) - $siteTax;
+                $doctorWallet->pending_balance += doubleval($totalAmount - $adminCommission) - $siteTax;
                 $doctorWallet->save();;
                 // storing data in admin wallet
 
