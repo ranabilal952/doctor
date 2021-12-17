@@ -159,7 +159,8 @@ class PaymentLinksController extends Controller
                 'amount' => ($totalAmount - $doctorCommission) - $siteTax,
                 'payment_type' => 'link payment',
                 'email' => $request->email,
-                'phone_no' => $request->phone_no
+                'phone_no' => $request->phone_no,
+                'site_tax' => $siteTax,
             ]);
 
 
@@ -169,7 +170,9 @@ class PaymentLinksController extends Controller
                 'amount' => $totalAmount,
                 'payment_type' => 'link payment',
                 'email' => $request->email,
-                'phone_no' => $request->phone_no
+                'phone_no' => $request->phone_no,
+                'site_tax' => $siteTax,
+
             ]);
 
 
@@ -180,7 +183,7 @@ class PaymentLinksController extends Controller
                 $userToAdmin->save();
 
                 $doctorWallet = wallet::where('user_id', $paymentLink->doctor_id)->first();
-                $doctorWallet->total_balance +=( doubleval($amount)) - $doctorCommission -$siteTax;
+                $doctorWallet->total_balance += (doubleval($amount)) - $doctorCommission - $siteTax;
                 $doctorWallet->pending_balance += (doubleval($amount)) - $doctorCommission - $siteTax;
                 $doctorWallet->save();;
                 // storing data in admin wallet

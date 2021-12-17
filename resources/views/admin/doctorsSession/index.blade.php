@@ -68,7 +68,8 @@
                                         @endphp
                                         <div class="col-md-4">
                                             <div class="card border-primary mb-3" style="max-width: 18rem;">
-                                                <div class="card-header">Duration: {{ $timeLeft->format('%a')  }} Days left</div>
+                                                <div class="card-header">Duration: {{ $timeLeft->format('%a') }} Days left
+                                                </div>
                                                 <div class="card-body text-primary">
                                                     <h5 class="card-title">{{ Ucfirst($sessions->doctor->name) }}</h5>
                                                     <h6 class="card-subtitle mb-2 text-muted">Date:
@@ -78,12 +79,13 @@
                                                     <h6 class="card-subtitle mb-2 text-muted">
                                                         {{ $sessions->slot->duration }} Minutes</h6>
                                                     <h6 class="card-subtitle mb-2 text-muted">
-                                                        {{ $appointmentId->amount }}.00 USD</h6>
+                                                        {{ $appointmentId->amount }} USD</h6>
                                                     <h6 class="card-subtitle mb-2 text-muted">Doctor Amount
-                                                        {{ $appointmentId->amount - $appointmentId->amount * 0.4 }}.00 USD
+                                                        {{ $appointmentId->amount - $appointmentId->site_tax - ($appointmentId->amount - $appointmentId->site_tax) * 0.4 }}
+                                                        USD
                                                     </h6>
                                                     <h6 class="card-subtitle mb-2 text-muted">Admin Fee
-                                                        {{ $appointmentId->amount * 0.4 }}.00 USD</h6>
+                                                        {{ ($appointmentId->amount -$appointmentId->site_tax) * 0.4 }} USD</h6>
                                                 </div>
                                                 <div class="card-footer">Patient:
                                                     {{ ucfirst($sessions->user->name) }}</div>

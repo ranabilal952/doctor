@@ -162,6 +162,8 @@ class PaymentController extends Controller
                 'phone_no' => $request->phone_no,
                 'amount' => doubleval($totalAmount - $adminCommission) - $siteTax,
                 'payment_type' => 'appointment',
+                'site_tax' => $siteTax,
+
             ]);
             //this is doctor to admin transaction
             $docToAdmin =    PaymentTransaction::create([
@@ -171,6 +173,8 @@ class PaymentController extends Controller
                 'phone_no' => $request->phone_no,
                 'amount' => doubleval($totalAmount),
                 'payment_type' => 'appointment',
+                'site_tax' => $siteTax,
+
 
             ]);
 
