@@ -22,8 +22,8 @@
             <p>{{ $title
                 ? $title->description
                 : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Error impedit iusto dolores repudiandae numquam
-                                                                                                                                                    minus explicabo, placeat non possimus, temporibus fugiat tenetur dolorem velit ratione assumenda quidem quia
-                                                                                                                                                    commodi asperiores!' }}
+                                                                                                                                                                minus explicabo, placeat non possimus, temporibus fugiat tenetur dolorem velit ratione assumenda quidem quia
+                                                                                                                                                                commodi asperiores!' }}
             </p>
         </div>
     </div>
@@ -46,7 +46,8 @@
                             </div>
                             <div class="top-doctor-item-available-alert mt-1 online" style="float: right;">
                                 <span style="    float: right;
-                                margin-top: -8px;">{{ $doctor->availablity }} </span></div>
+                                    margin-top: -8px;">{{ $doctor->availablity }} </span>
+                            </div>
                             <div class="top-doctor-item-img">
                                 <img alt="ربيع الحوراني" src="{{ asset($doctor->image ?? '') }}">
                                 <i class="doctor-item-availablity online"></i>
@@ -54,7 +55,8 @@
                             <div class="card-body">
                                 <h5 class="text-center">{{ $doctor->user->name ?? 'Not Available' }}</h5>
                                 <p class="text-center"> {{ $doctor->doctor_specility ?? 'Not Available' }}</p>
-                                <p class="text-center">سنوات من الخبرة( {{ $doctor->year_experience ?? 'Not Available' }} )</p>
+                                <p class="text-center">سنوات من الخبرة(
+                                    {{ $doctor->year_experience ?? 'Not Available' }} )</p>
                                 <div class="text-center">
                                     ( {{ $doctor->total_rating }} )
                                     <span class="fa fa-star checked"></span>
@@ -65,8 +67,8 @@
                                 </div>
                                 <div class="d-flex">
                                     <a href="#" class="btn"
-                                        style="margin: 5px; width: 50%;font-size: 18px;">{{ $doctor->discount_price }}
-                                        USD</a>
+                                        style="margin: 5px; width: 50%;font-size: 18px;">{{ currency(doubleVal($doctor->discount_price), 'USD', currency()->getUserCurrency()) }}
+                                    </a>
                                     <a href="#" class="btn"
                                         style="margin: 5px;width: 50%;font-size: 18px;"><del>{{ $doctor->orignal_price }}
                                             USD</del> </a>
@@ -235,11 +237,11 @@
           animated
         "
                     data-wow-duration="600ms" style="
-                                                          visibility: visible;
-                                                          animation-duration: 600ms;
-                                                          margin-bottom: 30px;
-                                                          animation-name: fadeInUp;
-                                                        ">
+                                                              visibility: visible;
+                                                              animation-duration: 600ms;
+                                                              margin-bottom: 30px;
+                                                              animation-name: fadeInUp;
+                                                            ">
                     <span class="timer counter alt-font appear"
                         style="font-size: 50px; color: #3362cc; font-weight: 700">{{ $counter->number_patient ?? '0' }}</span>
                     <span class="counter-title">عدد المتعالجين</span>
@@ -256,11 +258,11 @@
           animated
         "
                     data-wow-duration="600ms" style="
-                                                          visibility: visible;
-                                                          animation-duration: 600ms;
-                                                          margin-bottom: 30px;
-                                                          animation-name: fadeInUp;
-                                                        ">
+                                                              visibility: visible;
+                                                              animation-duration: 600ms;
+                                                              margin-bottom: 30px;
+                                                              animation-name: fadeInUp;
+                                                            ">
                     <span class="timer counter alt-font appear"
                         style="font-size: 50px; color: #3362cc; font-weight: 700">{{ $counter->number_session ?? '0' }}</span>
                     <span class="counter-title">عدد الجلسات المنتهية</span>
@@ -278,11 +280,11 @@
           animated
         "
                     data-wow-duration="900ms" style="
-                                                          visibility: visible;
-                                                          animation-duration: 900ms;
-                                                          margin-bottom: 30px;
-                                                          animation-name: fadeInUp;
-                                                        ">
+                                                              visibility: visible;
+                                                              animation-duration: 900ms;
+                                                              margin-bottom: 30px;
+                                                              animation-name: fadeInUp;
+                                                            ">
                     <span class="timer counter alt-font appear"
                         style="font-size: 50px; color: #3362cc; font-weight: 700">{{ $counter->treated_case ?? '0' }}</span>
                     <span class="counter-title">الحالات التي تم علاجها</span>
@@ -298,11 +300,11 @@
           animated
         "
                     data-wow-duration="1200ms" style="
-                                                          visibility: visible;
-                                                          animation-duration: 1200ms;
-                                                          margin-bottom: 30px;
-                                                          animation-name: fadeInUp;
-                                                        ">
+                                                              visibility: visible;
+                                                              animation-duration: 1200ms;
+                                                              margin-bottom: 30px;
+                                                              animation-name: fadeInUp;
+                                                            ">
                     <span class="timer counter alt-font appear"
                         style="font-size: 50px; color: #3362cc; font-weight: 700">{{ $counter->under_treatment ?? '0' }}</span>
                     <span class="counter-title">حالات تحت العلاج</span>
