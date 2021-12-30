@@ -297,7 +297,17 @@
                         </ul>
                     </div>
                     <h1 class="ng-binding">المواعيد المتاحة</h1>
-
+                    <select name="timezone"
+                    class="form-control inline-field babel-ignore timezone-select-inactive"
+                    id="timezone" onchange="covertTimeToTimeZone()">
+                    @foreach ($timezones as $zone)
+                        <option value="{{ $zone->name }}" @if ($zone->name == 'Europe/London') selected @endif
+                            ofs='{{ $zone->offset }}'>
+                            {{ $zone->name }} ({{ $zone->offset }})
+                        </option>
+                    @endforeach
+                </select>
+                <br>
                     <div id="schedule-date-picker-plugin" class=""
                         style="background-color: white;;border:1px solid grey">
 
@@ -357,11 +367,11 @@
                     <script>
                        $(document).ready(function(){
                         $('.autoplay').slick({
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2000,
-});
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
+                            autoplay: true,
+                            autoplaySpeed: 2000,
+                         });
                             });
                     </script>
                     {{-- <form action="{{ url('appointment.store') }}" method="POST">
