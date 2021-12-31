@@ -70,8 +70,8 @@
                                         style="margin: 5px; width: 50%;font-size: 18px;">{{ currency(doubleVal($doctor->discount_price), 'USD', currency()->getUserCurrency()) }}
                                     </a>
                                     <a href="#" class="btn"
-                                        style="margin: 5px;width: 50%;font-size: 18px;"><del>{{ $doctor->orignal_price }}
-                                            USD</del> </a>
+                                        style="margin: 5px;width: 50%;font-size: 18px;"><del>{{ currency(doubleVal($doctor->orignal_price), 'USD', currency()->getUserCurrency()) }}
+                                            </del> </a>
                                 </div>
                                 <div class="d-flex">
                                     <a href="{{ url('doctor_detail', $doctor->id) }}" class="btn btn-primary"

@@ -18,8 +18,8 @@
 
 </style>
 @section('content')
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
@@ -238,7 +238,7 @@
 
                                     <div ng-repeat="(key, offer) in offers"
                                         class="col-md-4 col-sm-12 col-12 py-3  order-md-1 order-2 ">
-                                        <div class="doctor-single-tab-plan" >
+                                        <div class="doctor-single-tab-plan">
 
                                             <h4 class="ng-binding">{{ $offer->offer_english }}</h4>
                                             <div class="doctor-single-tab-plan-price">
@@ -297,17 +297,15 @@
                         </ul>
                     </div>
                     <h1 class="ng-binding">المواعيد المتاحة</h1>
-                    <select name="timezone"
-                    class="form-control inline-field babel-ignore timezone-select-inactive"
-                    id="timezone" onchange="covertTimeToTimeZone()">
-                    @foreach ($timezones as $zone)
-                        <option value="{{ $zone->name }}" @if ($zone->name == 'Europe/London') selected @endif
-                            ofs='{{ $zone->offset }}'>
-                            {{ $zone->name }} ({{ $zone->offset }})
-                        </option>
-                    @endforeach
-                </select>
-                <br>
+                    <select name="timezone" class="form-control inline-field babel-ignore timezone-select-inactive"
+                        id="timezone" onchange="covertTimeToTimeZone()">
+                        @foreach ($timezones as $zone)
+                            <option value="{{ $zone->name }}" @if ($zone->name == 'Europe/London') selected @endif ofs='{{ $zone->offset }}'>
+                                {{ $zone->name }} ({{ $zone->offset }})
+                            </option>
+                        @endforeach
+                    </select>
+                    <br>
                     <div id="schedule-date-picker-plugin" class=""
                         style="background-color: white;;border:1px solid grey">
 
@@ -315,12 +313,14 @@
                             <div class="d-inline-block ng-scope">
                                 <span class=""> 30 minutes
                                 </span>:
-                                <span class="ng-binding">{{ $doctor->thirty_minute_price }} USD</span>
+                                <span
+                                    class="ng-binding">{{ currency(doubleVal($doctor->thirty_minute_price), 'USD', currency()->getUserCurrency()) }}
+                                </span>
                             </div>
                             <div class="d-inline-block ng-scope">
                                 <span class="mx-3">-</span>
                                 <span class="ng-scope">60 minutes</span>:
-                                <span>{{ $doctor->sixty_minute_price }} USD</span>
+                                <span>{{ currency(doubleVal($doctor->sixty_minute_price), 'USD', currency()->getUserCurrency()) }}</span>
                             </div>
                         </div>
                         <div class="row autoplay">
@@ -329,9 +329,9 @@
                                 <div class="col-lg-3 text-center mt-3 mb-5"
                                     style="margin-right:15px;border:1px solid rgba(0,0,0,.125);">
                                     <div class="heading bg-primary " style="    width: 145%;
-                                    color: white;
-                                    text-align: center;
-                                    margin-left: -12px;">
+                                            color: white;
+                                            text-align: center;
+                                            margin-left: -12px;">
                                         <small> {{ \Carbon\Carbon::parse($ss)->format('l') }}</small>
                                         <br>
                                         <small style="">{{ \Carbon\Carbon::parse($ss)->format('d/m') }}</small>
@@ -365,14 +365,14 @@
                         </div>
                     </div>
                     <script>
-                       $(document).ready(function(){
-                        $('.autoplay').slick({
-                            slidesToShow: 3,
-                            slidesToScroll: 1,
-                            autoplay: true,
-                            autoplaySpeed: 2000,
-                         });
+                        $(document).ready(function() {
+                            $('.autoplay').slick({
+                                slidesToShow: 3,
+                                slidesToScroll: 1,
+                                autoplay: true,
+                                autoplaySpeed: 2000,
                             });
+                        });
                     </script>
                     {{-- <form action="{{ url('appointment.store') }}" method="POST">
                             @csrf
