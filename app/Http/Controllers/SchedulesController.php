@@ -11,6 +11,8 @@ use Carbon\CarbonPeriod;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Twilio\Rest\Client;
+
 
 class SchedulesController extends Controller
 {
@@ -141,7 +143,7 @@ class SchedulesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $slotTime = Schedule::find($request->id);
+        $slotTime = SlotTime::find($request->id);
         $slotTime->time = $request->time;
         $slotTime->days = $request->days;
         $slotTime->duration = $request->duration;
@@ -164,34 +166,7 @@ class SchedulesController extends Controller
 
     public function getActiveSchedule()
     {
-        // $slotTimes = SlotTime::where('user_id', Auth::id())->get();
-        // $filterTimes = array();
-        // foreach ($slotTimes as $key => $slotTime) {
-        //     if (Carbon::parse($slotTime->date_from) < Carbon::today() && Carbon::parse($slotTime->date_to) < Carbon::today()) {
-        //         // WE DON'T NEED THAT BECAUSE THIS SCHEDULE HAS BEEN PASSED
-        //     } else {
-        //         $dateFrom = Carbon::parse($slotTime->date_from);
-        //         if ($slotTime->date_to)
-        //             $dateTo = Carbon::parse($slotTime->date_to);
-        //         else
-        //             $dateTo = Carbon::tomorrow();
-        //         $period = CarbonPeriod::create($dateFrom,  $dateTo)->toArray();
-
-        //         for ($i = 0; $i < (count($period)); $i++) {
-        //             $filterTimes[$i] = [
-        //                 'time' => $slotTime->time,
-        //                 'duration' => $slotTime->duration,
-        //                 'amount' => $slotTime->amount,
-        //                 'date' => $period[$i]->format('Y-m-d'),
-        //             ];
-        //         }
-        //     }
-
         $slotTime = SlotTime::where([['user_id', Auth::id()], ['booking_status', 1], ['date_from', '>=', Carbon::today()]])->get();
-        // dd($slotTime);
-
-
-        // dd(($filterTimes));
         return view('Schedules.active')->with('slotTime', $slotTime);
     }
     public function approved($id)
@@ -231,6 +206,15 @@ class SchedulesController extends Controller
     {
 
         $slotTime = SlotTime::findorFail($id);
+        if ($slotTime) {
+            $appointmentDate =  Carbon::parse($slotTime->date_from . $slotTime->time);
+            $dateDiff = (Carbon::now()->diffInMinutes($appointmentDate, false));
+            if ($dateDiff <= 30) {
+                toastr()->success('You cannot select this appointment now');
+                return redirect()->back();
+            }
+        }
+
         $slotAmount = doubleval($slotTime->amount);
         $doctorPercent = ($slotAmount * 0.40);
         $siteTax = 0;
@@ -262,6 +246,8 @@ class SchedulesController extends Controller
             'doctor_id' => $bookSchedule->user_id,
             'slot_id' => $bookSchedule->id,
         ]);
+
+
         toastr()->success('Appointment booked successfully');
         return redirect()->back();
     }

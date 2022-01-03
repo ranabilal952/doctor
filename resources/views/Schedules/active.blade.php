@@ -130,7 +130,7 @@
                             </div>
                             <div class="col-sm-6 left">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                <input type="submit" class="btn btn-primary">
                             </div>
                         </div>
                 </div>
@@ -171,8 +171,8 @@
                 $('#amount').val(amount);
                 $('#time').val(time);
                 $('#duration').val(duration);
-                $('#updateForm').attr('action','{{route('update_schedule','')}}'+'/'+id);
-                
+                $('#updateForm').attr('action', '{{ route('update_schedule', '') }}' + '/' + id);
+
             });
         });
     </script>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AppointmentSchedule;
 use App\Models\Diseases;
 use App\Models\Doctor;
 use App\Models\Payment;
@@ -181,5 +182,12 @@ class DoctorController extends Controller
         $user->save();
         toastr()->success('Doctor Status Changed Successfully');
         return redirect()->back();
+    }
+
+    function getPatients()
+    {
+        $allPatients = AppointmentSchedule::distinct()->with(['user', 'doctor'])->get()->unique('user_id');
+        // dd($allPatients);
+        return view('admin.patients.all_patients', compact('allPatients'));
     }
 }

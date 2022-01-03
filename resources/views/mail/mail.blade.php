@@ -11,6 +11,7 @@
         * {
             box-sizing: border-box !important;
         }
+
         .btn {
             background: #D63426;
             border-radius: 100px;
@@ -20,13 +21,14 @@
             font-weight: 700;
             font-size: 16px;
             line-height: 12px;
-            padding: 14px ;
+            padding: 14px;
             display: inline-block;
         }
 
         a {
             text-decoration: none !important;
         }
+
     </style>
 </head>
 
@@ -43,7 +45,8 @@
             </tr>
         </table>
         <hr>
-        <table cellspacing="0" cellpadding="0" class="inner" style="max-width: 90%; margin: auto; width: 100%; border: 0;">
+        <table cellspacing="0" cellpadding="0" class="inner"
+            style="max-width: 90%; margin: auto; width: 100%; border: 0;">
             <tr>
                 <td style="padding: 60px 0;">
                     <h1 style=" 
@@ -57,20 +60,21 @@
                         <!--Name of Customer enter here -->
                         <b>مرحبا , ( Name )</b>
                     </h1>
-                   
+
                     <p style="margin: 0 0 20px 0; 
                         font-style: normal;
                         font-weight: 400;
                         font-size: 22px;
                         line-height: 140%;
                         color: #2D2926;">
-                            لقد تلقينا طلبًا بموعدك ، والذي يمكن تحديده
-                           <br>( Time / Date)</p>
+                        لقد تلقينا طلبًا بموعدك ، والذي يمكن تحديده
+                        <br>( Time / Date)
+                    </p>
                     <p style="margin: 0 0 20px 0; 
                         font-style: normal !important;
                         font-weight: bold !important;">
-                            <!-- Message -->
-                            <span class="btn" style="background: #6562f0;
+                        <!-- Message -->
+                        <span class="btn" style="background: #6562f0;
                             border-radius: 100px;
                             color: white;
                             border: none;
@@ -82,7 +86,7 @@
                             display: inline-block; ">
                             <a href="" style="text-decoration: none !important; color: white; font-weight: 700;
                             font-size: 16px;">
-                                 Video Link</a></span>
+                                Video Link</a></span>
                     </p>
                     <p style="margin: 0 0 20px 0; 
                         font-style: normal;
@@ -91,12 +95,13 @@
                         line-height: 140%;
                         color: #2D2926;">
                         اسم الطبيب
-                    (Doctor Name)</p>
+                        (Doctor Name)</p>
 
                 </td>
             </tr>
         </table>
-        <table class="footer" cellspacing="0" cellpadding="0" style="background: #F9F9F9; width: 100%; border: 0;">
+        <table class="footer" cellspacing="0" cellpadding="0"
+            style="background: #F9F9F9; width: 100%; border: 0;">
             <tr>
                 <td style="padding: 30px 15px;">
                     <p style="margin: 0 0 15px 0;
@@ -104,12 +109,14 @@
                     font-weight: 400;
                     font-size: 16px;
                     line-height: 18px;
-                    color: #535455;">دكتورك | طبيب نفسي | استشارات نفسية : هي عبارة عن عيادة نفسية إلكترونية خاصة، تقدم جلسات نفسية عبر الانترنت، فبعد الان لن تحتاج للذهاب الى عيادة دكتور نفسي ، تحدث مع دكتور نفسي اونلاين صوت وصورة اون لاين.
+                    color: #535455;">دكتورك | طبيب نفسي | استشارات نفسية : هي عبارة عن عيادة نفسية إلكترونية خاصة، تقدم
+                        جلسات نفسية عبر الانترنت، فبعد الان لن تحتاج للذهاب الى عيادة دكتور نفسي ، تحدث مع دكتور نفسي
+                        اونلاين صوت وصورة اون لاين.
 
-.</p>
+                        .</p>
 
-                
-                <p style="margin: 0;
+
+                    <p style="margin: 0;
                 font-style: normal;
                 font-weight: 400;
                 font-size: 16px;
@@ -120,4 +127,5 @@
         </table>
     </div>
 </body>
+
 </html>

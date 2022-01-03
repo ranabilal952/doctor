@@ -332,6 +332,7 @@
                                 <ul class="list-unstyled">
                                     <li><a href="{{ url('/get-next-session') }}">Next Sessions</a></li>
                                     <li><a href="{{ url('/get-previous-session') }}">Previous Sessions</a></li>
+                                    <li><a href="{{ url('/get-canceled-session') }}">Cancel Sessions</a></li>
 
                                     {{-- <li><a href="{{url('done_appointment')}}" >Done Appointment</a></li> --}}
                                     {{-- <li><a href="{{url('cancel_appointment')}}" >Cancelled Appointment</a></li> --}}
@@ -388,6 +389,7 @@
                                 <ul class="list-unstyled">
                                     <li><a href="{{ url('/get-next-session') }}">Next Sessions</a></li>
                                     <li><a href="{{ url('/get-previous-session') }}">Previous Sessions</a></li>
+                                    <li><a href="{{ url('/get-canceled-session') }}">Cancel Sessions</a></li>
 
                                     {{-- <li><a href="{{url('done_appointment')}}" >Done Appointment</a></li> --}}
                                     {{-- <li><a href="{{url('cancel_appointment')}}" >Cancelled Appointment</a></li> --}}

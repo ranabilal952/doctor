@@ -11,7 +11,7 @@ use App\Models\PaymentTransaction;
 use App\Models\SlotTime;
 use App\Models\wallet;
 use App\Models\Withdraw;
-use Illuminate\Contracts\Session\Session;
+use Twilio\Rest\Client; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Stripe\Charge;
@@ -221,11 +221,24 @@ class PaymentController extends Controller
                     'slot_id' => $slot_id,
                     'transaction_id' => $paymentObject->id,
                     'appointment_schedule_id' => $appointmentData->id,
-                    'total_paid' => $totalAmount - $adminCommission,
+                    'total_paid' => $totalAmount,
                 ]);
 
                 $slotData->booking_status = 0;
                 $slotData->save();
+
+
+                $account_sid = getenv("TWILIO_SID");
+                $auth_token = getenv("TWILIO_AUTH_TOKEN");
+                $twilio_number = getenv("TWILIO_NUMBER");
+                $message = "Your appointment has been scheduled.\nAppointment Date&Time = " . $slotData->date_from . ' ' . $slotData->time;
+                $client = new Client($account_sid, $auth_token);
+                $client->messages->create(
+                    '+923040532318',
+                    ['from' => $twilio_number, 'body' => $message]
+                );
+
+
                 toastr()->success('Your appointment has been scheduled');
                 return redirect('get-next-session');
                 // yaha pr user ko redirect krwana hai user dashboard me

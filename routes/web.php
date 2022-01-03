@@ -39,12 +39,9 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\WebsiteLinkController;
 use App\Http\Controllers\WeekdayController;
 use App\Models\AppointmentSchedule;
-use App\Models\Payment;
-use App\Models\PaymentSetting;
 use App\Models\SlotController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use PhpParser\Comment\Doc;
 
 /*
 |--------------------------------------------------------------------------
@@ -246,16 +243,15 @@ Route::get('approved/{id}', [SchedulesController::class, 'approved'])->name('app
 Route::get('unapproved/{id}', [SchedulesController::class, 'unapproved'])->name('unapproved ');
 Route::put('update_schedule/{id}', [SchedulesController::class, 'update'])->name('update_schedule');
 
-
 Route::get('payment-schedule/{id}', [SchedulesController::class, 'paymentSchedule']);
 Route::get('book-schedule/{id}', [SchedulesController::class, 'bookSchedule']);
 
 Route::get('get-next-session', [AppointmentScheduleController::class, 'getNextSession']);
 Route::get('get-previous-session', [AppointmentScheduleController::class, 'getPreviousSession']);
+Route::get('get-canceled-session', [AppointmentScheduleController::class, 'getCancelSession']);
 Route::get('view-appointment/{id}', [AppointmentScheduleController::class, 'viewAppointment']);
 
 Route::view('video-test', 'jitsi.video-test');
-
 
 Route::get('testcreate', [TestController::class, 'create'])->name('testcreate');
 
@@ -310,4 +306,9 @@ Route::post('admin-doctor-sessions', [AppointmentScheduleController::class, 'get
 
 // Route::get('admin-doctor-details/{id}', [DoctorController::class, 'getDoctorDetails']);
 Route::get('hide-doctor/{id}', [DoctorController::class, 'hideDoctor']);
+Route::get('patients', [DoctorController::class, 'getPatients']);
+
 Route::view('mail', 'mail.mail');
+
+//CANCEL APPOINTMENT
+Route::get('cancel-appointment/{id}', [AppointmentController::class, 'cancelAppointment']);

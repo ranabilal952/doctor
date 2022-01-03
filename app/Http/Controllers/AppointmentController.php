@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\AppointmentSchedule;
 use App\Models\SlotTime;
 use App\Models\Timezone;
 use Carbon\Carbon;
@@ -163,13 +164,13 @@ class AppointmentController extends Controller
         $doctorID = Auth::id();
         $today = Carbon::today();
         if (Auth::user()->role == 'doctor')
-            $appointments = Appointment::where([['doctor_id', $doctorID],['status','!=','completed']])->whereDate('date', '>=', $today)->with('user')->latest()->get();
+            $appointments = Appointment::where([['doctor_id', $doctorID], ['status', '!=', 'completed']])->whereDate('date', '>=', $today)->with('user')->latest()->get();
         else
-            $appointments = Appointment::where([['user_id', $doctorID],['status','!=','completed']])->whereDate('date', '>=', $today)->with('user')->latest()->get();
+            $appointments = Appointment::where([['user_id', $doctorID], ['status', '!=', 'completed']])->whereDate('date', '>=', $today)->with('user')->latest()->get();
 
         $past = false;
 
-        return view('appointment.current', compact('appointments','past'));
+        return view('appointment.current', compact('appointments', 'past'));
     }
 
     public function getPastAppointments()
@@ -182,7 +183,7 @@ class AppointmentController extends Controller
             $appointments = Appointment::where('user_id', $doctorID)->whereDate('date', '<', $today)->with('user')->latest()->get();
 
         $past = true;
-        return view('appointment.current', compact('appointments','past'));
+        return view('appointment.current', compact('appointments', 'past'));
     }
 
 
@@ -198,6 +199,17 @@ class AppointmentController extends Controller
             toastr()->error('Appointment is not available');
         }
 
+        return redirect()->back();
+    }
+
+    public function cancelAppointment($id)
+    {
+        $appointment = AppointmentSchedule::findorfail($id);
+        if ($appointment) {
+            $appointment->appointment_status = 'canceled';
+            $appointment->save();
+        }
+        toastr()->success('appointment canceled successfully');
         return redirect()->back();
     }
 }

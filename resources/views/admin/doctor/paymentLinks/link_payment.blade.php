@@ -34,11 +34,11 @@
 
             <div class="">
                 <h5>Payment Amount</h5>
-                <p>{{ $paymentLink->amount }}.00 USD</p>
+                <p>{{ currency(doubleVal($paymentLink->amount), 'USD', currency()->getUserCurrency()) }}</p>
             </div>
             <div class="">
                 <h5>Site Tax</h5>
-                <p>{{ $siteTax }}.00 USD</p>
+                <p>{{ currency(doubleVal($siteTax), 'USD', currency()->getUserCurrency()) }}</p>
             </div>
         </div>
 
