@@ -171,7 +171,8 @@
                 $('#amount').val(amount);
                 $('#time').val(time);
                 $('#duration').val(duration);
-                $('#updateForm').attr('action', '{{ url('update_schedule', '') }}' + '/' + id);
+                $('#updateForm').attr('action','{{route('update_schedule','')}}'+'/'+id);
+                
             });
         });
     </script>

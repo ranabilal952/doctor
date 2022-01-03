@@ -143,7 +143,7 @@ class SchedulesController extends Controller
     {
         $slotTime = Schedule::find($request->id);
         $slotTime->time = $request->time;
-        $slotTime->date_from = $request->date_from;
+        $slotTime->days = $request->days;
         $slotTime->duration = $request->duration;
         $slotTime->amount = $request->amount;
         $slotTime->save();
