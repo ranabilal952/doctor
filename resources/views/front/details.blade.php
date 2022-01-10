@@ -40,15 +40,14 @@
                                 </div>
                             </div>
                             <div class="top-doctor-services" style="display: inline-flex;">
-                                <div class="video-service"
-                                    style="margin: 5px; margin-right: 28px; margin-top: 20px; background: #138DE7;">
-                                    <i class="las la-video mt-1" style=" font-size: 18px;"></i>
+                                <div class="">
+                                    <img src="{{ url('web/assets/ma.PNG') }}" alt="" style="width:35px;margin:5px">
                                 </div>
-                                <div class="chat-service" style="margin: 5px;margin-top: 20px; background: #138DE7;">
-                                    <i class="las la-comment-alt mt-1"></i>
+                                <div class="" >
+                                    <img src="{{ url('web/assets/wat.PNG') }}" alt="" style="width:35px;margin:5px">
                                 </div>
-                                <div class="whatsapp-service" style="margin: 5px;margin-top: 20px;">
-                                    <i class="lab la-whatsapp"></i></i>
+                                <div class="" >
+                                    <img src="{{url('web/assets/zo.PNG')}}" alt="" style="width:35px;margin:5px">
                                 </div>
                             </div>
                         </div>
@@ -287,7 +286,7 @@
                         {{-- <a class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 ng-scope"
                             style="border: 2px solid black;color: black;">عروض الجلسات</a> --}}
 
-                        <ul class="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist" style="background: #E7F3F5; ">
+                        <ul class="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist" style=" ">
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" id="ex3-tab-4" data-mdb-toggle="tab" href="#ex3-tabs-4"
                                     role="tab" aria-controls="ex3-tabs-4" aria-selected="false"
@@ -309,7 +308,7 @@
                     <div id="schedule-date-picker-plugin" class=""
                         style="background-color: white;;border:1px solid grey">
 
-                        <div id="schedule-date-picker-header" class="text-center">
+                        <div id="schedule-date-picker-header" class="text-center" style="display: inline-flex;">
                             <div class="d-inline-block ng-scope">
                                 <span class=""> 30 minutes
                                 </span>:
@@ -320,7 +319,7 @@
                             <div class="d-inline-block ng-scope">
                                 <span class="mx-3">-</span>
                                 <span class="ng-scope">60 minutes</span>:
-                                <span>{{ currency(doubleVal($doctor->sixty_minute_price), 'USD', currency()->getUserCurrency()) }}</span>
+                                <span class="ng-binding">{{ currency(doubleVal($doctor->sixty_minute_price), 'USD', currency()->getUserCurrency()) }}</span>
                             </div>
                         </div>
                         <div class="row autoplay">

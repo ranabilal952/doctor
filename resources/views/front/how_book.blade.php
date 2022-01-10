@@ -8,10 +8,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="how-to-step-head">
-                    <span class="how-to-step-num ng-binding">أولا</span>
+                    <span class="how-to-step-num ng-binding" style="float: right;">أولا</span>
                     <span class="how-to-step-title title-secondary f-bold ng-binding"
-                        style="color: #D6E0F5;">{{ $data->title }}</span>
-                    <p class="ng-binding">{{ $data->description }}</p>
+                        style="color: #D6E0F5;float: right;">{{ $data->title }}</span>
+                        <br>
+                    <p class="ng-binding" style="float: right;">{{ $data->description }}</p>
                 </div>
             </div>
             @if ($data->video_link != null)
@@ -25,7 +26,7 @@
                 </div>
             @endif
 
-            @if ($data->video_link2 != null)
+            {{-- @if ($data->video_link2 != null)
                 <div class="col-lg-12">
                     <div class="text-center">
                         <iframe width="544" height="326" src="{{ $data->video_link2 }}" title="YouTube video player"
@@ -34,9 +35,9 @@
                             allowfullscreen></iframe>
                     </div>
                 </div>
-            @endif
+            @endif --}}
 
-            @if ($data->video_link3 != null)
+            {{-- @if ($data->video_link3 != null)
                 <div class="col-lg-12">
                     <div class="text-center">
                         <iframe width="544" height="326" src="{{ $data->video_link3 }}" title="YouTube video player"
@@ -45,7 +46,7 @@
                             allowfullscreen></iframe>
                     </div>
                 </div>
-            @endif
+            @endif --}}
 
         </div>
 
