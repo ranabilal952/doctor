@@ -29,19 +29,20 @@
     </div>
     <!-- doctor -->
     <div class="doctor-home">
-        <div class="container">
+        <div class="">
             <div class="row">
                 @foreach ($doctor->take(4) as $doctor)
-                    <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
-                        <div class="card doc_doctor">
+                    <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2 p-5">
+                        <div class="card doc_doctor p-2">
                             <div class="top-bi">
-                                <div class="whatsapp-service"><i class="lab la-whatsapp" style="margin-right: 3px;"></i>
+                                <div class="">
+                                    <img src="{{ url('web/assets/ma.PNG') }}" alt="" style="width:35px;margin:7px">
                                 </div>
-                                <div class="chat-service" style="background: #138DE7;">
-                                    <i class="las la-comment-alt" style="margin-right: 4px;"></i>
+                                <div class="" >
+                                    <img src="{{ url('web/assets/wat.PNG') }}" alt="" style="width:35px;margin:7px">
                                 </div>
-                                <div class="video-service" style="background: #138DE7;">
-                                    <i class="las la-video" style="margin-right: 4px; font-size: 15px;"></i>
+                                <div class="" >
+                                   <img src="{{url('web/assets/zo.PNG')}}" alt="" style="width:35px;margin:7px">
                                 </div>
                             </div>
                             <div class="top-doctor-item-available-alert mt-1 online" style="float: right;">
@@ -314,7 +315,7 @@
         </div>
     </section>
     <!-- world -->
-    <section class="container">
+    <section class="mt-3 p-3">
         <div class="row">
             <div class="col-lg-6">
                 <iframe width="100%" height="480" src="{{ $websiteVideoLink->video_link ?? '' }}"

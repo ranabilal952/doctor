@@ -49,18 +49,23 @@
             <div class="col-lg-4"></div>
         </div>
     </div>
-    <div class="" style="margin-top: -12%;">
-        <div class="container">
+    <div class="" style=";">
+        <div class=" p-5">
             <div class="row">
                 @foreach ($doctor as $doctor)
                 <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
 
                     <div class="card doc_doctor" style="background: #EAEDF2;">
                         <div class="top-bi">
-                            <div class="whatsapp-service"><i class="lab la-whatsapp" style="margin-right: 3px;"></i></div>
-                            <div class="chat-service" style="background: #138DE7;   ">
-                                <i class="las la-comment-alt"style="margin-right: 4px;"></i></div>
-                            <div class="video-service" style="background: #138DE7;"><i class="las la-video" style="margin-right: 4px; font-size: 15px;"></i></div>
+                            <div class="">
+                                <img src="{{ url('web/assets/ma.PNG') }}" alt="" style="width:35px;margin:5px">
+                            </div>
+                            <div class="" >
+                                <img src="{{ url('web/assets/wat.PNG') }}" alt="" style="width:35px;margin:5px">
+                            </div>
+                            <div class="" >
+                                <img src="{{url('web/assets/zo.PNG')}}" alt="" style="width:35px;margin:5px">
+                            </div>
                         </div>
                         <div class="top-doctor-item-available-alert mt-1 online" ><span style="    float: right;
                             margin-top: -8px;">{{ $doctor->availablity }} </span></div>
@@ -117,19 +122,21 @@
             <div class="col-lg-4"></div>
         </div>
     </div>
-    <div class="" style="margin-top: -12%;">
-        <div class="container">
+    <div class="" style="">
+        <div class="p-5">
             <div class="row">
         
                 <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
                     <div class="card doc_doctor">
                         <div class="top-bi">
-                            <div class="whatsapp-service"><i class="lab la-whatsapp" style="margin-right: 3px;"></i></div>
-                            <div class="chat-service" style="background: #138DE7;">
-                                <i class="las la-comment-alt" style="margin-right: 4px;"></i>
+                            <div class="">
+                                <img src="{{ url('web/assets/ma.PNG') }}" alt="" style="width:35px;margin:5px">
                             </div>
-                            <div class="video-service" style="background: #138DE7;">
-                                <i class="las la-video" style="margin-right: 4px; font-size: 15px;"></i>
+                            <div class="" >
+                                <img src="{{ url('web/assets/wat.PNG') }}" alt="" style="width:35px;margin:5px">
+                            </div>
+                            <div class="" >
+                                <img src="{{url('web/assets/zo.PNG')}}" alt="" style="width:35px;margin:5px">
                             </div>
                         </div>
                         <div class="top-doctor-item-available-alert mt-1 online" style="float: right;"><span> </span></div>
@@ -170,11 +177,11 @@
             <!-- <button class="btn btn-primary text-center">Show all doctors</button> -->
         </div>
     </div>
-    <div class="row mt-5">
+    <div class="row mb-5">
 
         <h3 class="text-center" style="padding: 45px;font-size: 40px;font-weight: 700;">اسئلة حول دكتورك | طبيب نفسي
             اونلاين</h3>
-        <div class="col-lg-12" style="padding: 0px 20%;">
+        <div class="col-lg-12" style="padding: 0px 10%;">
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
