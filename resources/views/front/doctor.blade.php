@@ -58,13 +58,13 @@
                     <div class="card doc_doctor" style="background: #EAEDF2;">
                         <div class="top-bi">
                             <div class="">
-                                <img src="{{ url('web/assets/ma.PNG') }}" alt="" style="width:35px;margin:5px">
+                                <img src="{{ url('web/assets/ma.png') }}" alt="" style="width:35px;margin:5px">
                             </div>
                             <div class="" >
-                                <img src="{{ url('web/assets/wat.PNG') }}" alt="" style="width:35px;margin:5px">
+                                <img src="{{ url('web/assets/wat.png') }}" alt="" style="width:35px;margin:5px">
                             </div>
                             <div class="" >
-                                <img src="{{url('web/assets/zo.PNG')}}" alt="" style="width:35px;margin:5px">
+                                <img src="{{url('web/assets/zo.png')}}" alt="" style="width:35px;margin:5px">
                             </div>
                         </div>
                         <div class="top-doctor-item-available-alert mt-1 online" ><span style="    float: right;
@@ -130,13 +130,13 @@
                     <div class="card doc_doctor">
                         <div class="top-bi">
                             <div class="">
-                                <img src="{{ url('web/assets/ma.PNG') }}" alt="" style="width:35px;margin:5px">
+                                <img src="{{ url('web/assets/ma.png') }}" alt="" style="width:35px;margin:5px">
                             </div>
                             <div class="" >
-                                <img src="{{ url('web/assets/wat.PNG') }}" alt="" style="width:35px;margin:5px">
+                                <img src="{{ url('web/assets/wat.png') }}" alt="" style="width:35px;margin:5px">
                             </div>
                             <div class="" >
-                                <img src="{{url('web/assets/zo.PNG')}}" alt="" style="width:35px;margin:5px">
+                                <img src="{{url('web/assets/zo.png')}}" alt="" style="width:35px;margin:5px">
                             </div>
                         </div>
                         <div class="top-doctor-item-available-alert mt-1 online" style="float: right;"><span> </span></div>
