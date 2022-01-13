@@ -205,7 +205,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">تسجيل الدخول</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        style="margin-right: 80%">
+                       >
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -282,7 +282,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">أنشئ حسابك</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        style="margin-right: 80%">
+                      >
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
