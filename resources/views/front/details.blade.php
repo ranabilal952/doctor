@@ -41,13 +41,13 @@
                             </div>
                             <div class="top-doctor-services" style="display: inline-flex;">
                                 <div class="">
-                                    <img src="{{ url('web/assets/ma.png') }}" alt="" style="width:35px;margin:5px">
+                                    <img src="{{ asset('web/assets/ma.png') }}" alt="" style="width:35px;margin:5px">
                                 </div>
                                 <div class="" >
-                                    <img src="{{ url('web/assets/wat.png') }}" alt="" style="width:35px;margin:5px">
+                                    <img src="{{ asset('web/assets/wat.png') }}" alt="" style="width:35px;margin:5px">
                                 </div>
                                 <div class="" >
-                                    <img src="{{url('web/assets/zo.png')}}" alt="" style="width:35px;margin:5px">
+                                    <img src="{{asset('web/assets/zo.png')}}" alt="" style="width:35px;margin:5px">
                                 </div>
                             </div>
                         </div>
