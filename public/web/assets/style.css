@@ -1173,4 +1173,11 @@ doctor-offers-box.country .top-doctor-services {
     .header_nav::before {
         display: none;
     }
+   
 }
+@media only screen and (max-width: 600px) {
+    .modal-dialog {
+        max-width: 95% !important;
+        margin: 1px ;
+    }
+  }
