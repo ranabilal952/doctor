@@ -50,7 +50,7 @@
                                     margin-top: -8px;">{{ $doctor->availablity }} </span>
                             </div>
                             <div class="top-doctor-item-img">
-                                <img alt="ربيع الحوراني" src="{{ asset($doctor->image ?? '') }}">
+                                <a href="{{ url('doctor_detail', $doctor->id) }}"><img alt="ربيع الحوراني" src="{{ asset($doctor->image ?? '') }}"></a>
                                 <i class="doctor-item-availablity online"></i>
                             </div>
                             <div class="card-body">
@@ -335,7 +335,7 @@
         </h3>
         <div class="">
             <div class="row">
-                <div class="col-lg-4 ml-5 mr-5">
+                <div class="col-lg-4 ml-5 mr-5" style="flex-shrink: 1;">
                     <a href="{{ url('blog_detail', $blog->id) }}" style="text-decoration: none">
                         <div class="card mb-4">
                             <img class="card-img-top" src="{{ url($blog->image ?? '') }}" alt="Card image cap" />

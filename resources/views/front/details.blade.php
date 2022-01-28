@@ -62,10 +62,10 @@
                                     <div class="me-2 d-inline ">الفرنسية</div>
                                 </h5>
 
-                                <h5 class="fw-normal text-white m-0 mt-3 ng-scope "><span class="ng-scope ">سنوات
+                                {{-- <h5 class="fw-normal text-white m-0 mt-3 ng-scope "><span class="ng-scope ">سنوات
                                         الخبرة</span>:
                                     <span class="ng-binding ">{{ $doctor->year_experience }}</span>
-                                </h5>
+                                </h5> --}}
 
 
                                 </h5>

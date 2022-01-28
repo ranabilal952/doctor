@@ -282,7 +282,11 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">أنشئ حسابك</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+<<<<<<< HEAD
                       >
+=======
+                    >
+>>>>>>> e93e9d89ac9f6dfc8443407300ed318fc89c0aef
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
