@@ -70,7 +70,7 @@
                         <div class="top-doctor-item-available-alert mt-1 online" ><span style="    float: right;
                             margin-top: -8px;">{{ $doctor->availablity }} </span></div>
                         <div class="top-doctor-item-img">
-                            <img alt="ربيع الحوراني" src="{{ asset($doctor->image ?? '') }}">
+                           <a href="{{ url('doctor_detail', $doctor->id) }}"> <img alt="ربيع الحوراني" src="{{ asset($doctor->image ?? '') }}"></a>
                             <i class="doctor-item-availablity online" ng-class="$ctrl.doctor.online ? 'online' : 'offline'"></i>
                         </div>
                         <div class="card-body">
@@ -86,8 +86,8 @@
                                 <span class="fa fa-star checked"></span>
                             </div>
                             <div class="d-flex">
-                                <a href="#" class="btn" style="margin: 5px; width: 50%;font-size: 18px;">{{ $doctor->discount_price }} USD</a>
-                                <a href="#" class="btn" style="margin: 5px;width: 50%;font-size: 18px;"><del>{{ $doctor->orignal_price }} USD</del> </a>
+                                <a href="#" class="btn" style="margin: 5px; width: 50%;font-size: 18px;">{{ currency(doubleVal($doctor->discount_price), 'USD', currency()->getUserCurrency()) }}</a>
+                                <a href="#" class="btn" style="margin: 5px;width: 50%;font-size: 18px;"><del>{{ currency(doubleVal($doctor->orignal_price), 'USD', currency()->getUserCurrency()) }}</del> </a>
                             </div>
 
                             <div class="d-flex">
