@@ -168,7 +168,7 @@ section.image_text {
 }
 
 .text_img img {
-    
+
     width: 100%;
     -o-object-fit: cover;
     object-fit: fill;
@@ -217,9 +217,10 @@ ul {
     color: white;
     padding: 70px 0;
     min-height: 300px;
-    margin:  0 !important;
+    margin: 0 !important;
     overflow: hidden;
 }
+
 .footer .container-fluid {
     max-width: 1320px;
 }
@@ -865,6 +866,18 @@ doctor-offers-box.country .top-doctor-services {
     border: 2px solid #fff;
 }
 
+.doctor-item-not-availablity {
+    width: 20px;
+    height: 20px;
+    background: red;
+    display: inline-block;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    border: 2px solid #fff;
+}
+
 .top-doctor-item-available-alert {
     margin-top: -0.5rem;
     margin-bottom: 1rem;
@@ -880,7 +893,17 @@ doctor-offers-box.country .top-doctor-services {
     margin: 0 0.5rem;
     overflow: hidden;
     background-size: 100%;
-    float: right;
+}
+.top-doctor-item-not-available-alert::before {
+    content: "";
+    display: inline-block;
+    width: 0.6rem;
+    height: 0.6rem;
+    background: red;
+    border-radius: 100%;
+    margin: 0 0.5rem;
+    overflow: hidden;
+    background-size: 100%;
 }
 
 .top-doctor-item-img {
@@ -947,18 +970,22 @@ doctor-offers-box.country .top-doctor-services {
     line-height: 1.5rem;
     margin-bottom: 0.8rem;
 }
+
 .doctor-breadcrumb {
     background: #F8FAFF;
     padding: 90px 0;
     text-align: center;
 }
+
 .doctor-breadcrumb h1 {
     font-size: 44px;
     color: #333;
 }
+
 .doctor-breadcrumb-list {
     overflow: hidden;
 }
+
 .doctor-breadcrumb-list a {
     text-decoration: none;
     position: relative;
@@ -966,6 +993,7 @@ doctor-offers-box.country .top-doctor-services {
     color: #555;
     transition: all .5s;
 }
+
 .doctor-breadcrumb-list a:after {
     content: "\F177";
     font-family: "Font Awesome 5 Pro";
@@ -976,6 +1004,7 @@ doctor-offers-box.country .top-doctor-services {
     right: 0;
     transition: all .5s;
 }
+
 #schedule-date-picker-plugin {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -987,6 +1016,7 @@ doctor-offers-box.country .top-doctor-services {
     margin-left: auto;
     margin-right: auto;
 }
+
 #app-schedule-loading {
     position: absolute;
     top: 0;
@@ -1001,6 +1031,7 @@ doctor-offers-box.country .top-doctor-services {
     background: rgb(0 0 0 / 8%);
     visibility: hidden;
 }
+
 .spinner-border {
     display: inline-block;
     width: 2rem;
@@ -1012,6 +1043,7 @@ doctor-offers-box.country .top-doctor-services {
     -webkit-animation: .75s linear infinite spinner-border;
     animation: .75s linear infinite spinner-border;
 }
+
 #schedule-date-picker-header {
     padding: 1rem;
     margin: -1rem -2.2rem 1rem;
@@ -1019,13 +1051,16 @@ doctor-offers-box.country .top-doctor-services {
     font-weight: bold;
     color: #fff;
 }
+
 .app-carousel {
     overflow: hidden;
     transition: 1s;
 }
+
 #schedule-date-picker {
     margin: 0 -0.2rem;
 }
+
 .app-carousel-inner {
     position: relative;
     width: 100%;
@@ -1034,6 +1069,7 @@ doctor-offers-box.country .top-doctor-services {
     flex-direction: row;
     transition: 1s;
 }
+
 .app-carousel-inner .item {
     float: left;
     padding: 0.8rem;
@@ -1041,14 +1077,18 @@ doctor-offers-box.country .top-doctor-services {
     display: flex;
     align-items: stretch;
 }
+
 .schedule-picker-item.item {
     padding: 0.2rem;
 }
+
 .doctor-main {
     overflow: hidden;
     margin: 50px 0;
 }
-#schedule-date-picker-right, #schedule-date-picker-left {
+
+#schedule-date-picker-right,
+#schedule-date-picker-left {
     width: 1.8rem;
     height: 1.8rem;
     display: inline-block;
@@ -1064,6 +1104,7 @@ doctor-offers-box.country .top-doctor-services {
     bottom: 0;
     margin: auto;
 }
+
 .doctor-single-tab-plan {
     width: 100%;
     border: 1px solid #6387D8;
@@ -1075,6 +1116,7 @@ doctor-offers-box.country .top-doctor-services {
     padding: 1rem;
     box-shadow: 0 1px 2px 2px #c7c7c7;
 }
+
 .doctor-single-tab-plan h4 {
     text-align: center;
     margin-top: 10px;
@@ -1087,11 +1129,13 @@ doctor-offers-box.country .top-doctor-services {
     margin-left: auto;
     margin-right: auto;
 }
+
 .doctor-single-tab-plan-price {
     text-align: center;
     margin-bottom: 10px;
     font-size: .8rem;
 }
+
 .doctor-single-tab-plan-price strong {
     color: red;
     text-decoration: line-through;
@@ -1104,15 +1148,18 @@ doctor-offers-box.country .top-doctor-services {
     border-radius: 20px;
     white-space: nowrap;
 }
+
 .doctor-single-tab-plan h3 {
     text-align: center;
     color: #111;
     margin-bottom: 20px;
     font-size: 1.2rem;
 }
+
 .doctor-single-tab-plan-items li {
     list-style: none;
 }
+
 .doctor-single-tab-plan a {
     display: block;
     text-decoration: none;
@@ -1131,11 +1178,13 @@ doctor-offers-box.country .top-doctor-services {
 @media screen and (max-width: 992px) {
     section.image_text {
         display: block;
-    }   
+    }
+
     .text_img {
         height: 600px;
         width: 100%;
     }
+
     .text_img::before {
         width: 100%;
         background: rgba(0, 0, 0, .4);
@@ -1155,9 +1204,11 @@ doctor-offers-box.country .top-doctor-services {
     .header_nav {
         display: flex;
     }
+
     .mobile_nav {
         display: none;
     }
+
     .header_nav::before {
         display: none;
     }
@@ -1167,17 +1218,20 @@ doctor-offers-box.country .top-doctor-services {
     .header_nav {
         display: flex;
     }
+
     .mobile_nav {
         display: none;
     }
+
     .header_nav::before {
         display: none;
     }
-   
+
 }
+
 @media only screen and (max-width: 600px) {
     .modal-dialog {
         max-width: 95% !important;
-        margin: 1px ;
+        margin: 1px;
     }
-  }
+}

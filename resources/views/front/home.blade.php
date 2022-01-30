@@ -1,6 +1,6 @@
 @extends('front.layout')
 @section('title')
-    Home Page
+    {{ __('Home Page') }}
 @endsection
 @section('content')
     <section class="image_text">
@@ -9,53 +9,59 @@
             <img src="{{ url('web/assets/home.png') }}" alt="" />
         </div>
         <div class="text_first">
-            <h1 class="text_h1 col-12 col-sm-7">تحدث مع معالج نفسي اونلاين</h1>
-            <p class="text_p">دكتورك أول موقع للعلاج النفسى فى الشرق الأوسط</p>
+            <h1 class="text_h1 col-12 col-sm-7">{{ __('Talk to a therapist online') }}
+            </h1>
+            <p class="text_p">{{ __('Doctoorc is the first psychiatric treatment site in the Middle East') }}</p>
             <div class="text_a">
-                <a href="" class="imgtxt_a">ابدأ الأن</a>
+                <a href="{{ url('all_doctor') }}" class="imgtxt_a">{{ __('Start now') }}</a>
             </div>
         </div>
     </section>
-    <div class="text-center mt-3">
-        <h1>{{ $title ? $title->title : 'Temporary Title' }}</h1>
-        <div style="padding: 2% 20% 0% 20%;">
-            <p>{{ $title
-                ? $title->description
-                : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Error impedit iusto dolores repudiandae numquam
-                                                                                                                                                                minus explicabo, placeat non possimus, temporibus fugiat tenetur dolorem velit ratione assumenda quidem quia
-                                                                                                                                                                commodi asperiores!' }}
-            </p>
-        </div>
-    </div>
+
     <!-- doctor -->
     <div class="doctor-home">
         <div class="">
             <div class="row">
-                @foreach ($doctor->take(4) as $doctor)
+                @foreach ($doctor as $doctor)
                     <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2 p-5">
                         <div class="card doc_doctor p-2">
                             <div class="top-bi">
                                 <div class="">
                                     <img src="{{ asset('web/assets/ma.png') }}" alt="" style="width:35px;margin:7px">
                                 </div>
-                                <div class="" >
+                                <div class="">
                                     <img src="{{ asset('web/assets/wat.png') }}" alt="" style="width:35px;margin:7px">
                                 </div>
-                                <div class="" >
-                                   <img src="{{asset('web/assets/zo.png')}}" alt="" style="width:35px;margin:7px">
+                                <div class="">
+                                    <img src="{{ asset('web/assets/zo.png') }}" alt="" style="width:35px;margin:7px">
                                 </div>
                             </div>
-                            <div class="top-doctor-item-available-alert mt-1 online" style="float: right;">
-                                <span style="    float: right;
-                                    margin-top: -8px;">{{ $doctor->availablity }} </span>
+                            <div class=" mt-1 online" style="float: right;">
+                                @if (Cache::has('is_online' . $doctor->user->id))
+                                    <span class="top-doctor-item-available-alert"
+                                        style="    float: right;
+                                                                                    margin-top: -8px;">{{ __('Available now') }}
+                                    </span>
+                                @else
+                                    <span class="mt-1 top-doctor-item-not-available-alert" style="    float: right;
+                                                                                margin-top: -8px;">
+                                    </span>
+                                @endif
+
+
                             </div>
                             <div class="top-doctor-item-img">
-                                <a href="{{ url('doctor_detail', $doctor->id) }}"><img alt="ربيع الحوراني" src="{{ asset($doctor->image ?? '') }}"></a>
-                                <i class="doctor-item-availablity online"></i>
+                                <a href="{{ url('doctor_detail', $doctor->id) }}">
+                                    <img alt="ربيع الحوراني" src="{{ asset($doctor->image ?? '') }}"></a>
+                                @if (Cache::has('is_online' . $doctor->user->id))
+                                    <i class="doctor-item-availablity online"></i>
+                                @else
+                                    <i class="doctor-item-not-availablity online"></i>
+                                @endif
                             </div>
                             <div class="card-body">
-                                <h5 class="text-center">{{ $doctor->user->name ?? 'Not Available' }}</h5>
-                                <p class="text-center"> {{ $doctor->doctor_specility ?? 'Not Available' }}</p>
+                                <h5 class="text-center">{{ $doctor->user->name ?? __('Not Available') }}</h5>
+                                <p class="text-center"> {{ $doctor->doctor_specility ?? __('Not Available') }}</p>
                                 <p class="text-center">سنوات من الخبرة(
                                     {{ $doctor->year_experience ?? 'Not Available' }} )</p>
                                 <div class="text-center">
@@ -72,130 +78,26 @@
                                     </a>
                                     <a href="#" class="btn"
                                         style="margin: 5px;width: 50%;font-size: 18px;"><del>{{ currency(doubleVal($doctor->orignal_price), 'USD', currency()->getUserCurrency()) }}
-                                            </del> </a>
+                                        </del> </a>
                                 </div>
                                 <div class="d-flex">
                                     <a href="{{ url('doctor_detail', $doctor->id) }}" class="btn btn-primary"
-                                        style="margin: 5px;width: 50%;color: black;background-color: #D6E0F5; border:none;">عرض</a>
+                                        style="margin: 5px;width: 50%;color: black;background-color: #D6E0F5; border:none;">{{ __('Show') }}</a>
                                     <a href="{{ url('doctor_detail', $doctor->id) }}" class="btn btn-primary"
-                                        style="margin: 5px;width: 50%;color: #fff;background-color: #0d6efd;border-color: #0d6efd;">احجز
-                                        الأن</a>
+                                        style="margin: 5px;width: 50%;color: #fff;background-color: #0d6efd;border-color: #0d6efd;">{{ __('Book Now') }}
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
-
-                {{-- <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
-
-                    <div class="card doc_doctor">
-                        <div class="top-bi">
-                            <div class="whatsapp-service"><i class="lab la-whatsapp" style="margin-right: 3px;"></i></div>
-                            <div class="chat-service" style="    background: #138DE7;   "><i class="las la-comment-alt"
-                                    style="margin-right: 4px;"></i></div>
-                            <div class="video-service" style="    background: #138DE7;
-                                                                "><i class="las la-video"
-                                    style="margin-right: 4px; font-size: 15px;"></i>
-                            </div>
-                        </div>
-                        <div class="top-doctor-item-available-alert mt-1 online" style="float: right;"><span> </span></div>
-                        <div class="top-doctor-item-img">
-                            <img ng-src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp"
-                                alt="ربيع الحوراني"
-                                src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp">
-                            <i class="doctor-item-availablity online"
-                                ng-class="$ctrl.doctor.online ? 'online' : 'offline'"></i>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="text-center">د. ميراي فرنسيس</h5>
-                            <p class="text-center">اخصائي نفسي</p>
-                            <div class="text-center">
-                                (13)
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                            </div>
-                            <div class="d-flex">
-                                <a href="#" class="btn"
-                                    style="margin: 5px; width: 50%;font-size: 18px;">1576PKR</a>
-                                <a href="#" class="btn"
-                                    style="margin: 5px;width: 50%;font-size: 18px;"><del>1576PKR</del> </a>
-                            </div>
-
-                            <div class="d-flex">
-                                <a href="details.html" class="btn btn-primary"
-                                    style="margin: 5px;width: 50%;color: black;background-color: #D6E0F5; border:none;">عرض</a>
-                                <a href="details.html" class="btn btn-primary" style="margin: 5px;
-                                                width: 50%;
-                                                color: #fff;
-                                                background-color: #0d6efd;
-                                                border-color: #0d6efd;">احجز الأن</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-12 mt-2 mb-2">
-
-                    <div class="card doc_doctor">
-                        <div class="top-bi">
-                            <div class="whatsapp-service"><i class="lab la-whatsapp" style="margin-right: 3px;"></i></div>
-                            <div class="chat-service" style="    background: #138DE7;   "><i class="las la-comment-alt"
-                                    style="margin-right: 4px;"></i></div>
-                            <div class="video-service" style="    background: #138DE7;
-                                                                "><i class="las la-video"
-                                    style="margin-right: 4px; font-size: 15px;"></i>
-                            </div>
-                        </div>
-                        <div class="top-doctor-item-available-alert mt-1 online" style="float: right;"><span> </span></div>
-                        <div class="top-doctor-item-img">
-                            <img ng-src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp"
-                                alt="ربيع الحوراني"
-                                src="https://api.doctoorc.com/wp-content/uploads/2021/08/الدكتور-ربيع-الحوراني.webp">
-                            <i class="doctor-item-availablity online"
-                                ng-class="$ctrl.doctor.online ? 'online' : 'offline'"></i>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="text-center">د. ميراي فرنسيس</h5>
-                            <p class="text-center">اخصائي نفسي</p>
-                            <div class="text-center">
-                                (13)
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                            </div>
-                            <div class="d-flex">
-                                <a href="#" class="btn"
-                                    style="margin: 5px; width: 50%;font-size: 18px;">1576PKR</a>
-                                <a href="#" class="btn"
-                                    style="margin: 5px;width: 50%;font-size: 18px;"><del>1576PKR</del> </a>
-                            </div>
-
-                            <div class="d-flex">
-                                <a href="details.html" class="btn btn-primary"
-                                    style="margin: 5px;width: 50%;color: black;background-color: #D6E0F5; border:none;">عرض</a>
-                                <a href="details.html" class="btn btn-primary" style="margin: 5px;
-                                                width: 50%;
-                                                color: #fff;
-                                                background-color: #0d6efd;
-                                                border-color: #0d6efd;">احجز الأن</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div> --}}
             </div>
-            <!-- <button class="btn btn-primary text-center">Show all doctors</button> -->
         </div>
     </div>
     <!-- accourdin -->
     <div class="row mt-5">
         <h3 class="text-center" style="padding: 45px; font-size: 40px; font-weight: 700">
-            اسئلة حول دكتورك | طبيب نفسي اونلاين
+            {{ __('Questions about your doctor | Online psychiatrist') }}
         </h3>
         <div class="col-lg-12" style="padding: 0px 10%">
             <div class="accordion" id="accordionExample">
@@ -205,13 +107,14 @@
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse{{ $accordian->id }}" aria-expanded="true"
                                 aria-controls="collapseOne">
-                                <strong> {{ $accordian->title }}</strong>
+                                <strong>
+                                    {{ session()->get('locale') == 'en' ? $accordian->title : $accordian->arabic_title }}</strong>
                             </button>
                         </h2>
                         <div id="collapse{{ $accordian->id }}" class="accordion-collapse collapse show"
                             aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                {{ $accordian->description }}
+                                {{ session()->get('locale') == 'en' ? $accordian->description : $accordian->arabic_description }}
                             </div>
                         </div>
                     </div>
@@ -225,7 +128,7 @@
         <div class="">
             <div class="row">
                 <h3 class="text-center" style="padding: 45px; font-size: 40px; font-weight: 700">
-                    إحصائيات موقع دكتورك | دكتور نفسي
+                    {{ __('Statistics') }}
                 </h3>
                 <div class="
           col-md-3 col-sm-6
@@ -237,15 +140,16 @@
           sm-margin-bottom-ten
           animated
         "
-                    data-wow-duration="600ms" style="
-                                                              visibility: visible;
-                                                              animation-duration: 600ms;
-                                                              margin-bottom: 30px;
-                                                              animation-name: fadeInUp;
-                                                            ">
+                    data-wow-duration="600ms"
+                    style="
+                                                                                                                                                                                                                                                      visibility: visible;
+                                                                                                                                                                                                                                                      animation-duration: 600ms;
+                                                                                                                                                                                                                                                      margin-bottom: 30px;
+                                                                                                                                                                                                                                                      animation-name: fadeInUp;
+                                                                                                                                                                                                                                                    ">
                     <span class="timer counter alt-font appear"
                         style="font-size: 50px; color: #3362cc; font-weight: 700">{{ $counter->number_patient ?? '0' }}</span>
-                    <span class="counter-title">عدد المتعالجين</span>
+                    <span class="counter-title">{{ __('Number of patients') }}</span>
                 </div>
                 <!-- end counter -->
                 <div class="
@@ -258,15 +162,16 @@
           sm-margin-bottom-ten
           animated
         "
-                    data-wow-duration="600ms" style="
-                                                              visibility: visible;
-                                                              animation-duration: 600ms;
-                                                              margin-bottom: 30px;
-                                                              animation-name: fadeInUp;
-                                                            ">
+                    data-wow-duration="600ms"
+                    style="
+                                                                                                                                                                                                                                                      visibility: visible;
+                                                                                                                                                                                                                                                      animation-duration: 600ms;
+                                                                                                                                                                                                                                                      margin-bottom: 30px;
+                                                                                                                                                                                                                                                      animation-name: fadeInUp;
+                                                                                                                                                                                                                                                    ">
                     <span class="timer counter alt-font appear"
                         style="font-size: 50px; color: #3362cc; font-weight: 700">{{ $counter->number_session ?? '0' }}</span>
-                    <span class="counter-title">عدد الجلسات المنتهية</span>
+                    <span class="counter-title">{{ __('Number of sessions ended') }}</span>
                 </div>
                 <!-- end counter -->
                 <!-- counter -->
@@ -280,15 +185,16 @@
           xs-margin-bottom-ten
           animated
         "
-                    data-wow-duration="900ms" style="
-                                                              visibility: visible;
-                                                              animation-duration: 900ms;
-                                                              margin-bottom: 30px;
-                                                              animation-name: fadeInUp;
-                                                            ">
+                    data-wow-duration="900ms"
+                    style="
+                                                                                                                                                                                                                                                      visibility: visible;
+                                                                                                                                                                                                                                                      animation-duration: 900ms;
+                                                                                                                                                                                                                                                      margin-bottom: 30px;
+                                                                                                                                                                                                                                                      animation-name: fadeInUp;
+                                                                                                                                                                                                                                                    ">
                     <span class="timer counter alt-font appear"
                         style="font-size: 50px; color: #3362cc; font-weight: 700">{{ $counter->treated_case ?? '0' }}</span>
-                    <span class="counter-title">الحالات التي تم علاجها</span>
+                    <span class="counter-title">{{ __('Treated cases') }}</span>
                 </div>
                 <!-- end counter -->
                 <!-- counter -->
@@ -300,15 +206,16 @@
           fadeInUp
           animated
         "
-                    data-wow-duration="1200ms" style="
-                                                              visibility: visible;
-                                                              animation-duration: 1200ms;
-                                                              margin-bottom: 30px;
-                                                              animation-name: fadeInUp;
-                                                            ">
+                    data-wow-duration="1200ms"
+                    style="
+                                                                                                                                                                                                                                                      visibility: visible;
+                                                                                                                                                                                                                                                      animation-duration: 1200ms;
+                                                                                                                                                                                                                                                      margin-bottom: 30px;
+                                                                                                                                                                                                                                                      animation-name: fadeInUp;
+                                                                                                                                                                                                                                                    ">
                     <span class="timer counter alt-font appear"
                         style="font-size: 50px; color: #3362cc; font-weight: 700">{{ $counter->under_treatment ?? '0' }}</span>
-                    <span class="counter-title">حالات تحت العلاج</span>
+                    <span class="counter-title">{{ __('Cases under treatment') }}</span>
                 </div>
                 <!-- end counter -->
             </div>
@@ -331,8 +238,7 @@
     <!-- blog -->
     <section class="blog-home mt-5 ">
         <h3 class="text-center" style="padding: 45px; font-size: 40px">
-            مقالات المعالجين النفسيين
-        </h3>
+            {{ __('Psychotherapist articles') }} </h3>
         <div class="">
             <div class="row">
                 <div class="col-lg-4 ml-5 mr-5" style="flex-shrink: 1;">
@@ -346,26 +252,7 @@
                         </div>
                     </a>
                 </div>
-                {{-- <div class="col-lg-4">
-                    <div class="card">
-                        <img class="card-img-top" src="{{ url('web/assets/images/blog2.webp') }}"
-                            alt="Card image cap" />
-                        <div class="card-body">
-                            <p>Jun 14, 2021</p>
-                            <p class="card-text">فوبيا الأماكن المزدحمة: الأسباب والعلاج</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <img class="card-img-top" src="{{ url('web/assets/images/blog1.webp') }}"
-                            alt="Card image cap" />
-                        <div class="card-body">
-                            <p>Jun 14, 2021</p>
-                            <p class="card-text">فوبيا الأماكن المزدحمة: الأسباب والعلاج</p>
-                        </div>
-                    </div>
-                </div> --}}
+
             </div>
         </div>
     </section>

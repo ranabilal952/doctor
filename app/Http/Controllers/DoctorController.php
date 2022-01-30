@@ -11,6 +11,7 @@ use App\Models\Time;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 
 class DoctorController extends Controller
@@ -22,8 +23,19 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctor = Doctor::all();
-        return view('front.doctor', compact('doctor'));
+        $doctors = Doctor::with('user')->get();
+        $onlineDoctors = array();
+        $offlineDoctors = array();
+
+        foreach ($doctors as $key => $doctor) {
+            if (Cache::has('is_online' . $doctor->user->id)) {
+                $onlineDoctors[]=$doctor;
+            }else{
+                $offlineDoctors[] = $doctor;
+            }
+        }
+
+        return view('front.doctor', compact('onlineDoctors','offlineDoctors'));
     }
 
     /**

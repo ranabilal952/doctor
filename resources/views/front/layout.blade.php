@@ -38,17 +38,19 @@
                     <a href="#" class="mobile_nav_img">
                         <img src="{{ url('web/assets/logo.png') }}" alt="" />
                     </a>
-                    <a class="li_a" href="{{ url('/') }}">الرئيسية</a>
-                    <a class="li_a" href="{{ url('all_doctor') }}">الأطباء</a>
-                    <a class="li_a" href="{{ url('how_book') }}">حجز جلسة علاج نفسي اونلاين</a>
-                    <a class="li_a" href="#">English</a>
+                    <a class="li_a" href="{{ url('/') }}">{{ __('Main') }}</a>
+                    <a class="li_a" href="{{ url('all_doctor') }}">{{ __('Doctors') }}</a>
+                    <a class="li_a"
+                        href="{{ url('how_book') }}">{{ __('Book a psychotherapy session online') }}</a> <a
+                        class="li_a" href="{{ url('language/en') }}">English</a>
+                    <a class="li_a" href="{{ url('language/ar') }}">عربى</a>
                 </div>
                 <button class="openbtn" onclick="openNav()">☰</button>
             </div>
             @if (!Auth::check())
                 <div class="left">
                     <button type="button" class="left1 left2_a" data-toggle="modal" data-target="#exampleModal">
-                        تسجيل الدخول
+                        {{ __('Login') }}
                     </button>
                     <button type="button" class="left1 left1_a" data-toggle="modal" data-target="#exampleModal2"
                         style="margin: 5px;">
@@ -73,18 +75,20 @@
             <div class="center">
                 <ul class="header_ul">
                     <li class="center_li">
-                        <a class="li_a" href="{{ url('/') }}">الرئيسية</a>
+                        <a class="li_a" href="{{ url('/') }}">{{ __('Main') }}</a>
                     </li>
                     <li class="center_li">
-                        <a class="li_a" href="{{ url('all_doctor') }}">الأطباء</a>
+                        <a class="li_a" href="{{ url('all_doctor') }}">{{ __('Doctors') }}</a>
                     </li>
                     <li class="center_li">
-                        <a class="li_a" href="{{ url('how_book') }}">حجز جلسة علاج نفسي اونلاين</a>
+                        <a class="li_a"
+                            href="{{ url('how_book') }}">{{ __('Book a psychotherapy session online') }}</a>
                     </li>
-                    <li class="center_li">
+                    {{-- <li class="center_li">
                         <a class="li_a" href="{{ url('test') }}">psychometer </a>
-                    </li>
-                    <li class="center_li"><a class="li_a" href="#">English</a></li>
+                    </li> --}}
+                    <a class="li_a" href="{{ url('language/en') }}">English</a>
+                    <a class="li_a" href="{{ url('language/ar') }}">عربى</a>
                 </ul>
             </div>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -93,11 +97,10 @@
             @if (!Auth::check())
                 <div class="left">
                     <button type="button" class="left1 left2_a" data-toggle="modal" data-target="#exampleModal">
-                        تسجيل الدخول
-                    </button>
+                        {{ __('Login') }} </button>
                     <button type="button" class="left1 left1_a" data-toggle="modal" data-target="#exampleModal2"
                         style="margin: 5px;">
-                        إنشاء حساب
+                        {{ __('Register') }}
                     </button>
                 </div>
             @else
@@ -203,9 +206,8 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">تسجيل الدخول</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                       >
+                    <h5 class="modal-title" id="exampleModalLabel">{{ __('Login') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -213,7 +215,6 @@
                 <div class="modal-body">
                     <div class="container-fluid py-5 col-md-8 col-12">
                         <div class="row">
-
                             <div class="col-12">
                                 <form autocomplete="off" class=" ng-valid" action="{{ route('login') }}"
                                     method="post">
@@ -224,10 +225,9 @@
                                                     class="lar la-user"></i></span>
                                             <input id="email" type="email"
                                                 class="form-control @error('email') is-invalid @enderror"
-                                                placeholder="اسم المستخدم أو البريد الالكتروني"
-                                                aria-label="اسم المستخدم أو البريد الالكتروني"
-                                                aria-describedby="user-addon" name="email" value="{{ old('email') }}"
-                                                required autocomplete="email" autofocus>
+                                                placeholder="{{ __('Email Address') }}" aria-describedby="user-addon"
+                                                name="email" value="{{ old('email') }}" required autocomplete="email"
+                                                autofocus>
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -240,30 +240,30 @@
                                                 class="las la-lock"></i></span>
                                         <input id="password" name="password" type="password"
                                             class="form-control @error('password') is-invalid @enderror"
-                                            placeholder="كلمة المرور" aria-label="كلمة المرور"
-                                            aria-describedby="user-addon">
+                                            placeholder="{{ __('Password') }}" aria-describedby="user-addon">
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="form-check form-switch">
+                                    {{-- <div class="form-check form-switch">
                                         <input class="form-check-input " type="checkbox" id="remember" value="1"
                                             ng-model="user.remember" name="remember" id="remember"
                                             {{ old('remember') ? 'checked' : '' }}>
                                         <label class="form-check-label ng-binding" for="remember"
                                             style="margin-right: 9%;">تذكرني</label>
-                                    </div>
+                                    </div> --}}
                                     <div class="text-center mt-3">
-                                        <a class="mb-3 d-inline-block ng-binding" href="#">هل نسيت كلمة المرور؟</a>
+                                        <a class="mb-3 d-inline-block ng-binding"
+                                            href="#">{{ __('Forgot your password?') }}</a>
                                     </div>
                                     <div class="text-center mb-5">
                                         <input class="btn btn-lg btn-primary w-100 mb-3" type="submit"
-                                            value="تسجيل الدخول">
+                                            value="{{ __('Sign in') }}">
                                         <div>
-                                            <span class="ng-scope">ليس لديك حساب؟</span>
-                                            <a href="#" class="my3 ng-binding">إنشاء حساب</a>
+                                            <span class="ng-scope">{{ __("Don't have an account?") }}</span>
+                                            <a href="#" class="my3 ng-binding">{{ __('Create an account') }}</a>
                                         </div>
                                     </div>
                                 </form>
@@ -280,13 +280,8 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">أنشئ حسابك</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-<<<<<<< HEAD
-                      >
-=======
-                    >
->>>>>>> e93e9d89ac9f6dfc8443407300ed318fc89c0aef
+                    <h5 class="modal-title" id="exampleModalLabel">{{ __('Register') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -305,9 +300,8 @@
                                             required="">
                                         <input id="name" type="text"
                                             class="form-control @error('name') is-invalid @enderror"
-                                            placeholder="اسم المستخدم" aria-label="اسم المستخدم"
-                                            aria-describedby="user-addon" name="name" value="{{ old('name') }}"
-                                            required autocomplete="name" autofocus>
+                                            placeholder="اسم المستخدم" aria-describedby="user-addon" name="name"
+                                            value="{{ old('name') }}" required autocomplete="name" autofocus>
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -329,11 +323,6 @@
                                             </span>
                                         @enderror
                                     </div>
-
-                                    {{-- <div class="input-group input-group-nacked mb-3">
-                                        <span class="input-group-text" id="user-addon"><i class="las la-phone"></i></span>
-                                        <input type="text" class="form-control " placeholder="رقم الهاتف" aria-label="رقم الهاتف" aria-describedby="user-addon" name="phone" autocomplete="off">
-                                    </div> --}}
 
 
                                     <div class="input-group input-group-nacked mb-3">
@@ -385,9 +374,6 @@
         </div>
     </div>
 
-
-    <!-- 
-    hgfjfkjgfffsa -->
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
