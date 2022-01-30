@@ -1127,7 +1127,15 @@ doctor-offers-box.country .top-doctor-services {
     text-align: center;
     transition: all .5s;
 }
-
+.light-grey-bg {
+    background-color: var(--light-grey);
+}
+.text-danger {
+    color: #dc3545!important;
+}
+.title-forth {
+    color: black;
+}
 @media screen and (max-width: 992px) {
     section.image_text {
         display: block;
