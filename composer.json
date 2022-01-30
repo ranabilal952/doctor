@@ -18,6 +18,7 @@
         "stripe/stripe-php": "^7.107",
         "torann/currency": "^1.1",
         "torann/geoip": "^3.0",
+        "twilio/sdk": "^6.32",
         "yoeunes/toastr": "^1.2"
     },
     "require-dev": {

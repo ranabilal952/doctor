@@ -44,13 +44,13 @@
                             </div>
                             <div class="top-doctor-services" style="display: inline-flex;">
                                 <div class="">
-                                    <img src="{{ url('web/assets/ma.PNG') }}" alt="" style="width:35px;margin:5px">
+                                    <img src="{{ asset('web/assets/ma.png') }}" alt="" style="width:35px;margin:5px">
                                 </div>
                                 <div class="" >
-                                    <img src="{{ url('web/assets/wat.PNG') }}" alt="" style="width:35px;margin:5px">
+                                    <img src="{{ asset('web/assets/wat.png') }}" alt="" style="width:35px;margin:5px">
                                 </div>
                                 <div class="" >
-                                    <img src="{{url('web/assets/zo.PNG')}}" alt="" style="width:35px;margin:5px">
+                                    <img src="{{asset('web/assets/zo.png')}}" alt="" style="width:35px;margin:5px">
                                 </div>
                             </div>
                         </div>
@@ -301,14 +301,14 @@
                         </ul>
                     </div>
                     <h1 class="ng-binding">المواعيد المتاحة</h1>
-                    <select name="timezone" class="form-control inline-field babel-ignore timezone-select-inactive"
+                    {{-- <select name="timezone" class="form-control inline-field babel-ignore timezone-select-inactive"
                         id="timezone" onchange="covertTimeToTimeZone()">
                         @foreach ($timezones as $zone)
                             <option value="{{ $zone->name }}" @if ($zone->name == 'Europe/London') selected @endif ofs='{{ $zone->offset }}'>
                                 {{ $zone->name }} ({{ $zone->offset }})
                             </option>
                         @endforeach
-                    </select>
+                    </select> --}}
                     <br>
                     <div id="schedule-date-picker-plugin" class=""
                         style="background-color: white;;border:1px solid grey">
@@ -334,9 +334,9 @@
                                 <div class="col-lg-3 text-center mt-3 mb-5"
                                     style="margin-right:10px;border:1px solid rgba(0,0,0,.125);">
                                     <div class="heading bg-primary " style="    width: 145%;
-                                            color: white;
-                                            text-align: center;
-                                            margin-left: -12px;">
+                                                color: white;
+                                                text-align: center;
+                                                margin-left: -12px;">
                                         <small> {{ \Carbon\Carbon::parse($ss)->format('l') }}</small>
                                         <br>
                                         <small style="">{{ \Carbon\Carbon::parse($ss)->format('d/m') }}</small>

@@ -97,6 +97,12 @@ class AppointmentScheduleController extends Controller
         foreach ($nextSessions as $key => $session) {
             $appointmentDate =  Carbon::parse($session->slot->date_from . $session->slot->time);
             if ($appointmentDate >= Carbon::today()) {
+                $dateDiff = (Carbon::now()->diffInMinutes($appointmentDate, false)) / 60;
+                if ($dateDiff >= 12) {
+                    $session['cancel'] = true;
+                } else {
+                    $session['cancel'] = false;
+                }
                 $upcomingSessions[] = $session;
             }
         }
@@ -118,6 +124,14 @@ class AppointmentScheduleController extends Controller
             }
         }
 
+        return view('Sessions.previous_session')->with('previousSessions', $previousSessions);
+    }
+
+    public function getCancelSession()
+    {
+        $userRole = Auth::user()->role;
+        $previousSessions = AppointmentSchedule::where($userRole == 'doctor' ? 'doctor_id' : 'user_id', Auth::id())->where('appointment_status', 'canceled')->with('slot')->get();
+       
         return view('Sessions.previous_session')->with('previousSessions', $previousSessions);
     }
 

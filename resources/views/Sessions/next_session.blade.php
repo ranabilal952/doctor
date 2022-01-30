@@ -37,7 +37,14 @@
                                                     <td>{{ $sessions->slot->duration }} Minutes</td>
                                                     <td>{{ $sessions->slot->amount }} USD</td>
                                                     <td><a href="{{ url('view-appointment', $sessions->id) }}"><span
-                                                                class="fa fa-eye"></span></a> </td>
+                                                                class="fa fa-eye"></span></a> /
+
+                                                        @if ($sessions['cancel'])
+                                                            <a href="{{ url('cancel-appointment', $sessions->id) }}"><span
+                                                                    class="fa fa-times" style="color: red;"></span></a>
+                                                        @endif
+
+                                                    </td>
 
                                                     {{-- <td>
 
