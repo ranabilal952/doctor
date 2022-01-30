@@ -467,7 +467,7 @@
 
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content" style="width: 64%;">
+          <div class="modal-content" style="width: 70%;">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLongTitle">احجز جلسة</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -486,7 +486,7 @@
                         </div>
                         <div class="card-body text-center">
                             <h4 class="title-forth mb-4"><span translate="Amount" class="ng-scope">السعر</span> : <span class="ng-binding">50USD</span></h4>
-                            <button class="btn btn-primary w-100" style="max-width: 25rem;" ng-click="newSession(doctor.uid, key)" ng-disabled="creating_waiting[key]"><!-- ngIf: creating_waiting[key] --> <span translate="Book now" class="ng-scope">احجز الأن</span></button>
+                            <button class="btn btn-primary w-100" style="max-width: 25rem;"><!-- ngIf: creating_waiting[key] --> <span translate="Book now" class="ng-scope">احجز الأن</span></button>
                         </div>
                     </div>
                 </div>
