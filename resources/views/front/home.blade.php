@@ -38,13 +38,12 @@
                             </div>
                             <div class=" mt-1 online" style="float: right;">
                                 @if (Cache::has('is_online' . $doctor->user->id))
-                                    <span class="top-doctor-item-available-alert"
-                                        style="    float: right;
-                                                                                    margin-top: -8px;">{{ __('Available now') }}
+                                    <span class="top-doctor-item-available-alert" style="    float: right;
+                                               margin-top: -8px;">{{ __('Available now') }}
                                     </span>
                                 @else
                                     <span class="mt-1 top-doctor-item-not-available-alert" style="    float: right;
-                                                                                margin-top: -8px;">
+                                                                                    margin-top: -8px;">
                                     </span>
                                 @endif
 
@@ -142,11 +141,11 @@
         "
                     data-wow-duration="600ms"
                     style="
-                                                                                                                                                                                                                                                      visibility: visible;
-                                                                                                                                                                                                                                                      animation-duration: 600ms;
-                                                                                                                                                                                                                                                      margin-bottom: 30px;
-                                                                                                                                                                                                                                                      animation-name: fadeInUp;
-                                                                                                                                                                                                                                                    ">
+                                                                                                                                                                                                                                                          visibility: visible;
+                                                                                                                                                                                                                                                          animation-duration: 600ms;
+                                                                                                                                                                                                                                                          margin-bottom: 30px;
+                                                                                                                                                                                                                                                          animation-name: fadeInUp;
+                                                                                                                                                                                                                                                        ">
                     <span class="timer counter alt-font appear"
                         style="font-size: 50px; color: #3362cc; font-weight: 700">{{ $counter->number_patient ?? '0' }}</span>
                     <span class="counter-title">{{ __('Number of patients') }}</span>
@@ -164,11 +163,11 @@
         "
                     data-wow-duration="600ms"
                     style="
-                                                                                                                                                                                                                                                      visibility: visible;
-                                                                                                                                                                                                                                                      animation-duration: 600ms;
-                                                                                                                                                                                                                                                      margin-bottom: 30px;
-                                                                                                                                                                                                                                                      animation-name: fadeInUp;
-                                                                                                                                                                                                                                                    ">
+                                                                                                                                                                                                                                                          visibility: visible;
+                                                                                                                                                                                                                                                          animation-duration: 600ms;
+                                                                                                                                                                                                                                                          margin-bottom: 30px;
+                                                                                                                                                                                                                                                          animation-name: fadeInUp;
+                                                                                                                                                                                                                                                        ">
                     <span class="timer counter alt-font appear"
                         style="font-size: 50px; color: #3362cc; font-weight: 700">{{ $counter->number_session ?? '0' }}</span>
                     <span class="counter-title">{{ __('Number of sessions ended') }}</span>
@@ -187,11 +186,11 @@
         "
                     data-wow-duration="900ms"
                     style="
-                                                                                                                                                                                                                                                      visibility: visible;
-                                                                                                                                                                                                                                                      animation-duration: 900ms;
-                                                                                                                                                                                                                                                      margin-bottom: 30px;
-                                                                                                                                                                                                                                                      animation-name: fadeInUp;
-                                                                                                                                                                                                                                                    ">
+                                                                                                                                                                                                                                                          visibility: visible;
+                                                                                                                                                                                                                                                          animation-duration: 900ms;
+                                                                                                                                                                                                                                                          margin-bottom: 30px;
+                                                                                                                                                                                                                                                          animation-name: fadeInUp;
+                                                                                                                                                                                                                                                        ">
                     <span class="timer counter alt-font appear"
                         style="font-size: 50px; color: #3362cc; font-weight: 700">{{ $counter->treated_case ?? '0' }}</span>
                     <span class="counter-title">{{ __('Treated cases') }}</span>
@@ -208,11 +207,11 @@
         "
                     data-wow-duration="1200ms"
                     style="
-                                                                                                                                                                                                                                                      visibility: visible;
-                                                                                                                                                                                                                                                      animation-duration: 1200ms;
-                                                                                                                                                                                                                                                      margin-bottom: 30px;
-                                                                                                                                                                                                                                                      animation-name: fadeInUp;
-                                                                                                                                                                                                                                                    ">
+                                                                                                                                                                                                                                                          visibility: visible;
+                                                                                                                                                                                                                                                          animation-duration: 1200ms;
+                                                                                                                                                                                                                                                          margin-bottom: 30px;
+                                                                                                                                                                                                                                                          animation-name: fadeInUp;
+                                                                                                                                                                                                                                                        ">
                     <span class="timer counter alt-font appear"
                         style="font-size: 50px; color: #3362cc; font-weight: 700">{{ $counter->under_treatment ?? '0' }}</span>
                     <span class="counter-title">{{ __('Cases under treatment') }}</span>

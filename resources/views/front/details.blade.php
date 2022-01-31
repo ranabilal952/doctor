@@ -1,6 +1,6 @@
 @extends('front.layout')
 @section('title')
-    Details Doctor
+    {{ __('Doctor Details') }}
 @endsection
 
 <style>
@@ -18,10 +18,10 @@
 
 </style>
 @section('content')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
     <!-- Google Fonts -->
@@ -39,36 +39,37 @@
                             <div class="doctor-single-avatar-wrap">
                                 <div class="doctor-single-avatar">
                                     <img src="{{ url($doctor->image ?? '') }}" alt="">
-                                    <i class="doctor-item-availablity online"></i>
+                                    @if (Cache::has('is_online' . $doctor->user->id))
+                                        <i class="doctor-item-availablity online"></i>
+                                    @else
+                                        <i class="doctor-item-not-availablity online"></i>
+                                    @endif
                                 </div>
                             </div>
                             <div class="top-doctor-services" style="display: inline-flex;">
                                 <div class="">
                                     <img src="{{ asset('web/assets/ma.png') }}" alt="" style="width:35px;margin:5px">
                                 </div>
-                                <div class="" >
+                                <div class="">
                                     <img src="{{ asset('web/assets/wat.png') }}" alt="" style="width:35px;margin:5px">
                                 </div>
-                                <div class="" >
-                                    <img src="{{asset('web/assets/zo.png')}}" alt="" style="width:35px;margin:5px">
+                                <div class="">
+                                    <img src="{{ asset('web/assets/zo.png') }}" alt="" style="width:35px;margin:5px">
                                 </div>
                             </div>
                         </div>
                         <!-- col3 -->
                         <div class="col-12 col-sm-4 col-lg-5 col-xl-4 ">
                             <div class="doctor-single-info text-md-start text-center ">
-                                <h1 class="ng-binding "> {{ $doctor->doctor_name }}</h1>
+                                <h1 class="ng-binding "> {{ $doctor->user->name }}</h1>
                                 <h6 class="ng-binding "> {{ $doctor->doctor_specility }}</h6>
-                                <h5 class="fw-normal text-white m-0 "><span class="ng-scope ">اللغة</span>:
+                                <h5 class="fw-normal text-white m-0 "><span
+                                        class="ng-scope ">{{ __('Language') }}</span>:
                                     <div class="me-2 d-inline ">العربية</div>
                                     <div class="me-2 d-inline ">الإنجليزية</div>
                                     <div class="me-2 d-inline ">الفرنسية</div>
                                 </h5>
 
-                                {{-- <h5 class="fw-normal text-white m-0 mt-3 ng-scope "><span class="ng-scope ">سنوات
-                                        الخبرة</span>:
-                                    <span class="ng-binding ">{{ $doctor->year_experience }}</span>
-                                </h5> --}}
 
 
                                 </h5>
@@ -78,7 +79,7 @@
                                     <span class="fa fa-star checked "></span>
                                     <span class="fa fa-star checked "></span>
                                     <span class="fa fa-star checked "></span>
-                                    <span class="ng-binding">( {{ $doctor->total_rating }} )</span>
+                                    <span class="ng-binding">({{ $doctor->total_rating }})</span>
                                 </div>
                                 <!-- doctor-rate -->
                             </div>
@@ -270,10 +271,11 @@
             <div class="col-12 col-sm-12 col-lg-4 col-md-12">
                 <div ng-controller="DoctorBookController" class="doctor-reservation-tool ng-scope">
                     <div class="">
-                      
-                            <button type="button" class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 " data-toggle="modal" data-target="#exampleModalCenter"  style="border: 2px solid black;color: black;">
-                                 فورا احجز
-                              </button>
+
+                        <button type="button" class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 " data-toggle="modal"
+                            data-target="#exampleModalCenter" style="border: 2px solid black;color: black;">
+                            فورا احجز
+                        </button>
                         @if ($doctor->user->onlineStatus && $doctor->user->onlineStatus->is_active)
                             @php
                                 $date1 = DateTime::createFromFormat('h:i a', now());
@@ -313,7 +315,7 @@
                     <div id="schedule-date-picker-plugin" class=""
                         style="background-color: white;;border:1px solid grey">
 
-                        <div id="schedule-date-picker-header" class="text-center" >
+                        <div id="schedule-date-picker-header" class="text-center">
                             <div class="d-inline-block ng-scope">
                                 <span class=""> 30 minutes
                                 </span>:
@@ -325,7 +327,8 @@
                             <div class="d-inline-block ng-scope">
                                 <span class="mx-3">-</span>
                                 <span class="ng-scope">60 minutes</span>:
-                                <span class="ng-binding">{{ currency(doubleVal($doctor->sixty_minute_price), 'USD', currency()->getUserCurrency()) }}</span>
+                                <span
+                                    class="ng-binding">{{ currency(doubleVal($doctor->sixty_minute_price), 'USD', currency()->getUserCurrency()) }}</span>
                             </div>
                         </div>
                         <div class="row autoplay">
@@ -334,14 +337,14 @@
                                 <div class="col-lg-3 text-center mt-3 mb-5"
                                     style="margin-right:10px;border:1px solid rgba(0,0,0,.125);">
                                     <div class="heading bg-primary " style="    width: 145%;
-                                                color: white;
-                                                text-align: center;
-                                                margin-left: -12px;">
+                                                                                            color: white;
+                                                                                            text-align: center;
+                                                                                            margin-left: -12px;">
                                         <small> {{ \Carbon\Carbon::parse($ss)->format('l') }}</small>
                                         <br>
                                         <small style="">{{ \Carbon\Carbon::parse($ss)->format('d/m') }}</small>
                                     </div>
-                                   
+
                                     @foreach ($time as $key => $value)
                                         @if (Auth::check())
                                             <a href="{{ url('payment-schedule', $value->id) }}">
@@ -351,10 +354,10 @@
                                                     </div>
                                                     <small class="text-muted"> ({{ $value->duration }}
                                                         minutes)</small>
-                                                        
+
                                                 </div>
                                             </a>
-                                            
+
                                         @else
                                             <a href="#" data-toggle="modal" data-target="#exampleModal">
                                                 <div class="d-block">
@@ -363,31 +366,31 @@
                                                     </div>
                                                     <small class="text-muted"> ({{ $value->duration }}
                                                         minutes)</small>
-                                                        <hr>
-                                                        <div style="background: #F8FAFF;color:black">
-                                                            <a href="" style="color:black">More</a>
-                                                        </div>
-                                                        
-                                                        <hr>
+                                                    <hr>
+                                                    <div style="background: #F8FAFF;color:black">
+                                                        <a href="" style="color:black">More</a>
+                                                    </div>
+
+                                                    <hr>
                                                 </div>
                                             </a>
                                         @endif
                                     @endforeach
                                 </div>
-                               
+
 
                             @endforeach
                         </div>
                     </div>
                     <script>
                         $(document).ready(function() {
-                            
+
                             $('.autoplay').slick({
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 1000,
-});
+                                slidesToShow: 3,
+                                slidesToScroll: 1,
+                                autoplay: true,
+                                autoplaySpeed: 1000,
+                            });
                         });
                     </script>
                     {{-- <form action="{{ url('appointment.store') }}" method="POST">
@@ -465,39 +468,47 @@
 
     </div>
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content" style="width: 64%;">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">احجز جلسة</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <div  class="mb-4 ng-scope">
-                    <div class="card instant-session shadow light-grey-bg">
-                        <div class="card-header">
-                            <h5 class="title-primary">
-                                <span ng-if="key == 30" translate="Half hour session" class="ng-scope">جلسة نصف ساعة</span><!-- end ngIf: key == 30 -->
-                            
-                                <span class="text-danger">(<span translate="The session will be start after payment" class="ng-scope">ستبدأ الجلسة بعد الدفع</span>)</span>
-                            </h5>
-                        </div>
-                        <div class="card-body text-center">
-                            <h4 class="title-forth mb-4"><span translate="Amount" class="ng-scope">السعر</span> : <span class="ng-binding">50USD</span></h4>
-                            <button class="btn btn-primary w-100" style="max-width: 25rem;" ng-click="newSession(doctor.uid, key)" ng-disabled="creating_waiting[key]"><!-- ngIf: creating_waiting[key] --> <span translate="Book now" class="ng-scope">احجز الأن</span></button>
+            <div class="modal-content" style="width: 64%;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">احجز جلسة</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-4 ng-scope">
+                        <div class="card instant-session shadow light-grey-bg">
+                            <div class="card-header">
+                                <h5 class="title-primary">
+                                    <span ng-if="key == 30" translate="Half hour session" class="ng-scope">جلسة نصف
+                                        ساعة</span><!-- end ngIf: key == 30 -->
+
+                                    <span class="text-danger">(<span translate="The session will be start after payment"
+                                            class="ng-scope">ستبدأ الجلسة بعد الدفع</span>)</span>
+                                </h5>
+                            </div>
+                            <div class="card-body text-center">
+                                <h4 class="title-forth mb-4"><span translate="Amount" class="ng-scope">السعر</span>
+                                    : <span class="ng-binding">50USD</span></h4>
+                                <button class="btn btn-primary w-100" style="max-width: 25rem;"
+                                    ng-click="newSession(doctor.uid, key)" ng-disabled="creating_waiting[key]">
+                                    <!-- ngIf: creating_waiting[key] --> <span translate="Book now"
+                                        class="ng-scope">احجز الأن</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            {{-- <div class="modal-footer">
+                {{-- <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary">Save changes</button>
             </div> --}}
-          </div>
+            </div>
         </div>
-      </div>
+    </div>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.standalone.min.css"
         integrity="sha512-p4vIrJ1mDmOVghNMM4YsWxm0ELMJ/T0IkdEvrkNHIcgFsSzDi/fV7YxzTzb3mnMvFPawuIyIrHcpxClauEfpQg=="

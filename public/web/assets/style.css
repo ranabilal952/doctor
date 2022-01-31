@@ -869,7 +869,7 @@ doctor-offers-box.country .top-doctor-services {
 .doctor-item-not-availablity {
     width: 20px;
     height: 20px;
-    background: red;
+    background: red!important;
     display: inline-block;
     border-radius: 50%;
     position: absolute;

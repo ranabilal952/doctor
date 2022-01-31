@@ -66,12 +66,8 @@ class FrontController extends Controller
     {
         $doctor = Doctor::where('id', $id)->with(['user'])->first();
         $slotTimes = SlotTime::where('user_id', $doctor->user->id)->where('booking_status', 1)->where('date_from', '>=', Carbon::today())->get()->groupBy('date_from');
-        // dd($slotTimes);
-        // $currentDoctorSchedule = User::doctorSchedules();
-        // dd($currentDoctorSchedule);
         $slots = SlotTime::all();
         $timezones = Timezone::Orderby('offset')->get();
-        // dd($doctor);
         return view('front.details')->with(compact('doctor', 'slots', 'timezones', 'slotTimes'));
     }
     public function profile()
