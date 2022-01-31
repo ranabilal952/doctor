@@ -471,6 +471,7 @@
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
+<<<<<<< HEAD
             <div class="modal-content" style="width: 64%;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">احجز جلسة</h5>
@@ -499,6 +500,28 @@
                                         class="ng-scope">احجز الأن</span>
                                 </button>
                             </div>
+=======
+          <div class="modal-content" style="width: 70%;">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">احجز جلسة</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div  class="mb-4 ng-scope">
+                    <div class="card instant-session shadow light-grey-bg">
+                        <div class="card-header">
+                            <h5 class="title-primary">
+                                <span ng-if="key == 30" translate="Half hour session" class="ng-scope">جلسة نصف ساعة</span><!-- end ngIf: key == 30 -->
+                            
+                                <span class="text-danger">(<span translate="The session will be start after payment" class="ng-scope">ستبدأ الجلسة بعد الدفع</span>)</span>
+                            </h5>
+                        </div>
+                        <div class="card-body text-center">
+                            <h4 class="title-forth mb-4"><span translate="Amount" class="ng-scope">السعر</span> : <span class="ng-binding">50USD</span></h4>
+                            <button class="btn btn-primary w-100" style="max-width: 25rem;"><!-- ngIf: creating_waiting[key] --> <span translate="Book now" class="ng-scope">احجز الأن</span></button>
+>>>>>>> bilal
                         </div>
                     </div>
                 </div>
