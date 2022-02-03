@@ -20,13 +20,13 @@ class UserCurrencyMiddleware
         // $clientIP = $request->ip();
         // $geoData = geoip($clientIP);
         // $country = $geoData['country'];
-        if (!$request->get('currency') && !$request->getSession()->get('currency')) {
+        // if (!$request->get('currency') && !$request->getSession()->get('currency')) {
             $clientIP = $request->ip();
             $localCurrency = geoip($clientIP)->getAttribute('currency');
             $request->getSession()->put([
                 'currency' => $localCurrency,
             ]);
-        }
+        // }
         return $next($request);
     }
 }
