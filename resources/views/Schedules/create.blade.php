@@ -140,6 +140,7 @@
     <script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.print.min.js"></script>
 @endsection
 @section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
     <script>
         var doctor = @json($doctor);
