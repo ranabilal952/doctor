@@ -17,17 +17,13 @@ class UserCurrencyMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        // $clientIP = $request->ip();
-        // $geoData = geoip($clientIP);
-        // $country = $geoData['country'];
-        // if (!$request->get('currency') && !$request->getSession()->get('currency')) {
-            $clientIP = $request->ip();
+        if (!$request->get('currency') && !$request->getSession()->get('currency')) {
+            $clientIP = $request->getClientIp();
             $localCurrency = geoip($clientIP)->getAttribute('currency');
-            // dd($localCurrency);
             $request->getSession()->put([
                 'currency' => $localCurrency,
             ]);
-        // }
+        }
         return $next($request);
     }
 }
