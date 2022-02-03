@@ -23,7 +23,7 @@ class UserCurrencyMiddleware
         // if (!$request->get('currency') && !$request->getSession()->get('currency')) {
             $clientIP = $request->ip();
             $localCurrency = geoip($clientIP)->getAttribute('currency');
-            dd($localCurrency);
+            // dd($localCurrency);
             $request->getSession()->put([
                 'currency' => $localCurrency,
             ]);
