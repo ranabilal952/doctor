@@ -17,12 +17,11 @@ class UserCurrencyMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $clientIP = $request->ip();
-        $geoData = geoip($clientIP);
-        $country = $geoData['country'];
-        dd($country);
+        // $clientIP = $request->ip();
+        // $geoData = geoip($clientIP);
+        // $country = $geoData['country'];
         if (!$request->get('currency') && !$request->getSession()->get('currency')) {
-
+            $clientIP = $request->ip();
             $localCurrency = geoip($clientIP)->getAttribute('currency');
             $request->getSession()->put([
                 'currency' => $localCurrency,
