@@ -222,7 +222,7 @@
 
                         <button type="button" class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 " data-toggle="modal"
                             data-target="#exampleModalCenter" style="border: 2px solid black;color: black;">
-                            فورا احجز
+                             احجز
                         </button>
                         @if ($doctor->user->onlineStatus && $doctor->user->onlineStatus->is_active)
                             @php
@@ -289,7 +289,7 @@
                                                                                                                                                                     color: white;
                                                                                                                                                                     text-align: center;
                                                                                                                                                                     margin-left: -12px;">
-                                        <small> {{ \Carbon\Carbon::parse($ss)->format('l') }}</small>
+                                        <small> {{ \Carbon\Carbon::parse($ss)->calendar() }}</small>
                                         <br>
                                         <small style="">{{ \Carbon\Carbon::parse($ss)->format('d/m') }}</small>
                                     </div>
