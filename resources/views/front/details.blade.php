@@ -65,9 +65,9 @@
                                 <h6 class="ng-binding "> {{ $doctor->doctor_specility }}</h6>
                                 <h5 class="fw-normal text-white m-0 "><span
                                         class="ng-scope ">{{ __('Language') }}</span>:
-                                    <div class="me-2 d-inline ">العربية</div>
-                                    <div class="me-2 d-inline ">الإنجليزية</div>
-                                    <div class="me-2 d-inline ">الفرنسية</div>
+
+                                    <div class="me-2 d-inline ">{{ $doctor->language }}</div>
+
                                 </h5>
 
 
@@ -87,63 +87,11 @@
                         </div>
                         <!-- col9 -->
                         <div class="col-12 col-sm-5 col-lg-4 col-xl-5 ">
-
                             <div class="card ng-scope ">
                                 <div class="card-body ">
-
                                     <div class="d-inline ">الاكتئاب<span>,</span> </div>
-
-                                    <div class="d-inline ">القلق<span>,</span> </div>
-
-                                    <div class="d-inline ">مشاكل العلاقات<span>,</span> </div>
-
-                                    <div class="d-inline ">الاكتئاب<span>,</span> </div>
-
-                                    <div class="d-inline ">الفوبيا<span>,</span> </div>
-
-                                    <div class="d-inline ">اضطراب الهوية الجنسية<span>,</span> </div>
-
-                                    <div class="d-inline ">الاكتئاب<span>,</span> </div>
-
-                                    <div class="d-inline ">مشاكل العلاقات<span>,</span> </div>
-                                    <div class="d-inline ">الاكتئاب<span>,</span> </div>
-
-                                    <div class="d-inline ">القلق<span>,</span> </div>
-
-                                    <div class="d-inline ">مشاكل العلاقات<span>,</span> </div>
-
-                                    <div class="d-inline ">الاكتئاب<span>,</span> </div>
-
-                                    <div class="d-inline ">الفوبيا<span>,</span> </div>
-
-                                    <div class="d-inline ">اضطراب الهوية الجنسية<span>,</span> </div>
-
-                                    <div class="d-inline ">الاكتئاب<span>,</span> </div>
-
-                                    <div class="d-inline ">مشاكل العلاقات<span>,</span> </div>
-                                    <div class="d-inline ">الاكتئاب<span>,</span> </div>
-
-                                    <div class="d-inline ">القلق<span>,</span> </div>
-
-                                    <div class="d-inline ">مشاكل العلاقات<span>,</span> </div>
-
-                                    <div class="d-inline ">الاكتئاب<span>,</span> </div>
-
-                                    <div class="d-inline ">الفوبيا<span>,</span> </div>
-
-                                    <div class="d-inline ">اضطراب الهوية الجنسية<span>,</span> </div>
-
-                                    <div class="d-inline ">الاكتئاب<span>,</span> </div>
-
-                                    <div class="d-inline ">مشاكل العلاقات<span>,</span> </div>
-
-                                    <div class="d-inline "><span>,</span> </div>
-
-                                    <a href="# " data-id="doctor-info-tab " translate="More "
-                                        class="ng-scope ">More</a>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <!-- row -->
@@ -295,8 +243,8 @@
 
                         <ul class="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist" style=" ">
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="ex3-tab-4" data-mdb-toggle="tab" href="#ex3-tabs-4"
-                                    role="tab" aria-controls="ex3-tabs-4" aria-selected="false"
+                                <a class="nav-link" id="ex3-tab-4" data-mdb-toggle="tab" href="#ex3-tabs-4" role="tab"
+                                    aria-controls="ex3-tabs-4" aria-selected="false"
                                     style="border: 2px solid black;color: black;">عروض الجلسات </a>
                             </li>
 
@@ -336,10 +284,11 @@
 
                                 <div class="col-lg-3 text-center mt-3 mb-5"
                                     style="margin-right:10px;border:1px solid rgba(0,0,0,.125);">
-                                    <div class="heading bg-primary " style="    width: 145%;
-                                                                                            color: white;
-                                                                                            text-align: center;
-                                                                                            margin-left: -12px;">
+                                    <div class="heading bg-primary "
+                                        style="    width: 145%;
+                                                                                                                                                                    color: white;
+                                                                                                                                                                    text-align: center;
+                                                                                                                                                                    margin-left: -12px;">
                                         <small> {{ \Carbon\Carbon::parse($ss)->format('l') }}</small>
                                         <br>
                                         <small style="">{{ \Carbon\Carbon::parse($ss)->format('d/m') }}</small>
@@ -471,8 +420,7 @@
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-<<<<<<< HEAD
-            <div class="modal-content" style="width: 64%;">
+            <div class="modal-content" style="width: 70%;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">احجز جلسة</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -494,41 +442,14 @@
                             <div class="card-body text-center">
                                 <h4 class="title-forth mb-4"><span translate="Amount" class="ng-scope">السعر</span>
                                     : <span class="ng-binding">50USD</span></h4>
-                                <button class="btn btn-primary w-100" style="max-width: 25rem;"
-                                    ng-click="newSession(doctor.uid, key)" ng-disabled="creating_waiting[key]">
+                                <button class="btn btn-primary w-100" style="max-width: 25rem;">
                                     <!-- ngIf: creating_waiting[key] --> <span translate="Book now"
                                         class="ng-scope">احجز الأن</span>
                                 </button>
                             </div>
-=======
-          <div class="modal-content" style="width: 70%;">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">احجز جلسة</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <div  class="mb-4 ng-scope">
-                    <div class="card instant-session shadow light-grey-bg">
-                        <div class="card-header">
-                            <h5 class="title-primary">
-                                <span ng-if="key == 30" translate="Half hour session" class="ng-scope">جلسة نصف ساعة</span><!-- end ngIf: key == 30 -->
-                            
-                                <span class="text-danger">(<span translate="The session will be start after payment" class="ng-scope">ستبدأ الجلسة بعد الدفع</span>)</span>
-                            </h5>
-                        </div>
-                        <div class="card-body text-center">
-                            <h4 class="title-forth mb-4"><span translate="Amount" class="ng-scope">السعر</span> : <span class="ng-binding">50USD</span></h4>
-                            <button class="btn btn-primary w-100" style="max-width: 25rem;"><!-- ngIf: creating_waiting[key] --> <span translate="Book now" class="ng-scope">احجز الأن</span></button>
->>>>>>> bilal
                         </div>
                     </div>
                 </div>
-                {{-- <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div> --}}
             </div>
         </div>
     </div>
@@ -558,7 +479,6 @@
             startDate: today,
             weekStart: 1,
             daysOfWeekDisabled: "0,5",
-            // daysOfWeekHighlighted: "0,1,2,3,4,5,6",
             todayHighlight: true,
             format: 'yyyy/mm/dd'
         });
@@ -579,18 +499,9 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function(data) {
-                    // var newdata = [];
                     $('#sall').val(JSON.stringify(data));
-                    console.log(data);
-                    // return;
                     covertTimeToTimeZone();
                     $('#m').prop("disabled", false);
-                    // var response = JSON.parse(data);
-                    // var i = 0;
-                    // $('#m').find('option').remove(); 
-                    //     $.each(response,function(key, value){
-                    //         $('#m').append('<option value=' + value + '>' + value + '</option>');
-                    //     });
                 },
                 error: function(err) {
                     console.log(err);
@@ -640,7 +551,6 @@
                 isAllValid = false;
             if ($('#my_hidden_input').val() == '')
                 isAllValid = false;
-
             if (isAllValid) {
 
             } else {
@@ -698,7 +608,6 @@
         function covertTimeToTimeZone() {
             slotss = JSON.parse($('#sall').val());
             slotss = Object.values(slotss);
-            // console.log(slotss);return;
             var element = $('#timezone').find('option:selected');
             var tzoffset = element.attr("ofs");
             var timezoneOffset = tzoffset.replace(":", ".");
@@ -727,8 +636,7 @@
                     }
                 }
             });
-            console.log('Afer Proccessing');
-            console.log(nt);
+
             nt.forEach((ntime, index) => {
                 // console.log(ntime.toString().length);
                 if (ntime.toString().length == 1) {
@@ -745,16 +653,12 @@
                     });
                 nt[index] = timeString12hr;
             });
-            // console.log(nt);
-            // console.log(nt);    
             var opt = '<option value="">Select time</option>';
             nt.forEach((nslot, index) => {
                 opt += '<option ut="' + nslot + '" value="' + slotss[index] + '">' + nslot + '</option>';
-
             });
             $('#m').html(opt);
-            // console.log(slotss);
-            // console.log(newslotss);
+
 
         }
     </script>

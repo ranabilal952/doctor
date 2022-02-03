@@ -85,11 +85,12 @@
                         <h4 class="font-16 "> {{ Auth::User()->name }}</h4>
                         <span class=" user-status"><i class="fa fa-dot-circle-o text-success"></i>
                             @if (Auth::User()->role == 'admin')
-                                ADMIN PANEL
-                            @elseif(Auth::User()->role=='doctor')
-                                Doctor PANEL
+                                {{ __('ADMIN Panel') }}
+                            @elseif(Auth::User()->role == 'doctor')
+                                {{ __('Doctor Panel') }}
                             @else
-                                user PANEL
+
+                                {{ __('user Panel') }}
                             @endif
                         </span>
                     </div>
@@ -99,7 +100,8 @@
                         <li>
                             <a href="{{ url('/home') }}" class="waves-effect ">
                                 <i class="mdi mdi-view-dashboard"></i>
-                                <span> Dashboard <span class="badge badge-primary pull-right"></span></span>
+                                <span> {{ __('Dashboard') }} <span
+                                        class="badge badge-primary pull-right"></span></span>
                             </a>
                         </li>
                         @if (Auth::User()->role == 'admin')
@@ -141,23 +143,29 @@
                             </li> --}}
 
                             <li class="has_sub ">
-                                <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span>Home page
-                                        Data</span>
+                                <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span>
+                                        {{ __(' Home page Data') }}</span>
                                 </a>
                                 <ul class="list-unstyled">
                                     {{-- <li><a href="{{ url('user') }}"> <i class="mdi mdi-clock "> Home Top Data</i> --}}
-                                    <li><a href="{{ url('title') }}"> <i class="mdi mdi-clock ">Title / Description</i>
-                                    <li><a href="{{ url('accordion') }}"> <i class="mdi mdi-clock ">Home Accordion</i>
-                                    <li><a href="{{ url('counter') }}"> <i class="mdi mdi-clock "> Counter</i>
-                                    <li><a href="{{ url('home_video') }}"> <i class="mdi mdi-clock "> Videos Link</i>
+                                    <li><a href="{{ url('title') }}"> <i class="mdi mdi-clock ">
+                                                {{ __('Title / Description') }}</i>
+                                    <li><a href="{{ url('accordion') }}"> <i class="mdi mdi-clock ">
+                                                {{ __('Home Accordion') }}</i>
+                                    <li><a href="{{ url('counter') }}"> <i class="mdi mdi-clock ">
+                                                < {{ __('Counter') }}/i>
+                                    <li><a href="{{ url('home_video') }}"> <i class="mdi mdi-clock ">
+                                                {{ __('Videos Link') }}</i>
                                         </a>
                                 </ul>
                             </li>
                             <li class="has_sub ">
-                                <a href="#" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> How to Book Session </span>
+                                <a href="#" class="waves-effect "><i class="mdi mdi-buffer "></i> <span>
+                                        {{ __('How to Book Session') }}</span>
                                 </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ url('Session_book') }}"> <i class="mdi mdi-clock "> How to Book Session</i>
+                                    <li><a href="{{ url('Session_book') }}"> <i class="mdi mdi-clock ">
+                                                {{ __('How to Book Session') }}</i>
 
                                         </a>
                                 </ul>
@@ -176,32 +184,40 @@
                         </li> --}}
 
                             <li class="has_sub ">
-                                <a href="#" class="waves-effect "><i class="mdi mdi-buffer "></i> <span>Footer Data</span>
+                                <a href="#" class="waves-effect "><i class="mdi mdi-buffer "></i>
+                                    <span>{{ __('Footer Data ') }}</span>
                                 </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ url('footer') }}"> <i class="mdi mdi-clock ">Footer Website</i>
-                                    <li><a href="{{ url('social_link') }}"> <i class="mdi mdi-clock ">Follow Us Data</i>
-                                    <li><a href="{{ url('terms_detail') }}"> <i class="mdi mdi-clock ">Terms Condition</i>
-                                    <li><a href="{{ url('privacy_policy') }}"> <i class="mdi mdi-clock ">Privacy Policy</i>
-                                    <li><a href="{{ url('Cancelltion_policy') }}"> <i
-                                                class="mdi mdi-clock ">Cancelltion Policy</i>
+                                    <li><a href="{{ url('footer') }}"> <i class="mdi mdi-clock ">
+                                                {{ __(' Footer Website') }}</i>
+                                    <li><a href="{{ url('social_link') }}"> <i class="mdi mdi-clock ">
+                                                {{ __(' Follow Us Data') }}</i>
+                                    <li><a href="{{ url('terms_detail') }}"> <i class="mdi mdi-clock ">
+                                                {{ __(' Terms Condition') }}</i>
+                                    <li><a href="{{ url('privacy_policy') }}"> <i class="mdi mdi-clock ">
+                                                {{ __(' Privacy Policy') }}</i>
+                                    <li><a href="{{ url('Cancelltion_policy') }}"> <i class="mdi mdi-clock ">
+                                                {{ __('Cancelltion Policy') }}</i>
                                         </a>
                                 </ul>
                             </li>
                             <li>
                                 <a href="{{ url('add_speciality') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Add speciality <span class="badge badge-primary pull-right"></span></span>
+                                    <span> {{ __('Add speciality') }}<span
+                                            class="badge badge-primary pull-right"></span></span>
                                 </a>
                             </li>
 
                             {{-- PAYMENTS --}}
                             <li class="has_sub ">
                                 <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
-                                        Payments </span> </a>
+                                        {{ __(' Payments') }}</span> </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ url('get-pending-balances') }}">Pending Balances</a></li>
-                                    <li><a href="{{ url('getWithdrawRequest') }}">Withdraw Requests</a></li>
+                                    <li><a href="{{ url('get-pending-balances') }}">
+                                            {{ __('Pending Balances') }}</a></li>
+                                    <li><a href="{{ url('getWithdrawRequest') }}">
+                                            {{ __('Withdraw Requests') }}</a></li>
                                     {{-- <li><a href="{{ url('booked-schedule') }}">Donations</a></li> --}}
                                 </ul>
                             </li>
@@ -209,21 +225,24 @@
                             <li>
                                 <a href="{{ url('payment-links') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Payment Links <span class="badge badge-primary pull-right"></span></span>
+                                    <span> {{ __('Payment Links') }}<span
+                                            class="badge badge-primary pull-right"></span></span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="{{ url('payment-setting') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Payment Setting <span class="badge badge-primary pull-right"></span></span>
+                                    <span> {{ __('Payment Setting') }}<span
+                                            class="badge badge-primary pull-right"></span></span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="{{ url('coupons') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Coupons <span class="badge badge-primary pull-right"></span></span>
+                                    <span> {{ __('Coupons') }}<span
+                                            class="badge badge-primary pull-right"></span></span>
                                 </a>
                             </li>
 
@@ -231,80 +250,92 @@
                             <li>
                                 <a href="{{ url('test') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Psychological Test <span
+                                    <span> {{ __('Psychological Test') }}<span
                                             class="badge badge-primary pull-right"></span></span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ url('diseases_add') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Add Diseases <span class="badge badge-primary pull-right"></span></span>
+                                    <span> {{ __('Add Diseases') }}<span
+                                            class="badge badge-primary pull-right"></span></span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="{{ url('patients') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Patients <span class="badge badge-primary pull-right"></span></span>
+                                    <span> {{ __('Patients') }}<span
+                                            class="badge badge-primary pull-right"></span></span>
                                 </a>
                             </li>
 
                             <li class="has_sub">
                                 <a href="#" class="waves-effect">
                                     <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Doctors<span class="badge badge-primary pull-right"></span></span>
+                                    <span> {{ __(' Doctors') }}<span
+                                            class="badge badge-primary pull-right"></span></span>
                                 </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ url('create_doctor') }}"> <i class="mdi mdi-clock ">Add Doctor</i>
+                                    <li><a href="{{ url('create_doctor') }}"> <i class="mdi mdi-clock ">
+                                                {{ __('Add Doctor') }}</i>
                                         </a>
                                     </li>
-                                    <li><a href="{{ url('get-all-doctors') }}"> <i class="mdi mdi-clock ">All Doctors</i>
+                                    <li><a href="{{ url('get-all-doctors') }}"> <i class="mdi mdi-clock ">
+                                                {{ __('All Doctors') }}</i>
                                         </a>
                                     </li>
-                                    <li><a href="{{ url('reward-doctor') }}"> <i class="mdi mdi-clock ">Reward Doctors</i>
+                                    <li><a href="{{ url('reward-doctor') }}"> <i class="mdi mdi-clock ">
+                                                {{ __('Reward Doctors') }}</i>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="has_sub ">
-                                <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> Doctors  Sessions</span>
+                                <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span>
+                                        {{ __('Doctors Sessions') }}</span>
                                 </a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ url('admin-doctor-sessions') }}"> <i class="mdi mdi-clock ">
-                                                Doctors Sessions</i>
+                                                {{ __('Doctors Sessions') }}</i>
                                         </a>
                                     </li>
 
                                 </ul>
                             </li>
                             <li class="has_sub ">
-                                <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> Blog Data</span>
+                                <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span>
+                                        {{ __(' Blog Data') }}</span>
                                 </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ url('blog_create') }}"> <i class="mdi mdi-clock "> Add Blog</i>
-                                    <li><a href="{{ url('all_blogs') }}"> <i class="mdi mdi-clock "> All Blog</i>
+                                    <li><a href="{{ url('blog_create') }}"> <i class="mdi mdi-clock ">
+                                                {{ __('Add Blog') }}</i>
+                                    <li><a href="{{ url('all_blogs') }}"> <i class="mdi mdi-clock ">
+                                                {{ __('All Blog') }}</i>
                                         </a>
                                 </ul>
                             </li>
                             <li class="has_sub ">
                                 <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
-                                        Rating </span> </a>
+                                        {{ __(' Rating') }}</span> </a>
                                 <ul class="list-unstyled">
                                     {{-- <li><a href="{{ url('rating') }}">Add Rating</a></li> --}}
-                                    <li><a href="{{ url('all_rating') }}">All Rating</a></li>
+                                    <li><a href="{{ url('all_rating') }}"> {{ __('All Rating') }}</a></li>
                                     {{-- <li><a href="{{ url('booked-schedule') }}">Donations</a></li> --}}
                                 </ul>
                             </li>
                             <li class="has_sub ">
-                                <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span> User Management</span> </a>
+                                <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span>
+                                        {{ __('User Management') }}</span> </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ url('create') }}"> <i class="mdi mdi-clock "> Create Doctor /
-                                                User</i>
-                                    <li><a href="{{ url('all_user') }}"> <i class="mdi mdi-clock "> All Users</i>
+                                    <li><a href="{{ url('create') }}"> <i class="mdi mdi-clock ">
+                                                {{ __('Create Doctor / User') }}</i>
+                                    <li><a href="{{ url('all_user') }}"> <i class="mdi mdi-clock ">
+                                                {{ __('All Users ') }}</i>
                                         </a>
                                 </ul>
                             </li>
-                        @elseif(Auth::User()->role=='doctor')
+                        @elseif(Auth::User()->role == 'doctor')
                             {{-- <li>
                                 <a href="{{ url('slottime') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
@@ -314,11 +345,14 @@
                             </li> --}}
                             <li class="has_sub ">
                                 <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
-                                        Sessions </span> </a>
+                                        {{ __('Sessions') }}</span> </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ url('/get-next-session') }}">Next Sessions</a></li>
-                                    <li><a href="{{ url('/get-previous-session') }}">Previous Sessions</a></li>
-                                    <li><a href="{{ url('/get-canceled-session') }}">Cancel Sessions</a></li>
+                                    <li><a href="{{ url('/get-next-session') }}"> {{ __('Next Sessions') }}</a>
+                                    </li>
+                                    <li><a href="{{ url('/get-previous-session') }}">
+                                            {{ __('Previous Sessions') }}</a></li>
+                                    <li><a href="{{ url('/get-canceled-session') }}">
+                                            {{ __('Cancel Sessions') }}</a></li>
 
                                     {{-- <li><a href="{{url('done_appointment')}}" >Done Appointment</a></li> --}}
                                     {{-- <li><a href="{{url('cancel_appointment')}}" >Cancelled Appointment</a></li> --}}
@@ -326,34 +360,40 @@
                             </li>
                             <li class="has_sub ">
                                 <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
-                                        Schedules </span> </a>
+                                        {{ __('Schedules') }}</span> </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ url('create-schedule') }}">Add Schedule</a></li>
-                                    <li><a href="{{ url('active-schedule') }}">Active Schedules</a></li>
-                                    <li><a href="{{ url('booked-schedule') }}">Booked Schedules</a></li>
-                                    <li><a href="{{ url('all-schedules') }}">All Schedules</a></li>
+                                    <li><a href="{{ url('create-schedule') }}"> {{ __('Add Schedule') }}</a></li>
+                                    <li><a href="{{ url('active-schedule') }}"> {{ __('Active Schedules') }}</a>
+                                    </li>
+                                    <li><a href="{{ url('booked-schedule') }}"> {{ __('Booked Schedules') }}</a>
+                                    </li>
+                                    <li><a href="{{ url('all-schedules') }}">{{ __('All Schedules') }}</a></li>
                                 </ul>
                             </li>
 
                             <li>
                                 <a href="{{ url('doctorvideo') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Videos <span class="badge badge-primary pull-right"></span></span>
+                                    <span> {{ __('Videos') }}<span
+                                            class="badge badge-primary pull-right"></span></span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ url('onlinesetting') }}" class="waves-effect ">
                                     <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Online Setting <span class="badge badge-primary pull-right"></span></span>
+                                    <span> {{ __('Online Setting') }}<span
+                                            class="badge badge-primary pull-right"></span></span>
                                 </a>
                             </li>
                             <li class="has_sub ">
-                                <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span>Offers</span>
+                                <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span>
+                                        {{ __('Offers') }}</span>
                                 </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ url('create-offer') }}"> <i class="mdi mdi-clock "> Create Offer
-                                            </i>
-                                    <li><a href="{{ url('offer') }}"> <i class="mdi mdi-clock "> Your Offers</i>
+                                    <li><a href="{{ url('create-offer') }}"> <i class="mdi mdi-clock ">
+                                                {{ __('Create Offer') }} </i>
+                                    <li><a href="{{ url('offer') }}"> <i class="mdi mdi-clock ">
+                                                {{ __('Your Offers') }}</i>
                                         </a>
                                 </ul>
                             </li>
@@ -371,11 +411,14 @@
                             </li> --}}
                             <li class="has_sub ">
                                 <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
-                                        Sessions </span> </a>
+                                        {{ __(' Sessions') }} </span> </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ url('/get-next-session') }}">Next Sessions</a></li>
-                                    <li><a href="{{ url('/get-previous-session') }}">Previous Sessions</a></li>
-                                    <li><a href="{{ url('/get-canceled-session') }}">Cancel Sessions</a></li>
+                                    <li><a href="{{ url('/get-next-session') }}"> {{ __(' Next Sessions') }}</a>
+                                    </li>
+                                    <li><a href="{{ url('/get-previous-session') }}">
+                                            {{ __(' Previous Sessions') }}</a></li>
+                                    <li><a href="{{ url('/get-canceled-session') }}">
+                                            {{ __(' Cancel Sessions') }}</a></li>
 
                                     {{-- <li><a href="{{url('done_appointment')}}" >Done Appointment</a></li> --}}
                                     {{-- <li><a href="{{url('cancel_appointment')}}" >Cancelled Appointment</a></li> --}}
@@ -393,14 +436,16 @@
                         <li>
                             <a href="{{ url('profile_view') }}" class="waves-effect ">
                                 <i class="mdi mdi-view-dashboard"></i>
-                                <span> Profile <span class="badge badge-primary pull-right"></span></span>
+                                <span> {{ __('Profile') }}<span
+                                        class="badge badge-primary pull-right"></span></span>
                             </a>
                         </li>
 
                         <li>
                             <a href="{{ url('video-test') }}" class="waves-effect ">
                                 <i class="mdi mdi-camera"></i>
-                                <span> Video Test <span class="badge badge-primary pull-right"></span></span>
+                                <span> {{ __('Video Test') }}<span
+                                        class="badge badge-primary pull-right"></span></span>
                             </a>
                         </li>
                         {{-- <li class="">
@@ -455,9 +500,10 @@
                 <!-- Page content Wrapper -->
             </div> <!-- content -->
             <footer class="footer">
-                <span class="text-red">Copyright © 2020 <a style="color:#D23830"
+                <span class="text-red"> {{ __(' Copyright © 2020') }}<a style="color:#D23830"
                         href="https://doctoorc.com/"><strong>Doctoorc.com</strong></a> </span> <br>
-                Designed Developed & Managed By <a class="text-red" href="#"><strong> BM Solutions</strong></a>
+                {{ __(' Designed Developed & Managed By') }}<a class="text-red" href="#"><strong> BM
+                        Solutions</strong></a>
             </footer>
 
         </div>
