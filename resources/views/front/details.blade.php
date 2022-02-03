@@ -289,7 +289,7 @@
                                                                                                                                                                     color: white;
                                                                                                                                                                     text-align: center;
                                                                                                                                                                     margin-left: -12px;">
-                                        <small> {{ \Carbon\Carbon::parse($ss)->calendar() }}</small>
+                                        <small> {{ strtok(\Carbon\Carbon::parse($ss)->calendar()," ") }}</small>
                                         <br>
                                         <small style="">{{ \Carbon\Carbon::parse($ss)->format('d/m') }}</small>
                                     </div>
