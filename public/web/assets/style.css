@@ -631,9 +631,9 @@ ul {
     margin-bottom: 20 px;
 }
 
-.doctor-rate span {
+/* .doctor-rate span {
     color: #fff;
-}
+} */
 
 .doctor-single-about .card {
     box-shadow: 0px 0px 14px 2px #757575;
@@ -1183,6 +1183,9 @@ doctor-offers-box.country .top-doctor-services {
 .title-forth {
     color: black;
 }
+.detailspage{
+    margin-top: -55%;
+}
 @media screen and (max-width: 992px) {
     section.image_text {
         display: block;
@@ -1234,6 +1237,9 @@ doctor-offers-box.country .top-doctor-services {
     .header_nav::before {
         display: none;
     }
+    .detailspage{
+        margin-top: -65%;
+    }
 
 }
 
@@ -1241,5 +1247,8 @@ doctor-offers-box.country .top-doctor-services {
     .modal-dialog {
         max-width: 95% !important;
         margin: 1px;
+    }
+    .detailspage{
+        margin-top: -34%;
     }
 }
