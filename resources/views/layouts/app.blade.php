@@ -104,6 +104,13 @@
                                         class="badge badge-primary pull-right"></span></span>
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ url('/') }}" class="waves-effect ">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span> {{ __('Website') }} <span
+                                        class="badge badge-primary pull-right"></span></span>
+                            </a>
+                        </li>
                         @if (Auth::User()->role == 'admin')
                             {{-- <li class="has_sub ">
                                 <a href="" class="waves-effect "><i class="mdi mdi-buffer "></i> <span >

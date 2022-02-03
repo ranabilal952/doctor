@@ -109,7 +109,7 @@
                     {{ __('Logout') }}
                 </a>
                 <a class="left2_a" href="{{ url('/home') }}">
-                    Dashboard
+                    {{ __('Dashboard') }}
                 </a>
 
             @endif
