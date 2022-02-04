@@ -258,9 +258,7 @@
                         @endforeach
                     </select> --}}
                     <br>
-                    <div id="schedule-date-picker-plugin" class=""
-                        style="background-color: white;;border:1px solid grey">
-
+                    <div id="schedule-date-picker-plugin" class="" style="background-color: white;;border:1px solid grey">
                         <div id="schedule-date-picker-header" class="text-center">
                             <div class="d-inline-block ng-scope">
                                 <span class=""> 30 {{ __('Minutes') }}
@@ -280,11 +278,9 @@
                         <div class="row autoplay">
                             @foreach ($slotTimes as $ss => $time)
 
-                                <div class="col-lg-3 text-center mt-3 mb-5"
-                                    style="margin-right:10px;border:1px solid rgba(0,0,0,.125);">
-                                    <div class="heading bg-primary "
-                                        style="width: 145%;color: white;text-align: center;margin-left: -12px;">
-                                        <small> {{ strtok(\Carbon\Carbon::parse($ss)->calendar(), ' ') }}</small>
+                                <div class="col-lg-3 text-center mt-3 mb-5"  style="margin-right:10px;border:1px solid rgba(0,0,0,.125);">
+                                    <div class="heading bg-primary " style="    width: 145%;   color: white;text-align: center;  margin-left: -12px;">
+                                        <small> {{ \Carbon\Carbon::parse($ss)->format('l') }}</small>
                                         <br>
                                         <small style="">{{ \Carbon\Carbon::parse($ss)->format('d/m') }}</small>
                                     </div>
