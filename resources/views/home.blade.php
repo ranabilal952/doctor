@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('title')
 {{ __('Dashboard') }}
 @endsection
@@ -84,7 +83,9 @@
                     </div>
 
                 </div>
-            @elseif(Auth::User()->role=='doctor')
+
+
+            @elseif(Auth::User()->role == 'doctor')
                 <div class="page-content-wrapper ">
                     <div class="container-fluid">
                         <div class="row">
@@ -135,10 +136,16 @@
                                                                 <span style="color: #0d6efd!important">  {{ __('USD') }}</span>
                                                             </strong> </h3>
                                                         @if ($withDraw)
-                                                            <input  style="    color: #664d03;   background-color: #fff3cd;        border-color: #ffecb5;"  
-                                                             type="text" readonly class="form-control"  name="offer_arabic" readonly 
-                                                              placeholder="" 
-                                                               value="Pending withdrawal request {{ $withDraw->withdraw_amount }}.00USD">
+                                                            <input
+                                                                style="    color: #664d03;
+                                                                                                                                                                                                                                            background-color: #fff3cd;
+                                                                                                                                                                                                                                       border-color: #ffecb5;"
+                                                                type="text" readonly class="form-control"
+                                                                name="offer_arabic" readonly
+                                                                placeholder="Pending withdrawal request 3428.00USD"
+                                                                value="Pending withdrawal request {{ $withDraw->withdraw_amount }}.00USD">
+
+
                                                         @elseif ($user->wallet->available_balance >= 50)
                                                             <input class="form-control" type="number"
                                                                 name="withdraw_amount" id="">
@@ -165,38 +172,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="col-lg-6">
-                                <div class="card m-b-200">
-                                    <div class="card-body">
-                                        <h4 class="mt-0 header-title" style="font-size: 20px">Donate to support team
-                                            <span style="color: red">(Coming Soon)</span>
 
-                                        </h4>
-                                        <hr>
-                                        <p class="text-muted m-b-20 font-14"></p>
-                                        <form class="" action="#" method="POST" enctype="multipart/form-data">
-                                            @csrf
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="form-group">
-                                                        <label style="color:black"><strong> Amount </strong> </label>
-                                                        <input type="number" class="form-control" name="offer_arabic"
-                                                            placeholder="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="form-group">
-                                                <div>
-                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">
-                                                        Donate
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -216,8 +192,7 @@
                                                 <th> {{ __('Date') }}</th>
                                                 <th> {{ __('Status') }}</th>
 
-                                                {{-- <th>Start date</th>
-                                    <th>Salary</th> --}}
+
                                             </tr>
 
                                         </thead>
@@ -265,8 +240,7 @@
                                                 <th> {{ __('Status') }}</th>
                                                 <th> {{ __('Source') }}</th>
 
-                                                {{-- <th>Start date</th>
-                                    <th>Salary</th> --}}
+
                                             </tr>
 
                                         </thead>
@@ -315,7 +289,7 @@
 
                 </div>
             @endif
-            <!-- end row -->
+
 
         </div><!-- container-fluid -->
 
