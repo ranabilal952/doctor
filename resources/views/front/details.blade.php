@@ -2,7 +2,6 @@
 @section('title')
     {{ __('Doctor Details') }}
 @endsection
-
 <style>
     .disabled {
         text-decoration: line-through !important;
@@ -16,16 +15,27 @@
         background: white !important;
     }
 
+    .slick-arrow {
+        width: 0 !important;
+    }
+
     .slick-next:before,
     .slick-prev:before {
         font-family: slick;
         font-size: 20px;
         line-height: 1;
         background: white;
-        opacity: 1;
+        opacity: 1 !important;
         color: #1266f1 !important;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+    }
+
+    .slick-next {
+        right: -7px !important;
+    }
+    .slick-prev {
+        right: -31px !important;
     }
 
 </style>

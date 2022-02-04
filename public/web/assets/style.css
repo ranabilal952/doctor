@@ -869,7 +869,7 @@ doctor-offers-box.country .top-doctor-services {
 .doctor-item-not-availablity {
     width: 20px;
     height: 20px;
-    background: red!important;
+    background: red !important;
     display: inline-block;
     border-radius: 50%;
     position: absolute;
@@ -894,6 +894,7 @@ doctor-offers-box.country .top-doctor-services {
     overflow: hidden;
     background-size: 100%;
 }
+
 .top-doctor-item-not-available-alert::before {
     content: "";
     display: inline-block;
@@ -1174,21 +1175,23 @@ doctor-offers-box.country .top-doctor-services {
     text-align: center;
     transition: all .5s;
 }
+
 .light-grey-bg {
     background-color: var(--light-grey);
 }
+
 .text-danger {
-    color: #dc3545!important;
+    color: #dc3545 !important;
 }
+
 .title-forth {
     color: black;
 }
-.detailspage{
+
+.detailspage {
     margin-top: -55%;
 }
-.slick-track{
-    width: 133% !important;
-}
+
 @media screen and (max-width: 992px) {
     section.image_text {
         display: block;
@@ -1240,7 +1243,8 @@ doctor-offers-box.country .top-doctor-services {
     .header_nav::before {
         display: none;
     }
-    .detailspage{
+
+    .detailspage {
         margin-top: -65%;
     }
 
@@ -1251,7 +1255,8 @@ doctor-offers-box.country .top-doctor-services {
         max-width: 95% !important;
         margin: 1px;
     }
-    .detailspage{
+
+    .detailspage {
         margin-top: -34%;
     }
 }
