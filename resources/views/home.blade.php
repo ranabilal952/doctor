@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('title')
     Dashboard
 @endsection
@@ -84,7 +83,9 @@
                     </div>
 
                 </div>
-            @elseif(Auth::User()->role=='doctor')
+
+
+            @elseif(Auth::User()->role == 'doctor')
                 <div class="page-content-wrapper ">
                     <div class="container-fluid">
                         <div class="row">
@@ -137,8 +138,8 @@
                                                         @if ($withDraw)
                                                             <input
                                                                 style="    color: #664d03;
-                                                                                                                                                                                                                            background-color: #fff3cd;
-                                                                                                                                                                                                                       border-color: #ffecb5;"
+                                                                                                                                                                                                                                            background-color: #fff3cd;
+                                                                                                                                                                                                                                       border-color: #ffecb5;"
                                                                 type="text" readonly class="form-control"
                                                                 name="offer_arabic" readonly
                                                                 placeholder="Pending withdrawal request 3428.00USD"
@@ -175,38 +176,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="col-lg-6">
-                                <div class="card m-b-200">
-                                    <div class="card-body">
-                                        <h4 class="mt-0 header-title" style="font-size: 20px">Donate to support team
-                                            <span style="color: red">(Coming Soon)</span>
 
-                                        </h4>
-                                        <hr>
-                                        <p class="text-muted m-b-20 font-14"></p>
-                                        <form class="" action="#" method="POST" enctype="multipart/form-data">
-                                            @csrf
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="form-group">
-                                                        <label style="color:black"><strong> Amount </strong> </label>
-                                                        <input type="number" class="form-control" name="offer_arabic"
-                                                            placeholder="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="form-group">
-                                                <div>
-                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">
-                                                        Donate
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -226,8 +196,7 @@
                                                 <th>Date</th>
                                                 <th>Status</th>
 
-                                                {{-- <th>Start date</th>
-                                    <th>Salary</th> --}}
+
                                             </tr>
 
                                         </thead>
@@ -275,8 +244,7 @@
                                                 <th>Status</th>
                                                 <th>Source</th>
 
-                                                {{-- <th>Start date</th>
-                                    <th>Salary</th> --}}
+
                                             </tr>
 
                                         </thead>
@@ -328,7 +296,7 @@
 
                 </div>
             @endif
-            <!-- end row -->
+
 
         </div><!-- container-fluid -->
 
