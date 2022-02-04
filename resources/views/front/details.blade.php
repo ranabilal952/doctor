@@ -46,7 +46,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="top-bi detailspage" >
+                            <div class="top-bi detailspage">
                                 <div class="">
                                     <img src="{{ asset('web/assets/ma.png') }}" alt="" style="width:35px;margin:5px">
                                 </div>
@@ -79,7 +79,7 @@
                                     <span class="fa fa-star checked "></span>
                                     <span class="fa fa-star checked "></span>
                                     <span class="fa fa-star checked "></span>
-                                    <span class="ng-binding">({{ $doctor->total_rating }})</span>
+                                    <span class="ng-binding" style="color: white">({{ $doctor->total_rating }})</span>
                                 </div>
                                 <!-- doctor-rate -->
                             </div>
@@ -100,15 +100,15 @@
                 <ul class="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist" style="background: #E7F3F5; ">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" id="ex3-tab-1" data-mdb-toggle="tab" href="#ex3-tabs-1" role="tab"
-                            aria-controls="ex3-tabs-1" aria-selected="true">التقييمات</a>
+                            aria-controls="ex3-tabs-1" aria-selected="true">{{ __('Rates') }}</a>
                     </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="ex3-tab-2" data-mdb-toggle="tab" href="#ex3-tabs-2" role="tab"
-                            aria-controls="ex3-tabs-2" aria-selected="false">الشخصي الملف </a>
+                            aria-controls="ex3-tabs-2" aria-selected="false">{{ __('Profile') }}</a>
                     </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="ex3-tab-3" data-mdb-toggle="tab" href="#ex3-tabs-3" role="tab"
-                            aria-controls="ex3-tabs-3" aria-selected="false">الفيديوهات</a>
+                            aria-controls="ex3-tabs-3" aria-selected="false">{{ __('Videos') }}</a>
                     </li>
                     {{-- <li class="nav-item" role="presentation">
                         <a class="nav-link" id="ex3-tab-4" data-mdb-toggle="tab" href="#ex3-tabs-4" role="tab"
@@ -149,17 +149,17 @@
                     </div>
                     <div class="tab-pane fade" id="ex3-tabs-2" role="tabpanel" aria-labelledby="ex3-tab-2">
                         <div class="title-forth mb-3 mt-4 ">
-                            <h5 class="ng-binding ">About therapist</h5>
+                            <h5 class="ng-binding ">{{ __('About therapist') }}</h5>
                         </div>
                         <div class="doctor-info-page-sesction mb-3 ng-binding " ng-bind-html="tAttr(doctor.description)">
                             {{ $doctor->about_therapist }}</div>
                         <div class="title-forth mb-3 mt-4">
-                            <h5 class="ng-binding">Certificates</h5>
+                            <h5 class="ng-binding">{{ __('Certificates') }}</h5>
                         </div>
                         <div class="doctor-info-page-sesction mb-3 ng-binding" ng-bind-html="tAttr(doctor.certificates)">-
                             {{ $doctor->certification_detail }}</div>
                         <div class="title-forth mb-3 mt-4">
-                            <h5 class="ng-binding">Experiences</h5>
+                            <h5 class="ng-binding">{{ __('Experiences') }}</h5>
                         </div>
                         <div class="doctor-info-page-sesction mb-3 ng-binding" ng-bind-html="tAttr(doctor.experiences)">
                             {{ $doctor->experience_detail }}
@@ -222,7 +222,7 @@
 
                         <button type="button" class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 " data-toggle="modal"
                             data-target="#exampleModalCenter" style="border: 2px solid black;color: black;">
-                             احجز
+                            {{ __('Book') }}
                         </button>
                         @if ($doctor->user->onlineStatus && $doctor->user->onlineStatus->is_active)
                             @php
@@ -233,24 +233,22 @@
                             @endphp
                             @if ($date1 > $date2 && $date1 < $date3)
                                 <button class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 "
-                                    style="border: 2px solid black;color: black;">Book Instantly</button>
+                                    style="border: 2px solid black;color: black;">{{ __('Book Instantly') }}</button>
                             @endif
 
                         @endif
-                        {{-- <a class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 ng-scope" style="border: 2px solid black;color: black;">احجز من الجدول</a> --}}
-                        {{-- <a class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 ng-scope"
-                            style="border: 2px solid black;color: black;">عروض الجلسات</a> --}}
+
 
                         <ul class="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist" style=" ">
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" id="ex3-tab-4" data-mdb-toggle="tab" href="#ex3-tabs-4" role="tab"
                                     aria-controls="ex3-tabs-4" aria-selected="false"
-                                    style="border: 2px solid black;color: black;">عروض الجلسات </a>
+                                    style="border: 2px solid black;color: black;">{{ __('Sessions') }} </a>
                             </li>
 
                         </ul>
                     </div>
-                    <h1 class="ng-binding">المواعيد المتاحة</h1>
+                    <h1 class="ng-binding">{{ __('Available Schedules') }} </h1>
                     {{-- <select name="timezone" class="form-control inline-field babel-ignore timezone-select-inactive"
                         id="timezone" onchange="covertTimeToTimeZone()">
                         @foreach ($timezones as $zone)
@@ -265,7 +263,7 @@
 
                         <div id="schedule-date-picker-header" class="text-center">
                             <div class="d-inline-block ng-scope">
-                                <span class=""> 30 minutes
+                                <span class=""> 30 {{ __('Minutes') }}
                                 </span>:
                                 <span
                                     class="ng-binding">{{ currency(doubleVal($doctor->thirty_minute_price), 'USD', currency()->getUserCurrency()) }}
@@ -274,7 +272,7 @@
                             <br>
                             <div class="d-inline-block ng-scope">
                                 <span class="mx-3">-</span>
-                                <span class="ng-scope">60 minutes</span>:
+                                <span class="ng-scope">60 {{ __('Minutes') }}</span>:
                                 <span
                                     class="ng-binding">{{ currency(doubleVal($doctor->sixty_minute_price), 'USD', currency()->getUserCurrency()) }}</span>
                             </div>
@@ -285,11 +283,8 @@
                                 <div class="col-lg-3 text-center mt-3 mb-5"
                                     style="margin-right:10px;border:1px solid rgba(0,0,0,.125);">
                                     <div class="heading bg-primary "
-                                        style="    width: 145%;
-                                                                                                                                                                    color: white;
-                                                                                                                                                                    text-align: center;
-                                                                                                                                                                    margin-left: -12px;">
-                                        <small> {{ strtok(\Carbon\Carbon::parse($ss)->calendar()," ") }}</small>
+                                        style="width: 145%;color: white;text-align: center;margin-left: -12px;">
+                                        <small> {{ strtok(\Carbon\Carbon::parse($ss)->calendar(), ' ') }}</small>
                                         <br>
                                         <small style="">{{ \Carbon\Carbon::parse($ss)->format('d/m') }}</small>
                                     </div>
@@ -302,7 +297,7 @@
                                                         <small>{{ $value->time }}</small>
                                                     </div>
                                                     <small class="text-muted"> ({{ $value->duration }}
-                                                        minutes)</small>
+                                                        {{ __('Minutes') }})</small>
 
                                                 </div>
                                             </a>
@@ -420,239 +415,248 @@
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content" style="width: 70%;">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">احجز جلسة</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <div  class="mb-4 ng-scope">
-                    <div class="card instant-session shadow light-grey-bg">
-                        <div class="card-header">
-                            <h5 class="title-primary">
-                                <span ng-if="key == 30" translate="Half hour session" class="ng-scope">جلسة نصف ساعة</span><!-- end ngIf: key == 30 -->
-                            
-                                <span class="text-danger">(<span translate="The session will be start after payment" class="ng-scope">ستبدأ الجلسة بعد الدفع</span>)</span>
-                            </h5>
-                        </div>
-                        <div class="card-body text-center">
-                            <h4 class="title-forth mb-4"><span translate="Amount" class="ng-scope">السعر</span> : <span class="ng-binding">50USD</span></h4>
-                            <button class="btn btn-primary w-100" style="max-width: 25rem;"><!-- ngIf: creating_waiting[key] --> <span translate="Book now" class="ng-scope">احجز الأن</span></button>
+            <div class="modal-content" style="width: 70%;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{ __('Book a session') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-4 ng-scope">
+                        <div class="card instant-session shadow light-grey-bg">
+                            <div class="card-header">
+                                <h5 class="title-primary">
+                                    <span ng-if="key == 30" translate="Half hour session"
+                                        class="ng-scope">{{ __('Half hour session') }}</span>
+                                    <!-- end ngIf: key == 30 -->
+
+                                    <span class="text-danger">(<span translate="The session will be start after payment"
+                                            class="ng-scope">{{ __('The session will be start after payment') }}
+                                        </span>)</span>
+                                </h5>
+                            </div>
+                            <div class="card-body text-center">
+                                <h4 class="title-forth mb-4"><span translate="Amount"
+                                        class="ng-scope">{{ __('price') }}</span>
+                                    : <span class="ng-binding">50USD</span></h4>
+                                <button class="btn btn-primary w-100" style="max-width: 25rem;">
+                                    <!-- ngIf: creating_waiting[key] --> <span translate="Book now"
+                                        class="ng-scope">{{ __('Book Now') }}</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.standalone.min.css"
-        integrity="sha512-p4vIrJ1mDmOVghNMM4YsWxm0ELMJ/T0IkdEvrkNHIcgFsSzDi/fV7YxzTzb3mnMvFPawuIyIrHcpxClauEfpQg=="
-        crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
-        integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
-        crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-    </script>
-    <script>
-        var doctor = {!! json_encode($doctor) !!};
-
-        var date = new Date();
-        var slotss = JSON.parse($('#sall').val());
-        var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-
-        $('#datepicker').datepicker({
-            todayBtn: true,
-            startDate: today,
-            weekStart: 1,
-            daysOfWeekDisabled: "0,5",
-            todayHighlight: true,
-            format: 'yyyy/mm/dd'
-        });
-        $('#datepicker').on('changeDate', function() {
-            $('#my_hidden_input').val(
-                $('#datepicker').datepicker('getFormattedDate')
-            );
-            var curr_date = $('#datepicker').datepicker('getFormattedDate'); //.split("/")
-
-            $.ajax({
-                url: "{{ url('getavailability') }}",
-                method: "post",
-                data: {
-                    "date": curr_date,
-                    "doctor_id": doctor.user.id,
-                },
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.standalone.min.css"
+            integrity="sha512-p4vIrJ1mDmOVghNMM4YsWxm0ELMJ/T0IkdEvrkNHIcgFsSzDi/fV7YxzTzb3mnMvFPawuIyIrHcpxClauEfpQg=="
+            crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+                integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
+                crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(data) {
-                    $('#sall').val(JSON.stringify(data));
-                    covertTimeToTimeZone();
-                    $('#m').prop("disabled", false);
-                },
-                error: function(err) {
-                    console.log(err);
                 }
             });
+        </script>
+        <script>
+            var doctor = {!! json_encode($doctor) !!};
 
-        });
+            var date = new Date();
+            var slotss = JSON.parse($('#sall').val());
+            var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
-        function setUserTime() {
-            $('#user_time').val($('#m').find(':selected').attr('ut'));
-        }
-        $(document).ready(function() {
-            $("#makeAppointmentBtn").click(function() {
-                var data = {
-                    'doctor_id': doctor.user.id,
-                    'timezone': $('#timezone').val(),
-                    'user_time': $('#user_time').val(),
-                    'time': $('#m').val(),
-                    'date': $('#my_hidden_input').val(),
-                }
-                validateInput();
-                console.log(data);
+            $('#datepicker').datepicker({
+                todayBtn: true,
+                startDate: today,
+                weekStart: 1,
+                daysOfWeekDisabled: "0,5",
+                todayHighlight: true,
+                format: 'yyyy/mm/dd'
+            });
+            $('#datepicker').on('changeDate', function() {
+                $('#my_hidden_input').val(
+                    $('#datepicker').datepicker('getFormattedDate')
+                );
+                var curr_date = $('#datepicker').datepicker('getFormattedDate'); //.split("/")
+
                 $.ajax({
-                    url: "{{ url('appointment') }}",
+                    url: "{{ url('getavailability') }}",
                     method: "post",
-                    data: data,
+                    data: {
+                        "date": curr_date,
+                        "doctor_id": doctor.user.id,
+                    },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function(data) {
-                        alert('Your appointment has been sent to approval');
+                        $('#sall').val(JSON.stringify(data));
+                        covertTimeToTimeZone();
+                        $('#m').prop("disabled", false);
                     },
                     error: function(err) {
                         console.log(err);
                     }
                 });
+
             });
-        });
 
-        function validateInput() {
-            isAllValid = true;
-            if ($('#timezone').val() == '')
-                isAllValid = false;
-            if ($('#user_time').val() == '')
-                isAllValid = false;
-            if ($('#m').val() == '')
-                isAllValid = false;
-            if ($('#my_hidden_input').val() == '')
-                isAllValid = false;
-            if (isAllValid) {
+            function setUserTime() {
+                $('#user_time').val($('#m').find(':selected').attr('ut'));
+            }
+            $(document).ready(function() {
+                $("#makeAppointmentBtn").click(function() {
+                    var data = {
+                        'doctor_id': doctor.user.id,
+                        'timezone': $('#timezone').val(),
+                        'user_time': $('#user_time').val(),
+                        'time': $('#m').val(),
+                        'date': $('#my_hidden_input').val(),
+                    }
+                    validateInput();
+                    console.log(data);
+                    $.ajax({
+                        url: "{{ url('appointment') }}",
+                        method: "post",
+                        data: data,
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(data) {
+                            alert('Your appointment has been sent to approval');
+                        },
+                        error: function(err) {
+                            console.log(err);
+                        }
+                    });
+                });
+            });
 
-            } else {
-                alert('All fields are required');
-                return;
+            function validateInput() {
+                isAllValid = true;
+                if ($('#timezone').val() == '')
+                    isAllValid = false;
+                if ($('#user_time').val() == '')
+                    isAllValid = false;
+                if ($('#m').val() == '')
+                    isAllValid = false;
+                if ($('#my_hidden_input').val() == '')
+                    isAllValid = false;
+                if (isAllValid) {
+
+                } else {
+                    alert('All fields are required');
+                    return;
+
+                }
 
             }
 
-        }
+            function convertUpdatedTime() {
+                var element = $('#timezone').find('option:selected');
+                var tzoffset = element.attr("ofs");
+                var timezoneOffset = tzoffset.replace(":", ".");
+                var nt = [];
+                slotss.forEach((time, index) => {
+                    if (time['st'].includes('AM')) {
+                        nt[index] = time['st'].replace('AM', '');
+                        nt[index] = parseInt(nt[index]) + parseInt(timezoneOffset);
+                    } else {
+                        nt[index] = time['st'].replace('PM', '');
+                        if (parseInt(time['st']) != 12) {
+                            nt[index] = parseInt(time['st']) + 12;
+                        }
+                        nt[index] = parseInt(nt[index]) + parseInt(timezoneOffset);
+                    }
+                });
+                // console.log(nt);
+                nt.forEach((ntime, index) => {
+                    // console.log(ntime.toString().length);
+                    if (ntime.toString().length == 1) {
+                        ntime = '0' + ntime;
+                    }
+                    let timeString = ntime + ':00:00';
+                    console.log(timeString);
+                    // Append any date. Use your birthday.
+                    let timeString12hr = new Date('1970-01-01' + timeString + 'Z')
+                        .toLocaleTimeString({}, {
+                            timeZone: 'UTC',
+                            hour12: true,
+                            hour: 'numeric',
+                            minute: 'numeric'
+                        });
+                    nt[index] = timeString12hr;
+                    console.log(nt);
+                });
+                // console.log(nt);    
+                var opt = '<option value="">Select time</option>';
+                nt.forEach((nslot, index) => {
+                    opt += '<option ut = "" value="' + nslot + '">' + nslot + '</option>';
+                });
+                $('#m').html(opt);
+            }
 
-        function convertUpdatedTime() {
-            var element = $('#timezone').find('option:selected');
-            var tzoffset = element.attr("ofs");
-            var timezoneOffset = tzoffset.replace(":", ".");
-            var nt = [];
-            slotss.forEach((time, index) => {
-                if (time['st'].includes('AM')) {
-                    nt[index] = time['st'].replace('AM', '');
-                    nt[index] = parseInt(nt[index]) + parseInt(timezoneOffset);
-                } else {
-                    nt[index] = time['st'].replace('PM', '');
-                    if (parseInt(time['st']) != 12) {
-                        nt[index] = parseInt(time['st']) + 12;
+            function covertTimeToTimeZone() {
+                slotss = JSON.parse($('#sall').val());
+                slotss = Object.values(slotss);
+                var element = $('#timezone').find('option:selected');
+                var tzoffset = element.attr("ofs");
+                var timezoneOffset = tzoffset.replace(":", ".");
+                var nt = [];
+                console.log('Slots');
+                console.log(slotss);
+                slotss.forEach((time, index) => {
+                    if (time.includes('AM')) {
+                        nt[index] = time.replace('AM', '');
+                        nt[index] = parseInt(nt[index]) + parseInt(timezoneOffset);
+                        if (nt[index] < 0) {
+                            nt[index] = nt[index] + 24;
+                        }
+                        if (nt[index] > 24) {
+                            nt[index] = nt[index] - 24;
+                        }
+                    } else {
+                        nt[index] = time.replace('PM', '');
+                        if (parseInt(time) != 12) {
+                            nt[index] = parseInt(time) + 12;
+                        }
+                        nt[index] = parseInt(nt[index]) + parseInt(timezoneOffset);
+                        console.log(nt[index]);
+                        if (nt[index] > 24) {
+                            nt[index] = nt[index] - 24;
+                        }
                     }
-                    nt[index] = parseInt(nt[index]) + parseInt(timezoneOffset);
-                }
-            });
-            // console.log(nt);
-            nt.forEach((ntime, index) => {
-                // console.log(ntime.toString().length);
-                if (ntime.toString().length == 1) {
-                    ntime = '0' + ntime;
-                }
-                let timeString = ntime + ':00:00';
-                console.log(timeString);
-                // Append any date. Use your birthday.
-                let timeString12hr = new Date('1970-01-01' + timeString + 'Z')
-                    .toLocaleTimeString({}, {
-                        timeZone: 'UTC',
-                        hour12: true,
-                        hour: 'numeric',
-                        minute: 'numeric'
-                    });
-                nt[index] = timeString12hr;
-                console.log(nt);
-            });
-            // console.log(nt);    
-            var opt = '<option value="">Select time</option>';
-            nt.forEach((nslot, index) => {
-                opt += '<option ut = "" value="' + nslot + '">' + nslot + '</option>';
-            });
-            $('#m').html(opt);
-        }
+                });
 
-        function covertTimeToTimeZone() {
-            slotss = JSON.parse($('#sall').val());
-            slotss = Object.values(slotss);
-            var element = $('#timezone').find('option:selected');
-            var tzoffset = element.attr("ofs");
-            var timezoneOffset = tzoffset.replace(":", ".");
-            var nt = [];
-            console.log('Slots');
-            console.log(slotss);
-            slotss.forEach((time, index) => {
-                if (time.includes('AM')) {
-                    nt[index] = time.replace('AM', '');
-                    nt[index] = parseInt(nt[index]) + parseInt(timezoneOffset);
-                    if (nt[index] < 0) {
-                        nt[index] = nt[index] + 24;
+                nt.forEach((ntime, index) => {
+                    // console.log(ntime.toString().length);
+                    if (ntime.toString().length == 1) {
+                        ntime = '0' + ntime;
                     }
-                    if (nt[index] > 24) {
-                        nt[index] = nt[index] - 24;
-                    }
-                } else {
-                    nt[index] = time.replace('PM', '');
-                    if (parseInt(time) != 12) {
-                        nt[index] = parseInt(time) + 12;
-                    }
-                    nt[index] = parseInt(nt[index]) + parseInt(timezoneOffset);
-                    console.log(nt[index]);
-                    if (nt[index] > 24) {
-                        nt[index] = nt[index] - 24;
-                    }
-                }
-            });
-
-            nt.forEach((ntime, index) => {
-                // console.log(ntime.toString().length);
-                if (ntime.toString().length == 1) {
-                    ntime = '0' + ntime;
-                }
-                let timeString = ntime + ':00';
-                // Append any date. Use your birthday.
-                let timeString12hr = new Date('1970-01-01T' + timeString + 'Z')
-                    .toLocaleTimeString({}, {
-                        timeZone: 'UTC',
-                        hour12: true,
-                        hour: 'numeric',
-                        minute: 'numeric'
-                    });
-                nt[index] = timeString12hr;
-            });
-            var opt = '<option value="">Select time</option>';
-            nt.forEach((nslot, index) => {
-                opt += '<option ut="' + nslot + '" value="' + slotss[index] + '">' + nslot + '</option>';
-            });
-            $('#m').html(opt);
+                    let timeString = ntime + ':00';
+                    // Append any date. Use your birthday.
+                    let timeString12hr = new Date('1970-01-01T' + timeString + 'Z')
+                        .toLocaleTimeString({}, {
+                            timeZone: 'UTC',
+                            hour12: true,
+                            hour: 'numeric',
+                            minute: 'numeric'
+                        });
+                    nt[index] = timeString12hr;
+                });
+                var opt = '<option value="">Select time</option>';
+                nt.forEach((nslot, index) => {
+                    opt += '<option ut="' + nslot + '" value="' + slotss[index] + '">' + nslot + '</option>';
+                });
+                $('#m').html(opt);
 
 
-        }
-    </script>
-@endsection
+            }
+        </script>
+    @endsection
