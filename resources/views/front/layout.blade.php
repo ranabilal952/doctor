@@ -247,16 +247,10 @@
                                             </span>
                                         @enderror
                                     </div>
-                                    {{-- <div class="form-check form-switch">
-                                        <input class="form-check-input " type="checkbox" id="remember" value="1"
-                                            ng-model="user.remember" name="remember" id="remember"
-                                            {{ old('remember') ? 'checked' : '' }}>
-                                        <label class="form-check-label ng-binding" for="remember"
-                                            style="margin-right: 9%;">تذكرني</label>
-                                    </div> --}}
+
                                     <div class="text-center mt-3">
                                         <a class="mb-3 d-inline-block ng-binding"
-                                            href="#">{{ __('Forgot your password?') }}</a>
+                                            href="{{ route('forget.password.get') }}">{{ __('Forgot your password?') }}</a>
                                     </div>
                                     <div class="text-center mb-5">
                                         <input class="btn btn-lg btn-primary w-100 mb-3" type="submit"
@@ -293,15 +287,16 @@
                                 <form autocomplete="off" class=" ng-valid" action="{{ route('register') }}"
                                     method="POST">
                                     @csrf
-                                    <div class="input-group input-group-nacked mb-3">
+                                    <div class="input-group input-group-nacked mt-4">
                                         <span class="input-group-text" id="user-addon"><i
                                                 class="las la-user"></i></span>
                                         <input class="form-control" type="hidden" name="role" value="user"
                                             required="">
                                         <input id="name" type="text"
                                             class="form-control @error('name') is-invalid @enderror"
-                                            placeholder="اسم المستخدم" aria-describedby="user-addon" name="name"
-                                            value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                            placeholder="{{ __('Username') }}" aria-describedby="user-addon"
+                                            name="name" value="{{ old('name') }}" required autocomplete="name"
+                                            autofocus>
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -309,12 +304,12 @@
                                         @enderror
                                     </div>
 
-                                    <div class="input-group input-group-nacked mb-3">
+                                    <div class="input-group input-group-nacked mt-4">
                                         <span class="input-group-text" id="user-addon"><i
                                                 class="las la-envelope"></i></span>
                                         <input id="email" type="email"
                                             class="form-control @error('email') is-invalid @enderror"
-                                            placeholder="البريد الالكتروني" aria-label="البريد الالكتروني"
+                                            placeholder="{{ __('Email Address') }}" aria-label="البريد الالكتروني"
                                             aria-describedby="user-addon" name="email" value="{{ old('email') }}"
                                             required autocomplete="email">
                                         @error('email')
@@ -325,42 +320,53 @@
                                     </div>
 
 
-                                    <div class="input-group input-group-nacked mb-3">
+                                    <div class="input-group input-group-nacked mt-4">
                                         <span class="input-group-text" id="user-addon"><i
                                                 class="las la-lock"></i></span>
                                         <input id="password" type="password"
                                             class="form-control @error('password') is-invalid @enderror"
-                                            placeholder="كلمة المرور" aria-label="كلمة المرور"
+                                            placeholder="{{ __('Password') }}" aria-label="كلمة المرور"
                                             aria-describedby="user-addon" name="password" required
                                             autocomplete="new-password">
+                                        @error('password')
+                                            <span class="invalid-feedback mb-3" role="alert">
+                                                <strong class="mb-5">{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
-                                    <div class="input-group input-group-nacked mb-3">
+                                    <div class="input-group input-group-nacked mt-4">
                                         <span class="input-group-text" id="user-addon"><i
                                                 class="las la-lock"></i></span>
                                         <input id="password-confirm" type="password" class="form-control "
-                                            placeholder="تأكيد كلمة المرور" aria-label="تأكيد كلمة المرور"
+                                            placeholder="{{ __('Confirm Password') }}" aria-label="تأكيد كلمة المرور"
                                             aria-describedby="user-addon" name="password_confirmation" required
                                             autocomplete="new-password">
+                                        @error('password')
+                                            <span class="invalid-feedback mb-3" role="alert">
+                                                <strong class="mb-5">{{ __($message) }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
 
 
-                                    <div class="form-check form-switch mb-3">
+                                    {{-- <div class="form-check form-switch mb-3">
                                         <input class="form-check-input ng-pristine ng-untouched ng-valid ng-empty"
                                             type="checkbox" id="agreeterms" value="1" ng-model="new_user.agreeterms">
                                         <label class="form-check-label title-primary ng-binding" for="agreeterms"
-                                            style="margin-right: 9%;">موافق على الشروط والأحكام</label>
-                                    </div>
+                                            style="margin-right: 9%;">
+                                            {{ __('I agree to the terms and conditions') }}</label>
+                                    </div> --}}
 
 
-                                    <div class="text-center">
+                                    <div class="text-center mt-4">
                                         <input class="btn btn-lg btn-primary w-100 mb-3" type="submit"
-                                            value="أنشئ حسابك">
+                                            value="{{ __('Create an account') }}">
                                         <div>
-                                            <span translate="Do you already have an account?"
-                                                class="ng-scope">لديك حساب؟</span>
-                                            <a href="#" class="my3 ng-binding">تسجيل الدخول</a>
+                                            <span
+                                                class="ng-scope">{{ __('Do you have already an account') }}</span>
+                                            <a href="#" class="my3 ng-binding">{{ __('Sign in') }} </a>
                                         </div>
                                     </div>
                                 </form>
