@@ -369,7 +369,8 @@
                                 <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
                                         {{ __('Schedules') }}</span> </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ url('create-schedule') }}"> {{ __('Add Schedule') }}</a></li>
+                                    <li><a href="{{ url('create-schedule') }}"> {{ __('Add Schedule') }}</a>
+                                    </li>
                                     <li><a href="{{ url('active-schedule') }}"> {{ __('Active Schedules') }}</a>
                                     </li>
                                     <li><a href="{{ url('booked-schedule') }}"> {{ __('Booked Schedules') }}</a>

@@ -323,8 +323,7 @@
     </div>
 
 
-    <div class="modal fade" id="bookingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
+    <div class="modal fade" id="bookingModal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content" style="width: 70%;">
                 <div class="modal-header">
@@ -420,13 +419,15 @@
             });
 
             $('#scheduleBtn').click(function(e) {
+                e.preventDefault();
                 var element = document.getElementById("schedule-date-picker-plugin");
                 element.scrollIntoView({
                     behavior: "smooth"
                 });
             });
             $('#scheduleBtnModal').click(function(e) {
-                $("#bookingModal").hide();
+                e.preventDefault();
+                $("#bookingModal").modal('hide');
                 var element = document.getElementById("schedule-date-picker-plugin");
                 element.scrollIntoView({
                     behavior: "smooth"
