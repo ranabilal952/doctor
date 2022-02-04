@@ -210,7 +210,7 @@ class SchedulesController extends Controller
             $appointmentDate =  Carbon::parse($slotTime->date_from . $slotTime->time);
             $dateDiff = (Carbon::now()->diffInMinutes($appointmentDate, false));
             if ($dateDiff <= 30) {
-                toastr()->success('You cannot select this appointment now');
+                toastr()->error('You cannot select this appointment now');
                 return redirect()->back();
             }
         }

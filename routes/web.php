@@ -322,3 +322,6 @@ Route::view('mail', 'mail.mail');
 
 //CANCEL APPOINTMENT
 Route::get('cancel-appointment/{id}', [AppointmentController::class, 'cancelAppointment']);
+
+
+Route::get('book-instantly/{doctorId}/{minutes}', [AppointmentController::class, 'bookInstantly']);

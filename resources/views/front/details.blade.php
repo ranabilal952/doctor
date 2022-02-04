@@ -34,6 +34,7 @@
     .slick-next {
         right: -7px !important;
     }
+
     .slick-prev {
         right: -31px !important;
     }
@@ -374,10 +375,11 @@
                                         : <span
                                             class="ng-binding">{{ currency(doubleVal($doctor->thirty_minute_price), 'USD', currency()->getUserCurrency()) }}
                                         </span></h4>
-                                    <button class="btn btn-primary w-100" style="max-width: 25rem;">
+                                    <a href="{{ url('book-instantly/' . $doctor->user->id . '/' . '0') }}"
+                                        class="btn btn-primary w-100" style="max-width: 25rem;">
                                         <!-- ngIf: creating_waiting[key] --> <span translate="Book now"
                                             class="ng-scope">{{ __('Book Now') }}</span>
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                             <div class="card instant-session shadow light-grey-bg">
@@ -396,10 +398,11 @@
                                         : <span
                                             class="ng-binding">{{ currency(doubleVal($doctor->sixty_minute_price), 'USD', currency()->getUserCurrency()) }}
                                         </span></h4>
-                                    <button class="btn btn-primary w-100" style="max-width: 25rem;">
+                                    <a href="{{ url('book-instantly/' . $doctor->user->id . '/' . '1') }}"
+                                        class="btn btn-primary w-100" style="max-width: 25rem;">
                                         <!-- ngIf: creating_waiting[key] --> <span translate="Book now"
                                             class="ng-scope">{{ __('Book Now') }}</span>
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         @else

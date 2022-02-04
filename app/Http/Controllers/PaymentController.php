@@ -11,7 +11,7 @@ use App\Models\PaymentTransaction;
 use App\Models\SlotTime;
 use App\Models\wallet;
 use App\Models\Withdraw;
-use Twilio\Rest\Client; 
+use Twilio\Rest\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Stripe\Charge;
@@ -96,41 +96,21 @@ class PaymentController extends Controller
 
     public function stripePost(Request $request)
     {
-
         $totalAmount = null;
-        $slot_id = $request->slot_id;
-        $slotData = SlotTime::find($slot_id);
-
-        $couponUsage = new CouponUsage();
-        $isCouponApplied = false;
-        $appliedCouponId = intval($request->couponId);
         $siteTax = PaymentSetting::first()->value('site_fee');
-        $scheduleAmount = intval($slotData->amount);
-        $totalAmount = $scheduleAmount;
-
-
+        $scheduleAmount = 0.0;
         $adminCommission = 0.0;
-        $adminCommission = ($totalAmount *  0.40);
+        if ($request->has('bookInstantly')) {
 
-        if ($scheduleAmount <= 200) {
-            $totalAmount += $siteTax;
-        }
-
-
-        if ($request->isCouponApplied == 'true') {
-            $coupon = Coupons::findorFail($appliedCouponId);
-            //first we have to subtract coupon discount
-            if ($coupon->method == 'percent') {
-                $totalAmount = $totalAmount - ($totalAmount * (intval($coupon->coupon_value) / 100));
-            } else {
-                $totalAmount = $totalAmount - (intval($coupon->coupon_value));
-            }
+            $scheduleAmount = intval($request->amount);
+            $totalAmount = $scheduleAmount;
             $adminCommission = ($totalAmount *  0.40);
-            $couponUsage->coupon_id = $appliedCouponId;
-            $isCouponApplied = true;
-        }
+            $doctor_id = intval($request->doctor_id);
 
-        if ($slot_id) {
+            if ($scheduleAmount <= 200) {
+                $totalAmount += $siteTax;
+            }
+
             Stripe::setApiKey(env('STRIPE_SECRET'));
             $stripe = new \Stripe\StripeClient(
                 env('STRIPE_SECRET'),
@@ -152,12 +132,9 @@ class PaymentController extends Controller
                 "description" => "Schedule Payment"
             ]);
 
-            // Storing Transactions
-
-            //this is user to doctor Transaction
             $userToDoc =     PaymentTransaction::create([
                 'from_user_id' => Auth::id(),
-                'to_user_id' => $slotData->user_id,
+                'to_user_id' => $doctor_id,
                 'email' => $request->email,
                 'phone_no' => $request->phone_no,
                 'amount' => doubleval($totalAmount - $adminCommission) - $siteTax,
@@ -186,7 +163,7 @@ class PaymentController extends Controller
                 $docToAdmin->save();
 
                 // storing data in doctor wallet
-                $doctorWallet = wallet::where('user_id', $slotData->user_id)->first();
+                $doctorWallet = wallet::where('user_id', $doctor_id)->first();
                 $doctorWallet->total_balance += doubleval($totalAmount - $adminCommission) - $siteTax;
                 $doctorWallet->pending_balance += doubleval($totalAmount - $adminCommission) - $siteTax;
                 $doctorWallet->save();;
@@ -199,15 +176,10 @@ class PaymentController extends Controller
 
                 $appointmentData = AppointmentSchedule::create([
                     'user_id' => Auth::id(),
-                    'doctor_id' => $slotData->user_id,
-                    'slot_id' => $slotData->id,
+                    'doctor_id' => $doctor_id,
+                    'slot_id' => -9,
                 ]);
 
-                if ($isCouponApplied) {
-                    $couponUsage->appointment_schedule_id = $appointmentData->id;
-                    $couponUsage->used_by = Auth::id();
-                    $couponUsage->save();
-                }
 
                 $userToDoc->appointment_schedule_id = $appointmentData->id;
                 $userToDoc->save();
@@ -218,38 +190,189 @@ class PaymentController extends Controller
                 Payment::create([
                     'user_id' => Auth::id(),
                     'status' => $paymentObject->status,
-                    'slot_id' => $slot_id,
+                    'slot_id' => -9,
                     'transaction_id' => $paymentObject->id,
                     'appointment_schedule_id' => $appointmentData->id,
                     'total_paid' => $totalAmount,
                 ]);
 
-                $slotData->booking_status = 0;
-                $slotData->save();
+               
 
 
                 $account_sid = getenv("TWILIO_SID");
                 $auth_token = getenv("TWILIO_AUTH_TOKEN");
                 $twilio_number = getenv("TWILIO_NUMBER");
-                $message = "Your appointment has been scheduled.\nAppointment Date&Time = " . $slotData->date_from . ' ' . $slotData->time;
-                $client = new Client($account_sid, $auth_token);
-                $client->messages->create(
-                    '+923040532318',
-                    ['from' => $twilio_number, 'body' => $message]
-                );
+                // $message = "Your appointment has been scheduled.\nAppointment Date&Time = " . $slotData->date_from . ' ' . $slotData->time;
+                // $client = new Client($account_sid, $auth_token);
+                // $client->messages->create(
+                //     '+923040532318',
+                //     ['from' => $twilio_number, 'body' => $message]
+                // );
 
 
                 toastr()->success('Your appointment has been scheduled');
-                return redirect('get-next-session');
+                $randomNumber = md5(rand(100, 5000));
+
+                return redirect('generateMeeting/'.$randomNumber);
                 // yaha pr user ko redirect krwana hai user dashboard me
             } else {
                 toastr()->error('Card is not verified');
                 return redirect()->back();
             }
         } else {
-            toastr()->error('Appointment is not available right now');
-        }
 
+
+            $slot_id = $request->slot_id;
+            $slotData = SlotTime::find($slot_id);
+
+            $couponUsage = new CouponUsage();
+            $isCouponApplied = false;
+            $appliedCouponId = intval($request->couponId);
+            $scheduleAmount = intval($slotData->amount);
+            $totalAmount = $scheduleAmount;
+
+
+
+            $adminCommission = ($totalAmount *  0.40);
+
+            if ($scheduleAmount <= 200) {
+                $totalAmount += $siteTax;
+            }
+
+
+            if ($request->isCouponApplied == 'true') {
+                $coupon = Coupons::findorFail($appliedCouponId);
+                //first we have to subtract coupon discount
+                if ($coupon->method == 'percent') {
+                    $totalAmount = $totalAmount - ($totalAmount * (intval($coupon->coupon_value) / 100));
+                } else {
+                    $totalAmount = $totalAmount - (intval($coupon->coupon_value));
+                }
+                $adminCommission = ($totalAmount *  0.40);
+                $couponUsage->coupon_id = $appliedCouponId;
+                $isCouponApplied = true;
+            }
+
+            if ($slot_id) {
+                Stripe::setApiKey(env('STRIPE_SECRET'));
+                $stripe = new \Stripe\StripeClient(
+                    env('STRIPE_SECRET'),
+                );
+                $token =    $stripe->tokens->create([
+                    'card' => [
+                        'number' => $request->card_number,
+                        'exp_month' => $request->expiry_month,
+                        'exp_year' => $request->year,
+                        'cvc' => $request->cvc,
+                    ],
+                ]);
+
+                //admin will get this payment
+                $paymentObject =   Charge::create([
+                    "amount" => $totalAmount * 100,
+                    "currency" => "usd",
+                    "source" => $token->id,
+                    "description" => "Schedule Payment"
+                ]);
+
+                // Storing Transactions
+
+                //this is user to doctor Transaction
+                $userToDoc =     PaymentTransaction::create([
+                    'from_user_id' => Auth::id(),
+                    'to_user_id' => $slotData->user_id,
+                    'email' => $request->email,
+                    'phone_no' => $request->phone_no,
+                    'amount' => doubleval($totalAmount - $adminCommission) - $siteTax,
+                    'payment_type' => 'appointment',
+                    'site_tax' => $siteTax,
+
+                ]);
+                //this is doctor to admin transaction
+                $docToAdmin =    PaymentTransaction::create([
+                    'from_user_id' => Auth::id(),
+                    'to_user_id' => 1,
+                    'email' => $request->email,
+                    'phone_no' => $request->phone_no,
+                    'amount' => doubleval($totalAmount),
+                    'payment_type' => 'appointment',
+                    'site_tax' => $siteTax,
+
+
+                ]);
+
+                if ($paymentObject->status == 'succeeded') {
+
+                    $userToDoc->status = 'pending';
+                    $userToDoc->save();
+                    $docToAdmin->status = 'succeeded';
+                    $docToAdmin->save();
+
+                    // storing data in doctor wallet
+                    $doctorWallet = wallet::where('user_id', $slotData->user_id)->first();
+                    $doctorWallet->total_balance += doubleval($totalAmount - $adminCommission) - $siteTax;
+                    $doctorWallet->pending_balance += doubleval($totalAmount - $adminCommission) - $siteTax;
+                    $doctorWallet->save();;
+                    // storing data in admin wallet
+
+                    $adminWallet = wallet::where('user_id', 1)->first();
+                    $adminWallet->total_balance += $adminCommission;
+                    $adminWallet->save();
+                    // $doctorWallet->pending_balance += doubleval($slotData->amount);
+
+                    $appointmentData = AppointmentSchedule::create([
+                        'user_id' => Auth::id(),
+                        'doctor_id' => $slotData->user_id,
+                        'slot_id' => $slotData->id,
+                    ]);
+
+                    if ($isCouponApplied) {
+                        $couponUsage->appointment_schedule_id = $appointmentData->id;
+                        $couponUsage->used_by = Auth::id();
+                        $couponUsage->save();
+                    }
+
+                    $userToDoc->appointment_schedule_id = $appointmentData->id;
+                    $userToDoc->save();
+                    $docToAdmin->appointment_schedule_id = $appointmentData->id;
+                    $docToAdmin->save();
+
+                    //this is our local DB
+                    Payment::create([
+                        'user_id' => Auth::id(),
+                        'status' => $paymentObject->status,
+                        'slot_id' => $slot_id,
+                        'transaction_id' => $paymentObject->id,
+                        'appointment_schedule_id' => $appointmentData->id,
+                        'total_paid' => $totalAmount,
+                    ]);
+
+                    $slotData->booking_status = 0;
+                    $slotData->save();
+
+
+                    $account_sid = getenv("TWILIO_SID");
+                    $auth_token = getenv("TWILIO_AUTH_TOKEN");
+                    $twilio_number = getenv("TWILIO_NUMBER");
+                    $message = "Your appointment has been scheduled.\nAppointment Date&Time = " . $slotData->date_from . ' ' . $slotData->time;
+                    $client = new Client($account_sid, $auth_token);
+                    $client->messages->create(
+                        '+923040532318',
+                        ['from' => $twilio_number, 'body' => $message]
+                    );
+
+
+                    toastr()->success('Your appointment has been scheduled');
+                    return redirect('get-next-session');
+                    // yaha pr user ko redirect krwana hai user dashboard me
+                } else {
+                    toastr()->error('Card is not verified');
+                    return redirect()->back();
+                }
+            } else {
+                toastr()->error('Appointment is not available right now');
+            }
+        }
         return back();
     }
 
