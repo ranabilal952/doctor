@@ -300,7 +300,7 @@
                                     style="margin-right:10px;border:1px solid rgba(0,0,0,.125);">
                                     <div class="heading bg-primary "
                                         style="    width: 145%;   color: white;text-align: center;  margin-left: -12px;">
-                                        <small> {{ \Carbon\Carbon::parse($ss)->format('l') }}</small>
+                                        <small> {{ strtok(\Carbon\Carbon::parse($ss)->calendar(),' ') }}</small>
                                         <br>
                                         <small style="">{{ \Carbon\Carbon::parse($ss)->format('d/m') }}</small>
                                     </div>
@@ -325,13 +325,7 @@
                                                         <small>{{ $value->time }}</small>
                                                     </div>
                                                     <small class="text-muted"> ({{ $value->duration }}
-                                                        minutes)</small>
-                                                    <hr>
-                                                    <div style="background: #F8FAFF;color:black">
-                                                        <a href="" style="color:black">More</a>
-                                                    </div>
-
-                                                    <hr>
+                                                        {{ __('Minutes') }})</small>
                                                 </div>
                                             </a>
                                         @endif
