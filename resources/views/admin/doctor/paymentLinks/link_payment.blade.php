@@ -34,11 +34,15 @@
 
             <div class="">
                 <h5>Payment Amount</h5>
-                <p>{{ currency(doubleVal($paymentLink->amount), 'USD', currency()->getUserCurrency()) }}</p>
+                <p>{{ currency()->getUserCurrency() }}
+                    {{ number_format(ceil(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($paymentLink->amount), 'USD', currency()->getUserCurrency())))) }}
+                </p>
             </div>
             <div class="">
                 <h5>Site Tax</h5>
-                <p>{{ currency(doubleVal($siteTax), 'USD', currency()->getUserCurrency()) }}</p>
+                <p>{{ currency()->getUserCurrency() }}
+                    {{ number_format(ceil(preg_replace('/[^A-Za-z0-9\-]/', '', currency(intVal($siteTax), 'USD', currency()->getUserCurrency())))) }}
+                </p>
             </div>
         </div>
 

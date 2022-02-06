@@ -7,6 +7,12 @@
         text-decoration: line-through !important;
     }
 
+    #schedule-date-picker-header {
+
+        background: #1266f1 !important;
+
+    }
+
     .datepicker-days {
         font-size: 23px !important;
     }
@@ -31,15 +37,27 @@
         -moz-osx-font-smoothing: grayscale;
     }
 
-    .slick-next {
-        right: -7px !important;
-    }
+    /*  */
 
-    .slick-prev {
-        right: -31px !important;
+    .slick-slider .slick-track,
+    .slick-slider .slick-list {
+        direction: ltr;
     }
 
 </style>
+
+@if (App::getLocale() == 'ar')
+    <style>
+        /* .slick-next {
+            right: 10px !important;
+        }
+
+        .slick-prev {
+            left: -420px!important;
+        } */
+
+    </style>
+@endif
 @section('content')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
@@ -59,16 +77,18 @@
                     <div class="row">
                         <div class="col-12 col-sm-3 col-lg-3">
                             <div class="doctor-single-avatar-wrap">
-                                <div class="doctor-single-avatar" style="    margin-left: 14px">
+                                <div class="doctor-single-avatar row" style="    margin-left: 14px">
                                     <img src="{{ url($doctor->image ?? '') }}" alt="">
                                     @if (Cache::has('is_online' . $doctor->user->id))
                                         <i class="doctor-item-availablity online"></i>
                                     @else
                                         <i class="doctor-item-not-availablity online"></i>
                                     @endif
+
+
                                 </div>
                             </div>
-                            <div class="top-bi detailspage">
+                            <div class="top-bi detailspage" style="float: right">
                                 <div class="">
                                     <img src="{{ asset('web/assets/ma.png') }}" alt="" style="width:35px;margin:5px">
                                 </div>
@@ -85,15 +105,11 @@
                             <div class="doctor-single-info text-md-start text-center " style="margin-left: 30px;">
                                 <h1 class="ng-binding "> {{ $doctor->user->name }}</h1>
                                 <h6 class="ng-binding "> {{ $doctor->doctor_specility }}</h6>
-                                <h5 class="fw-normal text-white m-0 "><span
-                                        class="ng-scope ">{{ __('Language') }}</span>:
-
+                                <h6 class="ng-binding "><span class="ng-scope ">{{ __('Language') }}</span>:
                                     <div class="me-2 d-inline ">{{ $doctor->language }}</div>
-
-                                </h5>
-
-
-
+                                </h6>
+                                <h6 class="ng-binding "> {{ __('Years of experience') }}
+                                    {{ $doctor->year_experience }}</h6>
                                 </h5>
                                 <div class="doctor-rate ">
                                     <span class="fa fa-star checked "></span>
@@ -101,17 +117,21 @@
                                     <span class="fa fa-star checked "></span>
                                     <span class="fa fa-star checked "></span>
                                     <span class="fa fa-star checked "></span>
-                                    <span class="ng-binding" style="color: white">({{ $doctor->total_rating }})</span>
+                                    <span class="ng-binding"
+                                        style="color: white">({{ $doctor->total_rating }})</span>
                                 </div>
                                 <!-- doctor-rate -->
                             </div>
                             <!-- doctor-single-info -->
                         </div>
                         <!-- col9 -->
-                        <div class="col-12 col-sm-5 col-lg-4 col-xl-5 ">
+                        <div class="col-12 col-sm-5 col-lg-4 col-xl-5 mt-3">
                             <div class="card ng-scope ">
                                 <div class="card-body ">
-                                    <div class="d-inline ">الاكتئاب<span>,</span> </div>
+                                    <div class="d-inline ">
+                                        {{ App::getLocale() == 'ar' ? 'الاكتئاب' : 'Depression' }}
+                                        <span></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -192,7 +212,25 @@
                             @if ($doctor->user->doctorVideos && count($doctor->user->doctorVideos) > 0)
                                 @foreach ($doctor->user->doctorVideos as $video)
                                     <div class="col-md-4 mb-4">
-                                        <iframe width="100%" height="480" src="{{ $video->video_url }}"
+                                        <iframe width="100%" height="auto" src="{{ $video->video_url }}"
+                                            title="YouTube video player" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                    <div class="col-md-4 mb-4">
+                                        <iframe width="100%" height="auto" src="{{ $video->video_url }}"
+                                            title="YouTube video player" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                    <div class="col-md-4 mb-4">
+                                        <iframe width="100%" height="auto" src="{{ $video->video_url }}"
+                                            title="YouTube video player" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                    <div class="col-md-4 mb-4">
+                                        <iframe width="100%" height="auto" src="{{ $video->video_url }}"
                                             title="YouTube video player" frameborder="0"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             allowfullscreen></iframe>
@@ -244,13 +282,13 @@
 
                         <button type="button" class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 " data-toggle="modal"
                             data-target="#bookingModal" style="border: 2px solid black;color: black;">
-                            {{ __('Book') }}
+                            {{ __('Book an instant session') }}
                         </button>
                         <button type="button" id="scheduleBtn" class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 "
                             style="border: 2px solid black;color: black;">
-                            {{ __('Schedules') }}
+                            {{ __('Book a session from calandar') }}
                         </button>
-                        @if ($doctor->user->onlineStatus && $doctor->user->onlineStatus->is_active)
+                        {{-- @if ($doctor->user->onlineStatus && $doctor->user->onlineStatus->is_active)
                             @php
                                 $date1 = DateTime::createFromFormat('h:i a', now());
                                 $date2 = DateTime::createFromFormat('h:i a', $doctor->user->onlineStatus->online_from);
@@ -262,36 +300,37 @@
                                     style="border: 2px solid black;color: black;">{{ __('Book Instantly') }}</button>
                             @endif
 
-                        @endif
+                        @endif --}}
 
 
-                        <ul class="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist" style=" ">
+                        {{-- <ul class="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist" style=" ">
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" id="ex3-tab-4" data-mdb-toggle="tab" href="#ex3-tabs-4" role="tab"
                                     aria-controls="ex3-tabs-4" aria-selected="false"
                                     style="border: 2px solid black;color: black;">{{ __('Sessions') }} </a>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
                     <h1 class="ng-binding">{{ __('Available Schedules') }} </h1>
                     <br>
                     <div id="schedule-date-picker-plugin" class=""
                         style="background-color: white;;border:1px solid grey">
                         <div id="schedule-date-picker-header" class="text-center">
-                            <div class="d-inline-block ng-scope">
+                            <div class="d-flex ng-scope">
                                 <span class=""> 30 {{ __('Minutes') }}
                                 </span>:
-                                <span
-                                    class="ng-binding">{{ currency(doubleVal($doctor->thirty_minute_price), 'USD', currency()->getUserCurrency()) }}
+                                <span class="ng-binding">
+                                    {{ currency()->getUserCurrency() }}
+                                    {{ number_format(ceil(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->thirty_minute_price), 'USD', currency()->getUserCurrency())))) }}
+
                                 </span>
-                            </div>
-                            <br>
-                            <div class="d-inline-block ng-scope">
-                                <span class="mx-3">-</span>
+                                &nbsp;&nbsp; -&nbsp;&nbsp;
                                 <span class="ng-scope">60 {{ __('Minutes') }}</span>:
-                                <span
-                                    class="ng-binding">{{ currency(doubleVal($doctor->sixty_minute_price), 'USD', currency()->getUserCurrency()) }}</span>
+                                <span class="ng-binding"> {{ currency()->getUserCurrency() }}
+                                    {{ number_format(ceil(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->thirty_minute_price), 'USD', currency()->getUserCurrency())))) }}</span>
                             </div>
+
+
                         </div>
                         <div class="row autoplay">
                             @foreach ($slotTimes as $ss => $time)
@@ -300,9 +339,9 @@
                                     style="margin-right:10px;border:1px solid rgba(0,0,0,.125);">
                                     <div class="heading bg-primary "
                                         style="    width: 145%;   color: white;text-align: center;  margin-left: -12px;">
-                                        <small> {{ strtok(\Carbon\Carbon::parse($ss)->calendar(),' ') }}</small>
-                                        <br>
-                                        <small style="">{{ \Carbon\Carbon::parse($ss)->format('d/m') }}</small>
+                                        <small> {{ strtok(\Carbon\Carbon::parse($ss)->calendar(), ' ') }}</small>
+                                        {{-- <br>
+                                        <small style="">{{ \Carbon\Carbon::parse($ss)->format('d/m') }}</small> --}}
                                     </div>
 
                                     @foreach ($time as $key => $value)
@@ -312,7 +351,7 @@
                                                     <div class="scheduleTime text-primary">
                                                         <small>{{ $value->time }}</small>
                                                     </div>
-                                                    <small class="text-muted"> ({{ $value->duration }}
+                                                    <small class="text-muted"> ({{ $value->duration }} &nbsp;
                                                         {{ __('Minutes') }})</small>
 
                                                 </div>
@@ -366,8 +405,8 @@
                                 <div class="card-body text-center">
                                     <h4 class="title-forth mb-4"><span translate="Amount"
                                             class="ng-scope">{{ __('price') }}</span>
-                                        : <span
-                                            class="ng-binding">{{ currency(doubleVal($doctor->thirty_minute_price), 'USD', currency()->getUserCurrency()) }}
+                                        : <span class="ng-binding"> {{ currency()->getUserCurrency() }}
+                                            {{ number_format(ceil(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->thirty_minute_price), 'USD', currency()->getUserCurrency())))) }}
                                         </span></h4>
                                     <a href="{{ url('book-instantly/' . $doctor->user->id . '/' . '0') }}"
                                         class="btn btn-primary w-100" style="max-width: 25rem;">
@@ -389,8 +428,8 @@
                                 <div class="card-body text-center">
                                     <h4 class="title-forth mb-4"><span translate="Amount"
                                             class="ng-scope">{{ __('price') }}</span>
-                                        : <span
-                                            class="ng-binding">{{ currency(doubleVal($doctor->sixty_minute_price), 'USD', currency()->getUserCurrency()) }}
+                                        : <span class="ng-binding"> {{ currency()->getUserCurrency() }}
+                                            {{ number_format(ceil(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->sixty_minute_price), 'USD', currency()->getUserCurrency())))) }}
                                         </span></h4>
                                     <a href="{{ url('book-instantly/' . $doctor->user->id . '/' . '1') }}"
                                         class="btn btn-primary w-100" style="max-width: 25rem;">
@@ -433,8 +472,8 @@
             $('.autoplay').slick({
                 slidesToShow: 3,
                 slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 1000,
+                // autoplay: true,
+                // autoplaySpeed: 1000,
             });
 
             $('#scheduleBtn').click(function(e) {

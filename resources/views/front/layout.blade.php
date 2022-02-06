@@ -1,7 +1,18 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html @if (App::getLocale() == 'ar')
+dir="rtl" lang="ar"
+@endif
+>
 {{-- dir="rtl" --}}
+<style>
+    i.lab {
+  display: inline-block;
+  border-radius: 60px;
+  box-shadow: 0 0 2px #888;
+  padding: 0.5em 0.6em;
 
+}
+</style>
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -129,27 +140,25 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-4">
-                    <h3> {{ $footer->arabic_title ?? '' }}</h3>
+                    <h3> {{ __('About Us') }}</h3>
                     <p class="footer-text">
-                        {{ $footer->arabic_description ?? '' }} </p>
+                        {{ __('your doctor | psychiatrist | Psychological consultations: It is a private electronic psychological clinic that offers psychological sessions via the Internet, so you will no longer need to go to a psychiatrist’s clinic, talk to a psychiatrist online with voice and video online.') }}
+                    </p>
                 </div>
-                <!-- <div class="col-lg-1">
-     
-    </div> -->
+
                 <div class="col-lg-4">
                     <div class="row">
-                        <h3>تصفح دكتورك</h3>
+                        <h3>{{ __('Browse doctoorc') }}</h3>
 
                         <div class="col-lg-4 mt-2">
                             <ul class="footer-font text-white">
-                                <li><a class="text-white" href="">من نحن</a></li>
-                                <li><a class="text-white" href="">اتصل بنا</a></li>
-                                <li><a class="text-white" href="">الأطباء</a></li>
-                                <li><a class="text-white" href="">المجلة</a></li>
-                                <li><a class="text-white" href="">اسأل الأن</a></li>
+                                <li><a class="text-white" href="">{{ __('About Us') }} </a></li>
+                                <li><a class="text-white" href=""> {{__('Contact Us')}}</a></li>
+                                <li><a class="text-white" href="">{{__('Doctors')}}</a></li>
+                                <li><a class="text-white" href="">{{__('Blog')}}</a></li>
                             </ul>
                         </div>
-                        <div class="col-lg-4 mt-2">
+                        {{-- <div class="col-lg-4 mt-2">
                             <ul class="footer-font">
                                 <li>
                                     <a class="text-white" href="">معايير اختيار الطبيب النفسي</a>
@@ -159,13 +168,13 @@
                                 <li><a class="text-white" href="">احجز جلسة الأن</a></li>
                                 <li><a class="text-white" href="">English</a></li>
                             </ul>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <h3>تابعنا على وسائل التواصل</h3>
+                    <h3>{{ __('Follow us on social media') }}</h3>
                     <p class="mt-2 footer-font">
-                        تابعنا على مواقع التواصل االجتماعى للحصول على اخر الاخبار والتحديثات عن الأطباء والموقع
+                        {{ __('Follow us on social media to get the latest news and updates about doctors and the site') }}
                     </p>
                     <div class="social-facbook facbook">
                         <a href="{{ $socials->facebook ?? '' }}" class="text-white">
@@ -190,12 +199,13 @@
         <hr />
         <div class="row">
             <div class="col-lg-6" style="padding-left: 26px">
-                <p>جميع الحقوق محفوظة لدكتورك © 2021</p>
+                <p> {{ __('All rights reserved to doctoorc ©') }} 2022</p>
             </div>
             <div class="col-lg-6" style="padding-left: 26px">
-                <a class="m-3 text-white" href="{{ url('privacy') }}">سياسة الخصوصية</a>
-                <a class="m-3 text-white" href="{{ url('terms') }}">الشروط والأحكام</a>
-                <a class="text-white" href="{{ url('cancelltion_policy') }}">سياسة الالغاء</a>
+                <a class="m-3 text-white" href="{{ url('privacy') }}"> {{ __('Privacy') }}</a>
+                <a class="m-3 text-white" href="{{ url('terms') }}"> {{ __('Terms & Conditions') }}</a>
+                <a class="text-white" href="{{ url('cancelltion_policy') }}">
+                    {{ __('Cancellation Policy') }}</a>
             </div>
         </div>
     </footer>

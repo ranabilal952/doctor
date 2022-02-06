@@ -54,14 +54,16 @@
                                 <div class="col-md-6">
                                     <h4 class="mt-0 header-title">Schedule Amount</h4>
                                     <p class="text-muted m-b-30 font-16">
-                                        {{ currency(doubleVal($slotAmount), 'USD', currency()->getUserCurrency()) }}
+                                        {{ currency()->getUserCurrency() }}
+                                        {{ number_format(ceil(preg_replace('/[^A-Za-z0-9\-]/', '', currency(intVal($slotAmount), 'USD', currency()->getUserCurrency())))) }}
                                     </p>
                                 </div>
 
                                 <div class="col-md-6">
                                     <h4 class="mt-0 header-title">Site Fee</h4>
                                     <p class="text-muted m-b-30 font-16">
-                                        {{ currency(doubleVal($totalTax), 'USD', currency()->getUserCurrency()) }}
+                                        {{ currency()->getUserCurrency() }}
+                                        {{ number_format(ceil(preg_replace('/[^A-Za-z0-9\-]/', '', currency(intVal($totalTax), 'USD', currency()->getUserCurrency())))) }}
                                     </p>
                                 </div>
 
@@ -169,7 +171,8 @@
                                     <div class="col-xs-12">
                                         <button id="payNowBtn" class="btn btn-primary btn-lg btn-block" type="submit">Pay
                                             Now
-                                            ({{ currency(doubleVal($totalAmount), 'USD', currency()->getUserCurrency()) }})</button>
+                                            ( {{ currency()->getUserCurrency() }}
+                                            {{ number_format(ceil(preg_replace('/[^A-Za-z0-9\-]/', '', currency(intVal($totalAmount), 'USD', currency()->getUserCurrency())))) }})</button>
                                     </div>
                                 </div>
 

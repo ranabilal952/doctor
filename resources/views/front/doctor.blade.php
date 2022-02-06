@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         <div class="top-doctor-item-available-alert mt-1 online"><span style=" float: right;
-                                     margin-top: -8px;">
+                                                                         margin-top: -8px;">
                             </span>
                         </div>
                         <div class="top-doctor-item-img">
@@ -61,9 +61,11 @@
                         </div>
                         <div class="card-body">
                             <h5 class="text-center">{{ $doctor->user->name ?? 'Not Available' }}</h5>
-                            <p class="text-center"> {{ $doctor->doctor_specility ?? 'Not Available' }}</p>
-                            <p class="text-center">سنوات من الخبرة(
-                                {{ $doctor->year_experience ?? 'Not Available' }} )</p>
+                            <p class="text-center">
+                                {{ App::getLocale() == 'en' ? $doctor->doctor_specility : $doctor->doctor_specility_ar }}
+                            </p>
+                            <p class="text-center"> {{ __('Years of experience') }}
+                                ({{ $doctor->year_experience ?? 'Not Available' }})</p>
                             <div class="text-center">
                                 ( {{ $doctor->total_rating }} )
                                 <span class="fa fa-star checked"></span>
@@ -73,10 +75,13 @@
                                 <span class="fa fa-star checked"></span>
                             </div>
                             <div class="d-flex">
-                                <a href="#" class="btn"
-                                    style="margin: 5px; width: 50%;font-size: 18px;">{{ currency(doubleVal($doctor->discount_price), 'USD', currency()->getUserCurrency()) }}</a>
-                                <a href="#" class="btn"
-                                    style="margin: 5px;width: 50%;font-size: 18px;"><del>{{ currency(doubleVal($doctor->orignal_price), 'USD', currency()->getUserCurrency()) }}</del>
+                                <a href="#" class="btn" style="margin: 5px; width: 50%;font-size: 18px;">
+                                    {{ currency()->getUserCurrency() }}
+                                    {{ number_format(ceil(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->discount_price), 'USD', currency()->getUserCurrency())))) }}
+                                </a>
+                                <a href="#" class="btn" style="margin: 5px;width: 50%;font-size: 18px;"><del>
+                                        {{ currency()->getUserCurrency() }}
+                                        {{ number_format(ceil(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->original_price), 'USD', currency()->getUserCurrency())))) }}</del>
                                 </a>
                             </div>
 
@@ -122,7 +127,7 @@
                                 </div>
                             </div>
                             <div class=" mt-1 online"><span style="    float: right;
-                                       margin-top: -8px;">
+                                                                           margin-top: -8px;">
                                 </span>
                             </div>
                             <div class="top-doctor-item-img">
@@ -132,11 +137,13 @@
                             </div>
                             <div class="card-body">
                                 <h5 class="text-center">{{ $doctor->user->name ?? 'Not Available' }}</h5>
-                                <p class="text-center"> {{ $doctor->doctor_specility ?? 'Not Available' }}</p>
-                                <p class="text-center">سنوات من الخبرة(
-                                    {{ $doctor->year_experience ?? 'Not Available' }} )</p>
+                                <p class="text-center">
+                                    {{ App::getLocale() == 'en' ? $doctor->doctor_specility : $doctor->doctor_specility_ar }}
+                                </p>
+                                <p class="text-center"> {{ __('Years of experience') }}
+                                    ({{ $doctor->year_experience ?? 'Not Available' }})</p>
                                 <div class="text-center">
-                                    ( {{ $doctor->total_rating }} )
+                                    ({{ $doctor->total_rating }})
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
@@ -144,11 +151,14 @@
                                     <span class="fa fa-star checked"></span>
                                 </div>
                                 <div class="d-flex">
-                                    <a href="#" class="btn"
-                                        style="margin: 5px; width: 50%;font-size: 18px;">{{ currency(doubleVal($doctor->discount_price), 'USD', currency()->getUserCurrency()) }}</a>
-                                    <a href="#" class="btn"
-                                        style="margin: 5px;width: 50%;font-size: 18px;"><del>{{ currency(doubleVal($doctor->orignal_price), 'USD', currency()->getUserCurrency()) }}</del>
-                                    </a>
+                                    <a href="#" class="btn" style="margin: 5px; width: 50%;font-size: 18px;">
+                                        {{ currency()->getUserCurrency() }}
+                                        {{ number_format(ceil(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->discount_price), 'USD', currency()->getUserCurrency())))) }}
+                                        <a href="#" class="btn"
+                                            style="margin: 5px;width: 50%;font-size: 18px;"><del>
+                                                {{ currency()->getUserCurrency() }}
+                                                {{ number_format(ceil(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->orignal_price), 'USD', currency()->getUserCurrency())))) }}</del>
+                                        </a>
                                 </div>
 
                                 <div class="d-flex">
