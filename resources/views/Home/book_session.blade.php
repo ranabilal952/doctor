@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    How to Book Session
+    {{ __('How to Book Session')}}
 @endsection
 @section('content')
     <div class="page-content-wrapper ">
@@ -34,7 +34,7 @@
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label><strong style="color: black">Video Link:</strong>(required)</label>
+                                            <label><strong style="color: black">Video Link:</strong></label>
                                             <div>
                                                 <input type="text" name="video_link" class="form-control"
                                                     value="{{ $book_session->video_link ?? '' }}" required />

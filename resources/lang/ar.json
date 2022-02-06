@@ -166,5 +166,14 @@
   "Sr.no": " الأب رقم ",
   "Cancell Appointments": " إلغاء المواعيد ",
   "Copyright © 2020": "حقوق النشر © 2020",
-  "Designed Developed & Managed By": " تصميم وتطوير وإدارة بواسطة"
+  "Designed Developed & Managed By": " تصميم وتطوير وإدارة بواسطة",
+  "ADMIN Panel":"لوحة الادارة ",
+  "Doctor Panel":" لوحة الطبيب ",
+  "User Panel":" لوحة المستخدم  ",
+  "How to Book Session":"كيف تحجز الجلسة",
+  "Enter Information ":"أدخل المعلومات",
+  "Title":"عنوان",
+  "Description":"وصف",
+  "Video Link:":"رابط الفيديو"
+
 }

@@ -107,15 +107,16 @@
                                 <ul class="list-unstyled">
                                     <li><a href="{{ url('title') }}"> <i class="mdi mdi-clock ">
                                                 {{ __('Title / Description') }}</i>
+                                                </a>
                                     </li>
                                     <li><a href="{{ url('accordion') }}"> <i class="mdi mdi-clock ">
-                                                {{ __('Home Accordion') }}</i>
+                                                {{ __('Home Accordion') }}</i>  </a>
                                     </li>
                                     <li><a href="{{ url('counter') }}"> <i class="mdi mdi-clock ">
-                                                < {{ __('Counter') }}</i>
+                                                {{ __('Counter') }}</i>  </a>
                                     </li>
                                     <li><a href="{{ url('home_video') }}"> <i class="mdi mdi-clock ">
-                                                {{ __('Videos Link') }}</i>
+                                                {{ __('Videos Link') }}</i>  </a>
                                         </a>
                                     </li>
                                 </ul>
