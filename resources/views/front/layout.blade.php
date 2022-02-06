@@ -65,7 +65,7 @@ dir="rtl" lang="ar"
                     </button>
                     <button type="button" class="left1 left1_a" data-toggle="modal" data-target="#exampleModal2"
                         style="margin: 5px;">
-                        إنشاء حساب
+                        {{ __('Register')}} 
                     </button>
                 </div>
             @else
