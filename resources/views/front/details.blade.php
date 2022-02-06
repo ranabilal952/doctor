@@ -75,9 +75,9 @@
             <div class="col-lg-8 col-md-12 col-sm-12">
                 <div class="doctor-single-about">
                     <div class="row">
-                        <div class="col-12 col-sm-3 col-lg-3">
+                        <div class="col-5 col-sm-3 col-lg-3">
                             <div class="doctor-single-avatar-wrap">
-                                <div class="doctor-single-avatar row" style="    margin-left: 14px">
+                                <div class="doctor-single-avatar row" style="    margin-left: 30px">
                                     <img src="{{ url($doctor->image ?? '') }}" alt="">
                                     @if (Cache::has('is_online' . $doctor->user->id))
                                         <i class="doctor-item-availablity online"></i>
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                         <!-- col3 -->
-                        <div class="col-12 col-sm-4 col-lg-5 col-xl-4 ">
+                        <div class="col-7 col-sm-4 col-lg-5 col-xl-4 ">
                             <div class="doctor-single-info text-md-start text-center " style="margin-left: 30px;">
                                 <h1 class="ng-binding "> {{ $doctor->user->name }}</h1>
                                 <h6 class="ng-binding "> {{ $doctor->doctor_specility }}</h6>
