@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         <div class="top-doctor-item-available-alert mt-1 online"><span style=" float: right;
-                                                                         margin-top: -8px;">
+                                                                                     margin-top: -8px;">
                             </span>
                         </div>
                         <div class="top-doctor-item-img">
@@ -77,11 +77,11 @@
                             <div class="d-flex">
                                 <a href="#" class="btn" style="margin: 5px; width: 50%;font-size: 18px;">
                                     {{ currency()->getUserCurrency() }}
-                                    {{ (round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->discount_price), 'USD', currency()->getUserCurrency())))) }}
+                                    {{ round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->discount_price) / 100, 'USD', currency()->getUserCurrency()))) }}
                                 </a>
                                 <a href="#" class="btn" style="margin: 5px;width: 50%;font-size: 18px;"><del>
                                         {{ currency()->getUserCurrency() }}
-                                        {{ (round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->original_price), 'USD', currency()->getUserCurrency())))) }}</del>
+                                        {{ round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->original_price) / 100, 'USD', currency()->getUserCurrency()))) }}</del>
                                 </a>
                             </div>
 
@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                             <div class=" mt-1 online"><span style="    float: right;
-                                                                           margin-top: -8px;">
+                                                                                       margin-top: -8px;">
                                 </span>
                             </div>
                             <div class="top-doctor-item-img">
@@ -153,11 +153,11 @@
                                 <div class="d-flex">
                                     <a href="#" class="btn" style="margin: 5px; width: 50%;font-size: 18px;">
                                         {{ currency()->getUserCurrency() }}
-                                        {{ (round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->discount_price), 'USD', currency()->getUserCurrency())))) }}
+                                        {{ round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->discount_price) / 100, 'USD', currency()->getUserCurrency()))) }}
                                         <a href="#" class="btn"
                                             style="margin: 5px;width: 50%;font-size: 18px;"><del>
                                                 {{ currency()->getUserCurrency() }}
-                                                {{ (round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->orignal_price), 'USD', currency()->getUserCurrency())))) }}</del>
+                                                {{ round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->orignal_price) / 100, 'USD', currency()->getUserCurrency()))) }}</del>
                                         </a>
                                 </div>
 
