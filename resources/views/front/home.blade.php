@@ -80,11 +80,11 @@
                                 <div class="d-flex">
                                     <a href="#" class="btn"
                                         style="margin: 5px; width: 50%;font-size: 18px;">{{ currency()->getUserCurrency() }}
-                                        {{ number_format(ceil(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->orignal_price), 'USD', currency()->getUserCurrency())))) }}
+                                        {{ (ceil(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->orignal_price), 'USD', currency()->getUserCurrency())))) }}
                                     </a>
                                     <a href="#" class="btn"
                                         style="margin: 5px;width: 50%;font-size: 18px;"><del>{{ currency()->getUserCurrency() }}
-                                            {{ number_format(ceil(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->orignal_price), 'USD', currency()->getUserCurrency())))) }}
+                                            {{ (ceil(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->orignal_price), 'USD', currency()->getUserCurrency())))) }}
                                         </del> </a>
                                 </div>
                                 <div class="d-flex">
