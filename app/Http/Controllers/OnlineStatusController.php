@@ -59,6 +59,7 @@ class OnlineStatusController extends Controller
                 'user_id' => Auth::id(),
             ]);
         }
+        toastr()->success('Succeessfully Added');
         return redirect()->back();
     }
 
