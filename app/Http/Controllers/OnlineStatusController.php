@@ -53,6 +53,7 @@ class OnlineStatusController extends Controller
                 'is_active' => $request->is_active == 'active' ? true : false,
                 'online_from' => $request->online_from,
                 'online_to' => $request->online_to,
+                'schedule_days' => implode($request->schedule_days),
                 'instant_30_minutes_amount' => $request->instant_30_minutes_amount,
                 'instant_60_minutes_amount' => $request->instant_60_minutes_amount,
                 'user_id' => Auth::id(),
