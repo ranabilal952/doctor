@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use App\Models\AppointmentSchedule;
+use App\Models\Doctor;
+use App\Models\PaymentSetting;
 use App\Models\SlotTime;
 use App\Models\Timezone;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\Console\Input\Input;
 
 class AppointmentController extends Controller
 {
@@ -211,5 +214,32 @@ class AppointmentController extends Controller
         }
         toastr()->success('appointment canceled successfully');
         return redirect()->back();
+    }
+
+    public function bookInstantly(Request $request)
+    {
+        $minutes = intval($request->minutes);
+        $doctorID = intval($request->doctorId);
+        $doctorData = Doctor::where('user_id', $doctorID)->first();
+        $slotAmount = 0.0;
+        if ($minutes == 0)
+            $slotAmount = doubleval($doctorData->thirty_minute_price);
+        else
+            $slotAmount = doubleval($doctorData->sixty_minute_price);
+
+        $doctorPercent = ($slotAmount * 0.40);
+        $siteTax = 0;
+        $totalTax = 0;
+        $totalAmount = 0;
+        if ($slotAmount <= 200.0) {
+            // tax applied  
+            $siteTax = PaymentSetting::first()->value('site_fee');
+            $totalTax = ($slotAmount * ($siteTax / 100));
+        }
+
+        $totalAmount = $slotAmount + $totalTax;
+        $duration = $minutes == 0 ? 30 : 60;
+
+        return view('payments.book-instantly', compact('duration', 'doctorPercent', 'totalAmount', 'totalTax','slotAmount','doctorID'));
     }
 }

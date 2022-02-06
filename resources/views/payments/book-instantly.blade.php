@@ -38,20 +38,15 @@
                                 <div class="col-md-6">
                                     <h4 class="mt-0 header-title">Schedule Date</h4>
                                     <p class="text-muted m-b-30 font-16">
-                                        {{ $slotTime->date_from }}
+                                        {{ \Carbon\Carbon::now() }}
                                     </p>
                                 </div>
-                                <div class="col-md-6">
-                                    <h4 class="mt-0 header-title">Schedule Time</h4>
-                                    <p class="text-muted m-b-30 font-16">
-                                        {{ $slotTime->time }}
-                                    </p>
-                                </div>
+
 
                                 <div class="col-md-6">
                                     <h4 class="mt-0 header-title">Schedule Duration</h4>
                                     <p class="text-muted m-b-30 font-16">
-                                        {{ $slotTime->duration }} Minutes
+                                        {{ $duration }} Minutes
                                     </p>
                                 </div>
 
@@ -60,8 +55,7 @@
                                     <h4 class="mt-0 header-title">Schedule Amount</h4>
                                     <p class="text-muted m-b-30 font-16">
                                         {{ currency()->getUserCurrency() }}
-                                        {{ round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($slotTime->amount) / 100, 'USD', currency()->getUserCurrency()))) }}
-
+                                        {{ round(preg_replace('/[^A-Za-z0-9\-]/', '', currency(intVal($slotAmount) / 100, 'USD', currency()->getUserCurrency()))) }}
                                     </p>
                                 </div>
 
@@ -69,7 +63,6 @@
                                     <h4 class="mt-0 header-title">Site Fee</h4>
                                     <p class="text-muted m-b-30 font-16">
                                         {{ currency()->getUserCurrency() }}
-                                        {{ round(preg_replace('/[^A-Za-z0-9\-]/', '', currency(intVal($totalTax) / 100, 'USD', currency()->getUserCurrency()))) }}
                                     </p>
                                 </div>
 
@@ -114,12 +107,11 @@
 
                             <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation"
                                 data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
-                                date-payment="{{ $slotTime->duration }}" id="payment-form">
+                                date-payment="{{ $duration }}" id="payment-form">
                                 @csrf
-                                <input type="hidden" name="slot_id" value="{{ $slotTime->id }}" id="">
-                                <input type="hidden" name="isCouponApplied" id="isCouponApplied" value="false">
-                                <input type="hidden" name="couponValue" id="couponValue" value="0">
-                                <input type="hidden" name="couponId" id="couponId" value="0">
+                                <input type="hidden" name="bookInstantly" value="1">
+                                <input type="hidden" name="amount" value="{{ $slotAmount }}">
+                                <input type="hidden" name="doctor_id" id="" value="{{ $doctorID }}">
                                 <div class='form-row row'>
                                     <div class='col-xs-12 form-group required'>
                                         <label style="color: black" class='control-label'>Name on Card</label> <input
@@ -169,23 +161,7 @@
                                     </div>
                                 </div>
 
-                                <div class='form-row row'>
-                                    <div class='col-xs-12 col-md-6 form-group card required'>
-                                        <small class='control-label' style="color: black">Coupon Code (If any)</small>
-                                        <input id="couponCode" autocomplete='off' name="coupon_code"
-                                            class='form-control card-number' size='20' type='text'>
-                                    </div>
-                                    <div class='col-xs-12 col-md-6 form-group ' id="clickthis">
-                                        <label class='control-label' style="color: black">Click this button after enter
-                                            coupon code</label>
 
-                                        <button onclick="checkCouponValid()" type="button" class="btn btn-primary">Check
-                                            Now</button>
-                                    </div>
-                                    <div class='col-xs-12 col-md-6 form-group mt-3 d-none ' id="afterCouponApproved">
-                                        <span class="text-center text-success mt-">Coupon Applied Successfully</span>
-                                    </div>
-                                </div>
 
 
 
@@ -217,56 +193,9 @@
 
 
     <script type="text/javascript">
-        var slotTime = @json($slotTime);
         var systemFee = @json($doctorPercent);
 
-        function checkCouponValid() {
-            var couponCode = $('#couponCode').val();
-            if (couponCode.length == 0) {
-                alert('Coupone code can\'t be empty');
-            }
 
-            $.ajax({
-                url: '/checkCouponValid',
-                type: 'POST',
-                /* send the csrf-token and the input to the controller */
-                data: {
-                    _token: "{{ csrf_token() }}",
-                    doctor_id: slotTime.user_id,
-                    coupon_code: couponCode,
-                },
-                dataType: 'JSON',
-                /* remind that 'data' is the response of the AjaxController */
-                success: function(data) {
-                    if (data.success) {
-                        let discount;
-                        var amount = parseInt(systemFee) + parseInt(slotTime.amount);
-                        if (data.data.method === 'percent') {
-                            discount = (parseInt(data.data.coupon_value) / 100);
-                            amount = amount - ((amount * discount));
-                        } else {
-                            //amount
-                            discount = parseInt(data.data.coupon_value);
-                            amount = amount - discount;
-                        }
-                        $('#isCouponApplied').val('true');
-                        $('#couponValue').val(amount);
-                        $('#couponId').val(data.data.id);
-
-
-                        // alert(amount);
-                        $('#payNowBtn').html('Pay Now ($' + amount + ')');
-                        $("#couponCode").prop('disabled', true);
-                        $('#clickthis').addClass('d-none');
-                        $('#afterCouponApproved').removeClass('d-none');
-
-                    } else {
-                        alert(data.message);
-                    }
-                }
-            });
-
-        }
         $(function() {
 
             $('#goToPayment').click(function(e) {

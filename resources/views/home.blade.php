@@ -136,6 +136,7 @@
                                                                 <span style="color: #0d6efd!important">  {{ __('USD') }}</span>
                                                             </strong> </h3>
                                                         @if ($withDraw)
+<<<<<<< HEAD
                                                             <input
                                                                 style="    color: #664d03;
                                                                                                                                                                                                                                             background-color: #fff3cd;
@@ -146,6 +147,12 @@
                                                                 value="Pending withdrawal request {{ $withDraw->withdraw_amount }}.00USD">
 
 
+=======
+                                                            <input  style="    color: #664d03;   background-color: #fff3cd;        border-color: #ffecb5;"  
+                                                             type="text" readonly class="form-control"  name="offer_arabic" readonly 
+                                                              placeholder="" 
+                                                               value="Pending withdrawal request {{ $withDraw->withdraw_amount }}.00USD">
+>>>>>>> 05ae01e4e75d305929f0176f12ba78a95388b937
                                                         @elseif ($user->wallet->available_balance >= 50)
                                                             <input class="form-control" type="number"
                                                                 name="withdraw_amount" id="">
