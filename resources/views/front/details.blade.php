@@ -321,13 +321,13 @@
                                 </span>:
                                 <span class="ng-binding">
                                     {{ currency()->getUserCurrency() }}
-                                    {{ (ceil(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->thirty_minute_price), 'USD', currency()->getUserCurrency())))) }}
+                                    {{ (round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->thirty_minute_price), 'USD', currency()->getUserCurrency())))) }}
 
                                 </span>
                                 &nbsp;&nbsp; -&nbsp;&nbsp;
                                 <span class="ng-scope">60 {{ __('Minutes') }}</span>:
                                 <span class="ng-binding"> {{ currency()->getUserCurrency() }}
-                                    {{ (ceil(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->thirty_minute_price), 'USD', currency()->getUserCurrency())))) }}</span>
+                                    {{ (round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->thirty_minute_price), 'USD', currency()->getUserCurrency())))) }}</span>
                             </div>
 
 
@@ -406,7 +406,7 @@
                                     <h4 class="title-forth mb-4"><span translate="Amount"
                                             class="ng-scope">{{ __('price') }}</span>
                                         : <span class="ng-binding"> {{ currency()->getUserCurrency() }}
-                                            {{ (ceil(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->thirty_minute_price), 'USD', currency()->getUserCurrency())))) }}
+                                            {{ (round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->thirty_minute_price), 'USD', currency()->getUserCurrency())))) }}
                                         </span></h4>
                                     <a href="{{ url('book-instantly/' . $doctor->user->id . '/' . '0') }}"
                                         class="btn btn-primary w-100" style="max-width: 25rem;">
@@ -429,7 +429,7 @@
                                     <h4 class="title-forth mb-4"><span translate="Amount"
                                             class="ng-scope">{{ __('price') }}</span>
                                         : <span class="ng-binding"> {{ currency()->getUserCurrency() }}
-                                            {{ (ceil(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->sixty_minute_price), 'USD', currency()->getUserCurrency())))) }}
+                                            {{ (round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->sixty_minute_price), 'USD', currency()->getUserCurrency())))) }}
                                         </span></h4>
                                     <a href="{{ url('book-instantly/' . $doctor->user->id . '/' . '1') }}"
                                         class="btn btn-primary w-100" style="max-width: 25rem;">

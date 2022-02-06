@@ -60,7 +60,7 @@
                                     <h4 class="mt-0 header-title">Schedule Amount</h4>
                                     <p class="text-muted m-b-30 font-16">
                                         {{ currency()->getUserCurrency() }}
-                                        {{ (ceil(preg_replace('/[^A-Za-z0-9\-]/', '', currency(intVal($slotTime->amount), 'USD', currency()->getUserCurrency())))) }}
+                                        {{ (round(preg_replace('/[^A-Za-z0-9\-]/', '', currency(intVal($slotTime->amount), 'USD', currency()->getUserCurrency())))) }}
 
                                     </p>
                                 </div>
@@ -69,7 +69,7 @@
                                     <h4 class="mt-0 header-title">Site Fee</h4>
                                     <p class="text-muted m-b-30 font-16">
                                         {{ currency()->getUserCurrency() }}
-                                        {{ (ceil(preg_replace('/[^A-Za-z0-9\-]/', '', currency(intVal($totalTax), 'USD', currency()->getUserCurrency())))) }}
+                                        {{ (round(preg_replace('/[^A-Za-z0-9\-]/', '', currency(intVal($totalTax), 'USD', currency()->getUserCurrency())))) }}
                                     </p>
                                 </div>
 
@@ -195,7 +195,7 @@
                                         <button id="payNowBtn" class="btn btn-primary btn-lg btn-block" type="submit">Pay
                                             Now
                                             ( {{ currency()->getUserCurrency() }}
-                                            {{ (ceil(preg_replace('/[^A-Za-z0-9\-]/', '', currency(intVal($totalAmount), 'USD', currency()->getUserCurrency())))) }})</button>
+                                            {{ (round(preg_replace('/[^A-Za-z0-9\-]/', '', currency(intVal($totalAmount), 'USD', currency()->getUserCurrency())))) }})</button>
                                     </div>
                                 </div>
 
