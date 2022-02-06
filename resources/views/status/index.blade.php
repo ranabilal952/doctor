@@ -37,8 +37,10 @@
                                         <div class="form-group">
                                             <label style="color: black"><strong> Schedules Days</strong> </label>
                                             <br>
-                                            <select style="width:100%!important" id="scheduleDays" name="schedule_days[]" class="selectpicker" multiple
-                                                data-live-search="true">
+                                            
+                                            <select style="width:100%!important" id="scheduleDays" name="schedule_days[]"
+                                                class="selectpicker" multiple data-live-search="true">
+                                             
                                                 <option value="sunday">Sunday</option>
                                                 <option value="monday">Monday</option>
                                                 <option value="tuesday">Tuesday</option>
