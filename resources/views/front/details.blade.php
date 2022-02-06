@@ -327,7 +327,7 @@
                                 &nbsp;&nbsp; -&nbsp;&nbsp;
                                 <span class="ng-scope">60 {{ __('Minutes') }}</span>:
                                 <span class="ng-binding"> {{ currency()->getUserCurrency() }}
-                                    {{ round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->thirty_minute_price) / 100, 'USD', currency()->getUserCurrency()))) }}</span>
+                                    {{ round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->sixty_minute_price) / 100, 'USD', currency()->getUserCurrency()))) }}</span>
                             </div>
 
 
