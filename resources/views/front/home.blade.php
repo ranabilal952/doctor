@@ -81,7 +81,7 @@
 
                                     <a href="#" class="btn"
                                         style="margin: 5px; width: 50%;font-size: 18px;">{{ currency()->getUserCurrency() }}
-                                        {{ number_format(round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->discount_price) / 100, 'USD', currency()->getUserCurrency())))) }}
+                                        {{ (round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->discount_price) / 100, 'USD', currency()->getUserCurrency())))) }}
                                     </a>
                                     <a href="#" class="btn"
                                         style="margin: 5px;width: 50%;font-size: 18px;"><del>{{ currency()->getUserCurrency() }}
