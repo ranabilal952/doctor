@@ -1191,7 +1191,39 @@ doctor-offers-box.country .top-doctor-services {
 .detailspage {
     margin-top: -55%;
 }
-
+.br {
+    --mdb-gutter-x: 0rem !important;
+    --mdb-gutter-y: 0;
+}
+.slick-next:before, .slick-prev:before {
+    position: relative !important;
+    right: 10px !important;
+}
+.rb{
+    width: 153%;
+    margin-left: -15px;
+    font-size: 16px;
+    text-align: center;
+    padding: 0.4rem;
+    font-weight: bold;
+    background: var(--primary);
+    color: #fff;
+}
+.card-footer {
+    background: #0A2244;
+    font-size: .8rem;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+[dir=rtl] .slick-next {
+    right: auto;
+    left: 4px !important;
+}
+[dir=rtl] .slick-prev {
+    right: -29px !important;
+    left: auto;
+}
 @media screen and (max-width: 992px) {
     section.image_text {
         display: block;

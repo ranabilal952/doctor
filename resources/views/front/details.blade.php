@@ -314,34 +314,32 @@
                     <h1 class="ng-binding">{{ __('Available Schedules') }} </h1>
                     <br>
                     <div id="schedule-date-picker-plugin" class=""
-                        style="background-color: white;;border:1px solid grey">
+                        style="background-color: white;;border:1px solid rgb(225, 225, 225)">
                         <div id="schedule-date-picker-header" class="text-center">
-                            <div class="d-flex ng-scope">
-                                <span class=""> 30 {{ __('Minutes') }}
+                            <div class="">
+                                <span class=""> 30 {{ __('minutes') }}
                                 </span>:
-                                <span class="ng-binding">
+                                <span class="">
                                     {{ currency()->getUserCurrency() }}
                                     {{ round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->thirty_minute_price) / 100, 'USD', currency()->getUserCurrency()))) }}
 
                                 </span>
                                 &nbsp;&nbsp; -&nbsp;&nbsp;
-                                <span class="ng-scope">60 {{ __('Minutes') }}</span>:
-                                <span class="ng-binding"> {{ currency()->getUserCurrency() }}
+                                <span class="">60 {{ __('minutes') }}</span>:
+                                <span class=""> {{ currency()->getUserCurrency() }}
                                     {{ round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->sixty_minute_price) / 100, 'USD', currency()->getUserCurrency()))) }}</span>
                             </div>
 
 
                         </div>
-                        <div class="row autoplay">
+                        <div class="row autoplay br" >
                             @foreach ($slotTimes as $ss => $time)
 
                                 <div class="col-lg-3 text-center mt-3 mb-5"
-                                    style="margin-right:10px;border:1px solid rgba(0,0,0,.125);">
-                                    <div class="heading bg-primary "
-                                        style="    width: 145%;   color: white;text-align: center;  margin-left: -12px;">
+                                    style="margin-right:10px;border:1px solid rgba(230, 219, 219, 0.125);">
+                                    <div class="heading bg-primary rb" style="">
                                         <small> {{ strtok(\Carbon\Carbon::parse($ss)->calendar(), ' ') }}</small>
-                                        {{-- <br>
-                                        <small style="">{{ \Carbon\Carbon::parse($ss)->format('d/m') }}</small> --}}
+                                        
                                     </div>
 
                                     @foreach ($time as $key => $value)
@@ -349,14 +347,23 @@
                                             <a href="{{ url('payment-schedule', $value->id) }}">
                                                 <div class="d-block">
                                                     <div class="scheduleTime text-primary">
-                                                        <small>{{ $value->time }}</small>
+                                                        <small style="color: #007bff;
+                                                        font-weight: bold;
+                                                        display: block;
+                                                        padding: 0.2rem;">{{ $value->time }}</small>
+                                                    
+                                                    <p class="text-muted" style="font-size: 9px"> ({{ $value->duration }}
+                                                        {{ __('Minutes') }})</p>
                                                     </div>
-                                                    <small class="text-muted"> ({{ $value->duration }} &nbsp;
-                                                        {{ __('Minutes') }})</small>
-
                                                 </div>
                                             </a>
-
+                                            <div class="card-footer" style="font-size: .8rem;
+                                            font-weight: bold;
+                                            text-align: center;
+                                            cursor: pointer;
+                                            background: #D6E0F5;
+                                            margin-left: -15px;
+                                            width: 86px;"><span class="ng-scope">More</span></div>
                                         @else
                                             <a href="#" data-toggle="modal" data-target="#exampleModal">
                                                 <div class="d-block">
@@ -470,8 +477,9 @@
     <script>
         $(document).ready(function() {
             $('.autoplay').slick({
+                infinite: true,
                 slidesToShow: 3,
-                slidesToScroll: 1,
+                slidesToScroll: 3
                 // autoplay: true,
                 // autoplaySpeed: 1000,
             });
