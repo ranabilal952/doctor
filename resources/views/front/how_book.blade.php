@@ -17,11 +17,11 @@
             </div>
             @if ($data->video_link != null)
                 <div class="col-lg-12">
-                    <div class="text-center">
-                        <iframe width="544" height="326" src="{{ $data->video_link }}" title="YouTube video player"
+                    <div class="text-center gn">
+                      <center><iframe class="gn" src="{{ $data->video_link }}" title="YouTube video player"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
+                            allowfullscreen></iframe></center>  
                     </div>
                 </div>
             @endif

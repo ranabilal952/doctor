@@ -1224,6 +1224,10 @@ doctor-offers-box.country .top-doctor-services {
     right: -29px !important;
     left: auto;
 }
+.gn{
+    width: 100% !important;
+    height: 326px !important  ;
+}
 @media screen and (max-width: 992px) {
     section.image_text {
         display: block;
@@ -1290,5 +1294,24 @@ doctor-offers-box.country .top-doctor-services {
 
     .detailspage {
         margin-top: -85%;
+    }
+    .top-bi {
+        left: 0;
+        right: auto;
+    }
+    [dir=rtl] .top-bi {
+        left: -202px;
+        right: auto;
+    }
+    .dl{
+        position: fixed;
+        top: 90px;
+        left: 10px;
+        right: 9px;
+        background: #F8FAFF;
+    }
+    .gn{
+        width: 100% !important;
+        height: 100% !important  ;
     }
 }

@@ -278,7 +278,7 @@
 
             <div class="col-12 col-sm-12 col-lg-4 col-md-12">
                 <div ng-controller="DoctorBookController" class="doctor-reservation-tool ng-scope">
-                    <div class="">
+                    <div class="dl">
 
                         <button type="button" class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 " data-toggle="modal"
                             data-target="#bookingModal" style="border: 2px solid black;color: black;">
