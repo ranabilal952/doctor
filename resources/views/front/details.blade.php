@@ -331,10 +331,11 @@
                                             <a href="{{ url('payment-schedule', $value->id) }}">
                                                 <div class="d-block">
                                                     <div class="scheduleTime text-primary">
-                                                        <small style="color: #007bff;
-                                                                        font-weight: bold;
-                                                                        display: block;
-                                                                        padding: 0.2rem;">{{ $value->time }}</small>
+                                                        <small
+                                                            style="color: #007bff;
+                                                                                font-weight: bold;
+                                                                                display: block;
+                                                                                padding: 0.2rem;">{{ $value->time }}</small>
 
                                                         <p class="text-muted" style="font-size: 9px">
                                                             ({{ $value->duration }}
@@ -342,13 +343,7 @@
                                                     </div>
                                                 </div>
                                             </a>
-                                            <div class="card-footer" style="font-size: .8rem;
-                                                            font-weight: bold;
-                                                            text-align: center;
-                                                            cursor: pointer;
-                                                            background: #D6E0F5;
-                                                            margin-left: -15px;
-                                                            width: 86px;"><span class="ng-scope">More</span></div>
+
                                         @else
                                             <a href="#" data-toggle="modal" data-target="#exampleModal">
                                                 <div class="d-block">
@@ -361,6 +356,13 @@
                                             </a>
                                         @endif
                                     @endforeach
+                                    <div class="card-footer" style="font-size: .8rem;
+                                        font-weight: bold;
+                                        text-align: center;
+                                        cursor: pointer;
+                                        background: #D6E0F5;
+                                        margin-left: -15px;
+                                        width: 86px;"><span class="ng-scope">More</span></div>
                                 </div>
                             @endforeach
                         </div>
