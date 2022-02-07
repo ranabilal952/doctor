@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Payment Details
+    {{ __('Payment Details') }}
 @endsection
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
 
@@ -29,35 +29,35 @@
 
 @section('content')
     <div class="page-content-wrapper ">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row " id="detailSchedule">
                 <div class="col-lg-12">
                     <div class="card m-b-200">
                         <div class="card-body">
                             <div class="row mt-5">
                                 <div class="col-md-6">
-                                    <h4 class="mt-0 header-title">Schedule Date</h4>
+                                    <h4 class="mt-0 header-title">{{ __('Schedule Date') }}</h4>
                                     <p class="text-muted m-b-30 font-16">
                                         {{ $slotTime->date_from }}
                                     </p>
                                 </div>
                                 <div class="col-md-6">
-                                    <h4 class="mt-0 header-title">Schedule Time</h4>
+                                    <h4 class="mt-0 header-title">{{ __('Schedule Time') }}</h4>
                                     <p class="text-muted m-b-30 font-16">
                                         {{ $slotTime->time }}
                                     </p>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <h4 class="mt-0 header-title">Schedule Duration</h4>
+                                    <h4 class="mt-0 header-title">{{ __('Schedule Duration') }}</h4>
                                     <p class="text-muted m-b-30 font-16">
-                                        {{ $slotTime->duration }} Minutes
+                                        {{ $slotTime->duration }} {{ __('minutes') }}
                                     </p>
                                 </div>
 
 
                                 <div class="col-md-6">
-                                    <h4 class="mt-0 header-title">Schedule Amount</h4>
+                                    <h4 class="mt-0 header-title">{{ __('Schedule Amount') }}</h4>
                                     <p class="text-muted m-b-30 font-16">
                                         {{ currency()->getUserCurrency() }}
                                         {{ round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($slotTime->amount) / 100, 'USD', currency()->getUserCurrency()))) }}
@@ -66,42 +66,43 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <h4 class="mt-0 header-title">Site Fee</h4>
+                                    <h4 class="mt-0 header-title">{{ __('Site Fee') }}</h4>
+
                                     <p class="text-muted m-b-30 font-16">
                                         {{ currency()->getUserCurrency() }}
                                         {{ round(preg_replace('/[^A-Za-z0-9\-]/', '', currency(intVal($totalTax) / 100, 'USD', currency()->getUserCurrency()))) }}
                                     </p>
                                 </div>
 
-                                {{-- <div class="col-md-6">
-                                    <h4 class="mt-0 header-title">System Fee</h4>
-                                    <p class="text-muted m-b-30 font-16">
-                                        {{ $doctorPercent }} USD
-                                    </p>
-                                </div> --}}
+                                <div class="col-md-6">
+                                    <div class="">
+                                        <button style="padding: 10px 20px 10px 20px;margin-top:20px;font-size:15px"
+                                            id="goToPayment" class="btn btn-primary">{{ __('Payment') }}</button>
+
+                                    </div>
+                                </div>
+
 
                             </div>
-                            <div class="w-100 text-center">
-                                <button id="goToPayment" class="btn btn-primary">Go to Payment</button>
-                            </div>
+
 
                         </div>
 
                     </div>
 
                 </div>
-
-
             </div>
+
+
             <div class="row d-none" id="paymentForm">
                 <div class="col-md-6 col-md-offset-3">
                     <div class="panel panel-default credit-card-box">
-                        <div class="panel-heading display-table text-center ">
-                            <div class="row display-tr justify-content-center text-center">
-                                <h3 class="panel-title display-td text-center ">Payment Details</h3>
-                                <div class="display-td">
-                                    <img class="img-responsive pull-right" src="{{ asset('visa.jpeg') }}">
-                                </div>
+                        <div class="panel-heading display-table text-center w-100">
+                            <div class="row display-tr justify-content-center text-center ">
+                                <h3 class="panel-title display-td text-center ">{{ __('Payment Details') }}</h3>
+                                {{-- <div class="display-td"> --}}
+                                {{-- <img class="img-responsive pull-right" src="{{ asset('visa.jpeg') }}"> --}}
+                                {{-- </div> --}}
                             </div>
                         </div>
                         <div class="panel-body">
@@ -112,8 +113,9 @@
                                 </div>
                             @endif
 
-                            <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation"
-                                data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
+                            <form role="form" action="{{ route('stripe.post') }}" method="post"
+                                class="require-validation" data-cc-on-file="false"
+                                data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
                                 date-payment="{{ $slotTime->duration }}" id="payment-form">
                                 @csrf
                                 <input type="hidden" name="slot_id" value="{{ $slotTime->id }}" id="">
@@ -122,48 +124,53 @@
                                 <input type="hidden" name="couponId" id="couponId" value="0">
                                 <div class='form-row row'>
                                     <div class='col-xs-12 form-group required'>
-                                        <label style="color: black" class='control-label'>Name on Card</label> <input
-                                            class='form-control' name="name_on_card" size='4' type='text'>
+                                        <label style="color: black"
+                                            class='control-label'>{{ __('Name on Card') }}</label>
+                                        <input class='form-control' name="name_on_card" size='4' type='text'>
                                     </div>
                                 </div>
 
-                                <div class='form-row row'>
-                                    <div class='col-xs-12 form-group card required'>
-                                        <label class='control-label' style="color: black">Card Number</label> <input
-                                            autocomplete='off' name="card_number" class='form-control card-number' size='20'
-                                            type='text'>
-                                    </div>
-                                </div>
+
 
                                 <div class='form-row row'>
                                     <div class='col-xs-12 form-group card required'>
-                                        <label class='control-label' style="color: black">Email</label> <input
-                                            autocomplete='off' name="email" class='form-control card-number' size='20'
+                                        <label class='control-label' style="color: black">{{ __('Email') }}</label>
+                                        <input autocomplete='off' name="email" class='form-control card-number' size='20'
                                             type='email'>
                                     </div>
                                 </div>
 
                                 <div class='form-row row'>
                                     <div class='col-xs-12 form-group card required'>
-                                        <label class='control-label' style="color: black">Phone No</label> <input
-                                            autocomplete='off' name="phone_no" class='form-control card-number' size='20'
-                                            type='text'>
+                                        <label class='control-label' style="color: black">{{ __('Phone No') }}</label>
+                                        <input value="+{{ $call }}" autocomplete='off' name="phone_no"
+                                            class='form-control card-number' size='20' type='text'>
+                                    </div>
+                                </div>
+
+                                <div class='form-row row'>
+                                    <div class='col-xs-12 form-group card required'>
+                                        <label class='control-label' style="color: black">{{ __('Card Number') }}
+
+                                        </label>
+                                        <input autocomplete='off' name="card_number" class='form-control card-number'
+                                            size='20' type='text'>
                                     </div>
                                 </div>
 
                                 <div class='form-row row'>
                                     <div class='col-xs-12 col-md-4 form-group cvc required'>
-                                        <label class='control-label'>CVC</label> <input autocomplete='off'
+                                        <label class='control-label'>{{ 'CVC' }}</label> <input autocomplete='off'
                                             class='form-control card-cvc' name="cvc" placeholder='ex. 311' size='4'
                                             type='text'>
                                     </div>
                                     <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                        <label class='control-label'>Expiration Month</label> <input
+                                        <label class='control-label'>{{ __('Expiration Month') }}</label> <input
                                             class='form-control card-expiry-month' name="expiry_month" placeholder='MM'
                                             size='2' type='text'>
                                     </div>
                                     <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                        <label class='control-label'>Expiration Year</label> <input
+                                        <label class='control-label'>{{ __('Expiration Year') }}</label> <input
                                             class='form-control card-expiry-year' name="year" placeholder='YYYY' size='4'
                                             type='text'>
                                     </div>
@@ -171,16 +178,17 @@
 
                                 <div class='form-row row'>
                                     <div class='col-xs-12 col-md-6 form-group card required'>
-                                        <small class='control-label' style="color: black">Coupon Code (If any)</small>
+                                        <small class='control-label'
+                                            style="color: black">{{ __('Coupon Code (If any)') }}</small>
                                         <input id="couponCode" autocomplete='off' name="coupon_code"
                                             class='form-control card-number' size='20' type='text'>
                                     </div>
                                     <div class='col-xs-12 col-md-6 form-group ' id="clickthis">
-                                        <label class='control-label' style="color: black">Click this button after enter
-                                            coupon code</label>
+                                        <label class='control-label'
+                                            style="color: black">{{ __('Click this button after enter coupon code') }}</label>
 
-                                        <button onclick="checkCouponValid()" type="button" class="btn btn-primary">Check
-                                            Now</button>
+                                        <button onclick="checkCouponValid()" type="button"
+                                            class="btn btn-primary">{{ __('Check Now') }}</button>
                                     </div>
                                     <div class='col-xs-12 col-md-6 form-group mt-3 d-none ' id="afterCouponApproved">
                                         <span class="text-center text-success mt-">Coupon Applied Successfully</span>
@@ -192,8 +200,8 @@
 
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <button id="payNowBtn" class="btn btn-primary btn-lg btn-block" type="submit">Pay
-                                            Now
+                                        <button id="payNowBtn" class="btn btn-primary btn-lg btn-block"
+                                            type="submit">{{ __('Pay Now') }}
                                             ( {{ currency()->getUserCurrency() }}
                                             {{ round(preg_replace('/[^A-Za-z0-9\-]/', '', currency(intVal($totalAmount) / 100, 'USD', currency()->getUserCurrency()))) }})</button>
                                     </div>

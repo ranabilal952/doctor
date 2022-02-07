@@ -84,8 +84,6 @@
                                     @else
                                         <i class="doctor-item-not-availablity online"></i>
                                     @endif
-
-
                                 </div>
                             </div>
                             <div class="top-bi detailspage" style="float: right">
@@ -104,7 +102,7 @@
                         <div class="col-7 col-sm-4 col-lg-5 col-xl-4 ">
                             <div class="doctor-single-info text-md-start text-center " style="margin-left: 30px;">
                                 <h1 class="ng-binding "> {{ $doctor->user->name }}</h1>
-                                <h6 class="ng-binding "> {{ $doctor->doctor_specility }}</h6>
+                                <h6 class="ng-binding "> {{ __($doctor->doctor_specility) }}</h6>
                                 <h6 class="ng-binding "><span class="ng-scope ">{{ __('Language') }}</span>:
                                     <div class="me-2 d-inline ">{{ $doctor->language }}</div>
                                 </h6>
@@ -216,25 +214,11 @@
                                             title="YouTube video player" frameborder="0"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             allowfullscreen></iframe>
+                                        <p class="text-center mt-4">
+                                            {{ App::getLocale() == 'en' ? $video->title_english : $video->title_arabic }}
+                                        </p>
                                     </div>
-                                    <div class="col-md-4 mb-4">
-                                        <iframe width="100%" height="auto" src="{{ $video->video_url }}"
-                                            title="YouTube video player" frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen></iframe>
-                                    </div>
-                                    <div class="col-md-4 mb-4">
-                                        <iframe width="100%" height="auto" src="{{ $video->video_url }}"
-                                            title="YouTube video player" frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen></iframe>
-                                    </div>
-                                    <div class="col-md-4 mb-4">
-                                        <iframe width="100%" height="auto" src="{{ $video->video_url }}"
-                                            title="YouTube video player" frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen></iframe>
-                                    </div>
+
                                 @endforeach
                             @else
                                 <h6 class="text-primary text-center">No Videos Available</h6>
@@ -332,14 +316,14 @@
 
 
                         </div>
-                        <div class="row autoplay br" >
+                        <div class="row autoplay br">
                             @foreach ($slotTimes as $ss => $time)
 
                                 <div class="col-lg-3 text-center mt-3 mb-5"
                                     style="margin-right:10px;border:1px solid rgba(230, 219, 219, 0.125);">
                                     <div class="heading bg-primary rb" style="">
                                         <small> {{ strtok(\Carbon\Carbon::parse($ss)->calendar(), ' ') }}</small>
-                                        
+
                                     </div>
 
                                     @foreach ($time as $key => $value)
@@ -348,22 +332,23 @@
                                                 <div class="d-block">
                                                     <div class="scheduleTime text-primary">
                                                         <small style="color: #007bff;
-                                                        font-weight: bold;
-                                                        display: block;
-                                                        padding: 0.2rem;">{{ $value->time }}</small>
-                                                    
-                                                    <p class="text-muted" style="font-size: 9px"> ({{ $value->duration }}
-                                                        {{ __('Minutes') }})</p>
+                                                                        font-weight: bold;
+                                                                        display: block;
+                                                                        padding: 0.2rem;">{{ $value->time }}</small>
+
+                                                        <p class="text-muted" style="font-size: 9px">
+                                                            ({{ $value->duration }}
+                                                            {{ __('Minutes') }})</p>
                                                     </div>
                                                 </div>
                                             </a>
                                             <div class="card-footer" style="font-size: .8rem;
-                                            font-weight: bold;
-                                            text-align: center;
-                                            cursor: pointer;
-                                            background: #D6E0F5;
-                                            margin-left: -15px;
-                                            width: 86px;"><span class="ng-scope">More</span></div>
+                                                            font-weight: bold;
+                                                            text-align: center;
+                                                            cursor: pointer;
+                                                            background: #D6E0F5;
+                                                            margin-left: -15px;
+                                                            width: 86px;"><span class="ng-scope">More</span></div>
                                         @else
                                             <a href="#" data-toggle="modal" data-target="#exampleModal">
                                                 <div class="d-block">

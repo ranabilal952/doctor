@@ -6,13 +6,15 @@ dir="rtl" lang="ar"
 {{-- dir="rtl" --}}
 <style>
     i.lab {
-  display: inline-block;
-  border-radius: 60px;
-  box-shadow: 0 0 2px #888;
-  padding: 0.5em 0.6em;
+        display: inline-block;
+        border-radius: 60px;
+        box-shadow: 0 0 2px #888;
+        padding: 0.5em 0.6em;
 
-}
+    }
+
 </style>
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -65,7 +67,7 @@ dir="rtl" lang="ar"
                     </button>
                     <button type="button" class="left1 left1_a" data-toggle="modal" data-target="#exampleModal2"
                         style="margin: 5px;">
-                        {{ __('Register')}} 
+                        {{ __('Register') }}
                     </button>
                 </div>
             @else
@@ -153,9 +155,9 @@ dir="rtl" lang="ar"
                         <div class="col-lg-4 mt-2">
                             <ul class="footer-font text-white">
                                 <li><a class="text-white" href="">{{ __('About Us') }} </a></li>
-                                <li><a class="text-white" href=""> {{__('Contact Us')}}</a></li>
-                                <li><a class="text-white" href="">{{__('Doctors')}}</a></li>
-                                <li><a class="text-white" href="">{{__('Blog')}}</a></li>
+                                <li><a class="text-white" href=""> {{ __('Contact Us') }}</a></li>
+                                <li><a class="text-white" href="">{{ __('Doctors') }}</a></li>
+                                <li><a class="text-white" href="">{{ __('Blog') }}</a></li>
                             </ul>
                         </div>
                         {{-- <div class="col-lg-4 mt-2">
@@ -346,18 +348,19 @@ dir="rtl" lang="ar"
                                     </div>
 
                                     <div class="input-group input-group-nacked mt-4">
-                                        <span class="input-group-text" id="user-addon"><i
-                                                class="las la-lock"></i></span>
-                                        <input id="password-confirm" type="password" class="form-control "
-                                            placeholder="{{ __('Confirm Password') }}" aria-label="تأكيد كلمة المرور"
-                                            aria-describedby="user-addon" name="password_confirmation" required
-                                            autocomplete="new-password">
-                                        @error('password')
+                                        <span class="input-group-text"><i class="las la-phone"></i></span>
+                                        <input id="phone" type="text"
+                                            class="form-control @error('phone') is-invalid @enderror"  placeholder="{{ __('Phone No') }}" name="phone"
+                                            required>
+
+                                        @error('phone')
                                             <span class="invalid-feedback mb-3" role="alert">
-                                                <strong class="mb-5">{{ __($message) }}</strong>
+                                                <strong class="mb-5">{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
+
+
 
 
 

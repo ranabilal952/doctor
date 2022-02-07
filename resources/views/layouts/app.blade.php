@@ -107,16 +107,16 @@
                                 <ul class="list-unstyled">
                                     <li><a href="{{ url('title') }}"> <i class="mdi mdi-clock ">
                                                 {{ __('Title / Description') }}</i>
-                                                </a>
+                                        </a>
                                     </li>
                                     <li><a href="{{ url('accordion') }}"> <i class="mdi mdi-clock ">
-                                                {{ __('Home Accordion') }}</i>  </a>
+                                                {{ __('Home Accordion') }}</i> </a>
                                     </li>
                                     <li><a href="{{ url('counter') }}"> <i class="mdi mdi-clock ">
-                                                {{ __('Counter') }}</i>  </a>
+                                                {{ __('Counter') }}</i> </a>
                                     </li>
                                     <li><a href="{{ url('home_video') }}"> <i class="mdi mdi-clock ">
-                                                {{ __('Videos Link') }}</i>  </a>
+                                                {{ __('Videos Link') }}</i> </a>
                                         </a>
                                     </li>
                                 </ul>
@@ -376,14 +376,14 @@
                             </li> --}}
                             <li class="has_sub ">
                                 <a href="" class="waves-effect "><i class="fa fa-list"></i> <span>
-                                        {{ __(' Sessions') }} </span> </a>
+                                        {{ __('Sessions') }} </span> </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ url('/get-next-session') }}"> {{ __(' Next Sessions') }}</a>
+                                    <li><a href="{{ url('/get-next-session') }}"> {{ __('Next Sessions') }}</a>
                                     </li>
                                     <li><a href="{{ url('/get-previous-session') }}">
-                                            {{ __(' Previous Sessions') }}</a></li>
+                                            {{ __('Previous Sessions') }}</a></li>
                                     <li><a href="{{ url('/get-canceled-session') }}">
-                                            {{ __(' Cancel Sessions') }}</a></li>
+                                            {{ __('Cancel Sessions') }}</a></li>
 
                                     {{-- <li><a href="{{url('done_appointment')}}" >Done Appointment</a></li> --}}
                                     {{-- <li><a href="{{url('cancel_appointment')}}" >Cancelled Appointment</a></li> --}}

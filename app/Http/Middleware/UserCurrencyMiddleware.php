@@ -18,11 +18,14 @@ class UserCurrencyMiddleware
     public function handle(Request $request, Closure $next)
     {
         // if (!$request->get('currency') && !$request->getSession()->get('currency')) {
-            $clientIP = $request->getClientIp();
-            $localCurrency = geoip($clientIP)->getAttribute('currency');
-            $request->getSession()->put([
-                'currency' => $localCurrency,
-            ]);
+        $clientIP = $request->getClientIp();
+
+        $localCurrency = geoip($clientIP)->getAttribute('currency');
+        $isoCode = geoip($clientIP)->getAttribute('iso_code');
+        $request->getSession()->put([
+            'currency' => $localCurrency,
+            'isoCode' => $isoCode
+        ]);
         // }
         return $next($request);
     }
