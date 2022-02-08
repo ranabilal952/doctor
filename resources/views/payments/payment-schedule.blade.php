@@ -5,6 +5,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
 
 <script src="https://js.stripe.com/v3/"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+<script src="https://js.stripe.com/v3/"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
     .panel-title {
         display: inline;
@@ -148,17 +154,29 @@
                                     </div>
                                 </div>
 
-                                <div class='form-row row'>
+                                {{-- <div class='form-row row'>
                                     <div class='col-xs-12 form-group card required'>
-                                        <label class='control-label' style="color: black">{{ __('Card Number') }}
+                                        <label class='control-label' style="color: black">
 
                                         </label>
                                         <input autocomplete='off' name="card_number" class='form-control card-number'
                                             size='20' type='text'>
                                     </div>
+                                </div> --}}
+                                <div class="form-group"> <label for="cardNumber">
+                                    <h6 style="color: black;font-size:16px">{{ __('Card Number') }}</h6>
+                                </label>
+                                <div class="input-group"> 
+                                    <input autocomplete='off' name="card_number" class='form-control card-number'
+                                    size='20' type='text'>
+                                    <div class="input-group-append"> <span class="input-group-text text-muted"> <img height="13" src="https://shoplineimg.com/assets/footer/card_visa.png"/>
+                                        <img height="13" src="https://shoplineimg.com/assets/footer/card_master.png"/>
+                                        <img height="13" src="https://shoplineimg.com/assets/footer/card_paypal.png"/>
+                                        <img height="13" src="https://shoplineimg.com/assets/footer/card_unionpay.png"/>  
+                                          </span> </div>
                                 </div>
-
-                                <div class='form-row row'>
+                               </div>
+                                {{-- <div class='form-row row'>
                                     <div class='col-xs-12 col-md-4 form-group cvc required'>
                                         <label class='control-label'>{{ 'CVC' }}</label> <input autocomplete='off'
                                             class='form-control card-cvc' name="cvc" placeholder='ex. 311' size='4'
@@ -174,8 +192,27 @@
                                             class='form-control card-expiry-year' name="year" placeholder='YYYY' size='4'
                                             type='text'>
                                     </div>
-                                </div>
+                                </div> --}}
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="form-group"> <label><span class="hidden-xs">
+                                                    <h6 style="color: black;font-size:16px">{{ __('Expiration Year') }}</h6>
+                                                </span></label>
+                                            <div class="input-group"> <input type="number" placeholder="MM" name="expiry_month" class="form-control" required> 
+                                                <input type="number" placeholder="YY" name="year" size="4" class="form-control" required> </div>
+                                        </div>
+                                    </div>
 
+                                    <div class="col-sm-4 form-group"> 
+                                        <label for="cardNumber">
+                                        <h6 style="color: black;font-size:16px"> {{ __('CVC') }}</h6>
+                                    </label>
+                                    <div class="input-group"> 
+                                        <input type="text" size='4' name="cvc" placeholder="" class="form-control " required>
+                                        <div class="input-group-append"> <span class="input-group-text text-muted"> <i class="fab fa-cc-mastercard mx-1"></i> <i class="fab fa-cc-amex mx-1"></i> </span> </div>
+                                    </div>
+                                  </div>
+                                </div>
                                 <div class='form-row row'>
                                     <div class='col-xs-12 col-md-6 form-group card required'>
                                         <small class='control-label'
@@ -185,7 +222,7 @@
                                     </div>
                                     <div class='col-xs-12 col-md-6 form-group ' id="clickthis">
                                         <label class='control-label'
-                                            style="color: black">{{ __('Click this button after enter coupon code') }}</label>
+                                            style="color: black;font-size:10px">{{ __('Click this button after enter coupon code') }}</label>
 
                                         <button onclick="checkCouponValid()" type="button"
                                             class="btn btn-primary">{{ __('Check Now') }}</button>

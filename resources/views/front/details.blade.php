@@ -77,7 +77,10 @@
                     <div class="row">
                         <div class="col-5 col-sm-3 col-lg-3">
                             <div class="doctor-single-avatar-wrap">
-                                <div class="doctor-single-avatar row" style="    margin-left: 30px">
+                                <div class="doctor-single-avatar row kpk" style="margin-left: 30px;
+                                width: 110px;
+                                height: 119px;
+                                margin-top: 11px;">
                                     <img src="{{ url($doctor->image ?? '') }}" alt="">
                                     @if (Cache::has('is_online' . $doctor->user->id))
                                         <i class="doctor-item-availablity online"></i>
@@ -88,13 +91,13 @@
                             </div>
                             <div class="top-bi detailspage" style="float: right">
                                 <div class="">
-                                    <img src="{{ asset('web/assets/ma.png') }}" alt="" style="width:35px;margin:5px">
+                                    <img src="{{ asset('web/assets/ma.png') }}" alt="" style="width:25px;margin:5px">
                                 </div>
                                 <div class="">
-                                    <img src="{{ asset('web/assets/wat.png') }}" alt="" style="width:35px;margin:5px">
+                                    <img src="{{ asset('web/assets/wat.png') }}" alt="" style="width:25px;margin:5px">
                                 </div>
                                 <div class="">
-                                    <img src="{{ url('web/assets/zo.png') }}" alt="" style="width:35px;margin:5px">
+                                    <img src="{{ url('web/assets/zo.png') }}" alt="" style="width:25px;margin:5px">
                                 </div>
                             </div>
                         </div>
@@ -106,8 +109,8 @@
                                 <h6 class="ng-binding "><span class="ng-scope ">{{ __('Language') }}</span>:
                                     <div class="me-2 d-inline ">{{ $doctor->language }}</div>
                                 </h6>
-                                <h6 class="ng-binding "> {{ __('Years of experience') }}
-                                    {{ $doctor->year_experience }}</h6>
+                                {{-- <h6 class="ng-binding "> {{ __('Years of experience') }}
+                                    {{ $doctor->year_experience }}</h6> --}}
                                 </h5>
                                 <div class="doctor-rate ">
                                     <span class="fa fa-star checked "></span>
