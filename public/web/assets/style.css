@@ -1386,7 +1386,7 @@ doctor-offers-box.country .top-doctor-services {
     margin-right: 30px  !important;
 }
 [dir=rtl] .top-bi {
-    left: 128px !important;
+    left: 128px;
     right: auto;
 }
 [dir=rtl]  .detailspage {
