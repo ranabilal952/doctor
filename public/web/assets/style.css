@@ -1051,6 +1051,7 @@ doctor-offers-box.country .top-doctor-services {
     background: var(--primary);
     font-weight: bold;
     color: #fff;
+    white-space: nowrap;
     font-size: 14px;
 }
 

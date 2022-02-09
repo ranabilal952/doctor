@@ -77,7 +77,7 @@ dir="rtl" lang="ar"
                         {{ __('Logout') }}
                     </a>
                     <a class="left2_a" href="{{ url('/home') }}">
-                        {{ __('Dashboard')}} ({{ (Auth::user()->name) }})
+                         ({{ (Auth::user()->name) }})
                     </a>
                    
 
