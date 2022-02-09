@@ -10,6 +10,8 @@ body {
 
 /*---------------mobile header style -----------*/
 
+
+
 .sidepanel {
     width: 0;
     position: fixed;
@@ -1429,22 +1431,29 @@ label {
     margin-top: 10px;
 }
 
-[dir=rtl] .kpk {
-    margin-right: 30px !important;
-}
+
 
 [dir=rtl] .top-bi {
-    left: 128px !important;
-    right: auto;
+    position: absolute;
+    left: -217px;
 }
 
 [dir=rtl] .detailspage {
     margin-top: -70%;
 }
 
+@media screen and (min-width: 1024px) {
+    [dir=rtl] .kpk {
+        margin-right: 30px !important;
+    }
+    [dir=rtl] .top-bi {
+        left: 160px !important;    }
+}
+
 @media screen and (max-width: 992px) {
     [dir=rtl] .detailspage {
-        margin-top: -80%;
+
+        margin-top: -101%;
     }
 
     [dir=rtl] .top-bi {

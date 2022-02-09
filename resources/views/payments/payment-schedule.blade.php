@@ -9,7 +9,7 @@
 <script src="https://js.stripe.com/v3/"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="{{asset('country_dropdown/build/css/intlTelInput.css')}}">
+<link rel="stylesheet" href="{{ asset('country_dropdown/build/css/intlTelInput.css') }}">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -172,7 +172,7 @@
                                         <h6 style="color: black;font-size:16px">{{ __('Card Number') }}</h6>
                                     </label>
                                     <div class="input-group">
-                                        <input autocomplete='off' name="card_number" class='form-control card-number'
+                                        <input autocomplete='off' name="card_number" id="credit-card" class='form-control card-number'
                                             size='20' type='text'>
                                         <div class="input-group-append"> <span class="input-group-text text-muted"> <img
                                                     height="13" src="https://shoplineimg.com/assets/footer/card_visa.png" />
@@ -276,7 +276,7 @@
 @endsection
 @section('scripts')
 
-<script src="{{asset('country_dropdown/build/js/intlTelInput-jquery.min.js')}}"></script>
+    <script src="{{ asset('country_dropdown/build/js/intlTelInput-jquery.min.js') }}"></script>
 
     <script type="text/javascript">
         var slotTime = @json($slotTime);
@@ -285,6 +285,12 @@
 
         $("#phone").intlTelInput({
             initialCountry: currentCountry,
+        });
+
+        $('#credit-card').on('keypress change', function() {
+            $(this).val(function(index, value) {
+                return value.replace(/\W/gi, '').replace(/(.{4})/g, '$1 ');
+            });
         });
 
         function checkCouponValid() {
