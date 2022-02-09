@@ -514,6 +514,7 @@
     <!-- Datatable init js -->
     <script src="{{ asset('assets/pages/datatables.init.js') }}"></script>
     <!-- App js -->
+
     <script src="{{ asset('assets/js/app.js') }}"></script>
     <script src="{{ asset('toastr/toastr.min.js') }}"></script>
     <script src="https://cdn.tiny.cloud/1/rfv7rfhx5vafv76ygxza52h080627sqb542j7d7736y9x8c2/tinymce/5/tinymce.min.js"

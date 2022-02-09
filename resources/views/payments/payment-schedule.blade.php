@@ -9,6 +9,8 @@
 <script src="https://js.stripe.com/v3/"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="{{asset('country_dropdown/build/css/intlTelInput.css')}}">
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
@@ -135,7 +137,10 @@
                                         <input class='form-control' name="name_on_card" size='4' type='text'>
                                     </div>
                                 </div>
-
+                                @php
+                                    $isoCode = Session::get('isoCode');
+                                    
+                                @endphp
 
 
                                 <div class='form-row row'>
@@ -147,10 +152,10 @@
                                 </div>
 
                                 <div class='form-row row'>
-                                    <div class='col-xs-12 form-group card required'>
+                                    <div class='col-xs-12 form-group card required' style="z-index: 999">
                                         <label class='control-label' style="color: black">{{ __('Phone No') }}</label>
-                                        <input value="+{{ $call }}" autocomplete='off' name="phone_no"
-                                            class='form-control card-number' size='20' type='text'>
+                                        <input value="" autocomplete='off' id="phone" name="phone_no"
+                                            class='form-control card-number' type='text'>
                                     </div>
                                 </div>
 
@@ -164,18 +169,22 @@
                                     </div>
                                 </div> --}}
                                 <div class="form-group"> <label for="cardNumber">
-                                    <h6 style="color: black;font-size:16px">{{ __('Card Number') }}</h6>
-                                </label>
-                                <div class="input-group"> 
-                                    <input autocomplete='off' name="card_number" class='form-control card-number'
-                                    size='20' type='text'>
-                                    <div class="input-group-append"> <span class="input-group-text text-muted"> <img height="13" src="https://shoplineimg.com/assets/footer/card_visa.png"/>
-                                        <img height="13" src="https://shoplineimg.com/assets/footer/card_master.png"/>
-                                        <img height="13" src="https://shoplineimg.com/assets/footer/card_paypal.png"/>
-                                        <img height="13" src="https://shoplineimg.com/assets/footer/card_unionpay.png"/>  
-                                          </span> </div>
+                                        <h6 style="color: black;font-size:16px">{{ __('Card Number') }}</h6>
+                                    </label>
+                                    <div class="input-group">
+                                        <input autocomplete='off' name="card_number" class='form-control card-number'
+                                            size='20' type='text'>
+                                        <div class="input-group-append"> <span class="input-group-text text-muted"> <img
+                                                    height="13" src="https://shoplineimg.com/assets/footer/card_visa.png" />
+                                                <img height="13"
+                                                    src="https://shoplineimg.com/assets/footer/card_master.png" />
+                                                <img height="13"
+                                                    src="https://shoplineimg.com/assets/footer/card_paypal.png" />
+                                                <img height="13"
+                                                    src="https://shoplineimg.com/assets/footer/card_unionpay.png" />
+                                            </span> </div>
+                                    </div>
                                 </div>
-                               </div>
                                 {{-- <div class='form-row row'>
                                     <div class='col-xs-12 col-md-4 form-group cvc required'>
                                         <label class='control-label'>{{ 'CVC' }}</label> <input autocomplete='off'
@@ -196,22 +205,29 @@
                                 <div class="row">
                                     <div class="col-sm-8">
                                         <div class="form-group"> <label><span class="hidden-xs">
-                                                    <h6 style="color: black;font-size:16px">{{ __('Expiration Year') }}</h6>
+                                                    <h6 style="color: black;font-size:16px">{{ __('Expiration Year') }}
+                                                    </h6>
                                                 </span></label>
-                                            <div class="input-group"> <input type="number" placeholder="MM" name="expiry_month" class="form-control" required> 
-                                                <input type="number" placeholder="YY" name="year" size="4" class="form-control" required> </div>
+                                            <div class="input-group"> <input type="number" placeholder="MM"
+                                                    name="expiry_month" class="form-control" required>
+                                                <input type="number" placeholder="YY" name="year" size="4"
+                                                    class="form-control" required>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-4 form-group"> 
+                                    <div class="col-sm-4 form-group">
                                         <label for="cardNumber">
-                                        <h6 style="color: black;font-size:16px"> {{ __('CVC') }}</h6>
-                                    </label>
-                                    <div class="input-group"> 
-                                        <input type="text" size='4' name="cvc" placeholder="" class="form-control " required>
-                                        <div class="input-group-append"> <span class="input-group-text text-muted"> <i class="fab fa-cc-mastercard mx-1"></i> <i class="fab fa-cc-amex mx-1"></i> </span> </div>
+                                            <h6 style="color: black;font-size:16px"> {{ __('CVC') }}</h6>
+                                        </label>
+                                        <div class="input-group">
+                                            <input type="text" size='4' name="cvc" placeholder="" class="form-control "
+                                                required>
+                                            <div class="input-group-append"> <span class="input-group-text text-muted"> <i
+                                                        class="fab fa-cc-mastercard mx-1"></i> <i
+                                                        class="fab fa-cc-amex mx-1"></i> </span> </div>
+                                        </div>
                                     </div>
-                                  </div>
                                 </div>
                                 <div class='form-row row'>
                                     <div class='col-xs-12 col-md-6 form-group card required'>
@@ -260,10 +276,16 @@
 @endsection
 @section('scripts')
 
+<script src="{{asset('country_dropdown/build/js/intlTelInput-jquery.min.js')}}"></script>
 
     <script type="text/javascript">
         var slotTime = @json($slotTime);
         var systemFee = @json($doctorPercent);
+        var currentCountry = @json($isoCode);
+
+        $("#phone").intlTelInput({
+            initialCountry: currentCountry,
+        });
 
         function checkCouponValid() {
             var couponCode = $('#couponCode').val();
