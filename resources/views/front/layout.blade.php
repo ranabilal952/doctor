@@ -269,7 +269,8 @@ dir="rtl" lang="ar"
                                             value="{{ __('Sign in') }}">
                                         <div>
                                             <span class="ng-scope">{{ __("Don't have an account?") }}</span>
-                                            <a href="#" class="my3 ng-binding">{{ __('Create an account') }}</a>
+                                            <a id="createAccountModalBtn" href="javascript:void;"
+                                                class="my3 ng-binding">{{ __('Create an account') }}</a>
                                         </div>
                                     </div>
                                 </form>
@@ -350,8 +351,8 @@ dir="rtl" lang="ar"
                                     <div class="input-group input-group-nacked mt-4">
                                         <span class="input-group-text"><i class="las la-phone"></i></span>
                                         <input id="phone" type="text"
-                                            class="form-control @error('phone') is-invalid @enderror"  placeholder="{{ __('Phone No') }}" name="phone"
-                                            required>
+                                            class="form-control @error('phone') is-invalid @enderror"
+                                            placeholder="{{ __('Phone No') }}" name="phone" required>
 
                                         @error('phone')
                                             <span class="invalid-feedback mb-3" role="alert">
@@ -379,7 +380,8 @@ dir="rtl" lang="ar"
                                         <div>
                                             <span
                                                 class="ng-scope">{{ __('Do you have already an account') }}</span>
-                                            <a href="#" class="my3 ng-binding">{{ __('Sign in') }} </a>
+                                            <a href="javascript:void;" id="loginModalBtn"
+                                                class="my3 ng-binding">{{ __('Sign in') }} </a>
                                         </div>
                                     </div>
                                 </form>
@@ -431,6 +433,16 @@ dir="rtl" lang="ar"
         function closeNav() {
             document.getElementById("mySidepanel").style.width = "0";
         }
+
+        $('#createAccountModalBtn').click(function(e) {
+            $('#exampleModal').modal('hide');
+            $('#exampleModal2').modal('show');
+        });
+
+        $('#loginModalBtn').click(function(e) {
+            $('#exampleModal2').modal('hide');
+            $('#exampleModal').modal('show');
+        });
     </script>
 </body>
 

@@ -66,9 +66,9 @@
                         <div class="col-5 col-sm-3 col-lg-3">
                             <div class="doctor-single-avatar-wrap">
                                 <div class="doctor-single-avatar row kpk" style="margin-left: 30px;
-                                                    width: 110px;
-                                                    height: 119px;
-                                                    margin-top: 11px;">
+                                                                        width: 110px;
+                                                                        height: 119px;
+                                                                        margin-top: 11px;">
                                     <img src="{{ url($doctor->image ?? '') }}" alt="">
                                     @if (Cache::has('is_online' . $doctor->user->id))
                                         <i class="doctor-item-availablity online"></i>
@@ -324,9 +324,9 @@
                                                     <div class="scheduleTime text-primary">
                                                         <small
                                                             style="color: #007bff;
-                                                                                                    font-weight: bold;
-                                                                                                    display: block;
-                                                                                                    padding: 0.2rem;">{{ $value->time }}</small>
+                                                                                                                        font-weight: bold;
+                                                                                                                        display: block;
+                                                                                                                        padding: 0.2rem;">{{ $value->time }}</small>
 
                                                         <p class="text-muted" style="font-size: 9px">
                                                             ({{ $value->duration }}
@@ -341,19 +341,23 @@
                                                     <div class="scheduleTime text-primary">
                                                         <small>{{ $value->time }}</small>
                                                     </div>
-                                                    <small class="text-muted"> ({{ $value->duration }}
-                                                        {{ __('Minutes') }})</small>
+                                                    <small class="text-muted" style="  white-space: nowrap;    overflow: hidden;
+                                                        text-overflow: clip;">
+                                                        ({{ __('minutes') }}
+                                                        {{ $value->duration }})</small>
                                                 </div>
                                             </a>
                                         @endif
                                     @endforeach
                                     <div class="card-footer" style="font-size: .8rem;
-                                                            font-weight: bold;
-                                                            text-align: center;
-                                                            cursor: pointer;
-                                                            background: #D6E0F5;
-                                                            margin-left: -15px;
-                                                            width: 86px;"><span class="ng-scope">More</span></div>
+                                                                                font-weight: bold;
+                                                                                text-align: center;
+                                                                                cursor: pointer;
+                                                                                background: #D6E0F5;
+                                                                                margin-left: -15px;
+                                                                                width: 86px;"><span
+                                            class="ng-scope">More</span>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
