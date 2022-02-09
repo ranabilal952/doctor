@@ -133,7 +133,6 @@ dir="rtl" lang="ar"
                 <a class="left2_a" href="{{ url('/home') }}">
                     {{ __('Dashboard') }}
                 </a>
-
             @endif
         </nav>
     </header>
@@ -278,7 +277,8 @@ dir="rtl" lang="ar"
                                             value="{{ __('Sign in') }}">
                                         <div>
                                             <span class="ng-scope">{{ __("Don't have an account?") }}</span>
-                                            <a id="createAccountModalBtn" href="javascript:void;"
+                                            <a href="#" data-toggle="modal" data-dismiss="modal"
+                                                data-target="#exampleModal2"
                                                 class="my3 ng-binding">{{ __('Create an account') }}</a>
                                         </div>
                                     </div>
@@ -389,7 +389,7 @@ dir="rtl" lang="ar"
                                         <div>
                                             <span
                                                 class="ng-scope">{{ __('Do you have already an account') }}</span>
-                                            <a href="javascript:void;" id="loginModalBtn"
+                                            <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal"
                                                 class="my3 ng-binding">{{ __('Sign in') }} </a>
                                         </div>
                                     </div>
@@ -425,12 +425,12 @@ dir="rtl" lang="ar"
 
     <script>
         currentCountry = @json($isoCode);
-       
+
         window.onscroll = function() {
             myFunction();
         };
         $("#phone").intlTelInput({
-            initialCountry:currentCountry,
+            initialCountry: currentCountry,
 
         });
 
@@ -451,16 +451,6 @@ dir="rtl" lang="ar"
         function closeNav() {
             document.getElementById("mySidepanel").style.width = "0";
         }
-
-        $('#createAccountModalBtn').click(function(e) {
-            $('#exampleModal').modal('hide');
-            $('#exampleModal2').modal('show');
-        });
-
-        $('#loginModalBtn').click(function(e) {
-            $('#exampleModal2').modal('hide');
-            $('#exampleModal').modal('show');
-        });
     </script>
 </body>
 

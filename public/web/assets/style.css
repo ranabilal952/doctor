@@ -1450,6 +1450,14 @@ label {
         left: 160px !important;    }
 }
 
+@media screen and (min-width: 1024px) {
+   
+    [dir=rtl] .top-bi {
+        left: 215px !important;
+         }
+}
+
+
 @media screen and (max-width: 992px) {
     [dir=rtl] .detailspage {
 
@@ -1544,7 +1552,7 @@ label {
     }
 
     [dir=rtl] .top-bi {
-        left: -211px;
+        left: 0;
         right: auto;
     }
 

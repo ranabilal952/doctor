@@ -66,9 +66,9 @@
                         <div class="col-5 col-sm-3 col-lg-3">
                             <div class="doctor-single-avatar-wrap">
                                 <div class="doctor-single-avatar row kpk" style="margin-left: 30px;
-                                                                        width: 110px;
-                                                                        height: 119px;
-                                                                        margin-top: 11px;">
+                                                                                width: 110px;
+                                                                                height: 119px;
+                                                                                margin-top: 11px;">
                                     <img src="{{ url($doctor->image ?? '') }}" alt="">
                                     @if (Cache::has('is_online' . $doctor->user->id))
                                         <i class="doctor-item-availablity online"></i>
@@ -209,7 +209,6 @@
                                             allowfullscreen></iframe>
 
                                     </div>
-
                                 @endforeach
                             @else
                                 <h6 class="text-primary text-center">No Videos Available</h6>
@@ -220,8 +219,6 @@
                         <div class="doctor-single-tab-plans-list">
                             <div class="row">
                                 @foreach ($doctor->user->offers as $offer)
-
-
                                     <div ng-repeat="(key, offer) in offers"
                                         class="col-md-4 col-sm-12 col-12 py-3  order-md-1 order-2 ">
                                         <div class="doctor-single-tab-plan">
@@ -254,11 +251,13 @@
             <div class="col-12 col-sm-12 col-lg-4 col-md-12">
                 <div ng-controller="DoctorBookController" class="doctor-reservation-tool ng-scope">
                     <div class="dl">
-
-                        <button type="button" class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 " data-toggle="modal"
-                            data-target="#bookingModal" style="border: 2px solid black;color: black;">
-                            {{ __('Book an instant session') }}
-                        </button>
+                        @if (Cache::has('is_online' . $doctor->user->id) && $doctor->user->onlineStatus && $doctor->user->onlineStatus->is_active)
+                            <button type="button" class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 "
+                                data-toggle="modal" data-target="#bookingModal"
+                                style="border: 2px solid black;color: black;">
+                                {{ __('Book an instant session') }}
+                            </button>
+                        @endif
                         <button type="button" id="scheduleBtn" class="btn btn-lg btn-outline-white w-100 fw-bold mb-3 "
                             style="border: 2px solid black;color: black;">
                             {{ __('Book a session from calandar') }}
@@ -309,7 +308,6 @@
                         </div>
                         <div class="row autoplay br">
                             @foreach ($slotTimes as $ss => $time)
-
                                 <div class="col-lg-3 text-center mt-3 mb-5"
                                     style="margin-right:10px;border:1px solid rgba(230, 219, 219, 0.125);">
                                     <div class="heading bg-primary rb" style="">
@@ -324,9 +322,9 @@
                                                     <div class="scheduleTime text-primary">
                                                         <small
                                                             style="color: #007bff;
-                                                                                                                        font-weight: bold;
-                                                                                                                        display: block;
-                                                                                                                        padding: 0.2rem;">{{ $value->time }}</small>
+                                                                                                                                font-weight: bold;
+                                                                                                                                display: block;
+                                                                                                                                padding: 0.2rem;">{{ $value->time }}</small>
 
                                                         <p class="text-muted" style="font-size: 9px">
                                                             ({{ $value->duration }}
@@ -342,7 +340,7 @@
                                                         <small>{{ $value->time }}</small>
                                                     </div>
                                                     <small class="text-muted" style="  white-space: nowrap;    overflow: hidden;
-                                                        text-overflow: clip;">
+                                                                text-overflow: clip;">
                                                         ({{ __('minutes') }}
                                                         {{ $value->duration }})</small>
                                                 </div>
@@ -350,12 +348,12 @@
                                         @endif
                                     @endforeach
                                     <div class="card-footer" style="font-size: .8rem;
-                                                                                font-weight: bold;
-                                                                                text-align: center;
-                                                                                cursor: pointer;
-                                                                                background: #D6E0F5;
-                                                                                margin-left: -15px;
-                                                                                width: 86px;"><span
+                                                                                        font-weight: bold;
+                                                                                        text-align: center;
+                                                                                        cursor: pointer;
+                                                                                        background: #D6E0F5;
+                                                                                        margin-left: -15px;
+                                                                                        width: 86px;"><span
                                             class="ng-scope">More</span>
                                     </div>
                                 </div>
