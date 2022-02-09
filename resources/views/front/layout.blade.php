@@ -36,6 +36,7 @@ dir="rtl" lang="ar"
     <link rel="stylesheet" href="{{ url('web/assets/style.css') }}">
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <link href="{{ asset('toastr/toastr.min.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="country_dropdown/build/css/intlTelInput.css">
 
     <title>Doctoorc.com</title>
 </head>
@@ -77,14 +78,18 @@ dir="rtl" lang="ar"
                         {{ __('Logout') }}
                     </a>
                     <a class="left2_a" href="{{ url('/home') }}">
-                         ({{ (Auth::user()->name) }})
+                        ({{ Auth::user()->name }})
                     </a>
-                   
+
 
                 </div>
             @endif
 
         </nav>
+        @php
+            $isoCode = Session::get('isoCode');
+            
+        @endphp
         <nav class="header_nav">
             <div class="logo">
                 <img src="{{ url('web/assets/logo.png') }}" alt="" />
@@ -413,13 +418,22 @@ dir="rtl" lang="ar"
     <script src="https://cdn.tiny.cloud/1/rfv7rfhx5vafv76ygxza52h080627sqb542j7d7736y9x8c2/tinymce/5/tinymce.min.js"
         referrerpolicy="origin"></script>
     <script src="{{ asset('toastr/toastr.min.js') }}"></script>
+    <script src="country_dropdown/build/js/intlTelInput-jquery.min.js"></script>
+
     @toastr_render
 
 
     <script>
+        currentCountry = @json($isoCode);
+       
         window.onscroll = function() {
             myFunction();
         };
+        $("#phone").intlTelInput({
+            initialCountry:currentCountry,
+
+        });
+
         var header1 = document.getElementById("myHeader");
 
         function myFunction() {
