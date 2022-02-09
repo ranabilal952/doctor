@@ -72,10 +72,14 @@ dir="rtl" lang="ar"
                 </div>
             @else
                 <div class="left">
-                    <button type="button" class="left1 left2_a" data-toggle="modal" data-target="">
-                        {{ Auth::user()->name }}
-                    </button>
-
+                    <a class="left2_a" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <a class="left2_a" href="{{ url('/home') }}">
+                        {{ __('Dashboard')}} ({{ (Auth::user()->name) }})
+                    </a>
+                   
 
                 </div>
             @endif
