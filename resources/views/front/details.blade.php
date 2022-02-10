@@ -102,7 +102,7 @@
                             </div>
                         </div>
                         <!-- col3 -->
-                        <div class="col-7 col-sm-4 col-lg-5 col-xl-4 ">
+                        <div class="col-7 col-sm-4 col-lg-5 col-xl-4 kk">
                             <div class="doctor-single-info text-md-start text-center " style="margin-left: 30px;">
                                 <h1 class="ng-binding "> {{ $doctor->user->name }}</h1>
                                 <h6 class="ng-binding "> {{ __($doctor->doctor_specility) }}</h6>

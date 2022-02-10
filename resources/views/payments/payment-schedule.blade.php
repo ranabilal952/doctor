@@ -3,13 +3,13 @@
     {{ __('Payment Details') }}
 @endsection
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-
-<script src="https://js.stripe.com/v3/"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-<script src="https://js.stripe.com/v3/"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<script src="https://js.stripe.com/v3/"></script>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
     .panel-title {
@@ -103,7 +103,7 @@
             <div class="row d-none" id="paymentForm">
                 <div class="col-md-6 col-md-offset-3">
                     <div class="panel panel-default credit-card-box">
-                        <div class="panel-heading display-table text-center w-100">
+                        <div class="panel-heading display-table text-center w-100 ">
                             <div class="row display-tr justify-content-center text-center ">
                                 <h3 class="panel-title display-td text-center ">{{ __('Payment Details') }}</h3>
                                 {{-- <div class="display-td"> --}}

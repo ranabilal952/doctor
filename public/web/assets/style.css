@@ -1470,12 +1470,17 @@ doctor-offers-box.country .top-doctor-services {
         max-width: 95% !important;
         margin: 1px;
     }
-
+  .kk {
+    margin-left: -40px;
+  }
+  .kpk {
+    margin-left: 0px !important;
+  }
     .detailspage {
         margin-top: -85%;
     }
     .top-bi {
-        left: 0;
+        left: 300;
         right: auto;
     }
     [dir=rtl] .top-bi {
