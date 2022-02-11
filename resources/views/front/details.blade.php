@@ -75,9 +75,6 @@
                         <div class="col-5 col-sm-3 col-lg-3">
                             <div class="doctor-single-avatar-wrap">
                                 <div class="doctor-single-avatar row kpk" style="margin-left: 30px;
-                                                                                                width: 110px;
-                                                                                                height: 119px;
-                                                                                                margin-top: 11px;">
                                     <img src="{{ url($doctor->image ?? '') }}" alt="">
                                     @if (Cache::has('is_online' . $doctor->user->id))
                                         <i class="doctor-item-availablity online"></i>
