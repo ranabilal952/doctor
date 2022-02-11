@@ -117,7 +117,7 @@ class PaymentController extends Controller
             );
             $token =    $stripe->tokens->create([
                 'card' => [
-                    'number' => $request->card_number,
+                    'number' => trim($request->card_number,' ') ,
                     'exp_month' => $request->expiry_month,
                     'exp_year' => $request->year,
                     'cvc' => $request->cvc,
@@ -198,16 +198,6 @@ class PaymentController extends Controller
 
                
 
-
-                $account_sid = getenv("TWILIO_SID");
-                $auth_token = getenv("TWILIO_AUTH_TOKEN");
-                $twilio_number = getenv("TWILIO_NUMBER");
-                // $message = "Your appointment has been scheduled.\nAppointment Date&Time = " . $slotData->date_from . ' ' . $slotData->time;
-                // $client = new Client($account_sid, $auth_token);
-                // $client->messages->create(
-                //     '+923040532318',
-                //     ['from' => $twilio_number, 'body' => $message]
-                // );
 
 
                 toastr()->success('Your appointment has been scheduled');
@@ -355,11 +345,11 @@ class PaymentController extends Controller
                     $auth_token = getenv("TWILIO_AUTH_TOKEN");
                     $twilio_number = getenv("TWILIO_NUMBER");
                     $message = "Your appointment has been scheduled.\nAppointment Date&Time = " . $slotData->date_from . ' ' . $slotData->time;
-                    $client = new Client($account_sid, $auth_token);
-                    $client->messages->create(
-                        '+923040532318',
-                        ['from' => $twilio_number, 'body' => $message]
-                    );
+                    // $client = new Client($account_sid, $auth_token);
+                    // $client->messages->create(
+                    //     '+923040532318',
+                    //     ['from' => $twilio_number, 'body' => $message]
+                    // );
 
 
                     toastr()->success('Your appointment has been scheduled');

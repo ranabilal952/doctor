@@ -269,7 +269,7 @@
 
     <script type="text/javascript">
         var slotTime = @json($slotTime);
-        var systemFee = @json($doctorPercent);
+        var totalTax = @json($totalTax);
         var currentCountry = @json($isoCode);
 
         $("#phone").intlTelInput({
@@ -302,10 +302,15 @@
                 success: function(data) {
                     if (data.success) {
                         let discount;
-                        var amount = parseInt(systemFee) + parseInt(slotTime.amount);
+                        var amount = parseInt(totalTax) + parseInt(slotTime.amount);
+                        console.log('this is slot amoutn'+slotTime.amount);
+                        console.log('this is system amoutn'+totalTax);
+                        console.log('this is amount ' + amount);
                         if (data.data.method === 'percent') {
                             discount = (parseInt(data.data.coupon_value) / 100);
+                            console.log('this is discount'+ discount);
                             amount = amount - ((amount * discount));
+                           
                         } else {
                             //amount
                             discount = parseInt(data.data.coupon_value);

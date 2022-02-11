@@ -1467,7 +1467,7 @@ label {
     }
 
     [dir=rtl] .top-bi {
-        left: 128px;
+        left: -2px;
         right: auto;
     }
 
@@ -1554,14 +1554,11 @@ label {
     }
 
     .top-bi {
-        left: 330px;
+        /* left: 330px; */
         right: auto;
     }
 
-    [dir=rtl] .top-bi {
-        left: -235px;
-        right: auto;
-    }
+   
 
     [dir=rtl] .detailspage {
         margin-top: -81%;
