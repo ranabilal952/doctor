@@ -953,6 +953,8 @@ doctor-offers-box.country .top-doctor-services {
     font-size: 1.1rem;
 }
 
+
+
 .video-service {
     background: #138DE7;
 }
@@ -1434,8 +1436,8 @@ label {
 
 
 [dir=rtl] .top-bi {
-    left: 128px;
-    right: auto;
+    position: absolute;
+    left: -217px;
 }
 
 [dir=rtl] .detailspage {
@@ -1453,7 +1455,7 @@ label {
 @media screen and (min-width: 1024px) {
    
     [dir=rtl] .top-bi {
-        left: 215px !important;
+        left: 160px !important;
          }
 }
 
@@ -1552,12 +1554,12 @@ label {
     }
 
     .top-bi {
-        left: 300;
+        left: 330px;
         right: auto;
     }
 
     [dir=rtl] .top-bi {
-        left: 0;
+        left: -235px;
         right: auto;
     }
 
