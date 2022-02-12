@@ -189,7 +189,7 @@
                                     </label>
                                     <div class="input-group">
                                         <input autocomplete='off' name="card_number" id="credit-card" class='form-control card-number'
-                                            size='20' type='text'>
+                                            size='20' type='text' placeholder="123 134 4547 858">
                                         <div class="input-group-append"> <span class="input-group-text text-muted"> <img
                                                     height="13" src="https://shoplineimg.com/assets/footer/card_visa.png" />
                                                 <img height="13"
