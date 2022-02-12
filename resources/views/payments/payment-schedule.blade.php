@@ -219,18 +219,18 @@
                                     </div>
                                 </div> --}}
                                 <div class="row">
-                                    <div class="col-sm-8" style="width: 50%">
+                                    <div class="col-sm-6" style="width: 50%">
                      
                                             <div class="input-group"> 
-                                                <input type="number" placeholder="MM"
+                                                <input type="number" placeholder="MM / YY"
                                                     name="expiry_month" class="form-control" required>
-                                                <input type="number" placeholder="YY" name="year" size="4"
+                                                <input type="hidden" placeholder="YY" name="year" size="4"
                                                     class="form-control" required>
                                             </div>
                                         
                                     </div>
 
-                                    <div class="col-sm-4 form-group" style="width: 50%">
+                                    <div class="col-sm-6 form-group" style="width: 50%">
                                        
                                         <div class="input-group">
                                             <input type="text" size='4' name="cvc" placeholder="{{ __('CVC') }}" class="form-control "
