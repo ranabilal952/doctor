@@ -75,7 +75,7 @@
                         <div class="col-5 col-sm-3 col-lg-3">
                             <div class="doctor-single-avatar-wrap">
                                 <div class="doctor-single-avatar row kpk" style="margin-left: 30px;
-                                    <img src="{{ url($doctor->image ?? '') }}" alt="">
+                                        <img src=" {{ url($doctor->image ?? '') }}" alt="">
                                     @if (Cache::has('is_online' . $doctor->user->id))
                                         <i class="doctor-item-availablity online"></i>
                                     @else
@@ -297,21 +297,22 @@
                         style="background-color: white;;border:1px solid rgb(225, 225, 225)">
                         <div id="schedule-date-picker-header" class="text-center">
                             @if (Session::get('locale') == 'ar')
-                            <div class="">
-                                <span class=""> 30 {{ __('minutes') }}
-                                </span>:
-                                <span class="">
-                                    {{ currency()->getUserCurrency() }}
-                                    {{ round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->sixty_minute_price) / 100, 'USD', currency()->getUserCurrency()))) }}
-                                </span>
-                               
-                                <span class="">: 60 </span>
-                                &nbsp;&nbsp; -&nbsp;&nbsp;
-                                <span class=""> {{ currency()->getUserCurrency() }}
-                                {{-- <span>{{ __('minutes') }}</span> --}}
-                        
-                                    {{ round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->thirty_minute_price) / 100, 'USD', currency()->getUserCurrency()))) }} </span>
-                            </div>
+                                <div class="">
+                                    <span class=""> 30 {{ __('minutes') }}
+                                    </span>:
+                                    <span class="">
+                                        {{ currency()->getUserCurrency() }}
+                                        {{ round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->sixty_minute_price) / 100, 'USD', currency()->getUserCurrency()))) }}
+                                    </span>
+
+                                    <span class="">: 60 </span>
+                                    &nbsp;&nbsp; -&nbsp;&nbsp;
+                                    <span class=""> {{ currency()->getUserCurrency() }}
+                                        {{-- <span>{{ __('minutes') }}</span> --}}
+
+                                        {{ round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->thirty_minute_price) / 100, 'USD', currency()->getUserCurrency()))) }}
+                                    </span>
+                                </div>
                             @else
                                 <div class="">
                                     <span class=""> 30 {{ __('minutes') }}
@@ -344,15 +345,12 @@
                                             <a href="{{ url('payment-schedule', $value->id) }}">
                                                 <div class="d-block">
                                                     <div class="scheduleTime text-primary">
-                                                        <small
-                                                            style="color: #007bff;
-                                                                                                                                                font-weight: bold;
-                                                                                                                                                display: block;
-                                                                                                                                                padding: 0.2rem;">{{ $value->time }}</small>
+                                                        <small style="color: #007bff; font-weight: bold;
+                                                         padding: 0.2rem;">{{ $value->time }}</small>
 
                                                         <p class="text-muted" style="font-size: 9px">
                                                             ({{ $value->duration }}
-                                                            {{ __('Minutes') }})</p>
+                                                            {{ __('minutes') }})</p>
                                                     </div>
                                                 </div>
                                             </a>
@@ -364,7 +362,7 @@
                                                         <small>{{ $value->time }}</small>
                                                     </div>
                                                     <small class="text-muted" style="  white-space: nowrap;    overflow: hidden;
-                                                                                text-overflow: clip;">
+                                                                                    text-overflow: clip;">
                                                         ({{ __('minutes') }}
                                                         {{ $value->duration }})</small>
                                                 </div>
@@ -372,13 +370,13 @@
                                         @endif
                                     @endforeach
                                     <div class="card-footer" style="font-size: .8rem;
-                                                                                                        font-weight: bold;
-                                                                                                        text-align: center;
-                                                                                                        cursor: pointer;
-                                                                                                        background: #D6E0F5;
-                                                                                                        margin-left: -15px;
-                                                                                                        width: 86px;"><span
-                                            class="ng-scope">More</span>
+                                                                                                            font-weight: bold;
+                                                                                                            text-align: center;
+                                                                                                            cursor: pointer;
+                                                                                                            background: #D6E0F5;
+                                                                                                            margin-left: -15px;
+                                                                                                            width: 86px;">
+                                        <span class="ng-scope">More</span>
                                     </div>
                                 </div>
                             @endforeach
