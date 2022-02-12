@@ -119,8 +119,8 @@
                     <div class="row">
                         <div class="col-5 col-sm-3 col-lg-3">
                             <div class="doctor-single-avatar-wrap">
-                                <div class="doctor-single-avatar row kpk" style="margin-left: 30px;
-                                                                                <img src="
+                                <div class="doctor-single-avatar row kpk" style="margin-left: 30px;">
+                                                                                    <img src="
                                     {{ url($doctor->image ?? '') }}" alt="">
                                     @if (Cache::has('is_online' . $doctor->user->id))
                                         <i class="doctor-item-availablity online"></i>
@@ -298,7 +298,8 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <a class="btn btn-primary ng-scope" href="offer/3" translate="">{{__('Order Now')}}</a>
+                                            <a class="btn btn-primary ng-scope" href="offer/3"
+                                                translate="">{{ __('Order Now') }}</a>
                                         </div>
                                     </div>
                                 @endforeach
@@ -401,7 +402,7 @@
                                                     <div class="scheduleTime text-primary">
                                                         <small
                                                             style="color: #007bff; font-weight: bold; white-space: nowrap ;
-                                                                                                 padding: 0.2rem;">{{ \Carbon\Carbon::parse($value->time)->isoFormat('h:mm a') }}</small>
+                                                                                                     padding: 0.2rem;">{{ \Carbon\Carbon::parse($value->time)->isoFormat('h:mm a') }}</small>
                                                         <p class="text-muted" style="font-size: 9px">
                                                             ({{ $value->duration }}
                                                             {{ __('min') }})</p>
@@ -417,7 +418,7 @@
                                                     </div>
                                                     <small class="text-muted"
                                                         style="  white-space: nowrap;    overflow: hidden;
-                                                                                                                            text-overflow: clip;">
+                                                                                                                                text-overflow: clip;">
                                                         ({{ __('min') }}
                                                         {{ $value->duration }})</small>
                                                 </div>
@@ -426,12 +427,12 @@
                                     @endforeach
                                     <div class="card-footer"
                                         style="font-size: .8rem;
-                                                                                                                                                    font-weight: bold;
-                                                                                                                                                    text-align: center;
-                                                                                                                                                    cursor: pointer;
-                                                                                                                                                    background: #D6E0F5;
-                                                                                                                                                    margin-left: -15px;
-                                                                                                                                                    width: 86px;">
+                                                                                                                                                        font-weight: bold;
+                                                                                                                                                        text-align: center;
+                                                                                                                                                        cursor: pointer;
+                                                                                                                                                        background: #D6E0F5;
+                                                                                                                                                        margin-left: -15px;
+                                                                                                                                                        width: 86px;">
                                         <span class="ng-scope">More</span>
                                     </div>
                                 </div>

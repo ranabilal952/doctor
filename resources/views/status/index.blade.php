@@ -37,17 +37,25 @@
                                         <div class="form-group">
                                             <label style="color: black"><strong> Schedules Days</strong> </label>
                                             <br>
-                                            
+                                            @php
+                                                $days = explode(',', $onlineStatus->schedule_days);
+                                                
+                                            @endphp
+
                                             <select style="width:100%!important" id="scheduleDays" name="schedule_days[]"
                                                 class="selectpicker" multiple data-live-search="true">
-                                             
-                                                <option value="sunday">Sunday</option>
-                                                <option value="monday">Monday</option>
-                                                <option value="tuesday">Tuesday</option>
-                                                <option value="wednesday">Wednesday</option>
-                                                <option value="thursday">Thursday</option>
-                                                <option value="friday">Friday</option>
-                                                <option value="saturday">Saturday</option>
+
+                                                <option value="sunday"
+                                                    {{ in_array('["sunday"', $days) ? 'selected' : '' }}>
+                                                    Sunday</option>
+                                                <option value="monday"
+                                                    {{ in_array('"monday"', $days) ? 'selected' : '' }}>Monday</option>
+                                                <option value="tuesday"
+                                                    {{ in_array('"tuesday"', $days) ? 'selected' : '' }}>Tuesday</option>
+                                                <option value="wednesday" {{ in_array('"wednesday"', $days) ? 'selected' : '' }}>Wednesday</option>
+                                                <option value="thursday" {{ in_array('"thursday"', $days) ? 'selected' : '' }}>Thursday</option>
+                                                <option value="friday" {{ in_array('"friday"', $days) ? 'selected' : '' }}>Friday</option>
+                                                <option value="saturday" {{ in_array('"saturday"]', $days) ? 'selected' : '' }}>Saturday</option>
                                             </select>
                                         </div>
                                     </div>

@@ -115,11 +115,14 @@ class PaymentController extends Controller
             $stripe = new \Stripe\StripeClient(
                 env('STRIPE_SECRET'),
             );
+            $expiryMonth = explode('/', $request->expiry_month);
+
+
             $token =    $stripe->tokens->create([
                 'card' => [
-                    'number' => trim($request->card_number,' ') ,
-                    'exp_month' => $request->expiry_month,
-                    'exp_year' => $request->year,
+                    'number' => trim($request->card_number, ' '),
+                    'exp_month' => $expiryMonth[0],
+                    'exp_year' => $expiryMonth[1],
                     'cvc' => $request->cvc,
                 ],
             ]);
@@ -196,14 +199,14 @@ class PaymentController extends Controller
                     'total_paid' => $totalAmount,
                 ]);
 
-               
+
 
 
 
                 toastr()->success('Your appointment has been scheduled');
                 $randomNumber = md5(rand(100, 5000));
 
-                return redirect('generateMeeting/'.$randomNumber);
+                return redirect('generateMeeting/' . $randomNumber);
                 // yaha pr user ko redirect krwana hai user dashboard me
             } else {
                 toastr()->error('Card is not verified');
@@ -248,11 +251,13 @@ class PaymentController extends Controller
                 $stripe = new \Stripe\StripeClient(
                     env('STRIPE_SECRET'),
                 );
+                $expiryMonth = explode('/', $request->expiry_month);
+
                 $token =    $stripe->tokens->create([
                     'card' => [
                         'number' => $request->card_number,
-                        'exp_month' => $request->expiry_month,
-                        'exp_year' => $request->year,
+                        'exp_month' => $expiryMonth[0],
+                        'exp_year' => $expiryMonth[1],
                         'cvc' => $request->cvc,
                     ],
                 ]);

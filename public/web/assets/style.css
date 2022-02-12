@@ -10,8 +10,6 @@ body {
 
 /*---------------mobile header style -----------*/
 
-
-
 .sidepanel {
     width: 0;
     position: fixed;
@@ -953,8 +951,6 @@ doctor-offers-box.country .top-doctor-services {
     font-size: 1.1rem;
 }
 
-
-
 .video-service {
     background: #138DE7;
 }
@@ -1055,7 +1051,6 @@ doctor-offers-box.country .top-doctor-services {
     background: var(--primary);
     font-weight: bold;
     color: #fff;
-    white-space: nowrap;
     font-size: 14px;
 }
 
@@ -1433,41 +1428,26 @@ label {
     margin-top: 10px;
 }
 
-
+[dir=rtl] .kpk {
+    margin-right: 30px !important;
+}
 
 [dir=rtl] .top-bi {
-    position: absolute;
-    left: -217px;
+    left: 128px;
+    right: auto;
 }
 
 [dir=rtl] .detailspage {
     margin-top: -70%;
 }
 
-@media screen and (min-width: 1024px) {
-    [dir=rtl] .kpk {
-        margin-right: 30px !important;
-    }
-    [dir=rtl] .top-bi {
-        left: 160px !important;    }
-}
-
-@media screen and (min-width: 1024px) {
-   
-    [dir=rtl] .top-bi {
-        left: 160px !important;
-         }
-}
-
-
 @media screen and (max-width: 992px) {
     [dir=rtl] .detailspage {
-
-        margin-top: -101%;
+        margin-top: -80%;
     }
 
     [dir=rtl] .top-bi {
-        left: -2px;
+        /* left: -2px; */
         right: auto;
     }
 
@@ -1543,22 +1523,28 @@ label {
         max-width: 95% !important;
         margin: 1px;
     }
-  .kk {
-    margin-left: -40px;
-  }
-  .kpk {
-    margin-left: 0px !important;
-  }
+
+    .kk {
+        margin-left: -40px;
+    }
+
+    .kpk {
+        margin-left: 0px !important;
+    }
+
     .detailspage {
         margin-top: -85%;
     }
 
     .top-bi {
-        /* left: 330px; */
+        left: 330px;
         right: auto;
     }
 
-   
+    [dir=rtl] .top-bi {
+        left: -211px;
+        right: auto;
+    }
 
     [dir=rtl] .detailspage {
         margin-top: -81%;
@@ -1566,9 +1552,8 @@ label {
 
     .dl {
         position: fixed;
+        top: 90px;
         left: 10px;
-        bottom: 0;
-        z-index: 9999;
         right: 9px;
         background: #F8FAFF;
     }
