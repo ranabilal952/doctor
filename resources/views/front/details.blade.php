@@ -2,58 +2,103 @@
 @section('title')
     {{ __('Doctor Details') }}
 @endsection
-<style>
-    .disabled {
-        text-decoration: line-through !important;
-    }
 
-    #schedule-date-picker-header {
+@if (Session::get('locale') == 'en')
+    <style>
+        .disabled {
+            text-decoration: line-through !important;
+        }
 
-        background: #1266f1 !important;
+        #schedule-date-picker-header {
 
-    }
+            background: #1266f1 !important;
 
-    .datepicker-days {
-        font-size: 23px !important;
-    }
+        }
 
-    .highlighted {
-        background: white !important;
-    }
+        .datepicker-days {
+            font-size: 23px !important;
+        }
 
-    .slick-arrow {
-        width: 0 !important;
-    }
+        .highlighted {
+            background: white !important;
+        }
 
-    .slick-next:before,
-    .slick-prev:before {
-        font-family: slick;
-        font-size: 20px;
-        line-height: 1;
-        background: white;
-        opacity: 1 !important;
-        color: #1266f1 !important;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
+        .slick-arrow {
+            width: 0 !important;
+        }
 
-    /*  */
+        .slick-next:before,
+        .slick-prev:before {
+            font-family: slick;
+            font-size: 20px;
+            line-height: 1;
+            background: white;
+            opacity: 1 !important;
+            color: #1266f1 !important;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-    .slick-track {
-        width: 352px !important;
-    }
+        /*  */
 
-    .slick-slider .slick-track,
-    .slick-slider .slick-list {
-        direction: ltr;
-    }
+        .slick-track {
+            width: 352px !important;
+        }
 
-    [dir=rtl] .slick-slide {
-        float: left !important;
-    }
-    }
+        .slick-slider .slick-track,
+        .slick-slider .slick-list {
+            direction: ltr;
+        }
 
-</style>
+    </style>
+@else
+
+    <style>
+        .disabled {
+            text-decoration: line-through !important;
+        }
+
+        #schedule-date-picker-header {
+            background: #1266f1 !important;
+        }
+
+        .datepicker-days {
+            font-size: 23px !important;
+        }
+
+        .highlighted {
+            background: white !important;
+        }
+
+        .slick-arrow {
+            width: 0 !important;
+        }
+
+        .slick-next:before,
+        .slick-prev:before {
+            font-family: slick;
+            font-size: 20px;
+            line-height: 1;
+            background: white;
+            opacity: 1 !important;
+            color: #1266f1 !important;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .slick-track {
+            width: 352px !important;
+        }
+
+        .slick-slider .slick-list {
+            direction: rtl;
+        }
+
+    </style>
+@endif
+
+
+
 
 
 @section('content')
@@ -75,7 +120,7 @@
                         <div class="col-5 col-sm-3 col-lg-3">
                             <div class="doctor-single-avatar-wrap">
                                 <div class="doctor-single-avatar row kpk" style="margin-left: 30px;
-                                        <img src=" {{ url($doctor->image ?? '') }}" alt="">
+                                                        <img src=" {{ url($doctor->image ?? '') }}" alt="">
                                     @if (Cache::has('is_online' . $doctor->user->id))
                                         <i class="doctor-item-availablity online"></i>
                                     @else
@@ -298,7 +343,7 @@
                         <div id="schedule-date-picker-header" class="text-center">
                             @if (Session::get('locale') == 'ar')
                                 <div class="">
-                                    <span class=""> 30 {{ __('minutes') }}
+                                    <span class=""> 30 {{ __('min') }}
                                     </span>:
                                     <span class="">
                                         {{ currency()->getUserCurrency() }}
@@ -308,21 +353,21 @@
                                     <span class="">: 60 </span>
                                     &nbsp;&nbsp; -&nbsp;&nbsp;
                                     <span class=""> {{ currency()->getUserCurrency() }}
-                                        {{-- <span>{{ __('minutes') }}</span> --}}
+                                        {{-- <span>{{ __('min') }}</span> --}}
 
                                         {{ round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->thirty_minute_price) / 100, 'USD', currency()->getUserCurrency()))) }}
                                     </span>
                                 </div>
                             @else
                                 <div class="">
-                                    <span class=""> 30 {{ __('minutes') }}
+                                    <span class=""> 30 {{ __('min') }}
                                     </span>:
                                     <span class="">
                                         {{ currency()->getUserCurrency() }}
                                         {{ round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->thirty_minute_price) / 100, 'USD', currency()->getUserCurrency()))) }}
                                     </span>
                                     &nbsp;&nbsp; -&nbsp;&nbsp;
-                                    <span class="">60 {{ __('minutes') }}</span>:
+                                    <span class="">60 {{ __('min') }}</span>:
                                     <span class=""> {{ currency()->getUserCurrency() }}
                                         {{ round(preg_replace('/[^A-Za-z0-9\-]/','',currency(intVal($doctor->sixty_minute_price) / 100, 'USD', currency()->getUserCurrency()))) }}</span>
                                 </div>
@@ -345,12 +390,12 @@
                                             <a href="{{ url('payment-schedule', $value->id) }}">
                                                 <div class="d-block">
                                                     <div class="scheduleTime text-primary">
-                                                        <small style="color: #007bff; font-weight: bold;
-                                                         padding: 0.2rem;">{{ $value->time }}</small>
-
+                                                        <small
+                                                            style="color: #007bff; font-weight: bold; white-space: nowrap ;
+                                                                         padding: 0.2rem;">{{ \Carbon\Carbon::parse($value->time)->isoFormat('h:mm a') }}</small>
                                                         <p class="text-muted" style="font-size: 9px">
                                                             ({{ $value->duration }}
-                                                            {{ __('minutes') }})</p>
+                                                            {{ __('min') }})</p>
                                                     </div>
                                                 </div>
                                             </a>
@@ -362,20 +407,21 @@
                                                         <small>{{ $value->time }}</small>
                                                     </div>
                                                     <small class="text-muted" style="  white-space: nowrap;    overflow: hidden;
-                                                                                    text-overflow: clip;">
-                                                        ({{ __('minutes') }}
+                                                                                                    text-overflow: clip;">
+                                                        ({{ __('min') }}
                                                         {{ $value->duration }})</small>
                                                 </div>
                                             </a>
                                         @endif
                                     @endforeach
-                                    <div class="card-footer" style="font-size: .8rem;
-                                                                                                            font-weight: bold;
-                                                                                                            text-align: center;
-                                                                                                            cursor: pointer;
-                                                                                                            background: #D6E0F5;
-                                                                                                            margin-left: -15px;
-                                                                                                            width: 86px;">
+                                    <div class="card-footer"
+                                        style="font-size: .8rem;
+                                                                                                                            font-weight: bold;
+                                                                                                                            text-align: center;
+                                                                                                                            cursor: pointer;
+                                                                                                                            background: #D6E0F5;
+                                                                                                                            margin-left: -15px;
+                                                                                                                            width: 86px;">
                                         <span class="ng-scope">More</span>
                                     </div>
                                 </div>
