@@ -36,6 +36,7 @@ dir="rtl" lang="ar"
     <link rel="stylesheet" href="{{ url('web/assets/style.css') }}">
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <link href="{{ asset('toastr/toastr.min.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="country_dropdown/build/css/intlTelInput.css">
 
     <title>Doctoorc.com</title>
 </head>
@@ -72,15 +73,23 @@ dir="rtl" lang="ar"
                 </div>
             @else
                 <div class="left">
-                    <button type="button" class="left1 left2_a" data-toggle="modal" data-target="">
-                        {{ Auth::user()->name }}
-                    </button>
+                    <a class="left2_a" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <a class="left2_a" href="{{ url('/home') }}">
+                        ({{ Auth::user()->name }})
+                    </a>
 
 
                 </div>
             @endif
 
         </nav>
+        @php
+            $isoCode = Session::get('isoCode');
+            
+        @endphp
         <nav class="header_nav">
             <div class="logo">
                 <img src="{{ url('web/assets/logo.png') }}" alt="" />
@@ -124,7 +133,6 @@ dir="rtl" lang="ar"
                 <a class="left2_a" href="{{ url('/home') }}">
                     {{ __('Dashboard') }}
                 </a>
-
             @endif
         </nav>
     </header>
@@ -269,7 +277,9 @@ dir="rtl" lang="ar"
                                             value="{{ __('Sign in') }}">
                                         <div>
                                             <span class="ng-scope">{{ __("Don't have an account?") }}</span>
-                                            <a href="#" class="my3 ng-binding">{{ __('Create an account') }}</a>
+                                            <a href="#" data-toggle="modal" data-dismiss="modal"
+                                                data-target="#exampleModal2"
+                                                class="my3 ng-binding">{{ __('Create an account') }}</a>
                                         </div>
                                     </div>
                                 </form>
@@ -350,8 +360,8 @@ dir="rtl" lang="ar"
                                     <div class="input-group input-group-nacked mt-4">
                                         <span class="input-group-text"><i class="las la-phone"></i></span>
                                         <input id="phone" type="text"
-                                            class="form-control @error('phone') is-invalid @enderror"  placeholder="{{ __('Phone No') }}" name="phone"
-                                            required>
+                                            class="form-control @error('phone') is-invalid @enderror"
+                                            placeholder="{{ __('Phone No') }}" name="phone" required>
 
                                         @error('phone')
                                             <span class="invalid-feedback mb-3" role="alert">
@@ -379,7 +389,8 @@ dir="rtl" lang="ar"
                                         <div>
                                             <span
                                                 class="ng-scope">{{ __('Do you have already an account') }}</span>
-                                            <a href="#" class="my3 ng-binding">{{ __('Sign in') }} </a>
+                                            <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal"
+                                                class="my3 ng-binding">{{ __('Sign in') }} </a>
                                         </div>
                                     </div>
                                 </form>
@@ -407,13 +418,22 @@ dir="rtl" lang="ar"
     <script src="https://cdn.tiny.cloud/1/rfv7rfhx5vafv76ygxza52h080627sqb542j7d7736y9x8c2/tinymce/5/tinymce.min.js"
         referrerpolicy="origin"></script>
     <script src="{{ asset('toastr/toastr.min.js') }}"></script>
+    <script src="country_dropdown/build/js/intlTelInput-jquery.min.js"></script>
+
     @toastr_render
 
 
     <script>
+        currentCountry = @json($isoCode);
+
         window.onscroll = function() {
             myFunction();
         };
+        $("#phone").intlTelInput({
+            initialCountry: currentCountry,
+
+        });
+
         var header1 = document.getElementById("myHeader");
 
         function myFunction() {

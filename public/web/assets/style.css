@@ -10,6 +10,8 @@ body {
 
 /*---------------mobile header style -----------*/
 
+
+
 .sidepanel {
     width: 0;
     position: fixed;
@@ -1051,6 +1053,7 @@ doctor-offers-box.country .top-doctor-services {
     background: var(--primary);
     font-weight: bold;
     color: #fff;
+    white-space: nowrap;
     font-size: 14px;
 }
 
@@ -1428,22 +1431,36 @@ label {
     margin-top: 10px;
 }
 
-[dir=rtl] .kpk {
-    margin-right: 30px !important;
-}
 
 [dir=rtl] .top-bi {
-    left: 128px;
-    right: auto;
+    position: absolute;
+    left: -217px;
 }
 
 [dir=rtl] .detailspage {
     margin-top: -70%;
 }
 
+@media screen and (min-width: 1024px) {
+    [dir=rtl] .kpk {
+        margin-right: 30px !important;
+    }
+    [dir=rtl] .top-bi {
+        left: 160px !important;    }
+}
+
+@media screen and (min-width: 1024px) {
+   
+    [dir=rtl] .top-bi {
+        left: 215px !important;
+         }
+}
+
+
 @media screen and (max-width: 992px) {
     [dir=rtl] .detailspage {
-        margin-top: -80%;
+
+        margin-top: -101%;
     }
 
     [dir=rtl] .top-bi {
@@ -1542,7 +1559,7 @@ label {
     }
 
     [dir=rtl] .top-bi {
-        left: -211px;
+        left: 0;
         right: auto;
     }
 
@@ -1552,8 +1569,9 @@ label {
 
     .dl {
         position: fixed;
-        top: 90px;
         left: 10px;
+        bottom: 0;
+        z-index: 9999;
         right: 9px;
         background: #F8FAFF;
     }
