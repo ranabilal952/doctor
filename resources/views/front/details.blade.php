@@ -120,7 +120,8 @@
                         <div class="col-5 col-sm-3 col-lg-3">
                             <div class="doctor-single-avatar-wrap">
                                 <div class="doctor-single-avatar row kpk" style="margin-left: 30px;
-                                                        <img src=" {{ url($doctor->image ?? '') }}" alt="">
+                                                                                <img src="
+                                    {{ url($doctor->image ?? '') }}" alt="">
                                     @if (Cache::has('is_online' . $doctor->user->id))
                                         <i class="doctor-item-availablity online"></i>
                                     @else
@@ -191,10 +192,11 @@
                         <a class="nav-link" id="ex3-tab-3" data-mdb-toggle="tab" href="#ex3-tabs-3" role="tab"
                             aria-controls="ex3-tabs-3" aria-selected="false">{{ __('Videos') }}</a>
                     </li>
-                    {{-- <li class="nav-item" role="presentation">
+                    <li class="nav-item" role="presentation">
                         <a class="nav-link" id="ex3-tab-4" data-mdb-toggle="tab" href="#ex3-tabs-4" role="tab"
-                            aria-controls="ex3-tabs-4" aria-selected="false" style="border: 2px solid black;color: black;">عروض الجلسات </a>
-                    </li> --}}
+                            aria-controls="ex3-tabs-4" aria-selected="false">
+                            {{ __('packages') }} </a>
+                    </li>
                 </ul>
                 <!-- Tabs navs -->
 
@@ -273,8 +275,11 @@
                                     <div ng-repeat="(key, offer) in offers"
                                         class="col-md-4 col-sm-12 col-12 py-3  order-md-1 order-2 ">
                                         <div class="doctor-single-tab-plan">
-
-                                            <h4 class="ng-binding">{{ $offer->offer_english }}</h4>
+                                            @if (Session::get('locale') == 'ar')
+                                                <h4 class="ng-binding">{{ $offer->offer_arabic }}</h4>
+                                            @else
+                                                <h4 class="ng-binding">{{ $offer->offer_english }}</h4>
+                                            @endif
                                             <div class="doctor-single-tab-plan-price">
                                                 <div class="row">
                                                     {{-- <div class="col mb-3"><strong class="ng-binding">{{$offer->offer_amount}} USD</strong></div> --}}
@@ -285,11 +290,15 @@
                                             <h3 class="ng-binding">{{ $offer->offer_amount }} USD</h3>
                                             <div class="doctor-single-tab-plan-items">
                                                 <ul>
-                                                    <li class="ng-binding">&rlm;{{ $offer->description_english }}
+                                                    @if (Session::get('locale') == 'ar')
+                                                        <li class="ng-binding">&rlm;{{ $offer->description_arabic }}
+                                                        @else
+                                                        <li class="ng-binding">&rlm;{{ $offer->description_english }}
+                                                    @endif
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <a class="btn btn-primary ng-scope" href="offer/3" translate="">Order Now</a>
+                                            <a class="btn btn-primary ng-scope" href="offer/3" translate="">{{__('Order Now')}}</a>
                                         </div>
                                     </div>
                                 @endforeach
@@ -392,7 +401,7 @@
                                                     <div class="scheduleTime text-primary">
                                                         <small
                                                             style="color: #007bff; font-weight: bold; white-space: nowrap ;
-                                                                         padding: 0.2rem;">{{ \Carbon\Carbon::parse($value->time)->isoFormat('h:mm a') }}</small>
+                                                                                                 padding: 0.2rem;">{{ \Carbon\Carbon::parse($value->time)->isoFormat('h:mm a') }}</small>
                                                         <p class="text-muted" style="font-size: 9px">
                                                             ({{ $value->duration }}
                                                             {{ __('min') }})</p>
@@ -406,8 +415,9 @@
                                                     <div class="scheduleTime text-primary">
                                                         <small>{{ $value->time }}</small>
                                                     </div>
-                                                    <small class="text-muted" style="  white-space: nowrap;    overflow: hidden;
-                                                                                                    text-overflow: clip;">
+                                                    <small class="text-muted"
+                                                        style="  white-space: nowrap;    overflow: hidden;
+                                                                                                                            text-overflow: clip;">
                                                         ({{ __('min') }}
                                                         {{ $value->duration }})</small>
                                                 </div>
@@ -416,12 +426,12 @@
                                     @endforeach
                                     <div class="card-footer"
                                         style="font-size: .8rem;
-                                                                                                                            font-weight: bold;
-                                                                                                                            text-align: center;
-                                                                                                                            cursor: pointer;
-                                                                                                                            background: #D6E0F5;
-                                                                                                                            margin-left: -15px;
-                                                                                                                            width: 86px;">
+                                                                                                                                                    font-weight: bold;
+                                                                                                                                                    text-align: center;
+                                                                                                                                                    cursor: pointer;
+                                                                                                                                                    background: #D6E0F5;
+                                                                                                                                                    margin-left: -15px;
+                                                                                                                                                    width: 86px;">
                                         <span class="ng-scope">More</span>
                                     </div>
                                 </div>

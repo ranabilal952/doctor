@@ -15,7 +15,7 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $offer = Offer::where('user_id',Auth::id())->with('user')->orderBy('created_at','DESC')->get();
+        $offer = Offer::where('user_id', Auth::id())->with('user')->orderBy('created_at', 'DESC')->get();
         return view('offer.index', compact('offer'));
     }
 
@@ -26,7 +26,7 @@ class OfferController extends Controller
      */
     public function create()
     {
-        
+
         return view('offer.create');
     }
 
@@ -45,7 +45,7 @@ class OfferController extends Controller
         $offer->description_english = $request->description_english;
         $offer->number_session = $request->number_session;
         $offer->offer_amount = $request->offer_amount;
-        $offer->user_id=Auth::id();
+        $offer->user_id = Auth::id();
         $offer->save();
         toastr()->success('Data Sucessfully Added');
         return redirect('/offer');
@@ -96,10 +96,11 @@ class OfferController extends Controller
         //
     }
 
-    public function toggleOffer($id){
+    public function toggleOffer($id)
+    {
         $offer = Offer::findorFail($id);
-        if($offer){
-            $offer->is_active= !$offer->is_active;
+        if ($offer) {
+            $offer->is_active = !$offer->is_active;
             $offer->save();
             return redirect()->back();
         }
