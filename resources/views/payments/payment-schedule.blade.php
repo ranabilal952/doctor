@@ -4,14 +4,12 @@
 @endsection
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="{{ asset('country_dropdown/build/css/intlTelInput.css') }}">
-
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 <script src="https://js.stripe.com/v3/"></script>
 
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="{{ asset('country_dropdown/build/css/intlTelInput.css') }}">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
@@ -81,7 +79,7 @@
                                         {{ currency()->getUserCurrency() }}
                                         {{ round(preg_replace('/[^A-Za-z0-9\-]/', '', currency(intVal($totalTax) / 100, 'USD', currency()->getUserCurrency()))) }}
                                     </p>
-                                </div>  
+                                </div>
                                 <div class="col-md-6">
                                     <div class='col-xs-12 col-md-6 form-group  required'>
                                         <small class='control-label'
@@ -188,8 +186,9 @@
                                         <h6 style="color: black;font-size:16px">{{ __('Card Number') }}</h6>
                                     </label>
                                     <div class="input-group">
-                                        <input autocomplete='off' name="card_number" id="credit-card" class='form-control card-number'
-                                            size='20' type='text' placeholder="123 134 4547 858">
+                                        <input autocomplete='off' name="card_number" id="credit-card"
+                                            class='form-control card-number' size='20' type='text'
+                                            placeholder="123 134 4547 858">
                                         <div class="input-group-append"> <span class="input-group-text text-muted"> <img
                                                     height="13" src="https://shoplineimg.com/assets/footer/card_visa.png" />
                                                 <img height="13"
@@ -220,28 +219,28 @@
                                 </div> --}}
                                 <div class="row">
                                     <div class="col-sm-6" style="width: 50%">
-                     
-                                            <div class="input-group"> 
-                                                <input type="number" placeholder="MM / YY"
-                                                    name="expiry_month" class="form-control" required>
-                                                <input type="hidden" placeholder="YY" name="year" size="4"
-                                                    class="form-control" required>
-                                            </div>
-                                        
+
+                                        <div class="input-group">
+                                            <input type="text" onkeyup="addSlashes(this)" maxlength=7 placeholder="MM/YY"
+                                                name="expiry_month" class="form-control" id="expiry" required>
+                                            <input type="hidden" placeholder="YY" name="year" size="4"
+                                                class="form-control" required>
+                                        </div>
+
                                     </div>
 
                                     <div class="col-sm-6 form-group" style="width: 50%">
-                                       
+
                                         <div class="input-group">
-                                            <input type="text" size='4' name="cvc" placeholder="{{ __('CVC') }}" class="form-control "
-                                                required>
+                                            <input type="text" size='4' name="cvc" placeholder="{{ __('CVC') }}"
+                                                class="form-control " required>
                                             <div class="input-group-append"> <span class="input-group-text text-muted"> <i
                                                         class="fab fa-cc-mastercard mx-1"></i> <i
                                                         class="fab fa-cc-amex mx-1"></i> </span> </div>
                                         </div>
                                     </div>
                                 </div>
-                             
+
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <button id="payNowBtn" class="btn btn-primary btn-lg btn-block"
@@ -271,7 +270,7 @@
 
     <script type="text/javascript">
         var slotTime = @json($slotTime);
-        var systemFee = @json($doctorPercent);
+        var totalTax = @json($totalTax);
         var currentCountry = @json($isoCode);
 
         $("#phone").intlTelInput({
@@ -283,6 +282,16 @@
                 return value.replace(/\W/gi, '').replace(/(.{4})/g, '$1 ');
             });
         });
+
+        function addSlashes(element) {
+
+            let ele = document.getElementById('expiry');
+            ele = ele.value.split('/').join(''); // Remove slash (/) if mistakenly entered.
+            if (ele.length < 4 && ele.length > 0) {
+                let finalVal = ele.match(/.{1,2}/g).join('/');
+                document.getElementById(element.id).value = finalVal;
+            }
+        }
 
         function checkCouponValid() {
             var couponCode = $('#couponCode').val();
@@ -304,10 +313,15 @@
                 success: function(data) {
                     if (data.success) {
                         let discount;
-                        var amount = parseInt(systemFee) + parseInt(slotTime.amount);
+                        var amount = parseInt(totalTax) + parseInt(slotTime.amount);
+                        console.log('this is slot amoutn' + slotTime.amount);
+                        console.log('this is system amoutn' + totalTax);
+                        console.log('this is amount ' + amount);
                         if (data.data.method === 'percent') {
                             discount = (parseInt(data.data.coupon_value) / 100);
+                            console.log('this is discount' + discount);
                             amount = amount - ((amount * discount));
+
                         } else {
                             //amount
                             discount = parseInt(data.data.coupon_value);

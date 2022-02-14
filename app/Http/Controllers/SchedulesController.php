@@ -207,8 +207,6 @@ class SchedulesController extends Controller
     {
 
 
-
-
         $slotTime = SlotTime::findorFail($id);
         if ($slotTime) {
             $appointmentDate =  Carbon::parse($slotTime->date_from . $slotTime->time);

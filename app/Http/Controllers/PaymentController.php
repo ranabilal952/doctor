@@ -115,11 +115,14 @@ class PaymentController extends Controller
             $stripe = new \Stripe\StripeClient(
                 env('STRIPE_SECRET'),
             );
+            $expiryMonth = explode('/', $request->expiry_month);
+
+
             $token =    $stripe->tokens->create([
                 'card' => [
-                    'number' => $request->card_number,
-                    'exp_month' => $request->expiry_month,
-                    'exp_year' => $request->year,
+                    'number' => trim($request->card_number, ' '),
+                    'exp_month' => $expiryMonth[0],
+                    'exp_year' => $expiryMonth[1],
                     'cvc' => $request->cvc,
                 ],
             ]);
@@ -196,24 +199,14 @@ class PaymentController extends Controller
                     'total_paid' => $totalAmount,
                 ]);
 
-               
 
 
-                $account_sid = getenv("TWILIO_SID");
-                $auth_token = getenv("TWILIO_AUTH_TOKEN");
-                $twilio_number = getenv("TWILIO_NUMBER");
-                // $message = "Your appointment has been scheduled.\nAppointment Date&Time = " . $slotData->date_from . ' ' . $slotData->time;
-                // $client = new Client($account_sid, $auth_token);
-                // $client->messages->create(
-                //     '+923040532318',
-                //     ['from' => $twilio_number, 'body' => $message]
-                // );
 
 
                 toastr()->success('Your appointment has been scheduled');
                 $randomNumber = md5(rand(100, 5000));
 
-                return redirect('generateMeeting/'.$randomNumber);
+                return redirect('generateMeeting/' . $randomNumber);
                 // yaha pr user ko redirect krwana hai user dashboard me
             } else {
                 toastr()->error('Card is not verified');
@@ -258,11 +251,13 @@ class PaymentController extends Controller
                 $stripe = new \Stripe\StripeClient(
                     env('STRIPE_SECRET'),
                 );
+                $expiryMonth = explode('/', $request->expiry_month);
+
                 $token =    $stripe->tokens->create([
                     'card' => [
                         'number' => $request->card_number,
-                        'exp_month' => $request->expiry_month,
-                        'exp_year' => $request->year,
+                        'exp_month' => $expiryMonth[0],
+                        'exp_year' => $expiryMonth[1],
                         'cvc' => $request->cvc,
                     ],
                 ]);
@@ -355,11 +350,11 @@ class PaymentController extends Controller
                     $auth_token = getenv("TWILIO_AUTH_TOKEN");
                     $twilio_number = getenv("TWILIO_NUMBER");
                     $message = "Your appointment has been scheduled.\nAppointment Date&Time = " . $slotData->date_from . ' ' . $slotData->time;
-                    $client = new Client($account_sid, $auth_token);
-                    $client->messages->create(
-                        '+923040532318',
-                        ['from' => $twilio_number, 'body' => $message]
-                    );
+                    // $client = new Client($account_sid, $auth_token);
+                    // $client->messages->create(
+                    //     '+923040532318',
+                    //     ['from' => $twilio_number, 'body' => $message]
+                    // );
 
 
                     toastr()->success('Your appointment has been scheduled');

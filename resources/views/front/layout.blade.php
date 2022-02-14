@@ -21,6 +21,7 @@ dir="rtl" lang="ar"
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="_token" content="{{ csrf_token() }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta http-equiv="Content-Type" content="text/html" charset=utf-8"/>
 
     <link href="{{ asset('assets/plugins/fullcalendar/css/fullcalendar.min.css') }}" rel="stylesheet" />
 

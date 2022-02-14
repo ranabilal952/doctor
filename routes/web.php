@@ -65,6 +65,7 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('language/{locale}', function ($locale) {
     app()->setLocale($locale);
+    // \Carbon\Carbon::setLocale($locale);
     session()->put('locale', $locale);
     return redirect()->back();
 });
