@@ -86,13 +86,13 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* .slick-track {
-            width: 352px !important;
-        } */
+       .slick-track {
+            transform: none !important;
+        } 
 
-        /* .slick-slider .slick-list {
+        .slick-slider .slick-list {
             direction: rtl;
-        } */
+        }
 
     </style>
 @endif
