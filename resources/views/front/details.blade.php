@@ -90,9 +90,9 @@
             width: 352px !important;
         } */
 
-        .slick-slider .slick-list {
+        /* .slick-slider .slick-list {
             direction: rtl;
-        }
+        } */
 
     </style>
 @endif
@@ -398,7 +398,7 @@
                                         @if (Auth::check())
                                             <a href="{{ url('payment-schedule', $value->id) }}">
                                                 <div class="d-block">
-                                                    <div class="scheduleTime text-primary">
+                                                    <div class="scheduleTime text-primary" style="margin-left: -27px;">
                                                         <small
                                                             style="color: #007bff; font-weight: bold; white-space: nowrap ;
                                                                                                      padding: 0.2rem;">{{ \Carbon\Carbon::parse($value->time)->isoFormat('h:mm a') }}</small>
@@ -425,13 +425,7 @@
                                         @endif
                                     @endforeach
                                     <div class="card-footer"
-                                        style="font-size: .8rem;
-                                                                                                                                                        font-weight: bold;
-                                                                                                                                                        text-align: center;
-                                                                                                                                                        cursor: pointer;
-                                                                                                                                                        background: #D6E0F5;
-                                                                                                                                                        margin-left: -15px;
-                                                                                                                                                        width: 86px;">
+                                        style="font-size: .8rem;font-weight: bold; text-align: center; cursor: pointer; background: #D6E0F5;      margin-left: -15px;    width: 100%;">
                                         <span class="ng-scope">More</span>
                                     </div>
                                 </div>
@@ -536,8 +530,8 @@
         $(document).ready(function() {
             $('.autoplay').slick({
                 infinite: true,
-                slidesToShow: 3,
-                slidesToScroll: 3
+                slidesToShow: 2,
+                slidesToScroll: 2
                 // autoplay: true,
                 // autoplaySpeed: 1000,
             });
