@@ -97,12 +97,6 @@
     </style>
 @endif
 
-<<<<<<< HEAD
-/* .slick-track{
-    width: 352px !important;
-} */
-=======
->>>>>>> 7ba43fe2ddfcc65f1e89fd4dba8462d3cdfde95e
 
 
 
