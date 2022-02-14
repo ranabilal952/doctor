@@ -1428,9 +1428,6 @@ label {
     margin-top: 10px;
 }
 
-[dir=rtl] .kpk {
-    margin-right: 30px !important;
-}
 
 [dir=rtl] .top-bi {
     left: 128px;
