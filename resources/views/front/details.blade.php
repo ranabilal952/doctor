@@ -39,10 +39,6 @@
 
     /*  */
 
-.slick-track{
-    width: 352px !important;
-}
-
     .slick-slider .slick-track,
     .slick-slider .slick-list {
         direction: ltr;
