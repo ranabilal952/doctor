@@ -86,9 +86,9 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        .slick-track {
+        /* .slick-track {
             width: 352px !important;
-        }
+        } */
 
         .slick-slider .slick-list {
             direction: rtl;
