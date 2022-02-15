@@ -8,21 +8,15 @@
         .disabled {
             text-decoration: line-through !important;
         }
-
         #schedule-date-picker-header {
-
             background: #1266f1 !important;
-
         }
-
         .datepicker-days {
             font-size: 23px !important;
         }
-
         .highlighted {
             background: white !important;
         }
-
         .slick-arrow {
             width: 0 !important;
         }
@@ -86,12 +80,12 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        .slick-track {
+        /* .slick-track {
             transform: none !important;
-        }
+        } */
 
         .slick-slider .slick-list {
-            direction: rtl;
+            direction: ltr;
         }
 
     </style>

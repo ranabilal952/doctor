@@ -166,7 +166,7 @@
                                 </div>
 
                                 <div class='form-row row' style="margin-top: -5px;">
-                                    <div class='col-xs-12 form-group card required' style="z-index: 999">
+                                    <div class='col-xs-12 form-group card required'>
                                         <label class='control-label' style="color: black">{{ __('Phone No') }}</label>
                                         <input value="" autocomplete='off' id="phone" name="phone_no"
                                             class='form-control card-number' type='text'>
@@ -188,7 +188,7 @@
                                     <div class="input-group">
                                         <input autocomplete='off' name="card_number" id="credit-card"
                                             class='form-control card-number' size='20' type='text'
-                                            placeholder="123 134 4547 858">
+                                            placeholder="4242 4242 4242 4242">
                                         <div class="input-group-append"> <span class="input-group-text text-muted"> <img
                                                     height="13" src="https://shoplineimg.com/assets/footer/card_visa.png" />
                                                 <img height="13"
@@ -261,11 +261,8 @@
 
 
     </div>
-    {{-- <script src="https://js.stripe.com/v3/"></script> --}}
-
-@endsection
+    {{-- <script src="https://js.stripe.com/v3/"></script> --}}@endsection
 @section('scripts')
-
     <script src="{{ asset('country_dropdown/build/js/intlTelInput-jquery.min.js') }}"></script>
 
     <script type="text/javascript">
@@ -382,5 +379,4 @@
             });
         });
     </script>
-
 @endsection

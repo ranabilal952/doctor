@@ -247,9 +247,9 @@ class PaymentController extends Controller
             }
 
             if ($slot_id) {
-                Stripe::setApiKey(env('STRIPE_SECRET'));
+                Stripe::setApiKey('sk_test_51K59D6BAyzoPIe2UhJFX4Q48mTNTHCXu3cBpMXBUGSR94lRfgs7dWfJnE1ZplPBzrJpu2CVC3IPof2NdyUAaWCyC00VopiL7xb');
                 $stripe = new \Stripe\StripeClient(
-                    env('STRIPE_SECRET'),
+                    'sk_test_51K59D6BAyzoPIe2UhJFX4Q48mTNTHCXu3cBpMXBUGSR94lRfgs7dWfJnE1ZplPBzrJpu2CVC3IPof2NdyUAaWCyC00VopiL7xb',
                 );
                 $expiryMonth = explode('/', $request->expiry_month);
 
